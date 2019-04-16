@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Styleguide from './Styleguide'
-import '../styles/global'
-import '../styles/theme'
 import Homepage from './Homepage'
+
+// self-initting styles for non-react components
+import 'styles/global'
 
 class App extends Component {
   render() {
