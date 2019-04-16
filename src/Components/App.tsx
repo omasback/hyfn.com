@@ -4,7 +4,7 @@ import Styleguide from './Styleguide'
 import Homepage from './Homepage'
 
 // self-initting styles for non-react components
-import 'styles/global'
+import '../styles/global'
 
 class App extends Component {
   render() {

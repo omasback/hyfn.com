@@ -1,6 +1,6 @@
 import * as React from 'react'
 import withStyles, { WithStyles } from 'react-jss'
-import theme from 'styles/theme'
+import theme from '../styles/theme'
 
 interface Props extends WithStyles<typeof styles> {}
 
