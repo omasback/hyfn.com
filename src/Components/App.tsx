@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import GlobalStyles from './GlobalStyles'
 import Styleguide from './pages/Styleguide'
 import Homepage from './pages/home/Homepage'
-
-// self-initting styles for non-react components
-import '../styles/global'
 
 class App extends Component {
   render() {
@@ -15,6 +13,7 @@ class App extends Component {
           <Route path="/styleguide" component={Styleguide} />
           <Route path="/" component={Homepage} exact />
         </div>
+        <GlobalStyles />
       </Router>
     )
   }

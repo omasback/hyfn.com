@@ -1,10 +1,14 @@
-import { jss } from 'react-jss'
+import * as React from 'react'
+import { makeStyles } from '@material-ui/styles'
 
 import ModeratBoldWoff from '../fonts/Moderat-Bold.woff'
 import ModeratLightWoff from '../fonts/Moderat-Light.woff'
-import theme from './theme'
+import theme from '../styles/theme'
 
-const styles = {
+const useStyles = makeStyles({
+  root: {
+    padding: 0,
+  },
   '@font-face': [
     {
       fontFamily: 'Moderat',
@@ -16,7 +20,7 @@ const styles = {
       src: `url(${ModeratBoldWoff})`,
       fontWeight: 'bold',
     },
-  ],
+  ] as any, // TODO: check if bug fixed in jss alpha
   '@global': {
     '*, :before, :after': {
       boxSizing: 'border-box',
@@ -30,6 +34,7 @@ const styles = {
     },
     body: {
       height: '100%',
+      backgroundColor: theme.colors.lightGray,
       color: theme.colors.darkGray,
       margin: 0,
       padding: 0,
@@ -49,6 +54,11 @@ const styles = {
       fontSize: 38,
     },
   },
+})
+
+const GlobalStyles: React.FunctionComponent<{}> = () => {
+  const classes = useStyles()
+  return <div />
 }
 
-jss.createStyleSheet(styles, { meta: 'Global styles' }).attach()
+export default GlobalStyles
