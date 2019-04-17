@@ -37,7 +37,7 @@ const Styleguide: React.FunctionComponent<Props> = ({ children }) => {
             {
               font: 'Moderat Bold',
               size: 210,
-              content: <h1>STILL HERE?</h1>,
+              content: <h1 style={{ margin: 0 }}>STILL HERE?</h1>,
             },
             {
               font: 'Moderat Bold',
