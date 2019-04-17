@@ -15,8 +15,7 @@
     "noEmit": true,
     "jsx": "preserve",
     "experimentalDecorators": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "baseUrl": "./src"
+    "suppressImplicitAnyIndexErrors": true
   },
   "include": ["src"]
 }

@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { createStylesHook } from '../helpers/createStylesHook'
-import theme from '../styles/theme'
+import { createStylesHook } from '../../../helpers/createStylesHook'
+import theme from '../../../styles/theme'
 
 interface Props {}
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Styleguide from './Styleguide'
-import Homepage from './Homepage'
+import Styleguide from './pages/Styleguide'
+import Homepage from './pages/home/Homepage'
 
 // self-initting styles for non-react components
 import '../styles/global'
