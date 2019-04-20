@@ -44,6 +44,10 @@ const useStyles = makeStyles({
       overscrollBehaviorX: 'none',
       fontFamily: 'Moderat, sans-serif',
     },
+    '#root': {
+      width: '100%',
+      overflow: 'hidden',
+    },
     h1: {
       fontSize: 210,
     },
