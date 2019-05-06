@@ -6,9 +6,6 @@ import ModeratLightWoff from 'fonts/Moderat-Light.woff'
 import theme from 'styles/theme'
 
 const useStyles = makeStyles({
-  root: {
-    padding: 0,
-  },
   '@font-face': [
     {
       fontFamily: 'Moderat',
