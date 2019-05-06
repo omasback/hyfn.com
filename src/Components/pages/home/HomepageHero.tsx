@@ -7,6 +7,9 @@ import { withStyles, createStyles, WithStyles } from '@material-ui/styles'
 // https://material-ui.com/css-in-js/basics/
 // autocomplete soon without createStyles? https://github.com/mui-org/material-ui/pull/15366
 const styles = createStyles({
+  root: {
+    height: '100vh',
+  },
   h1: {
     margin: 0,
     color: theme.colors.blue,
@@ -23,7 +26,7 @@ class HomepageHero extends React.Component<Props> {
   render() {
     const { classes } = this.props
     return (
-      <div>
+      <div className={classes.root}>
         <h1 className={classes.h1}>HYFN</h1>
       </div>
     )

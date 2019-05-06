@@ -17,6 +17,10 @@ const useStyles = createStylesHook(
   {
     root: {
       padding: 0,
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
     },
     mobileLogo: {
       width: 111,
