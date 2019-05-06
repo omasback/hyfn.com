@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { createStylesHook } from '../helpers/createStylesHook'
+
+import { createStylesHook } from 'helpers/createStylesHook'
 
 const useStyles = createStylesHook(
   {

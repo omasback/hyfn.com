@@ -74,6 +74,7 @@ const Styleguide: React.FunctionComponent<Props> = ({ children }) => {
               font: 'Moderat Bold',
               size: 18,
               content: (
+                // eslint-disable-next-line
                 <a style={{ fontSize: 18 }} className={classes.a}>
                   Might as well get in touch ->
                 </a>

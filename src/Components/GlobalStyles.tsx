@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 
-import ModeratBoldWoff from '../fonts/Moderat-Bold.woff'
-import ModeratLightWoff from '../fonts/Moderat-Light.woff'
-import theme from '../styles/theme'
+import ModeratBoldWoff from 'fonts/Moderat-Bold.woff'
+import ModeratLightWoff from 'fonts/Moderat-Light.woff'
+import theme from 'styles/theme'
 
 const useStyles = makeStyles({
   root: {
@@ -61,8 +61,8 @@ const useStyles = makeStyles({
 })
 
 const GlobalStyles: React.FunctionComponent<{}> = () => {
-  const classes = useStyles()
-  return <div />
+  useStyles()
+  return null
 }
 
 export default GlobalStyles

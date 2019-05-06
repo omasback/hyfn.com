@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
 import GlobalStyles from './GlobalStyles'
 import Styleguide from './pages/Styleguide'
 import Homepage from './pages/home/Homepage'

@@ -2,16 +2,16 @@ import * as React from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import { useMedia } from 'use-media'
 import { NavLink, Link } from 'react-router-dom'
-
-import Container from '../Container'
-import { createStylesHook } from '../../helpers/createStylesHook'
-import hamburger from '../../images/hamburger.svg'
 import { FaFacebookSquare } from 'react-icons/fa'
 import { FaInstagram } from 'react-icons/fa'
-import theme from '../../styles/theme'
-import XIcon from '../svg/XIcon'
-import HyfnLogo from '../svg/HyfnLogo'
-import PlayLogo from '../svg/PlayLogo'
+
+import Container from 'Components/Container'
+import { createStylesHook } from 'helpers/createStylesHook'
+import hamburger from 'images/hamburger.svg'
+import theme from 'styles/theme'
+import XIcon from 'Components/svg/XIcon'
+import HyfnLogo from 'Components/svg/HyfnLogo'
+import PlayLogo from 'Components/svg/PlayLogo'
 
 const useStyles = createStylesHook(
   {
@@ -237,7 +237,11 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
                 // need span wrapper because the lib overwrites the classname
                 // https://github.com/negomi/react-burger-menu/issues/95
                 <span>
-                  <img src={hamburger} className={classes.burgerIcon} />
+                  <img
+                    src={hamburger}
+                    className={classes.burgerIcon}
+                    alt="menu"
+                  />
                 </span>
               }
               customCrossIcon={

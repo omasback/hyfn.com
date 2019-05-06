@@ -1,9 +1,9 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { createStylesHook } from '../../helpers/createStylesHook'
-
-import xBlack from 'images/svg/x-black.svg'
 import easings from 'easings-css/easings.json'
+
+import { createStylesHook } from 'helpers/createStylesHook'
+import xBlack from 'images/svg/x-black.svg'
 
 export interface Props {
   isOpen: boolean

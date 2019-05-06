@@ -1,7 +1,5 @@
 import * as React from 'react'
-import { createStylesHook } from '../../helpers/createStylesHook'
-import Nav from '../page-wrapper/Nav'
-import { Interface } from 'readline'
+import { createStylesHook } from 'helpers/createStylesHook'
 
 const useStyles = createStylesHook(
   {
