@@ -1,6 +1,5 @@
 import * as React from 'react'
-
-import { OdometerText } from 'components/OdometerText'
+import { OdometerText } from 'components/display/OdometerText'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles(
