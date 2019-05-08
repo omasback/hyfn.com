@@ -2,10 +2,9 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { useInView } from 'react-intersection-observer'
 import easings from 'easings-css'
+import { makeStyles } from '@material-ui/styles'
 
-import { createStylesHook } from 'helpers/createStylesHook'
-
-const useStyles = createStylesHook(
+const useStyles = makeStyles(
   {
     root: {
       padding: 0,

@@ -6,14 +6,14 @@ import { FaFacebookSquare } from 'react-icons/fa'
 import { FaInstagram } from 'react-icons/fa'
 
 import Container from 'components/Container'
-import { createStylesHook } from 'helpers/createStylesHook'
 import hamburger from 'images/hamburger.svg'
 import theme from 'styles/theme'
 import XIcon from 'components/svg/XIcon'
 import HyfnLogo from 'components/svg/HyfnLogo'
 import PlayLogo from 'components/svg/PlayLogo'
+import { makeStyles } from '@material-ui/styles'
 
-const useStyles = createStylesHook(
+const useStyles = makeStyles(
   {
     root: {
       padding: 0,

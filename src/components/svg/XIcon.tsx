@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { createStylesHook } from 'helpers/createStylesHook'
+import { makeStyles } from '@material-ui/styles'
 
-const useStyles = createStylesHook(
+const useStyles = makeStyles(
   {
     path: {
       transition: 'color 0.3s',

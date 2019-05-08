@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { createStylesHook } from 'helpers/createStylesHook'
 import Nav from './Nav'
+import { makeStyles } from '@material-ui/styles'
 
-const useStyles = createStylesHook({
+const useStyles = makeStyles({
   root: {
     padding: 0,
   },

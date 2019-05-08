@@ -1,8 +1,7 @@
 import * as React from 'react'
+import { makeStyles } from '@material-ui/styles'
 
-import { createStylesHook } from 'helpers/createStylesHook'
-
-const useStyles = createStylesHook(
+const useStyles = makeStyles(
   {
     root: {
       margin: '0 auto',

@@ -2,8 +2,8 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import easings from 'easings-css/easings.json'
 
-import { createStylesHook } from 'helpers/createStylesHook'
 import xBlack from 'images/svg/x-black.svg'
+import { makeStyles } from '@material-ui/styles'
 
 export interface Props {
   isOpen: boolean
@@ -14,7 +14,7 @@ export interface Props {
   closeImgSrc?: string
 }
 
-const useStyles = createStylesHook({
+const useStyles = makeStyles({
   overlay: {
     position: 'fixed',
     top: 0,

@@ -1,10 +1,10 @@
 import * as React from 'react'
 import theme from 'styles/theme'
-import { createStylesHook } from 'helpers/createStylesHook'
+import { makeStyles } from '@material-ui/styles'
 
 interface Props {}
 
-const useStyles = createStylesHook({
+const useStyles = makeStyles({
   root: {
     display: 'flex',
   },
