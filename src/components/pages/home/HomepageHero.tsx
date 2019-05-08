@@ -9,6 +9,7 @@ import { withStyles, createStyles, WithStyles } from '@material-ui/styles'
 const styles = createStyles({
   root: {
     height: '100vh',
+    borderBottom: '1px solid #000',
   },
   h1: {
     margin: 0,
