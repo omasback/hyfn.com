@@ -5,13 +5,13 @@ import { NavLink, Link } from 'react-router-dom'
 import { FaFacebookSquare } from 'react-icons/fa'
 import { FaInstagram } from 'react-icons/fa'
 
-import Container from 'Components/Container'
+import Container from 'components/Container'
 import { createStylesHook } from 'helpers/createStylesHook'
 import hamburger from 'images/hamburger.svg'
 import theme from 'styles/theme'
-import XIcon from 'Components/svg/XIcon'
-import HyfnLogo from 'Components/svg/HyfnLogo'
-import PlayLogo from 'Components/svg/PlayLogo'
+import XIcon from 'components/svg/XIcon'
+import HyfnLogo from 'components/svg/HyfnLogo'
+import PlayLogo from 'components/svg/PlayLogo'
 
 const useStyles = createStylesHook(
   {

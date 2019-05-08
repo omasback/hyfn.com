@@ -1,5 +1,5 @@
 import * as React from 'react'
-import theme from '../../../styles/theme'
+import theme from 'styles/theme'
 import { withStyles, createStyles, WithStyles } from '@material-ui/styles'
 
 // Material-UI's JSS implementation.
