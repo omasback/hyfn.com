@@ -1,4 +1,4 @@
-export default {
+const theme = {
   colors: {
     black: '#1a1b23',
     red: '#ee3424',
@@ -7,4 +7,9 @@ export default {
     lightGray: '#e8e8e8',
     darkGray: '#3c3c40',
   },
+  mq: {
+    desktop: '@media (min-width: 1024px)',
+  },
 }
+
+export default theme

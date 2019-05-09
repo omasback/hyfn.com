@@ -2,6 +2,8 @@ import * as React from 'react'
 import { OdometerText } from 'components/display/OdometerText'
 import { makeStyles } from '@material-ui/styles'
 
+import { ArrowLink } from 'components/display/ArrowLink'
+
 const useStyles = makeStyles(
   {
     root: {
@@ -33,6 +35,7 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
         <OdometerText text="STILL" className={classes.headlineLine1} />
         <OdometerText text="HERE?" className={classes.headlineLine2} />
       </div>
+      <ArrowLink to="/" text={'Might as well get in touch'} />
     </div>
   )
 }
