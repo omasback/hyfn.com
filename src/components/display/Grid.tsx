@@ -6,8 +6,22 @@ import theme from 'styles/theme'
 interface Props {
   container?: boolean // if this is a parent of a grid item
   item?: boolean // if this is a child of a grid container (can be both container and child at the same time.)
-  mobile?: number // number of columns (out of 10) it should span on mobile
+  mobile?: number // number of columns (out of 10) it should span on mobile and up
   desktop?: number // number of columns (out of 10) it should span on desktop
+  offsetMobile?: number // number of columns to offset left on mobile and up
+  offsetDesktop?: number // number of columns to offset left on desktop
+  alignItemsMobile?:
+    | 'flex-start'
+    | 'center'
+    | 'flex-end'
+    | 'stretch'
+    | 'baseline'
+  alignItemsDesktop?:
+    | 'flex-start'
+    | 'center'
+    | 'flex-end'
+    | 'stretch'
+    | 'baseline'
   className?: string // for adding/overriding styles
 }
 
@@ -16,10 +30,9 @@ const useStyles = makeStyles(
     container: {
       display: 'flex',
       flexWrap: 'wrap',
-      justifyContent: 'center',
-      alignItems: 'center',
       width: 'calc(100% + 10px)',
       margin: -5,
+      justifyContent: 'center',
       [theme.mq.desktop]: {
         justifyContent: 'space-between',
         width: 'calc(100% + 20px)',
@@ -46,6 +59,26 @@ const useStyles = makeStyles(
           : 'auto',
       },
     }),
+    offset: (props: Props) => ({
+      marginLeft: props.offsetMobile ? props.offsetMobile * 10 + '%' : 0,
+      [theme.mq.desktop]: {
+        marginLeft: props.offsetDesktop
+          ? props.offsetDesktop * 10 + '%'
+          : props.offsetMobile
+          ? props.offsetMobile * 10 + '%'
+          : 0,
+      },
+    }),
+    alignItems: (props: Props) => ({
+      alignItems: props.alignItemsMobile,
+      [theme.mq.desktop]: {
+        alignItems: props.alignItemsDesktop
+          ? props.alignItemsDesktop
+          : props.alignItemsMobile
+          ? props.alignItemsMobile
+          : 'flex-start',
+      },
+    }),
   },
   { name: 'Grid' }
 )
@@ -53,7 +86,19 @@ const useStyles = makeStyles(
 const Grid: React.FunctionComponent<
   Props & React.HTMLProps<HTMLDivElement>
 > = props => {
-  const { container, item, className, children, ...divprops } = props
+  const {
+    container,
+    item,
+    className,
+    mobile,
+    desktop,
+    offsetMobile,
+    offsetDesktop,
+    alignItemsMobile,
+    alignItemsDesktop,
+    children,
+    ...divprops
+  } = props
   const classes = useStyles(props)
   return (
     <div
@@ -61,7 +106,9 @@ const Grid: React.FunctionComponent<
         {
           [classes.container]: container,
           [classes.item]: item,
-          [classes.width]: true,
+          [classes.width]: mobile || desktop,
+          [classes.offset]: offsetMobile || offsetDesktop,
+          [classes.alignItems]: alignItemsMobile || alignItemsDesktop,
         },
         className
       )}

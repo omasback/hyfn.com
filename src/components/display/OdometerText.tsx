@@ -30,7 +30,6 @@ const OdometerText: React.FunctionComponent<{
 }> = ({ text, className }) => {
   const classes = useStyles()
   const [ref, inView] = useInView({
-    /* Optional options */
     threshold: 0,
   })
 
