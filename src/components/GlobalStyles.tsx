@@ -54,6 +54,14 @@ const useStyles = makeStyles({
     h3: {
       fontSize: 38,
     },
+    p: {
+      fontSize: '3.7vw',
+      lineHeight: 1.6,
+      margin: '0 0 1.2em 0',
+      [theme.mq.desktop]: {
+        fontSize: 18,
+      },
+    },
   },
 })
 
