@@ -6,6 +6,7 @@ import OdometerText from 'components/display/OdometerText'
 import ArrowLink from 'components/display/ArrowLink'
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
+import ColorTrails from 'components/display/ColorTrails'
 import theme from 'styles/theme'
 
 const useStyles = makeStyles(
@@ -98,11 +99,13 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
           </Grid>
         </Grid>
         <Grid item mobile={8} desktop={4.5}>
-          <img
-            src="http://via.placeholder.com/510x660"
-            alt=""
-            className={cx(classes.image, classes.image1)}
-          />
+          <ColorTrails>
+            <img
+              src="http://via.placeholder.com/510x660"
+              alt=""
+              className={cx(classes.image, classes.image1)}
+            />
+          </ColorTrails>
         </Grid>
       </Grid>
       <Grid container className={classes.row2} alignItemsDesktop="center">
@@ -118,11 +121,13 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
           </p>
         </Grid>
         <Grid item mobile={10} desktop={6}>
-          <img
-            src="http://via.placeholder.com/600x400"
-            alt=""
-            className={classes.image}
-          />
+          <ColorTrails>
+            <img
+              src="http://via.placeholder.com/600x400"
+              alt=""
+              className={classes.image}
+            />
+          </ColorTrails>
         </Grid>
       </Grid>
       <Grid container alignItemsDesktop="center">
@@ -139,11 +144,13 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
           />
         </Grid>
         <Grid item mobile={8} desktop={4.5}>
-          <img
-            src="http://via.placeholder.com/510x660"
-            alt=""
-            className={classes.image}
-          />
+          <ColorTrails>
+            <img
+              src="http://via.placeholder.com/510x660"
+              alt=""
+              className={classes.image}
+            />
+          </ColorTrails>
         </Grid>
       </Grid>
     </Container>

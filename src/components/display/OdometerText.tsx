@@ -31,6 +31,7 @@ const OdometerText: React.FunctionComponent<{
   const classes = useStyles()
   const [ref, inView] = useInView({
     threshold: 0,
+    triggerOnce: true,
   })
 
   const characters = text.split('')
