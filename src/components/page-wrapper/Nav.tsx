@@ -5,7 +5,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { FaFacebookSquare } from 'react-icons/fa'
 import { FaInstagram } from 'react-icons/fa'
 
-import Container from 'components/Container'
+import { Container } from 'components/display/Container'
 import hamburger from 'images/hamburger.svg'
 import theme from 'styles/theme'
 import XIcon from 'components/svg/XIcon'

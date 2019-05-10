@@ -66,3 +66,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### Grid System
+
+The grid sytem is modelled after material-ui's https://material-ui.com/layout/grid/, except it's based on 10 columns instead of 12. See the Grid component for props
