@@ -119,4 +119,4 @@ const Grid: React.FunctionComponent<
   )
 }
 
-export { Grid }
+export default Grid

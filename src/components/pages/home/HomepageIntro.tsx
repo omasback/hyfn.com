@@ -2,10 +2,10 @@ import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 
-import { OdometerText } from 'components/display/OdometerText'
-import { ArrowLink } from 'components/display/ArrowLink'
-import { Container } from 'components/display/Container'
-import { Grid } from 'components/display/Grid'
+import OdometerText from 'components/display/OdometerText'
+import ArrowLink from 'components/display/ArrowLink'
+import Container from 'components/display/Container'
+import Grid from 'components/display/Grid'
 import theme from 'styles/theme'
 
 const useStyles = makeStyles(

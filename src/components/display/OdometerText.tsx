@@ -52,4 +52,4 @@ const OdometerText: React.FunctionComponent<{
   )
 }
 
-export { OdometerText }
+export default OdometerText

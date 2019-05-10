@@ -71,4 +71,4 @@ const ArrowLink: React.FunctionComponent<{
   )
 }
 
-export { ArrowLink }
+export default ArrowLink

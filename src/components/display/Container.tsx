@@ -30,4 +30,4 @@ const Container: React.FunctionComponent<{ className?: string }> = ({
   )
 }
 
-export { Container }
+export default Container
