@@ -46,7 +46,6 @@ const useStyles = makeStyles(
         marginTop: '70px',
       },
     },
-    copy: {},
     image: {
       display: 'block',
       width: '100%',
@@ -89,7 +88,7 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
               We should get to know each other.
             </ScrollReveal>
             <ScrollReveal>
-              <p className={classes.copy}>
+              <p>
                 Since you’re here, our guess is you’ve got problems. (The
                 business kind, not the personal kind.) And as it turns out,
                 we’ve got answers. Tons of them.
@@ -112,13 +111,13 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
       <Grid container className={classes.row2} alignItemsDesktop="center">
         <Grid item mobile={8} desktop={3.5}>
           <ScrollReveal>
-            <p className={classes.copy}>
+            <p>
               But before we can give you those answers, we need to know a little
               more about you, your brand, and your expectations.
             </p>
           </ScrollReveal>
           <ScrollReveal>
-            <p className={classes.copy}>
+            <p>
               Then comes the good stuff. The part where we make your business
               our business. Where your goals become our challenges, and our
               solutions become your game changers.

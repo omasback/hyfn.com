@@ -30,7 +30,7 @@ const ScrollReveal: React.FunctionComponent<{
 }> = ({ animation = 'fadeUp', className, children }) => {
   const classes = useStyles()
   const [ref, inView] = useInView({
-    threshold: 0.5,
+    threshold: 0.1,
     triggerOnce: theme.triggerOnce,
   })
 
