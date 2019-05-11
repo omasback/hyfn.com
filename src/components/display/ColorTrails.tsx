@@ -36,34 +36,36 @@ window.addEventListener(
   }, 20)
 )
 
-const styles = makeStyles({
-  root: {
-    position: 'relative',
-    pointerEvents: 'none',
-    [theme.mq.desktop]: {},
+const styles = makeStyles(
+  {
+    root: {
+      position: 'relative',
+      pointerEvents: 'none',
+    },
+    child: {
+      position: 'relative',
+    },
+    trail: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      willChange: 'transform',
+      transition: 'transform 0.15s',
+    },
+    trailRed: {
+      backgroundColor: theme.colors.red,
+    },
+    trailBlue: {
+      backgroundColor: theme.colors.blue,
+    },
+    trailYello: {
+      backgroundColor: theme.colors.yellow,
+    },
   },
-  child: {
-    position: 'relative',
-  },
-  trail: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    willChange: 'transform',
-    transition: 'transform 0.15s',
-  },
-  trailRed: {
-    backgroundColor: theme.colors.red,
-  },
-  trailBlue: {
-    backgroundColor: theme.colors.blue,
-  },
-  trailYello: {
-    backgroundColor: theme.colors.yellow,
-  },
-})
+  { name: 'ColorTrails' }
+)
 
 const ColorTrails: React.FunctionComponent<{ className?: string }> = ({
   className,
