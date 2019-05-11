@@ -10,6 +10,7 @@ const theme = {
   mq: {
     desktop: '@media (min-width: 1024px)',
   },
+  triggerOnce: true,
 }
 
 export default theme

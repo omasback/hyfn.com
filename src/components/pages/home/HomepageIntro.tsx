@@ -7,6 +7,7 @@ import ArrowLink from 'components/display/ArrowLink'
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
+import ScrollReveal from 'components/display/ScrollReveal'
 import theme from 'styles/theme'
 
 const useStyles = makeStyles(
@@ -88,69 +89,85 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
             <OdometerText text="HERE?" className={classes.headlineLine2} />
           </Grid>
           <Grid item mobile={8} desktop={6} offsetDesktop={2}>
-            <div className={classes.subheadline}>
+            <ScrollReveal className={classes.subheadline}>
               We should get to know each other.
-            </div>
-            <p className={classes.copy}>
-              Since you’re here, our guess is you’ve got problems. (The business
-              kind, not the personal kind.) And as it turns out, we’ve got
-              answers. Tons of them.
-            </p>
+            </ScrollReveal>
+            <ScrollReveal>
+              <p className={classes.copy}>
+                Since you’re here, our guess is you’ve got problems. (The
+                business kind, not the personal kind.) And as it turns out,
+                we’ve got answers. Tons of them.
+              </p>
+            </ScrollReveal>
           </Grid>
         </Grid>
         <Grid item mobile={8} desktop={4.5}>
-          <ColorTrails>
-            <img
-              src="http://via.placeholder.com/510x660"
-              alt=""
-              className={cx(classes.image, classes.image1)}
-            />
-          </ColorTrails>
+          <ScrollReveal>
+            <ColorTrails>
+              <img
+                src="http://via.placeholder.com/510x660"
+                alt=""
+                className={cx(classes.image, classes.image1)}
+              />
+            </ColorTrails>
+          </ScrollReveal>
         </Grid>
       </Grid>
       <Grid container className={classes.row2} alignItemsDesktop="center">
         <Grid item mobile={8} desktop={3.5}>
-          <p className={classes.copy}>
-            But before we can give you those answers, we need to know a little
-            more about you, your brand, and your expectations.
-          </p>
-          <p className={classes.copy}>
-            Then comes the good stuff. The part where we make your business our
-            business. Where your goals become our challenges, and our solutions
-            become your game changers.
-          </p>
+          <ScrollReveal>
+            <p className={classes.copy}>
+              But before we can give you those answers, we need to know a little
+              more about you, your brand, and your expectations.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <p className={classes.copy}>
+              Then comes the good stuff. The part where we make your business
+              our business. Where your goals become our challenges, and our
+              solutions become your game changers.
+            </p>
+          </ScrollReveal>
         </Grid>
         <Grid item mobile={10} desktop={6}>
-          <ColorTrails>
-            <img
-              src="http://via.placeholder.com/600x400"
-              alt=""
-              className={classes.image}
-            />
-          </ColorTrails>
+          <ScrollReveal>
+            <ColorTrails>
+              <img
+                src="http://via.placeholder.com/600x400"
+                alt=""
+                className={classes.image}
+              />
+            </ColorTrails>
+          </ScrollReveal>
         </Grid>
       </Grid>
       <Grid container alignItemsDesktop="center">
         <Grid item mobile={8} desktop={3.5} offsetDesktop={1}>
-          <p className={classes.largerCopy}>
-            So lay it on us. Come with questions. Come confused. Come expecting
-            guidance. And don’t come with socks, because they’ll definitely get
-            blown off.
-          </p>
-          <ArrowLink
-            to="/"
-            text={'Might as well get in touch'}
-            className={classes.cta}
-          />
+          <ScrollReveal>
+            <p className={classes.largerCopy}>
+              So lay it on us. Come with questions. Come confused. Come
+              expecting guidance. And don’t come with socks, because they’ll
+              definitely get blown off.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <ArrowLink
+              to="/"
+              text={'Might as well get in touch'}
+              className={classes.cta}
+            />
+          </ScrollReveal>
         </Grid>
         <Grid item mobile={8} desktop={4.5}>
-          <ColorTrails>
-            <img
-              src="http://via.placeholder.com/510x660"
-              alt=""
-              className={classes.image}
-            />
-          </ColorTrails>
+          <ScrollReveal>
+            <ColorTrails>
+              <img
+                src="http://via.placeholder.com/510x660"
+                alt=""
+                className={classes.image}
+              />
+            </ColorTrails>
+          </ScrollReveal>
         </Grid>
       </Grid>
     </Container>
