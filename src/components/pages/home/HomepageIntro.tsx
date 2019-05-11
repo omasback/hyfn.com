@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
+import merge from 'lodash/merge'
 
 import OdometerText from 'components/display/OdometerText'
 import ArrowLink from 'components/display/ArrowLink'
@@ -14,13 +15,11 @@ import { responsiveLengths } from 'styles/helpers'
 const useStyles = makeStyles(
   {
     root: {
-      paddingTop: '19vw',
-      paddingBottom: '31vw',
+      extend: merge(
+        responsiveLengths('paddingTop', 71, 440),
+        responsiveLengths('paddingBottom', 116, 150)
+      ),
       minHeight: '100vh',
-      [theme.mq.desktop]: {
-        paddingTop: '440px',
-        paddingBottom: '150px',
-      },
     },
     row1: {
       alignItems: '',
@@ -29,13 +28,13 @@ const useStyles = makeStyles(
       extend: responsiveLengths('fontSize', 70, 180),
       lineHeight: 0.9,
       fontWeight: 'bold',
-      marginBottom: '8vw',
+      marginBottom: '8.9vw',
       [theme.mq.desktop]: {
         marginBottom: 0,
       },
     },
     headlineLine1: {
-      marginLeft: '-0.75em',
+      extend: responsiveLengths('marginLeft', -52, -194),
     },
     headlineLine2: {},
     subheadline: {
@@ -43,7 +42,7 @@ const useStyles = makeStyles(
       fontWeight: 'bold',
       marginBottom: '0.8em',
       [theme.mq.desktop]: {
-        marginTop: '70px',
+        marginTop: '2.4em',
       },
     },
     image: {
@@ -51,15 +50,15 @@ const useStyles = makeStyles(
       width: '100%',
     },
     image1: {
-      marginTop: '60px',
+      marginTop: '11%',
     },
     row2: {
-      marginTop: '24vw',
-      marginBottom: '15vw',
+      extend: merge(
+        responsiveLengths('marginTop', 90, 270),
+        responsiveLengths('marginBottom', 56, 220)
+      ),
       [theme.mq.desktop]: {
         flexDirection: 'row-reverse',
-        marginTop: '270px',
-        marginBottom: '220px',
       },
     },
     largerCopy: {

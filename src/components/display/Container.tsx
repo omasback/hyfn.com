@@ -1,19 +1,21 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
-import theme from 'styles/theme'
+import merge from 'lodash/merge'
+import { responsiveLengths } from 'styles/helpers'
 
 const useStyles = makeStyles(
   {
     root: {
+      extend: merge(
+        responsiveLengths('paddingLeft', 38, 150),
+        responsiveLengths('paddingRight', 38, 150)
+      ),
+      paddingTop: 0,
+      paddingBottom: 0,
       margin: '0 auto',
-      padding: '0 38px',
-      maxWidth: 1290,
-      [theme.mq.desktop]: {
-        padding: '0 75px',
-      },
+      maxWidth: 1440,
     },
-    inner: {},
   },
   { name: 'Container' }
 )
@@ -23,11 +25,7 @@ const Container: React.FunctionComponent<{ className?: string }> = ({
   children,
 }) => {
   const classes = useStyles()
-  return (
-    <div className={cx(classes.root, className)}>
-      <div className={classes.inner}>{children}</div>
-    </div>
-  )
+  return <div className={cx(classes.root, className)}>{children}</div>
 }
 
 export default Container
