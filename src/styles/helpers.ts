@@ -6,9 +6,9 @@ const responsiveLengths = (
   mobilePixels: number,
   desktopPixels: number
 ) => ({
-  [property]: mobilePixels,
-  '@media (min-width: 376px)': {
-    [property]: ((mobilePixels / 375) * 100).toFixed(2) + 'vw',
+  [property]: ((mobilePixels / 375) * 100).toFixed(2) + 'vw',
+  '@media (width: 375px)': {
+    [property]: mobilePixels,
   },
   [theme.mq.desktop]: {
     [property]: ((desktopPixels / 1440) * 100).toFixed(2) + 'vw',
