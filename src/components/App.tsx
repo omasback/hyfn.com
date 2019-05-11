@@ -1,23 +1,32 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { create } from 'jss'
+import extend from 'jss-plugin-extend'
+import { StylesProvider, jssPreset } from '@material-ui/styles'
 
 import GlobalStyles from './GlobalStyles'
 import Styleguide from './pages/Styleguide'
 import Homepage from './pages/home/Homepage'
 import PageWrapper from './page-wrapper/PageWrapper'
 
+const jss = create({
+  plugins: [extend(), ...jssPreset().plugins],
+})
+
 class App extends Component {
   render() {
     return (
-      <Router>
-        <PageWrapper>
-          <Switch>
-            <Route path="/styleguide" component={Styleguide} />
-            <Route path="/" component={Homepage} exact />
-          </Switch>
-        </PageWrapper>
-        <GlobalStyles />
-      </Router>
+      <StylesProvider jss={jss}>
+        <Router>
+          <PageWrapper>
+            <Switch>
+              <Route path="/styleguide" component={Styleguide} />
+              <Route path="/" component={Homepage} exact />
+            </Switch>
+          </PageWrapper>
+          <GlobalStyles />
+        </Router>
+      </StylesProvider>
     )
   }
 }
