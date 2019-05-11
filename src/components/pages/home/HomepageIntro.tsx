@@ -9,6 +9,7 @@ import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
 import theme from 'styles/theme'
+import { responsiveLengths } from 'styles/helpers'
 
 const useStyles = makeStyles(
   {
@@ -25,12 +26,11 @@ const useStyles = makeStyles(
       alignItems: '',
     },
     headline: {
-      fontSize: '19vw',
+      extend: responsiveLengths('fontSize', 70, 180),
       lineHeight: 0.9,
       fontWeight: 'bold',
       marginBottom: '8vw',
       [theme.mq.desktop]: {
-        fontSize: '180px',
         marginBottom: 0,
       },
     },
@@ -39,11 +39,10 @@ const useStyles = makeStyles(
     },
     headlineLine2: {},
     subheadline: {
+      extend: responsiveLengths('fontSize', 21, 38),
       fontWeight: 'bold',
-      fontSize: '5.5vw',
       marginBottom: '0.8em',
       [theme.mq.desktop]: {
-        fontSize: 38,
         marginTop: '70px',
       },
     },
@@ -65,10 +64,7 @@ const useStyles = makeStyles(
       },
     },
     largerCopy: {
-      fontSize: '4.5vw',
-      [theme.mq.desktop]: {
-        fontSize: '30px',
-      },
+      extend: responsiveLengths('fontSize', 17, 28),
     },
     cta: {
       marginBottom: '4vw',

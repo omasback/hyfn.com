@@ -3,23 +3,21 @@ import * as cx from 'classnames'
 import easings from 'easings-css'
 import { makeStyles } from '@material-ui/styles'
 import { Link } from 'react-router-dom'
+import { responsiveLengths } from 'styles/helpers'
 
 import theme from 'styles/theme'
 
 const useStyles = makeStyles(
   {
     root: {
+      extend: responsiveLengths('fontSize', 14, 18),
       display: 'inline-block',
       fontWeight: 'bold',
       color: theme.colors.darkGray,
       textDecoration: 'none',
-      fontSize: 14,
       overflow: 'hidden',
       position: 'relative',
       paddingBottom: '0.5em',
-      [theme.mq.desktop]: {
-        fontSize: 18,
-      },
       '&:after': {
         content: '""',
         position: 'absolute',
