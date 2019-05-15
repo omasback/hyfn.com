@@ -32,16 +32,11 @@ const styles = createStyles({
     fontWeight: 400,
   },
   headline: {
-    margin: {
-      top: 60,
-      right: 0,
-      bottom: 40,
-      left: 0,
-    },
+    marginTop: 60,
+    marginBottom: 40,
     fontSize: 40,
     fontWeight: 400,
     lineHeight: '48px',
-    // visibility: 'hidden',
   },
   copy: {
     fontSize: 25,
@@ -49,12 +44,8 @@ const styles = createStyles({
     lineHeight: '37px',
   },
   links: {
-    margin: {
-      top: 50,
-      right: 0,
-      bottom: 60,
-      left: 0,
-    },
+    marginTop: 50,
+    marginBottom: 20,
     fontSize: 18,
     fontWeight: 400,
     lineHeight: '30px',
@@ -62,6 +53,7 @@ const styles = createStyles({
   link: {
     display: 'block',
     color: '#FFFFFF',
+    textDecoration: 'underline',
   }
 })
 
