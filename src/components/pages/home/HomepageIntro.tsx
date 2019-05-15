@@ -49,13 +49,10 @@ const useStyles = makeStyles(
       display: 'block',
       width: '100%',
     },
-    image1: {
-      marginTop: '11%',
-    },
     row2: {
       extend: merge(
-        responsiveLengths('marginTop', 90, 270),
-        responsiveLengths('marginBottom', 56, 220)
+        responsiveLengths('marginTop', 60, 220),
+        responsiveLengths('marginBottom', 60, 220)
       ),
       [theme.mq.desktop]: {
         flexDirection: 'row-reverse',
@@ -101,7 +98,7 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
               <img
                 src="http://via.placeholder.com/510x660"
                 alt=""
-                className={cx(classes.image, classes.image1)}
+                className={cx(classes.image)}
               />
             </ColorTrails>
           </ScrollReveal>
