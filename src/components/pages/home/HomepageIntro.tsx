@@ -16,7 +16,7 @@ const useStyles = makeStyles(
   {
     root: {
       extend: merge(
-        responsiveLengths('paddingTop', 71, 440),
+        responsiveLengths('paddingTop', 71, 140),
         responsiveLengths('paddingBottom', 116, 150)
       ),
       minHeight: '100vh',
@@ -25,9 +25,6 @@ const useStyles = makeStyles(
       alignItems: '',
     },
     headline: {
-      extend: responsiveLengths('fontSize', 70, 180),
-      lineHeight: 0.9,
-      fontWeight: 'bold',
       marginBottom: '8.9vw',
       [theme.mq.desktop]: {
         marginBottom: 0,
@@ -76,8 +73,10 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
       <Grid container className={classes.row1}>
         <Grid container item mobile={10} desktop={5}>
           <Grid item className={classes.headline} mobile={10}>
-            <OdometerText text="STILL" className={classes.headlineLine1} />
-            <OdometerText text="HERE?" className={classes.headlineLine2} />
+            <h1>
+              <OdometerText text="STILL" className={classes.headlineLine1} />
+              <OdometerText text="HERE?" className={classes.headlineLine2} />
+            </h1>
           </Grid>
           <Grid item mobile={8} desktop={6} offsetDesktop={2}>
             <ScrollReveal className={classes.subheadline}>

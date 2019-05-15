@@ -47,13 +47,21 @@ const useStyles = makeStyles({
       overflow: 'hidden',
     },
     h1: {
-      fontSize: 210,
+      extend: responsiveLengths('fontSize', 70, 180),
+      lineHeight: 0.9,
+      fontWeight: 'bold',
+      margin: 0,
+      textIndent: '-.02em',
     },
     h2: {
-      fontSize: 100,
+      extend: responsiveLengths('fontSize', 40, 100),
+      lineHeight: 0.9,
+      fontWeight: 'bold',
+      margin: 0,
     },
     h3: {
       fontSize: 38,
+      margin: 0,
     },
     p: {
       extend: responsiveLengths('fontSize', 14, 18),
