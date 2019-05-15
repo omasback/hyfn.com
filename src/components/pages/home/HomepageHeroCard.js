@@ -21,7 +21,7 @@ const styles = createStyles({
   },
   content: {
     opacity: 0,
-    transition: 'opacity 1s',
+    transition: 'opacity 500ms',
   },
   content_visible: {
     opacity: 1,
@@ -88,13 +88,13 @@ class HomepageHeroCard extends React.Component {
   open() {
     const el_target = - this.el.offsetHeight;
     const body_target = window.innerHeight - (this.el.offsetHeight / 2);
-    this.animate(el_target, body_target, 1E3);
+    this.animate(el_target, body_target, 500);
   }
 
   close = () => {
     const el_target = this.props.top;
     const body_target = window.innerHeight + this.props.top + (this.el.offsetHeight / 2);
-    this.animate(el_target, body_target, 1E3);
+    this.animate(el_target, body_target, 500);
   }
 
   animate = (el_target, body_target, duration) => {
