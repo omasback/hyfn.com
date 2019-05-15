@@ -5,7 +5,7 @@ import { withStyles, createStyles } from '@material-ui/styles'
 
 import decomp from 'poly-decomp'
 
-import HomepageHeroCard from './HomepageHeroCard'
+import HomepageHeroCard from './HomepageHeroCard.js'
 
 window.decomp = decomp;
 const Matter = require('matter-js')
