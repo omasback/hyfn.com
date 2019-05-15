@@ -166,7 +166,7 @@ class HomepageHero extends React.Component {
     Matter.World.add(this.engine.world, logo.n);
 
     // make the scene mouse interactive
-    const mouse = Matter.MouseConstraint.create(this.engine, {
+    const mouse_constraint = Matter.MouseConstraint.create(this.engine, {
       element: this.canvas,
       constraint: {
         render: {
@@ -175,7 +175,10 @@ class HomepageHero extends React.Component {
         stiffness: 0.8
       }
     });
-    Matter.World.add(this.engine.world, mouse);
+    const mouse = mouse_constraint.mouse;
+    mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
+    mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
+    Matter.World.add(this.engine.world, mouse_constraint);
 
     Matter.Engine.run(this.engine);
     Matter.Render.run(render);
