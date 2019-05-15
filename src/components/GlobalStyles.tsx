@@ -26,6 +26,10 @@ const useStyles = makeStyles({
     'input, textarea, select, button': {
       fontFamily: 'Moderat, sans-serif',
     },
+    ':-webkit-autofill, :-webkit-autofill:hover, :-webkit-autofill:focus, :-webkit-autofill:active': {
+      // http://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs
+      WebkitTransitionDelay: '99999s',
+    },
     html: {
       // react-responsive-modal scroll lock only works with html scrolling
       // height: "100%",

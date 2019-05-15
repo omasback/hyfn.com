@@ -11,7 +11,6 @@ import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
 import theme from 'styles/theme'
 import { responsiveLengths } from 'styles/helpers'
-import { relative } from 'path'
 
 const useStyles = makeStyles(
   {
