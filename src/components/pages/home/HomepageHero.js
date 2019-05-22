@@ -22,6 +22,7 @@ for(var letter in logo) {
   logo[letter] = Matter.Bodies.fromVertices(0, 0, logo[letter].map((point) => {
       return Matter.Vector.create(point[0], point[1]);
     }), {
+      restitution: 0.75,
       render: {
         fillStyle: '#FFFFFF'
       }
