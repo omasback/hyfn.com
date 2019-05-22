@@ -60,6 +60,25 @@ const useStyles = makeStyles(
     cta: {
       marginBottom: '4vw',
     },
+    chart: {
+      extend: responsiveLengths('marginBottom', 60, 180),
+      '& p': {
+        extend: responsiveLengths('marginBottom', 8, 30),
+      },
+      '& img': {
+        extend: merge(
+          responsiveLengths('width', 180, 360),
+          responsiveLengths('marginTop', 40, 110)
+        ),
+        borderRadius: '50%',
+        display: 'block',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        [theme.mq.desktop]: {
+          marginLeft: '0',
+        },
+      },
+    },
   },
   { name: 'CaseStudy' }
 )
@@ -192,6 +211,21 @@ const CaseStudy: React.FunctionComponent<Props> = ({ match, children }) => {
           </p>
         </>
       </ImageAndText>
+
+      <Container>
+        <Grid container>
+          <Grid item mobile={10} desktop={4} className={classes.chart}>
+            <h1>10X</h1>
+            <p className={classes.largerCopy}>Return on Ad Spend</p>
+            <img src="http://via.placeholder.com/360x360" alt="" />
+          </Grid>
+          <Grid item mobile={10} desktop={6} className={classes.chart}>
+            <h1>$250k</h1>
+            <p className={classes.largerCopy}>Total Profit</p>
+            <img src="http://via.placeholder.com/360x360" alt="" />
+          </Grid>
+        </Grid>
+      </Container>
     </>
   )
 }
