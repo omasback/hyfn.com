@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles'
 import ModeratBoldWoff from 'fonts/Moderat-Bold.woff'
 import ModeratLightWoff from 'fonts/Moderat-Light.woff'
 import theme from 'styles/theme'
-import { responsiveLengths } from 'styles/helpers'
+import { responsiveLengths } from 'styles/mixins'
 
 const useStyles = makeStyles({
   '@font-face': [
@@ -64,8 +64,8 @@ const useStyles = makeStyles({
       margin: 0,
     },
     h3: {
-      fontSize: 38,
-      margin: 0,
+      extend: responsiveLengths('fontSize', 21, 38),
+      margin: '0 0 0.5em',
     },
     p: {
       extend: responsiveLengths('fontSize', 14, 18),

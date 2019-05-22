@@ -18,4 +18,12 @@ const responsiveLengths = (
   },
 })
 
-export { responsiveLengths }
+const bleedLeft = {
+  ...responsiveLengths('marginLeft', 0, -150),
+}
+
+const bleedRight = {
+  ...responsiveLengths('marginRight', 0, -150),
+}
+
+export { responsiveLengths, bleedLeft, bleedRight }

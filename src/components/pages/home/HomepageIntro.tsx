@@ -10,7 +10,8 @@ import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
 import theme from 'styles/theme'
-import { responsiveLengths } from 'styles/helpers'
+import { responsiveLengths } from 'styles/mixins'
+import OffsetHeadline from 'components/display/OffsetHeadline'
 
 const useStyles = makeStyles(
   {
@@ -73,10 +74,7 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
       <Grid container className={classes.row1}>
         <Grid container item mobile={10} desktop={5}>
           <Grid item className={classes.headline} mobile={10}>
-            <h1>
-              <OdometerText text="STILL" className={classes.headlineLine1} />
-              <OdometerText text="HERE?" className={classes.headlineLine2} />
-            </h1>
+            <OffsetHeadline line1="STILL" line2="HERE?" />
           </Grid>
           <Grid item mobile={8} desktop={6} offsetDesktop={2}>
             <ScrollReveal className={classes.subheadline}>

@@ -5,9 +5,10 @@ import extend from 'jss-plugin-extend'
 import { StylesProvider, jssPreset } from '@material-ui/styles'
 
 import GlobalStyles from './GlobalStyles'
+import PageWrapper from './page-wrapper/PageWrapper'
 import Styleguide from './pages/Styleguide'
 import Homepage from './pages/home/Homepage'
-import PageWrapper from './page-wrapper/PageWrapper'
+import CaseStudy from './pages/case-studies/CaseStudy'
 
 const jss = create({
   plugins: [extend(), ...jssPreset().plugins],
@@ -22,6 +23,7 @@ class App extends Component {
             <Switch>
               <Route path="/styleguide" component={Styleguide} />
               <Route path="/" component={Homepage} exact />
+              <Route path="/works/:slug" component={CaseStudy} exact />
             </Switch>
           </PageWrapper>
           <GlobalStyles />

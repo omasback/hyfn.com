@@ -25,18 +25,21 @@ interface Props {
   className?: string // for adding/overriding styles
 }
 
+const mobileGutter = 10
+const desktopGutter = 20
+
 const useStyles = makeStyles(
   {
     container: {
       display: 'flex',
       flexWrap: 'wrap',
-      width: 'calc(100% + 10px)',
-      margin: -5,
+      width: `calc(100% + ${mobileGutter}px)`,
+      margin: -mobileGutter / 2,
       justifyContent: 'center',
       [theme.mq.desktop]: {
         justifyContent: 'space-between',
-        width: 'calc(100% + 20px)',
-        margin: -10,
+        width: `calc(100% + ${desktopGutter}px)`,
+        margin: -desktopGutter / 2,
       },
       '& > $container': {
         margin: 0,
@@ -44,9 +47,9 @@ const useStyles = makeStyles(
       },
     },
     item: {
-      padding: 5,
+      padding: mobileGutter / 2,
       [theme.mq.desktop]: {
-        padding: 10,
+        padding: desktopGutter / 2,
       },
     },
     width: (props: Props) => ({

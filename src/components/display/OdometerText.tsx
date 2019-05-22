@@ -10,18 +10,21 @@ const useStyles = makeStyles(
   {
     root: {
       padding: 0,
-      overflow: 'hidden',
+      whiteSpace: 'nowrap',
     },
     character: {
+      overflow: 'hidden',
       display: 'inline-block',
-      transform: 'translateY(100%)',
     },
-    characterIn: {
+    innerCharacter: {
+      transform: 'translateY(100%)',
+      display: 'inline-block',
+    },
+    innerCharacterIn: {
       transform: 'none',
       transition: 'transform 1.5s',
       transitionTimingFunction: easings.easeOutQuint,
     },
-    innerCharacter: {},
   },
   { name: 'OdometerText' }
 )
@@ -41,14 +44,15 @@ const OdometerText: React.FunctionComponent<{
   return (
     <div className={cx(classes.root, className)} ref={ref}>
       {characters.map((character, i) => (
-        <span
-          key={character + i}
-          className={cx(classes.character, {
-            [classes.characterIn]: inView,
-          })}
-          style={{ transitionDelay: `${0.05 * i}s` }}
-        >
-          <span className={classes.innerCharacter}>{character}</span>
+        <span key={character + i} className={classes.character}>
+          <span
+            className={cx(classes.innerCharacter, {
+              [classes.innerCharacterIn]: inView,
+            })}
+            style={{ transitionDelay: `${0.05 * i}s` }}
+          >
+            {character}
+          </span>
         </span>
       ))}
     </div>

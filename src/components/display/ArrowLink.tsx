@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import easings from 'easings-css'
 import { makeStyles } from '@material-ui/styles'
 import { Link } from 'react-router-dom'
-import { responsiveLengths } from 'styles/helpers'
+import { responsiveLengths } from 'styles/mixins'
 
 import theme from 'styles/theme'
 

@@ -8,7 +8,7 @@ import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import theme from 'styles/theme'
 import HyfnLogo from 'components/svg/HyfnLogo'
-import { responsiveLengths } from 'styles/helpers'
+import { responsiveLengths } from 'styles/mixins'
 
 const useStyles = makeStyles(
   {

@@ -3,14 +3,14 @@ import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
 
-import OdometerText from 'components/display/OdometerText'
 import ArrowLink from 'components/display/ArrowLink'
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
+import OffsetHeadline from 'components/display/OffsetHeadline'
 import theme from 'styles/theme'
-import { responsiveLengths } from 'styles/helpers'
+import { responsiveLengths } from 'styles/mixins'
 
 const useStyles = makeStyles(
   {
@@ -26,13 +26,7 @@ const useStyles = makeStyles(
     },
     headline: {
       extend: responsiveLengths('marginBottom', 34, 46),
-      lineHeight: 0.9,
-      fontWeight: 'bold',
     },
-    headlineLine1: {
-      extend: responsiveLengths('marginLeft', -52, -194),
-    },
-    headlineLine2: {},
     work: {
       extend: merge(responsiveLengths('marginTop', 40, 70)),
     },
@@ -82,21 +76,21 @@ const works = [
     title: 'New Balance',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '',
+    url: '/works/new-balance',
     image: 'http://via.placeholder.com/488x629',
   },
   {
     title: 'Skyzone',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '',
+    url: '/works/skyzone',
     image: 'http://via.placeholder.com/488x629',
   },
   {
-    title: 'Viva Coco',
+    title: 'Vita Coco',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '',
+    url: '/works/vita-coco',
     image: 'http://via.placeholder.com/488x629',
   },
 ]
@@ -107,10 +101,11 @@ const HompageProjects: React.FunctionComponent<{}> = ({ children }) => {
   return (
     <Container className={classes.root}>
       <div className={classes.headlineAndLink}>
-        <h1 className={classes.headline}>
-          <OdometerText text="LOOK" className={classes.headlineLine1} />
-          <OdometerText text="PROOF!" className={classes.headlineLine2} />
-        </h1>
+        <OffsetHeadline
+          line1="LOOK"
+          line2="PROOF!"
+          className={classes.headline}
+        />
         <ScrollReveal>
           <ArrowLink
             to="/"
