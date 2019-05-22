@@ -28,19 +28,24 @@ const useStyles = makeStyles(
     row1: {
       alignItems: '',
     },
+    introP: {
+      extend: merge(
+        responsiveLengths('fontSize', 17, 28),
+        responsiveLengths('marginTop', 63, 108),
+        responsiveLengths('marginBottom', 50, 0)
+      ),
+      marginBottom: 0,
+    },
     headline: {
-      marginBottom: '8.9vw',
-      [theme.mq.desktop]: {
-        marginBottom: 0,
-      },
+      extend: merge(
+        responsiveLengths('marginTop', 0, 40),
+        responsiveLengths('marginBottom', 50, 0)
+      ),
     },
     subheadline: {
       extend: responsiveLengths('fontSize', 21, 38),
       fontWeight: 'bold',
       marginBottom: '0.8em',
-      [theme.mq.desktop]: {
-        marginTop: '2.4em',
-      },
     },
     bleedRight: {
       extend: bleedRight,
@@ -72,6 +77,15 @@ const CaseStudy: React.FunctionComponent<Props> = ({ match, children }) => {
     <>
       <Container className={classes.root}>
         <Grid container className={classes.row1}>
+          <Grid container item mobile={10}>
+            <Grid item mobile={8} desktop={5}>
+              <p className={classes.introP}>
+                Generating buzz about not driving buzzed by reimagining the
+                traditional PSA into something that’s fun, engaging, and
+                relatable.
+              </p>
+            </Grid>
+          </Grid>
           <Grid container item mobile={10} desktop={5}>
             <Grid item className={classes.headline} mobile={10}>
               <OffsetHeadline line1="OMD" line2="BUZZED" />
