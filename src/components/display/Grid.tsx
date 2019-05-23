@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 
 interface Props {
   container?: boolean // if this is a parent of a grid item
@@ -36,7 +36,7 @@ const useStyles = makeStyles(
       width: `calc(100% + ${mobileGutter}px)`,
       margin: -mobileGutter / 2,
       justifyContent: 'center',
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         justifyContent: 'space-between',
         width: `calc(100% + ${desktopGutter}px)`,
         margin: -desktopGutter / 2,
@@ -48,13 +48,13 @@ const useStyles = makeStyles(
     },
     item: {
       padding: mobileGutter / 2,
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         padding: desktopGutter / 2,
       },
     },
     width: (props: Props) => ({
       width: props.mobile ? props.mobile * 10 + '%' : 'auto',
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         width: props.desktop
           ? props.desktop * 10 + '%'
           : props.mobile
@@ -64,7 +64,7 @@ const useStyles = makeStyles(
     }),
     offset: (props: Props) => ({
       marginLeft: props.offsetMobile ? props.offsetMobile * 10 + '%' : 0,
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         marginLeft: props.offsetDesktop
           ? props.offsetDesktop * 10 + '%'
           : props.offsetMobile
@@ -74,7 +74,7 @@ const useStyles = makeStyles(
     }),
     alignItems: (props: Props) => ({
       alignItems: props.alignItemsMobile,
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         alignItems: props.alignItemsDesktop
           ? props.alignItemsDesktop
           : props.alignItemsMobile

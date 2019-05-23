@@ -1,4 +1,4 @@
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 import { CSSProperties } from 'react'
 import merge from 'lodash/merge'
 
@@ -11,7 +11,7 @@ const responsiveLengths = (
   '@media (width: 375px)': {
     [property]: mobilePixels,
   },
-  [theme.mq.desktop]: {
+  [constants.mq.desktop]: {
     [property]: ((desktopPixels / 1440) * 100).toFixed(2) + 'vw',
   },
   '@media (min-width: 1440px)': {

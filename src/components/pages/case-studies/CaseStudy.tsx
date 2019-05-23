@@ -10,7 +10,7 @@ import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
 import ImageAndText from 'components/display/ImageAndText'
 import ImagesAndText from 'components/display/ImagesAndText'
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 import { bleedRight, largeParagraph } from 'styles/mixins'
 import { responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
@@ -72,7 +72,7 @@ const useStyles = makeStyles(
         display: 'block',
         marginLeft: 'auto',
         marginRight: 'auto',
-        [theme.mq.desktop]: {
+        [constants.mq.desktop]: {
           marginLeft: '0',
         },
       },

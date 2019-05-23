@@ -5,7 +5,7 @@ import { observable } from 'mobx'
 import { Observer } from 'mobx-react'
 import debounce from 'lodash/debounce'
 
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 
 let previousY = window.scrollY
 let delta = observable.box(0)
@@ -55,13 +55,13 @@ const styles = makeStyles(
       transition: 'transform 0.15s',
     },
     trailRed: {
-      backgroundColor: theme.colors.red,
+      backgroundColor: constants.colors.red,
     },
     trailBlue: {
-      backgroundColor: theme.colors.blue,
+      backgroundColor: constants.colors.blue,
     },
     trailYello: {
-      backgroundColor: theme.colors.yellow,
+      backgroundColor: constants.colors.yellow,
     },
   },
   { name: 'ColorTrails' }

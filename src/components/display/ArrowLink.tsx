@@ -3,18 +3,18 @@ import * as cx from 'classnames'
 import easings from 'easings-css'
 import { makeStyles } from '@material-ui/styles'
 import { Link } from 'react-router-dom'
+
 import { responsiveLengths } from 'styles/mixins'
+import constants from 'styles/constants'
+import { Theme } from 'components/App'
 
-import theme from 'styles/theme'
-import { ThemeContext } from 'components/App'
-
-const useStyles = makeStyles(
-  {
+const useStyles = makeStyles<Theme>(
+  theme => ({
     root: {
       extend: responsiveLengths('fontSize', 14, 18),
       display: 'inline-block',
       fontWeight: 'bold',
-      color: theme.colors.darkGray,
+      color: theme.color,
       textDecoration: 'none',
       overflow: 'hidden',
       position: 'relative',
@@ -26,12 +26,12 @@ const useStyles = makeStyles(
         left: 0,
         right: 0,
         height: 3,
-        backgroundColor: theme.colors.darkGray,
+        backgroundColor: theme.color,
         transform: 'scaleX(0)',
         transition: 'all 1s',
         transformOrigin: 'top left',
         transitionTimingFunction: easings.easeOutCirc,
-        [theme.mq.desktop]: {
+        [constants.mq.desktop]: {
           height: 4,
         },
       },
@@ -49,7 +49,7 @@ const useStyles = makeStyles(
       transitionTimingFunction: easings.easeOutCirc,
     },
     arrow: {},
-  },
+  }),
   { name: 'ArrowLink' }
 )
 
@@ -59,14 +59,9 @@ const ArrowLink: React.FunctionComponent<{
   className?: string
 }> = ({ to, text, className }) => {
   const classes = useStyles()
-  const theme = React.useContext(ThemeContext)
 
   return (
-    <Link
-      to={to}
-      className={cx(classes.root, className)}
-      style={{ color: theme.color }}
-    >
+    <Link to={to} className={cx(classes.root, className)}>
       <span className={classes.inner}>
         <span className={classes.arrow}>-></span> {text}{' '}
         <span className={classes.arrow}>-></span>

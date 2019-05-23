@@ -1,5 +1,5 @@
 import * as React from 'react'
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 import { makeStyles } from '@material-ui/styles'
 
 interface Props {}
@@ -93,11 +93,11 @@ const Styleguide: React.FunctionComponent<Props> = ({ children }) => {
         </tbody>
       </table>
       <div className={classes.colors}>
-        {Object.keys(theme.colors).map((color: string) => (
+        {Object.keys(constants.colors).map((color: string) => (
           <div className={classes.color} key={color}>
             <div
               className={classes.colorRectanlge}
-              style={{ backgroundColor: theme.colors[color] }}
+              style={{ backgroundColor: constants.colors[color] }}
             />
             {color}
           </div>

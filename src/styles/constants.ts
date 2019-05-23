@@ -1,4 +1,4 @@
-const theme = {
+const constants = {
   colors: {
     black: '#1a1b23',
     red: '#ee3424',
@@ -13,4 +13,4 @@ const theme = {
   triggerOnce: true,
 }
 
-export default theme
+export default constants

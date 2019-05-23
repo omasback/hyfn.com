@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 
 import ModeratBoldWoff from 'fonts/Moderat-Bold.woff'
 import ModeratLightWoff from 'fonts/Moderat-Light.woff'
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
 
 const useStyles = makeStyles({
@@ -36,8 +36,8 @@ const useStyles = makeStyles({
     },
     body: {
       height: '100%',
-      backgroundColor: theme.colors.lightGray,
-      color: theme.colors.darkGray,
+      backgroundColor: constants.colors.lightGray,
+      color: constants.colors.darkGray,
       margin: 0,
       padding: 0,
       overflow: 'hidden',
@@ -71,6 +71,9 @@ const useStyles = makeStyles({
       extend: responsiveLengths('fontSize', 14, 18),
       lineHeight: 1.6,
       margin: '0 0 1.7em 0',
+    },
+    a: {
+      color: 'unset',
     },
   },
 })

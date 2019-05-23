@@ -6,7 +6,7 @@ import merge from 'lodash/merge'
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 import HyfnLogo from 'components/svg/HyfnLogo'
 import { responsiveLengths } from 'styles/mixins'
 
@@ -14,7 +14,7 @@ const useStyles = makeStyles(
   {
     root: {
       padding: 0,
-      backgroundColor: theme.colors.black,
+      backgroundColor: constants.colors.black,
       color: '#fff',
       extend: merge(
         responsiveLengths('paddingTop', 50, 100),
@@ -39,7 +39,7 @@ const useStyles = makeStyles(
         responsiveLengths('marginTop', 35, 105),
         responsiveLengths('marginBottom', 0, 0)
       ),
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         justifyContent: 'flex-start',
       },
     },
@@ -48,7 +48,7 @@ const useStyles = makeStyles(
     },
     underline: {
       borderBottom: '3px solid #fff',
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         borderBottomWidth: 4,
       },
     },
@@ -58,7 +58,7 @@ const useStyles = makeStyles(
         responsiveLengths('marginTop', 0, 12)
       ),
       display: 'none',
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         display: 'block',
       },
     },
@@ -125,7 +125,7 @@ const useStyles = makeStyles(
         display: 'inline-block',
         marginRight: '1em',
         marginBottom: '1em',
-        [theme.mq.desktop]: { marginRight: '3em' },
+        [constants.mq.desktop]: { marginRight: '3em' },
       },
     },
   },

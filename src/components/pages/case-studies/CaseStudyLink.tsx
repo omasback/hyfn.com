@@ -7,22 +7,23 @@ import ArrowLink from 'components/display/ArrowLink'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
-import theme from 'styles/theme'
+import ThemeSetter from 'components/display/ThemeSetter'
+import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
-import { ThemeContext } from 'components/App'
-import { useInView } from 'react-intersection-observer'
 
 const useStyles = makeStyles(
   {
-    work: {
+    root: {
+      position: 'relative',
+      minHeight: '80vh',
       extend: merge(
         responsiveLengths('marginTop', 60, 180),
         responsiveLengths('marginBottom', 60, 180)
       ),
     },
-    workEven: {},
-    workOdd: {
-      [theme.mq.desktop]: {
+    rootEven: {},
+    rootOdd: {
+      [constants.mq.desktop]: {
         flexDirection: 'row-reverse',
       },
     },
@@ -30,15 +31,15 @@ const useStyles = makeStyles(
       display: 'block',
       width: '100%',
     },
-    workNumber: {
+    number: {
       extend: responsiveLengths('fontSize', 14, 17),
       position: 'absolute',
       top: 0,
     },
-    workNumberOdd: { extend: responsiveLengths('left', -28, -44) },
-    workNumberEven: { extend: responsiveLengths('right', -28, -44) },
+    numberOdd: { extend: responsiveLengths('left', -28, -44) },
+    numberEven: { extend: responsiveLengths('right', -28, -44) },
     textOdd: {
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         marginLeft: '10%',
       },
     },
@@ -50,7 +51,7 @@ const useStyles = makeStyles(
     },
     description: {
       extend: responsiveLengths('marginBottom', 16, 50),
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         maxWidth: '13em',
       },
     },
@@ -78,40 +79,29 @@ const CaseStudyLink: React.FunctionComponent<{
   rowReverse = false,
 }) => {
   const classes = useStyles()
-  const theme = React.useContext(ThemeContext)
-  const [ref, inView] = useInView({
-    threshold: 1,
-  })
-  React.useEffect(
-    () =>
-      theme.setTheme(
-        inView ? color : undefined,
-        inView ? backgroundColor : undefined
-      ),
-    [inView]
-  )
 
   return (
     <Grid
       container
       alignItemsDesktop="center"
-      className={cx(classes.work, {
-        [classes.workEven]: rowReverse,
-        [classes.workOdd]: !rowReverse,
+      className={cx(classes.root, {
+        [classes.rootEven]: rowReverse,
+        [classes.rootOdd]: !rowReverse,
       })}
     >
+      <ThemeSetter color={color} backgroundColor={backgroundColor} />
       <Grid item mobile={8} desktop={4.5}>
         <ScrollReveal>
           <ColorTrails>
             <div
-              className={cx(classes.workNumber, {
-                [classes.workNumberEven]: rowReverse,
-                [classes.workNumberOdd]: !rowReverse,
+              className={cx(classes.number, {
+                [classes.numberEven]: rowReverse,
+                [classes.numberOdd]: !rowReverse,
               })}
             >
               {((number + 1) / 100).toFixed(2).slice(2)}
             </div>
-            <img src={image} alt="" className={classes.image} ref={ref} />
+            <img src={image} alt="" className={classes.image} />
           </ColorTrails>
         </ScrollReveal>
       </Grid>

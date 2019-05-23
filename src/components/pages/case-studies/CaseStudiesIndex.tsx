@@ -8,6 +8,7 @@ import OffsetHeadline from 'components/display/OffsetHeadline'
 import CaseStudyLink from 'components/pages/case-studies/CaseStudyLink'
 import { responsiveLengths, largeParagraph } from 'styles/mixins'
 import Grid from 'components/display/Grid'
+import ThemeSetter from 'components/display/ThemeSetter'
 
 const useStyles = makeStyles(
   {
@@ -16,6 +17,9 @@ const useStyles = makeStyles(
         responsiveLengths('paddingTop', 80, 140),
         responsiveLengths('paddingBottom', 116, 140)
       ),
+    },
+    top: {
+      position: 'relative',
     },
     introText: {
       extend: largeParagraph,
@@ -65,7 +69,8 @@ const HompageProjects: React.FunctionComponent<{}> = ({ children }) => {
 
   return (
     <Container className={classes.root}>
-      <Grid container>
+      <Grid container className={classes.top}>
+        <ThemeSetter />
         <Grid item mobile={8} desktop={6} className={classes.introText}>
           <ScrollReveal>
             Here’s an assortment of things we have done in the past. Since it’s

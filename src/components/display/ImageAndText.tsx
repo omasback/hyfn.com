@@ -7,7 +7,7 @@ import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 import { responsiveLengths, bleedLeft, bleedRight } from 'styles/mixins'
 
 const useStyles = makeStyles(
@@ -19,7 +19,7 @@ const useStyles = makeStyles(
       ),
     },
     rowReverse: {
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         flexDirection: 'row-reverse',
       },
     },
@@ -27,7 +27,7 @@ const useStyles = makeStyles(
       extend: responsiveLengths('fontSize', 21, 38),
       fontWeight: 'bold',
       marginBottom: '0.8em',
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         marginTop: '2.4em',
       },
     },

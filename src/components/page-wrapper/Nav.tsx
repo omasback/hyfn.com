@@ -2,19 +2,20 @@ import * as React from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import { useMedia } from 'use-media'
 import { NavLink, Link } from 'react-router-dom'
+import { makeStyles, useTheme } from '@material-ui/styles'
 import { FaFacebookSquare } from 'react-icons/fa'
 import { FaInstagram } from 'react-icons/fa'
 
 import Container from 'components/display/Container'
 import hamburger from 'images/hamburger.svg'
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 import XIcon from 'components/svg/XIcon'
 import HyfnLogo from 'components/svg/HyfnLogo'
 import PlayLogo from 'components/svg/PlayLogo'
-import { makeStyles } from '@material-ui/styles'
+import { Theme } from 'components/App'
 
-const useStyles = makeStyles(
-  {
+const useStyles = makeStyles<Theme>(
+  theme => ({
     root: {
       padding: 0,
       position: 'fixed',
@@ -51,7 +52,7 @@ const useStyles = makeStyles(
       left: 0,
     },
     menuClassName: {
-      background: theme.colors.black,
+      background: constants.colors.black,
       padding: 40,
     },
     crossButtonClassName: {
@@ -121,7 +122,6 @@ const useStyles = makeStyles(
     desktopLeftLink: {
       display: 'flex',
       marginRight: 50,
-      color: theme.colors.black,
       fontSize: 17,
       textDecoration: 'none',
       whiteSpace: 'nowrap',
@@ -135,7 +135,7 @@ const useStyles = makeStyles(
         left: 0,
         width: '100%',
         height: 3,
-        backgroundColor: theme.colors.black,
+        backgroundColor: theme.color,
       },
     },
     desktopRightLinks: {
@@ -146,13 +146,12 @@ const useStyles = makeStyles(
       height: 28,
     },
     contactLink: {
-      color: theme.colors.black,
       fontSize: 17,
       textDecoration: 'none',
       marginLeft: 32,
       whiteSpace: 'nowrap',
     },
-  },
+  }),
   { name: 'Nav' }
 )
 
@@ -190,6 +189,7 @@ const mainLinks = [
 const Nav: React.FunctionComponent<{}> = ({ children }) => {
   const classes = useStyles()
   const isWide = useMedia({ minWidth: 820 })
+  const theme = useTheme<Theme>()
 
   return (
     <div className={classes.root}>
@@ -197,10 +197,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
         {isWide ? (
           <div className={classes.desktopRow}>
             <Link to="/">
-              <HyfnLogo
-                color={theme.colors.black}
-                className={classes.desktopLogo}
-              />
+              <HyfnLogo color={theme.color} className={classes.desktopLogo} />
             </Link>
             <div className={classes.desktopLeftLinks}>
               {mainLinks.slice(0, 4).map(link => (
@@ -216,10 +213,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
             </div>
             <div className={classes.desktopRightLinks}>
               <NavLink to={mainLinks[5].path}>
-                <PlayLogo
-                  color={theme.colors.black}
-                  className={classes.playLogo}
-                />
+                <PlayLogo color={theme.color} className={classes.playLogo} />
               </NavLink>
               <NavLink to={mainLinks[6].path} className={classes.contactLink}>
                 {mainLinks[6].text}
@@ -230,7 +224,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
           <>
             <Link to="/">
               <HyfnLogo
-                color={theme.colors.black}
+                color={constants.colors.black}
                 className={classes.mobileLogo}
               />
             </Link>

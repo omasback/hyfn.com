@@ -8,7 +8,7 @@ import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 import { responsiveLengths, largeParagraph } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 
@@ -26,7 +26,7 @@ const useStyles = makeStyles(
     },
     headline: {
       marginBottom: '8.9vw',
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         marginBottom: 0,
       },
     },
@@ -38,7 +38,7 @@ const useStyles = makeStyles(
       extend: responsiveLengths('fontSize', 21, 38),
       fontWeight: 'bold',
       marginBottom: '0.8em',
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         marginTop: '2.4em',
       },
     },
@@ -51,7 +51,7 @@ const useStyles = makeStyles(
         responsiveLengths('marginTop', 60, 220),
         responsiveLengths('marginBottom', 60, 220)
       ),
-      [theme.mq.desktop]: {
+      [constants.mq.desktop]: {
         flexDirection: 'row-reverse',
       },
     },

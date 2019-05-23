@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer'
 import easings from 'easings-css'
 import { makeStyles } from '@material-ui/styles'
 
-import theme from 'styles/theme'
+import constants from 'styles/constants'
 
 const useStyles = makeStyles(
   {
@@ -36,7 +36,7 @@ const OdometerText: React.FunctionComponent<{
   const classes = useStyles()
   const [ref, inView] = useInView({
     threshold: 0,
-    triggerOnce: theme.triggerOnce,
+    triggerOnce: constants.triggerOnce,
   })
 
   const characters = text.split('')

@@ -12,35 +12,30 @@ import CaseStudiesIndex from './pages/case-studies/CaseStudiesIndex'
 import CaseStudy from './pages/case-studies/CaseStudy'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import theme from 'styles/theme'
+import constants from 'styles/constants'
+import { ThemeProvider } from '@material-ui/styles'
 
 const jss = create({
   plugins: [extend(), ...jssPreset().plugins],
 })
 
-type Theme = {
+export type Theme = {
   color?: string
   backgroundColor?: string
   setTheme: (color?: string, backgroundColor?: string) => void
 }
 
-export const ThemeContext = React.createContext<Theme>({
-  color: theme.colors.darkGray,
-  backgroundColor: 'e8e8e8',
-  setTheme: () => {},
-})
-
 @observer
 class App extends Component {
   @observable
-  color = theme.colors.darkGray
+  color = constants.colors.darkGray
 
   @observable
   backgroundColor = '#e8e8e8'
 
   @action
   setTheme = (
-    color: string = theme.colors.darkGray,
+    color: string = constants.colors.darkGray,
     backgroundColor: string = '#e8e8e8'
   ) => {
     this.color = color
@@ -49,8 +44,8 @@ class App extends Component {
 
   render() {
     return (
-      <ThemeContext.Provider
-        value={{
+      <ThemeProvider
+        theme={{
           color: this.color,
           backgroundColor: this.backgroundColor,
           setTheme: this.setTheme,
@@ -62,14 +57,14 @@ class App extends Component {
               <Switch>
                 <Route path="/styleguide" component={Styleguide} />
                 <Route path="/" component={Homepage} exact />
-                <Route path="/works" component={CaseStudiesIndex} exact />
-                <Route path="/works/:slug" component={CaseStudy} exact />
+                <Route path="/work" component={CaseStudiesIndex} exact />
+                <Route path="/work/:slug" component={CaseStudy} exact />
               </Switch>
             </PageWrapper>
             <GlobalStyles />
           </Router>
         </StylesProvider>
-      </ThemeContext.Provider>
+      </ThemeProvider>
     )
   }
 }
