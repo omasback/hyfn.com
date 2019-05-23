@@ -5,6 +5,9 @@ import { useInView } from 'react-intersection-observer'
 import { Theme } from 'components/App'
 import constants from 'styles/constants'
 
+// This Component uses absolute positioning to fill the area of a parent or ancestor element,
+// So make sure to apply a positioning to the ancestor that you wish to track.
+
 const useStyles = makeStyles(
   {
     root: {
@@ -20,8 +23,8 @@ const useStyles = makeStyles(
 )
 
 const ThemeSetter: React.FunctionComponent<{
-  color?: string
-  backgroundColor?: string
+  color?: string // desired text color and other foreground elements
+  backgroundColor?: string // desired background color of the page
 }> = ({
   color = constants.colors.darkGray,
   backgroundColor = constants.colors.lightGray,
