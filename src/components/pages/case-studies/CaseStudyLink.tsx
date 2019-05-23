@@ -16,8 +16,8 @@ const useStyles = makeStyles(
       position: 'relative',
       minHeight: '80vh',
       extend: merge(
-        responsiveLengths('marginTop', 60, 180),
-        responsiveLengths('marginBottom', 60, 180)
+        responsiveLengths('paddingTop', 30, 90),
+        responsiveLengths('paddingBottom', 30, 90)
       ),
     },
     rootEven: {},
@@ -25,6 +25,9 @@ const useStyles = makeStyles(
       [constants.mq.desktop]: {
         flexDirection: 'row-reverse',
       },
+    },
+    imageWrapper: {
+      position: 'relative',
     },
     image: {
       display: 'block',
@@ -90,7 +93,7 @@ const CaseStudyLink: React.FunctionComponent<{
     >
       <ThemeSetter color={color} backgroundColor={backgroundColor} />
       <Grid item mobile={8} desktop={4.5}>
-        <ScrollReveal>
+        <ScrollReveal className={classes.imageWrapper}>
           <div
             className={cx(classes.number, {
               [classes.numberEven]: rowReverse,
