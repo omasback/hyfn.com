@@ -22,7 +22,7 @@ const useStyles = makeStyles<Theme>(
       top: '0',
       left: '0',
       right: '0',
-      zIndex: 1,
+      zIndex: 2,
     },
     mobileLogo: {
       width: 111,

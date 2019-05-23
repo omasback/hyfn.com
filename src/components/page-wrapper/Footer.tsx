@@ -16,6 +16,8 @@ const useStyles = makeStyles(
       padding: 0,
       backgroundColor: constants.colors.black,
       color: '#fff',
+      position: 'relative',
+      zIndex: 3,
       extend: merge(
         responsiveLengths('paddingTop', 50, 100),
         responsiveLengths('paddingBottom', 50, 42)

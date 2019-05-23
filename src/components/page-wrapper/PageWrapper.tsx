@@ -13,6 +13,10 @@ const useStyles = makeStyles<Theme>(
       backgroundColor: theme.backgroundColor,
       color: theme.color,
     },
+    content: {
+      position: 'relative',
+      zIndex: 1,
+    },
   }),
   { name: 'PageWrapper' }
 )
@@ -23,7 +27,9 @@ const PageWrapper: React.FunctionComponent<{}> = ({ children }) => {
   return (
     <div className={classes.root} id="outer-container">
       <Nav />
-      <main id="page-wrap">{children}</main>
+      <main id="page-wrap" className={classes.content}>
+        {children}
+      </main>
       <Footer />
     </div>
   )
