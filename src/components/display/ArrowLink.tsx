@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { responsiveLengths } from 'styles/mixins'
 
 import theme from 'styles/theme'
+import { ThemeContext } from 'components/App'
 
 const useStyles = makeStyles(
   {
@@ -58,9 +59,14 @@ const ArrowLink: React.FunctionComponent<{
   className?: string
 }> = ({ to, text, className }) => {
   const classes = useStyles()
+  const theme = React.useContext(ThemeContext)
 
   return (
-    <Link to={to} className={cx(classes.root, className)}>
+    <Link
+      to={to}
+      className={cx(classes.root, className)}
+      style={{ color: theme.color }}
+    >
       <span className={classes.inner}>
         <span className={classes.arrow}>-></span> {text}{' '}
         <span className={classes.arrow}>-></span>

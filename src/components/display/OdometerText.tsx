@@ -18,11 +18,11 @@ const useStyles = makeStyles(
     },
     innerCharacter: {
       transform: 'translateY(100%)',
-      display: 'inline-block',
+      display: 'block',
     },
     innerCharacterIn: {
       transform: 'none',
-      transition: 'transform 1.5s',
+      transition: 'all 1.5s',
       transitionTimingFunction: easings.easeOutQuint,
     },
   },

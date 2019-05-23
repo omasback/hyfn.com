@@ -37,6 +37,8 @@ const works = [
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     url: '/works/new-balance',
     image: 'http://via.placeholder.com/488x629',
+    color: '#ffffff',
+    backgroundColor: '#1bac99',
   },
   {
     title: 'Skyzone',
@@ -44,6 +46,8 @@ const works = [
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     url: '/works/skyzone',
     image: 'http://via.placeholder.com/488x629',
+    color: '#ffffff',
+    backgroundColor: '#ef5b2f',
   },
   {
     title: 'Vita Coco',
@@ -51,6 +55,8 @@ const works = [
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     url: '/works/vita-coco',
     image: 'http://via.placeholder.com/488x629',
+    color: '#ffffff',
+    backgroundColor: '#1a428a',
   },
 ]
 
@@ -79,6 +85,8 @@ const HompageProjects: React.FunctionComponent<{}> = ({ children }) => {
           image={work.image}
           description={work.description}
           url={work.url}
+          color={work.color}
+          backgroundColor={work.backgroundColor}
           number={i}
           rowReverse={!!(i % 2)}
         />

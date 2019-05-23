@@ -9,11 +9,16 @@ import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
 import theme from 'styles/theme'
 import { responsiveLengths } from 'styles/mixins'
+import { ThemeContext } from 'components/App'
+import { useInView } from 'react-intersection-observer'
 
 const useStyles = makeStyles(
   {
     work: {
-      extend: merge(responsiveLengths('marginTop', 40, 70)),
+      extend: merge(
+        responsiveLengths('marginTop', 60, 180),
+        responsiveLengths('marginBottom', 60, 180)
+      ),
     },
     workEven: {},
     workOdd: {
@@ -58,14 +63,36 @@ const CaseStudyLink: React.FunctionComponent<{
   description: string
   url: string
   image: string
+  color?: string
+  backgroundColor?: string
   number: number
   rowReverse?: boolean
-}> = ({ title, description, url, image, number, rowReverse = false }) => {
+}> = ({
+  title,
+  description,
+  url,
+  image,
+  color,
+  backgroundColor,
+  number,
+  rowReverse = false,
+}) => {
   const classes = useStyles()
+  const theme = React.useContext(ThemeContext)
+  const [ref, inView] = useInView({
+    threshold: 1,
+  })
+  React.useEffect(
+    () =>
+      theme.setTheme(
+        inView ? color : undefined,
+        inView ? backgroundColor : undefined
+      ),
+    [inView]
+  )
 
   return (
     <Grid
-      key={title}
       container
       alignItemsDesktop="center"
       className={cx(classes.work, {
@@ -84,7 +111,7 @@ const CaseStudyLink: React.FunctionComponent<{
             >
               {((number + 1) / 100).toFixed(2).slice(2)}
             </div>
-            <img src={image} alt="" className={classes.image} />
+            <img src={image} alt="" className={classes.image} ref={ref} />
           </ColorTrails>
         </ScrollReveal>
       </Grid>
