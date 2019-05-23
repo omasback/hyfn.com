@@ -92,17 +92,15 @@ const CaseStudyLink: React.FunctionComponent<{
       <ThemeSetter color={color} backgroundColor={backgroundColor} />
       <Grid item mobile={8} desktop={4.5}>
         <ScrollReveal>
-          <ColorTrails>
-            <div
-              className={cx(classes.number, {
-                [classes.numberEven]: rowReverse,
-                [classes.numberOdd]: !rowReverse,
-              })}
-            >
-              {((number + 1) / 100).toFixed(2).slice(2)}
-            </div>
-            <img src={image} alt="" className={classes.image} />
-          </ColorTrails>
+          <div
+            className={cx(classes.number, {
+              [classes.numberEven]: rowReverse,
+              [classes.numberOdd]: !rowReverse,
+            })}
+          >
+            {((number + 1) / 100).toFixed(2).slice(2)}
+          </div>
+          <img src={image} alt="" className={classes.image} />
         </ScrollReveal>
       </Grid>
       <Grid
