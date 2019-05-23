@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { create } from 'jss'
 import extend from 'jss-plugin-extend'
-import { StylesProvider, jssPreset } from '@material-ui/styles'
+import { StylesProvider, jssPreset, ThemeProvider } from '@material-ui/styles'
+import { observer } from 'mobx-react'
+import { ScrollContext } from 'react-router-scroll-4'
 
 import GlobalStyles from './GlobalStyles'
 import PageWrapper from './page-wrapper/PageWrapper'
@@ -11,9 +13,7 @@ import Homepage from './pages/home/Homepage'
 import CaseStudiesIndex from './pages/case-studies/CaseStudiesIndex'
 import CaseStudy from './pages/case-studies/CaseStudy'
 import { observable, action } from 'mobx'
-import { observer } from 'mobx-react'
 import constants from 'styles/constants'
-import { ThemeProvider } from '@material-ui/styles'
 
 const jss = create({
   plugins: [extend(), ...jssPreset().plugins],
@@ -53,15 +53,17 @@ class App extends Component {
       >
         <StylesProvider jss={jss}>
           <Router>
-            <PageWrapper>
-              <Switch>
-                <Route path="/styleguide" component={Styleguide} />
-                <Route path="/" component={Homepage} exact />
-                <Route path="/work" component={CaseStudiesIndex} exact />
-                <Route path="/work/:slug" component={CaseStudy} exact />
-              </Switch>
-            </PageWrapper>
-            <GlobalStyles />
+            <ScrollContext>
+              <PageWrapper>
+                <Switch>
+                  <Route path="/styleguide" component={Styleguide} />
+                  <Route path="/" component={Homepage} exact />
+                  <Route path="/work" component={CaseStudiesIndex} exact />
+                  <Route path="/work/:slug" component={CaseStudy} exact />
+                </Switch>
+                <GlobalStyles />
+              </PageWrapper>
+            </ScrollContext>
           </Router>
         </StylesProvider>
       </ThemeProvider>
