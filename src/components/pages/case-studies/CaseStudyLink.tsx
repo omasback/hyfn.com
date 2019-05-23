@@ -5,7 +5,6 @@ import merge from 'lodash/merge'
 
 import ArrowLink from 'components/display/ArrowLink'
 import Grid from 'components/display/Grid'
-import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
 import ThemeSetter from 'components/display/ThemeSetter'
 import constants from 'styles/constants'
