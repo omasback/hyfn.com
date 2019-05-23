@@ -36,21 +36,21 @@ const works = [
     title: 'New Balance',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '/works/new-balance',
+    url: '/work/new-balance',
     image: 'http://via.placeholder.com/488x629',
   },
   {
     title: 'Skyzone',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '/works/skyzone',
+    url: '/work/skyzone',
     image: 'http://via.placeholder.com/488x629',
   },
   {
     title: 'Vita Coco',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '/works/vita-coco',
+    url: '/work/vita-coco',
     image: 'http://via.placeholder.com/488x629',
   },
 ]
