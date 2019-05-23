@@ -36,9 +36,18 @@ const ThemeSetter: React.FunctionComponent<{
     if (inView) {
       setTheme(color, backgroundColor)
     }
-    // calling without args resets to default on unmount
-    return setTheme
   }, [inView, color, backgroundColor, setTheme])
+
+  React.useEffect(() => {
+    return () => {
+      // This will only run on unmount
+      // if you put the cleanup function in an effect with dependencies,
+      // it will run every time dependencies change,
+      // prematurely clearing the theme (bad)
+      console.log('without dependency change')
+      setTheme()
+    }
+  }, [setTheme])
 
   return <div ref={ref} className={classes.root} />
 }
