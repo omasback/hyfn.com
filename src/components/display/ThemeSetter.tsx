@@ -31,10 +31,13 @@ const ThemeSetter: React.FunctionComponent<{
   const [ref, inView] = useInView({
     threshold: 0.5,
   })
+
   React.useEffect(() => {
     if (inView) {
       setTheme(color, backgroundColor)
     }
+    // calling without args resets to default on unmount
+    return setTheme
   }, [inView, color, backgroundColor, setTheme])
 
   return <div ref={ref} className={classes.root} />
