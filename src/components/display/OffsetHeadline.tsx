@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
-import merge from 'lodash/merge'
 
 import OdometerText from 'components/display/OdometerText'
 import { responsiveLengths } from 'styles/mixins'
@@ -24,15 +23,15 @@ const useStyles = makeStyles(
 
 const OffsetHeadline: React.FunctionComponent<{
   className?: string
-  line1: string
-  line2: string
+  line1?: string
+  line2?: string
 }> = ({ className, line1, line2 }) => {
   const classes = useStyles()
 
   return (
     <h1 className={cx(classes.root, className)}>
-      <OdometerText text={line1} className={classes.headlineLine1} />
-      <OdometerText text={line2} className={classes.headlineLine2} />
+      {line1 && <OdometerText text={line1} className={classes.headlineLine1} />}
+      {line2 && <OdometerText text={line2} className={classes.headlineLine2} />}
     </h1>
   )
 }

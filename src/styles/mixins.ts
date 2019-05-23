@@ -1,5 +1,6 @@
 import theme from 'styles/theme'
 import { CSSProperties } from 'react'
+import merge from 'lodash/merge'
 
 const responsiveLengths = (
   property: keyof CSSProperties,
@@ -18,12 +19,13 @@ const responsiveLengths = (
   },
 })
 
-const bleedLeft = {
-  ...responsiveLengths('marginLeft', 0, -150),
-}
+const bleedLeft = responsiveLengths('marginLeft', 0, -150)
 
-const bleedRight = {
-  ...responsiveLengths('marginRight', 0, -150),
-}
+const bleedRight = responsiveLengths('marginRight', 0, -150)
 
-export { responsiveLengths, bleedLeft, bleedRight }
+const largeParagraph = merge(
+  { lineHeight: 1.6 },
+  responsiveLengths('fontSize', 17, 28)
+)
+
+export { responsiveLengths, bleedLeft, bleedRight, largeParagraph }

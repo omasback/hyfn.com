@@ -2,10 +2,8 @@ import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
-import { RouteComponentProps, matchPath } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router-dom'
 
-import OdometerText from 'components/display/OdometerText'
-import ArrowLink from 'components/display/ArrowLink'
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
@@ -13,7 +11,7 @@ import ScrollReveal from 'components/display/ScrollReveal'
 import ImageAndText from 'components/display/ImageAndText'
 import ImagesAndText from 'components/display/ImagesAndText'
 import theme from 'styles/theme'
-import { bleedRight } from 'styles/mixins'
+import { bleedRight, largeParagraph } from 'styles/mixins'
 import { responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 
@@ -30,7 +28,7 @@ const useStyles = makeStyles(
     },
     introP: {
       extend: merge(
-        responsiveLengths('fontSize', 17, 28),
+        largeParagraph,
         responsiveLengths('marginTop', 63, 108),
         responsiveLengths('marginBottom', 50, 0)
       ),
@@ -55,7 +53,7 @@ const useStyles = makeStyles(
       width: '100%',
     },
     largerCopy: {
-      extend: responsiveLengths('fontSize', 17, 28),
+      extend: largeParagraph,
     },
     cta: {
       marginBottom: '4vw',

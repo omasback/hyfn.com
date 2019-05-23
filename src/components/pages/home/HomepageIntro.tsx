@@ -3,14 +3,13 @@ import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
 
-import OdometerText from 'components/display/OdometerText'
 import ArrowLink from 'components/display/ArrowLink'
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
 import theme from 'styles/theme'
-import { responsiveLengths } from 'styles/mixins'
+import { responsiveLengths, largeParagraph } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 
 const useStyles = makeStyles(
@@ -57,7 +56,7 @@ const useStyles = makeStyles(
       },
     },
     largerCopy: {
-      extend: responsiveLengths('fontSize', 17, 28),
+      extend: largeParagraph,
     },
     cta: {
       marginBottom: '4vw',

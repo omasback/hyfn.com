@@ -8,6 +8,7 @@ import GlobalStyles from './GlobalStyles'
 import PageWrapper from './page-wrapper/PageWrapper'
 import Styleguide from './pages/Styleguide'
 import Homepage from './pages/home/Homepage'
+import CaseStudiesIndex from './pages/case-studies/CaseStudiesIndex'
 import CaseStudy from './pages/case-studies/CaseStudy'
 
 const jss = create({
@@ -23,6 +24,7 @@ class App extends Component {
             <Switch>
               <Route path="/styleguide" component={Styleguide} />
               <Route path="/" component={Homepage} exact />
+              <Route path="/works" component={CaseStudiesIndex} exact />
               <Route path="/works/:slug" component={CaseStudy} exact />
             </Switch>
           </PageWrapper>
