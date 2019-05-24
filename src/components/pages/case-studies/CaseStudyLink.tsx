@@ -91,7 +91,11 @@ const CaseStudyLink: React.FunctionComponent<{
         [classes.rootOdd]: !rowReverse,
       })}
     >
-      <ThemeSetter color={color} backgroundColor={backgroundColor} />
+      <ThemeSetter
+        color={color}
+        backgroundColor={backgroundColor}
+        parent={title}
+      />
       <Grid item mobile={8} desktop={4.5}>
         <ScrollReveal className={classes.imageWrapper}>
           <div
