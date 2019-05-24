@@ -11,6 +11,7 @@ const constants = {
     desktop: '@media (min-width: 1024px)',
   },
   triggerOnce: true,
+  themeTransitionDuration: '5s',
 }
 
 export default constants
