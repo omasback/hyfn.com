@@ -20,6 +20,7 @@ const useStyles = makeStyles(
     },
     top: {
       position: 'relative',
+      minHeight: '60vh',
     },
     introText: {
       extend: largeParagraph,
@@ -31,7 +32,7 @@ const useStyles = makeStyles(
       marginBottom: '4vw',
     },
   },
-  { name: 'HompageProjects' }
+  { name: 'CaseStudiesIndex' }
 )
 
 const works = [
@@ -64,13 +65,13 @@ const works = [
   },
 ]
 
-const HompageProjects: React.FunctionComponent<{}> = ({ children }) => {
+const CaseStudiesIndex: React.FunctionComponent<{}> = ({ children }) => {
   const classes = useStyles()
 
   return (
     <Container className={classes.root}>
       <Grid container className={classes.top}>
-        <ThemeSetter />
+        <ThemeSetter parent="CaseStudiesIndex" />
         <Grid item mobile={8} desktop={6} className={classes.introText}>
           <ScrollReveal>
             Here’s an assortment of things we have done in the past. Since it’s
@@ -100,4 +101,4 @@ const HompageProjects: React.FunctionComponent<{}> = ({ children }) => {
   )
 }
 
-export default HompageProjects
+export default CaseStudiesIndex
