@@ -4,12 +4,16 @@ import { makeStyles } from '@material-ui/styles'
 
 import Footer from './Footer'
 import { Theme } from 'components/App'
+import constants from 'styles/constants'
 
 const useStyles = makeStyles<Theme>(
   theme => ({
     root: {
       padding: 0,
-      transition: 'background-color 0.5s',
+      transition: `background-color ${
+        constants.themeTransitionDuration
+      }, color ${constants.themeTransitionDuration}
+      `,
       backgroundColor: theme.backgroundColor,
       color: theme.color,
     },

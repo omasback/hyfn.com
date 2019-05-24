@@ -3,9 +3,11 @@ import { makeStyles } from '@material-ui/styles'
 
 import ModeratBoldWoff from 'fonts/Moderat-Bold.woff'
 import ModeratLightWoff from 'fonts/Moderat-Light.woff'
-import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
 
+// Using theme so toggle global color and background-color
+// on the body was glitchy for some reason.
+// Keep theme changes in PageWrapper
 const useStyles = makeStyles({
   '@font-face': [
     {
@@ -36,8 +38,6 @@ const useStyles = makeStyles({
     },
     body: {
       height: '100%',
-      backgroundColor: constants.colors.lightGray,
-      color: constants.colors.darkGray,
       margin: 0,
       padding: 0,
       overflow: 'hidden',
