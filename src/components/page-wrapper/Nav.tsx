@@ -136,6 +136,7 @@ const useStyles = makeStyles<Theme>(
         width: '100%',
         height: 3,
         backgroundColor: theme.color,
+        transition: `background-color ${constants.themeTransitionDuration}`,
       },
     },
     desktopRightLinks: {
