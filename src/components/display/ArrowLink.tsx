@@ -14,7 +14,6 @@ const useStyles = makeStyles<Theme>(
       extend: responsiveLengths('fontSize', 14, 18),
       display: 'inline-block',
       fontWeight: 'bold',
-      color: theme.color,
       textDecoration: 'none',
       overflow: 'hidden',
       position: 'relative',
@@ -28,7 +27,7 @@ const useStyles = makeStyles<Theme>(
         height: 3,
         backgroundColor: theme.color,
         transform: 'scaleX(0)',
-        transition: 'all 1s',
+        transition: 'transform 1s',
         transformOrigin: 'top left',
         transitionTimingFunction: easings.easeOutCirc,
         [constants.mq.desktop]: {
@@ -44,7 +43,7 @@ const useStyles = makeStyles<Theme>(
     },
     inner: {
       display: 'inline-block',
-      transition: 'all 1s',
+      transition: 'transform 1s',
       marginLeft: '-1.3em',
       transitionTimingFunction: easings.easeOutCirc,
     },
@@ -63,7 +62,7 @@ const ArrowLink: React.FunctionComponent<{
   return (
     <Link to={to} className={cx(classes.root, className)}>
       <span className={classes.inner}>
-        <span className={classes.arrow}>-></span> {text}{' '}
+        <span className={classes.arrow}>-></span> <span>{text}</span>{' '}
         <span className={classes.arrow}>-></span>
       </span>
     </Link>

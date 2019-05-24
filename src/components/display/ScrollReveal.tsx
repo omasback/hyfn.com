@@ -9,7 +9,7 @@ import constants from 'styles/constants'
 const useStyles = makeStyles(
   {
     root: {
-      transition: 'all 1.5s',
+      transition: 'transform 1.5s, opacity 1.5s',
       transitionTimingFunction: easings.easeOutQuint,
     },
     fadeUp: {

@@ -22,7 +22,7 @@ const useStyles = makeStyles(
     },
     innerCharacterIn: {
       transform: 'none',
-      transition: 'all 1.5s',
+      transition: 'transform 1.5s',
       transitionTimingFunction: easings.easeOutQuint,
     },
   },
