@@ -20,8 +20,8 @@ const jss = create({
 })
 
 export type Theme = {
-  color?: string
-  backgroundColor?: string
+  color: string
+  backgroundColor: string
   setTheme: (color?: string, backgroundColor?: string) => void
 }
 
@@ -31,12 +31,12 @@ class App extends Component {
   color = constants.colors.darkGray
 
   @observable
-  backgroundColor = '#e8e8e8'
+  backgroundColor = constants.colors.lightGray
 
   @action
   setTheme = (
     color: string = constants.colors.darkGray,
-    backgroundColor: string = '#e8e8e8'
+    backgroundColor: string = constants.colors.lightGray
   ) => {
     this.color = color
     this.backgroundColor = backgroundColor

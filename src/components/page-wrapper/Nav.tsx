@@ -2,7 +2,7 @@ import * as React from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import { useMedia } from 'use-media'
 import { NavLink, Link } from 'react-router-dom'
-import { makeStyles, useTheme } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles'
 import { FaFacebookSquare } from 'react-icons/fa'
 import { FaInstagram } from 'react-icons/fa'
 
@@ -190,7 +190,6 @@ const mainLinks = [
 const Nav: React.FunctionComponent<{}> = ({ children }) => {
   const classes = useStyles()
   const isWide = useMedia({ minWidth: 820 })
-  const theme = useTheme<Theme>()
 
   return (
     <div className={classes.root}>
@@ -198,7 +197,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
         {isWide ? (
           <div className={classes.desktopRow}>
             <Link to="/">
-              <HyfnLogo color={theme.color} className={classes.desktopLogo} />
+              <HyfnLogo className={classes.desktopLogo} />
             </Link>
             <div className={classes.desktopLeftLinks}>
               {mainLinks.slice(0, 4).map(link => (
@@ -214,7 +213,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
             </div>
             <div className={classes.desktopRightLinks}>
               <NavLink to={mainLinks[5].path}>
-                <PlayLogo color={theme.color} className={classes.playLogo} />
+                <PlayLogo className={classes.playLogo} />
               </NavLink>
               <NavLink to={mainLinks[6].path} className={classes.contactLink}>
                 {mainLinks[6].text}
