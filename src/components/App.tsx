@@ -12,6 +12,7 @@ import Styleguide from './pages/Styleguide'
 import Homepage from './pages/home/Homepage'
 import CaseStudiesIndex from './pages/case-studies/CaseStudiesIndex'
 import CaseStudy from './pages/case-studies/CaseStudy'
+import About from './pages/about/About'
 import { observable, action } from 'mobx'
 import constants from 'styles/constants'
 
@@ -60,6 +61,7 @@ class App extends Component {
                   <Route path="/" component={Homepage} exact />
                   <Route path="/work" component={CaseStudiesIndex} exact />
                   <Route path="/work/:slug" component={CaseStudy} exact />
+                  <Route path="/about" component={About} exact />
                 </Switch>
                 <GlobalStyles />
               </PageWrapper>
