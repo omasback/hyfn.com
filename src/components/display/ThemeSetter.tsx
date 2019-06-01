@@ -2,7 +2,7 @@ import * as React from 'react'
 import { makeStyles, useTheme } from '@material-ui/styles'
 
 import { useInView } from 'react-intersection-observer'
-import { Theme } from 'components/App'
+import { Theme } from 'layouts'
 import constants from 'styles/constants'
 
 // This Component uses absolute positioning to fill the area of a parent or ancestor element,

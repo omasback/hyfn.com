@@ -1,9 +1,9 @@
 import * as React from 'react'
-import Nav from './Nav'
 import { makeStyles } from '@material-ui/styles'
 
+import Nav from './Nav'
 import Footer from './Footer'
-import { Theme } from 'components/App'
+import { Theme } from 'layouts'
 import constants from 'styles/constants'
 
 const useStyles = makeStyles<Theme>(

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 import { responsiveLengths } from 'styles/mixins'
 import constants from 'styles/constants'
-import { Theme } from 'components/App'
+import { Theme } from 'layouts'
 
 const useStyles = makeStyles<Theme>(
   theme => ({

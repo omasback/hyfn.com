@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import { useMedia } from 'use-media'
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'gatsby'
 import { makeStyles } from '@material-ui/styles'
-import { FaFacebookSquare } from 'react-icons/fa'
-import { FaInstagram } from 'react-icons/fa'
+import { FaFacebookSquare, FaInstagram } from 'react-icons/fa'
 
 import Container from 'components/display/Container'
 import hamburger from 'images/hamburger.svg'
@@ -12,7 +11,7 @@ import constants from 'styles/constants'
 import XIcon from 'components/svg/XIcon'
 import HyfnLogo from 'components/svg/HyfnLogo'
 import PlayLogo from 'components/svg/PlayLogo'
-import { Theme } from 'components/App'
+import { Theme } from 'layouts'
 
 const useStyles = makeStyles<Theme>(
   theme => ({
@@ -201,23 +200,23 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
             </Link>
             <div className={classes.desktopLeftLinks}>
               {mainLinks.slice(0, 4).map(link => (
-                <NavLink
+                <Link
                   key={link.path}
                   to={link.path}
                   className={classes.desktopLeftLink}
                   activeClassName={classes.desktopMainLinkActive}
                 >
                   {link.text}
-                </NavLink>
+                </Link>
               ))}
             </div>
             <div className={classes.desktopRightLinks}>
-              <NavLink to={mainLinks[5].path}>
+              <Link to={mainLinks[5].path}>
                 <PlayLogo className={classes.playLogo} />
-              </NavLink>
-              <NavLink to={mainLinks[6].path} className={classes.contactLink}>
+              </Link>
+              <Link to={mainLinks[6].path} className={classes.contactLink}>
                 {mainLinks[6].text}
-              </NavLink>
+              </Link>
             </div>
           </div>
         ) : (
@@ -256,14 +255,14 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
               <HyfnLogo color="#ffffff" className={classes.mobileMenuLogo} />
               <div className={classes.mainLinks}>
                 {mainLinks.map(link => (
-                  <NavLink
+                  <Link
                     key={link.path}
                     to={link.path}
                     className={classes.mobileMainLink}
                     activeClassName={classes.mobileMainLinkaActive}
                   >
                     {link.text}
-                  </NavLink>
+                  </Link>
                 ))}
               </div>
               <div className={classes.socialLinks}>

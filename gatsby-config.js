@@ -8,6 +8,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-plugin-tslint',
+    'gatsby-plugin-layout',
     {
       resolve: 'gatsby-plugin-root-import',
       options: {

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
-import { Theme } from 'components/App'
+import { Theme } from 'layouts'
 
 const useStyles = makeStyles<Theme>(
   theme => ({

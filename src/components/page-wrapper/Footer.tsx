@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { FaFacebookSquare, FaInstagram } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link } from 'gatsby'
 import merge from 'lodash/merge'
 
 import Container from 'components/display/Container'
