@@ -2,16 +2,16 @@ import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
-import { RouteComponentProps } from 'react-router-dom'
+import { oc } from 'ts-optchain'
+import { graphql } from 'gatsby'
 
+import { AboutQuery, ContentfulPerson } from 'graphqlTypes'
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
-import constants from 'styles/constants'
 import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
-import ThemeSetter from 'components/display/ThemeSetter'
 import AboutPeople from 'components/pages/about/AboutPeople'
 
 const useStyles = makeStyles(
@@ -55,14 +55,14 @@ const useStyles = makeStyles(
   { name: 'About' }
 )
 
-interface Props extends RouteComponentProps<RouteParams> {}
-
-interface RouteParams {
-  slug: string
+interface Props {
+  data: AboutQuery
 }
 
-const About: React.FunctionComponent<Props> = ({ match, children }) => {
+const About: React.FunctionComponent<Props> = props => {
   const classes = useStyles()
+
+  const people = oc(props).data.allContentfulPerson.edges() || []
 
   return (
     <>
@@ -112,9 +112,28 @@ const About: React.FunctionComponent<Props> = ({ match, children }) => {
           </Grid>
         </Grid>
       </Container>
-      <AboutPeople />
+      <AboutPeople people={people} />
     </>
   )
 }
 
 export default About
+
+export const pageQuery = graphql`
+  query About {
+    allContentfulPerson {
+      edges {
+        node {
+          id
+          jobTitle
+          name
+          image {
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+`

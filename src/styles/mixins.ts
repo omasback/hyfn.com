@@ -1,6 +1,6 @@
 import constants from 'styles/constants'
-import { CSSProperties } from 'react'
 import merge from 'lodash/merge'
+import { CSSProperties } from '@material-ui/styles'
 
 const responsiveLengths = (
   property: keyof CSSProperties,
@@ -28,4 +28,28 @@ const largeParagraph = merge(
   responsiveLengths('fontSize', 17, 28)
 )
 
-export { responsiveLengths, bleedLeft, bleedRight, largeParagraph }
+const objectFitContain: CSSProperties = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  minWidth: '1000%',
+  minHeight: '1000%',
+  transform: 'translate(-50%, -50%) scale(0.1)',
+}
+
+const absoluteFill: CSSProperties = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0,
+}
+
+export {
+  responsiveLengths,
+  bleedLeft,
+  bleedRight,
+  largeParagraph,
+  objectFitContain,
+  absoluteFill,
+}

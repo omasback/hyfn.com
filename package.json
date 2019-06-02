@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@graphql-codegen/typescript-operations": "^1.2.0",
     "@material-ui/styles": "^4.0.1",
     "@types/classnames": "^2.2.7",
     "@types/jest": "^24.0.11",
@@ -23,6 +24,7 @@
     "gatsby-plugin-layout": "^1.0.15",
     "gatsby-plugin-tslint": "^0.0.2",
     "gatsby-plugin-typescript": "^2.0.15",
+    "gatsby-source-contentful": "^2.0.43-schema-types.18",
     "jss-plugin-extend": "^10.0.0-alpha.16",
     "matter-js": "^0.14.2",
     "mobx": "4",
@@ -37,6 +39,7 @@
     "react-router-dom": "^5.0.0",
     "react-router-scroll-4": "^1.0.0-beta.2",
     "react-transition-group": "^4.0.1",
+    "ts-optchain": "^0.1.7",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-loader": "^3.5.4",
@@ -51,7 +54,8 @@
     "heroku-postbuild": "gatsby build",
     "serve": "gatsby serve",
     "type-check": "tsc --noEmit",
-    "lint": "tslint --project ."
+    "lint": "tslint --project .",
+    "graphql-codegen": "graphql-codegen --config codegen.yml"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -63,6 +67,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.2.0",
+    "@graphql-codegen/typescript": "1.2.0",
     "gatsby-plugin-root-import": "^2.0.5"
   }
 }

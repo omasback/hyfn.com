@@ -9,8 +9,13 @@ import {
 } from 'react-transition-group'
 
 import constants from 'styles/constants'
-import { responsiveLengths } from 'styles/mixins'
-import { Person as PersonType } from './AboutPeople'
+import {
+  responsiveLengths,
+  objectFitContain,
+  absoluteFill,
+} from 'styles/mixins'
+import { ContentfulPerson } from 'graphqlTypes'
+import { oc } from 'ts-optchain'
 
 const timeout = 800
 
@@ -38,7 +43,7 @@ const useStyles = makeStyles(
         extend: merge(responsiveLengths('top', 66, -60)),
       },
     },
-    imgContainer: {
+    imageContainer: {
       extend: merge(responsiveLengths('height', 175, 350)),
       width: '100%',
       position: 'relative',
@@ -47,12 +52,9 @@ const useStyles = makeStyles(
         zIndex: 1,
       },
     },
-    img: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
+    image: {
+      extend: absoluteFill,
+      backgroundSize: 'cover',
       transition: `transform ${timeout}ms`,
     },
     enterImgOdd: { transform: 'translateY(-100%)' },
@@ -120,7 +122,7 @@ const useStyles = makeStyles(
 )
 
 interface Props {
-  person: PersonType
+  person: ContentfulPerson
   index: number
   onClick: () => void
 }
@@ -162,8 +164,8 @@ const AboutPerson: React.FunctionComponent<Props> = ({
       onTouchStart={() => setHover(true)}
       // onTouchEnd={() => setHover(false)} // see above
     >
-      <div className={classes.imgContainer}>
-        <TransitionGroup>
+      <div className={classes.imageContainer}>
+        <TransitionGroup component={null}>
           <CSSTransition
             key={person.name}
             timeout={timeout}
@@ -176,7 +178,12 @@ const AboutPerson: React.FunctionComponent<Props> = ({
                   : classes.exitActiveImgEven,
             }}
           >
-            <img src={person.image} alt="" className={classes.img} />
+            <div
+              style={{
+                backgroundImage: `url(${oc(person).image.file.url() || ''})`,
+              }}
+              className={classes.image}
+            />
           </CSSTransition>
         </TransitionGroup>
       </div>
@@ -207,7 +214,7 @@ const AboutPerson: React.FunctionComponent<Props> = ({
                       [classes.textEntered]: state === 'entered' && hover,
                     })}
                   >
-                    {person.title}
+                    {person.jobTitle}
                   </div>
                 </div>
               </div>

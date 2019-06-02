@@ -9,50 +9,13 @@ import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import AboutPerson from './AboutPerson'
+import { ContentfulPerson, ContentfulPersonEdge } from 'graphqlTypes'
 
 export interface Person {
   name: string
-  title: string
+  jobTitle: string
   image: string
 }
-
-const people: Person[] = [
-  {
-    name: 'Jim Bob',
-    title: 'Regional Manager',
-    image: 'http://via.placeholder.com/280x350',
-  },
-  {
-    name: 'Joey Jo Jo',
-    title: 'Assistant Regional Manager',
-    image: 'http://via.placeholder.com/280x350',
-  },
-  {
-    name: 'Mary Sue',
-    title: 'Assistant to the Regional Manager',
-    image: 'http://via.placeholder.com/280x350',
-  },
-  {
-    name: 'Billy Idol',
-    title: 'Creative Director',
-    image: 'http://via.placeholder.com/280x350',
-  },
-  {
-    name: 'Ving Rames',
-    title: 'Senior Developer',
-    image: 'http://via.placeholder.com/280x350',
-  },
-  {
-    name: 'Lady Elaine',
-    title: 'Puppet',
-    image: 'http://via.placeholder.com/280x350',
-  },
-  {
-    name: 'Scott Burton',
-    title: 'CTO',
-    image: 'http://via.placeholder.com/280x350',
-  },
-]
 
 const timeout = 1000
 
@@ -79,9 +42,11 @@ const useStyles = makeStyles(
   { name: 'AboutPeople' }
 )
 
-interface Props {}
+interface Props {
+  people: ContentfulPersonEdge[]
+}
 
-const AboutPeople: React.FunctionComponent<Props> = ({ children }) => {
+const AboutPeople: React.FunctionComponent<Props> = ({ people, children }) => {
   const classes = useStyles()
   const [index, setIndex] = React.useState(0)
   const nextIndex = (index + 4) % people.length
@@ -101,7 +66,7 @@ const AboutPeople: React.FunctionComponent<Props> = ({ children }) => {
           {fourPeople.map((person, i) => (
             <AboutPerson
               key={i}
-              person={person}
+              person={person.node}
               index={i}
               onClick={() => setIndex(nextIndex)}
             />
