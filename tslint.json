@@ -13,6 +13,10 @@
     "no-implicit-dependencies": false,
     "interface-name": false,
     "jsx-boolean-value": false,
-    "member-access": false
+    "member-access": false,
+    "variable-name": {
+      "options": ["allow-pascal-case"]
+    },
+    "no-empty-interface": false
   }
 }

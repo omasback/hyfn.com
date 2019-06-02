@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import easings from 'easings-css'
 import { makeStyles } from '@material-ui/styles'
-import { Link } from 'react-router-dom'
+import { Link } from 'gatsby'
 
 import { responsiveLengths } from 'styles/mixins'
 import constants from 'styles/constants'

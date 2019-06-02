@@ -8,7 +8,7 @@ import debounce from 'lodash/debounce'
 import constants from 'styles/constants'
 
 let previousY = window.scrollY
-let delta = observable.box(0)
+const delta = observable.box(0)
 
 const setDelta = () => {
   let newDelta = window.scrollY - previousY
