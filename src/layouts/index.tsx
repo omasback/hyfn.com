@@ -46,8 +46,8 @@ class App extends Component {
         }}
       >
         <StylesProvider jss={jss}>
-          <PageWrapper>{this.props.children}</PageWrapper>
           <GlobalStyles />
+          <PageWrapper>{this.props.children}</PageWrapper>
         </StylesProvider>
       </ThemeProvider>
     )

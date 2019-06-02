@@ -30,7 +30,6 @@ module.exports = {
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-plugin-tslint',
-    'gatsby-plugin-layout',
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
@@ -46,6 +45,14 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
+    },
+    'gatsby-plugin-layout',
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        // disableAutoprefixing: true,
+        // disableMinification: true,
+      },
     },
   ],
 }

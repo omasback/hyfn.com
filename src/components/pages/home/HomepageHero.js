@@ -9,63 +9,6 @@ import HomepageHeroCard from './HomepageHeroCard.js'
 
 const Matter = require('matter-js')
 
-// setup logo shapes
-let logo = {
-  h: [
-    [76.8, 42.3],
-    [23.2, 42.3],
-    [23.2, 16.2],
-    [3.9, 16.2],
-    [3.9, 83.8],
-    [23.2, 83.8],
-    [23.2, 57.7],
-    [76.8, 57.7],
-    [76.8, 83.8],
-    [96.1, 83.8],
-    [96.1, 16.2],
-    [76.8, 16.2],
-  ],
-  y: [
-    [77.3, 16.2],
-    [50, 46.7],
-    [22.8, 16.2],
-    [2, 16.2],
-    [1, 17.4],
-    [40.4, 60.6],
-    [40.4, 83.8],
-    [59.6, 83.8],
-    [59.6, 60.6],
-    [98.5, 17.9],
-    [99, 17.4],
-    [98, 16.2],
-  ],
-  f: [
-    [8.4, 83.8],
-    [27.6, 83.8],
-    [27.6, 57.5],
-    [87.6, 57.5],
-    [87.6, 42.4],
-    [27.6, 42.4],
-    [27.6, 31.6],
-    [91.6, 31.6],
-    [91.6, 16.2],
-    [8.4, 16.2],
-  ],
-  n: [
-    [78.2, 63.4],
-    [22.4, 16.3],
-    [22.1, 16.2],
-    [2.5, 16.2],
-    [2.5, 83.8],
-    [21.8, 83.8],
-    [21.8, 38],
-    [76, 83.8],
-    [97.5, 83.8],
-    [97.5, 16.2],
-    [78.2, 16.2],
-  ],
-}
-
 // Material-UI's JSS implementation.
 // Must use HOC version for class component
 // https://material-ui.com/css-in-js/basics/
@@ -130,6 +73,8 @@ const styles = createStyles({
   },
 })
 
+let logo
+
 const secret = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
 
 class HomepageHero extends React.Component {
@@ -137,6 +82,81 @@ class HomepageHero extends React.Component {
 
   constructor(props) {
     super(props)
+
+    this.engine = Matter.Engine.create()
+
+    this.state = {
+      is_animation_started: false,
+      is_playing: false,
+      is_maybe_awesome: false,
+      awesomeness: 0,
+      cards: [],
+    }
+
+    for (var i = 0; i < 4; i++) {
+      this.state.cards[i] = {
+        is_open: false,
+      }
+    }
+
+    if (typeof window === 'undefined') return
+
+    // setup logo shapes
+    logo = {
+      h: [
+        [76.8, 42.3],
+        [23.2, 42.3],
+        [23.2, 16.2],
+        [3.9, 16.2],
+        [3.9, 83.8],
+        [23.2, 83.8],
+        [23.2, 57.7],
+        [76.8, 57.7],
+        [76.8, 83.8],
+        [96.1, 83.8],
+        [96.1, 16.2],
+        [76.8, 16.2],
+      ],
+      y: [
+        [77.3, 16.2],
+        [50, 46.7],
+        [22.8, 16.2],
+        [2, 16.2],
+        [1, 17.4],
+        [40.4, 60.6],
+        [40.4, 83.8],
+        [59.6, 83.8],
+        [59.6, 60.6],
+        [98.5, 17.9],
+        [99, 17.4],
+        [98, 16.2],
+      ],
+      f: [
+        [8.4, 83.8],
+        [27.6, 83.8],
+        [27.6, 57.5],
+        [87.6, 57.5],
+        [87.6, 42.4],
+        [27.6, 42.4],
+        [27.6, 31.6],
+        [91.6, 31.6],
+        [91.6, 16.2],
+        [8.4, 16.2],
+      ],
+      n: [
+        [78.2, 63.4],
+        [22.4, 16.3],
+        [22.1, 16.2],
+        [2.5, 16.2],
+        [2.5, 83.8],
+        [21.8, 83.8],
+        [21.8, 38],
+        [76, 83.8],
+        [97.5, 83.8],
+        [97.5, 16.2],
+        [78.2, 16.2],
+      ],
+    }
 
     window.decomp = decomp
 
@@ -155,22 +175,6 @@ class HomepageHero extends React.Component {
         }
       )
       Matter.Body.scale(logo[letter], 2, 2)
-    }
-
-    this.engine = Matter.Engine.create()
-
-    this.state = {
-      is_animation_started: false,
-      is_playing: false,
-      is_maybe_awesome: false,
-      awesomeness: 0,
-      cards: [],
-    }
-
-    for (var i = 0; i < 4; i++) {
-      this.state.cards[i] = {
-        is_open: false,
-      }
     }
   }
 
