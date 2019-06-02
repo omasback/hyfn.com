@@ -7,7 +7,7 @@ import debounce from 'lodash/debounce'
 
 import constants from 'styles/constants'
 
-let previousY = window.scrollY
+let previousY = 0
 const delta = observable.box(0)
 
 const setDelta = () => {
@@ -21,20 +21,24 @@ const setDelta = () => {
   previousY = window.scrollY
 }
 
-window.addEventListener('scroll', () => {
-  window.requestAnimationFrame(() => {
-    setDelta()
-  })
-})
+if (typeof window !== `undefined`) {
+  previousY = window.scrollY
 
-window.addEventListener(
-  'scroll',
-  debounce(() => {
+  window.addEventListener('scroll', () => {
     window.requestAnimationFrame(() => {
       setDelta()
     })
-  }, 20)
-)
+  })
+
+  window.addEventListener(
+    'scroll',
+    debounce(() => {
+      window.requestAnimationFrame(() => {
+        setDelta()
+      })
+    }, 20)
+  )
+}
 
 const styles = makeStyles(
   {
