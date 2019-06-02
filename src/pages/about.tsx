@@ -9,11 +9,10 @@ import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
 import constants from 'styles/constants'
-import { bleedRight, largeParagraph } from 'styles/mixins'
-import { responsiveLengths } from 'styles/mixins'
+import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import ThemeSetter from 'components/display/ThemeSetter'
-import AboutPeople from './AboutPeople'
+import AboutPeople from 'components/pages/about/AboutPeople'
 
 const useStyles = makeStyles(
   {
