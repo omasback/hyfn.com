@@ -8,7 +8,7 @@ interface Props {}
 
 const Homepage: React.FunctionComponent<Props> = () => (
   <div>
-    <HomepageHero />
+    {typeof window !== 'undefined' && <HomepageHero />}
     <HomepageIntro />
     <HomepageVideo />
     <HompageProjects />

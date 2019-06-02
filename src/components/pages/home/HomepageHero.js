@@ -7,7 +7,6 @@ import decomp from 'poly-decomp'
 
 import HomepageHeroCard from './HomepageHeroCard.js'
 
-window.decomp = decomp
 const Matter = require('matter-js')
 
 // setup logo shapes
@@ -65,22 +64,6 @@ let logo = {
     [97.5, 16.2],
     [78.2, 16.2],
   ],
-}
-for (var letter in logo) {
-  logo[letter] = Matter.Bodies.fromVertices(
-    0,
-    0,
-    logo[letter].map(point => {
-      return Matter.Vector.create(point[0], point[1])
-    }),
-    {
-      restitution: 0.75,
-      render: {
-        fillStyle: '#FFFFFF',
-      },
-    }
-  )
-  Matter.Body.scale(logo[letter], 2, 2)
 }
 
 // Material-UI's JSS implementation.
@@ -154,6 +137,26 @@ class HomepageHero extends React.Component {
 
   constructor(props) {
     super(props)
+
+    window.decomp = decomp
+
+    for (var letter in logo) {
+      logo[letter] = Matter.Bodies.fromVertices(
+        0,
+        0,
+        logo[letter].map(point => {
+          return Matter.Vector.create(point[0], point[1])
+        }),
+        {
+          restitution: 0.75,
+          render: {
+            fillStyle: '#FFFFFF',
+          },
+        }
+      )
+      Matter.Body.scale(logo[letter], 2, 2)
+    }
+
     this.engine = Matter.Engine.create()
 
     this.state = {
