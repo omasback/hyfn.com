@@ -188,7 +188,7 @@ const mainLinks = [
 
 const Nav: React.FunctionComponent<{}> = ({ children }) => {
   const classes = useStyles()
-  const isWide = useMedia({ minWidth: 820 })
+  const isWide = useMedia({ minWidth: 820 }, true)
 
   return (
     <div className={classes.root}>
