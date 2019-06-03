@@ -7,16 +7,18 @@ try {
   contentfulConfig = require('./.contentful')
 } catch (_) {}
 
-// Overwrite the Contentful config with environment variables if they exist
+const deliveryToken =
+  process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.deliveryToken
+const previewToken =
+  process.env.CONTENTFUL_PREVIEW_TOKEN || contentfulConfig.previewToken
+const usePreview =
+  (process.env.CONTENTFUL_USE_PREVIEW || contentfulConfig.usePreview) === 'true'
+
 contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
-  accessToken:
-    process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
+  accessToken: usePreview ? previewToken : deliveryToken,
+  host: usePreview ? 'preview.contentful.com' : null,
 }
-
-// if (process.env.NODE_ENV === 'development') {
-//   contentfulConfig.host = 'preview.contentful.com'
-// }
 
 const { spaceId, accessToken } = contentfulConfig
 

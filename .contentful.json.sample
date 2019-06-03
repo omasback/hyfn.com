@@ -1,4 +1,6 @@
 {
-  "spaceId": "...",
-  "accessToken": "..."
+  "spaceId": "",
+  "deliveryToken": "",
+  "previewToken": "",
+  usePreview: "false"
 }
