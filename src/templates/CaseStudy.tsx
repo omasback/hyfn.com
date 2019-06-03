@@ -141,12 +141,23 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
       </Container>
 
       {contentfulCaseStudy.pageSections &&
-        contentfulCaseStudy.pageSections.map(ps =>
-          React.createElement(
+        contentfulCaseStudy.pageSections.map(ps => {
+          if (
+            !ps ||
+            !ps.internal ||
+            !ps.internal.type ||
+            !contentfulContentTypeComponentMap[ps.internal.type]
+          ) {
+            return null
+          }
+          return React.createElement(
             contentfulContentTypeComponentMap[ps.internal.type],
-            { ...ps, key: ps.id }
+            {
+              ...ps,
+              key: ps.id,
+            }
           )
-        )}
+        })}
 
       {/* <ImageAndText imageUrl={'http://via.placeholder.com/676x440'}>
         <>
@@ -254,7 +265,7 @@ interface CaseStudyPage {
           url: string
         }
       }
-      pageSections: Array<ImageAndTextProps | ImagesAndTextProps>
+      pageSections: Array<ImageAndTextProps | ImagesAndTextProps | null>
     }
   }
 }

@@ -61,6 +61,7 @@ const useStyles = makeStyles(
 )
 
 export interface ImagesAndTextProps {
+  id: string
   internal: {
     type: 'ContentfulPageSectionImagesAndText'
   }
