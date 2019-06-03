@@ -14,6 +14,10 @@ contentfulConfig = {
     process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
 }
 
+// if (process.env.NODE_ENV === 'development') {
+//   contentfulConfig.host = 'preview.contentful.com'
+// }
+
 const { spaceId, accessToken } = contentfulConfig
 
 if (!spaceId || !accessToken) {

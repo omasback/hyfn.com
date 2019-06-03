@@ -5,7 +5,7 @@ import merge from 'lodash/merge'
 import { oc } from 'ts-optchain'
 import { graphql } from 'gatsby'
 
-import { AboutQuery, ContentfulPerson } from 'graphqlTypes'
+import { AboutQuery } from 'graphqlTypes'
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
