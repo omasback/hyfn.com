@@ -17,6 +17,7 @@ import ImagesAndText, {
 import constants from 'styles/constants'
 import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
+import ThemeSetter from 'components/display/ThemeSetter'
 import contentfulContentTypeComponentMap from '../contentfulContentTypeComponentMap'
 
 const useStyles = makeStyles(
@@ -92,6 +93,11 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
   return (
     <>
       <Container className={classes.root}>
+        <ThemeSetter
+          color={contentfulCaseStudy.linkTextColor}
+          backgroundColor={contentfulCaseStudy.linkBackgroundColor}
+          parent={contentfulCaseStudy.linkTitle}
+        />
         <Grid container className={classes.row1}>
           <Grid container item mobile={10}>
             <Grid item mobile={8} desktop={5}>

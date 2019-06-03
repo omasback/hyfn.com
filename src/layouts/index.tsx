@@ -32,8 +32,11 @@ class App extends Component {
     color: string = constants.colors.darkGray,
     backgroundColor: string = constants.colors.lightGray
   ) => {
-    this.color = color
-    this.backgroundColor = backgroundColor
+    window.setTimeout &&
+      window.setTimeout(() => {
+        this.color = color
+        this.backgroundColor = backgroundColor
+      }, 500)
   }
 
   render() {

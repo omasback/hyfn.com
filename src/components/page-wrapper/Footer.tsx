@@ -9,7 +9,6 @@ import Grid from 'components/display/Grid'
 import constants from 'styles/constants'
 import HyfnLogo from 'components/svg/HyfnLogo'
 import { responsiveLengths } from 'styles/mixins'
-import ThemeSetter from 'components/display/ThemeSetter'
 
 const useStyles = makeStyles(
   {
@@ -140,7 +139,6 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
 
   return (
     <div className={classes.root}>
-      <ThemeSetter />
       <Container>
         <Grid container>
           <Grid item mobile={5}>
