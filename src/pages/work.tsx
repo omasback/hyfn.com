@@ -62,7 +62,7 @@ const CaseStudiesIndex: React.FunctionComponent<CaseStudiesProps> = props => {
           title={work.linkTitle}
           image={work.linkImage.file.url}
           description={work.linkSummary}
-          url={work.slug}
+          url={`work/${work.slug}`}
           color={work.linkTextColor}
           backgroundColor={work.linkBackgroundColor}
           number={i}

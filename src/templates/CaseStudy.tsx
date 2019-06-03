@@ -2,7 +2,7 @@ import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
-import { RouteComponentProps } from 'react-router-dom'
+import { graphql } from 'gatsby'
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
@@ -11,8 +11,7 @@ import ScrollReveal from 'components/display/ScrollReveal'
 import ImageAndText from 'components/display/ImageAndText'
 import ImagesAndText from 'components/display/ImagesAndText'
 import constants from 'styles/constants'
-import { bleedRight, largeParagraph } from 'styles/mixins'
-import { responsiveLengths } from 'styles/mixins'
+import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 
 const useStyles = makeStyles(
@@ -81,14 +80,9 @@ const useStyles = makeStyles(
   { name: 'CaseStudy' }
 )
 
-interface Props extends RouteComponentProps<RouteParams> {}
-
-interface RouteParams {
-  slug: string
-}
-
-const CaseStudy: React.FunctionComponent<Props> = ({ match, children }) => {
-  const classes = useStyles()
+const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
+  const classes = useStyles(props)
+  const { contentfulCaseStudy } = props.data
 
   return (
     <>
@@ -97,9 +91,7 @@ const CaseStudy: React.FunctionComponent<Props> = ({ match, children }) => {
           <Grid container item mobile={10}>
             <Grid item mobile={8} desktop={5}>
               <p className={classes.introP}>
-                Generating buzz about not driving buzzed by reimagining the
-                traditional PSA into something that’s fun, engaging, and
-                relatable.
+                {contentfulCaseStudy.linkSummary}
               </p>
             </Grid>
           </Grid>
@@ -126,7 +118,7 @@ const CaseStudy: React.FunctionComponent<Props> = ({ match, children }) => {
               <ScrollReveal>
                 <ColorTrails>
                   <img
-                    src="http://via.placeholder.com/663x877"
+                    src={contentfulCaseStudy.linkImage.file.url}
                     alt=""
                     className={cx(classes.image)}
                   />
@@ -229,3 +221,37 @@ const CaseStudy: React.FunctionComponent<Props> = ({ match, children }) => {
 }
 
 export default CaseStudy
+
+interface CaseStudyPage {
+  data: {
+    contentfulCaseStudy: {
+      linkSummary: string
+      linkTextColor: string
+      linkTitle: string
+      slug: string
+      linkBackgroundColor: string
+      linkImage: {
+        file: {
+          url: string
+        }
+      }
+    }
+  }
+}
+
+export const pageQuery = graphql`
+  query CaseStudyBySlug($slug: String!) {
+    contentfulCaseStudy(slug: { eq: $slug }) {
+      linkSummary
+      linkTextColor
+      linkTitle
+      slug
+      linkBackgroundColor
+      linkImage {
+        file {
+          url
+        }
+      }
+    }
+  }
+`
