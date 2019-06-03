@@ -2,13 +2,18 @@ import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
 import constants from 'styles/constants'
-import { responsiveLengths, bleedLeft, bleedRight } from 'styles/mixins'
+import {
+  responsiveLengths,
+  bleedLeft as bleedLeftCSS,
+  bleedRight as bleedRightCSS,
+} from 'styles/mixins'
 
 const useStyles = makeStyles(
   {
@@ -32,10 +37,10 @@ const useStyles = makeStyles(
       },
     },
     bleedLeft: {
-      extend: bleedLeft,
+      extend: bleedLeftCSS,
     },
     bleedRight: {
-      extend: bleedRight,
+      extend: bleedRightCSS,
     },
     image: {
       display: 'block',
@@ -48,33 +53,39 @@ const useStyles = makeStyles(
   { name: 'ImageAndText' }
 )
 
-interface Props {
-  imageUrl?: string
-  className?: string
-  rowReverse?: boolean
-  bleedLeft?: boolean
-  bleedRight?: boolean
+export interface ImageAndTextProps {
+  internal: {
+    type: 'ContentfulPageSectionImageAndText'
+  }
+  imageSide: boolean
+  image: {
+    file: {
+      url: string
+    }
+  }
+  text: {
+    json: any
+  }
 }
 
-const ImageAndText: React.FunctionComponent<Props> = ({
-  imageUrl = 'http://via.placeholder.com/676x450',
-  className,
-  rowReverse = false,
-  bleedLeft = false,
-  bleedRight = false,
-  children,
-}) => {
+const ImageAndText: React.FunctionComponent<ImageAndTextProps> = props => {
   const classes = useStyles()
+  const bleedLeft = false
+  const bleedRight = false
+
+  const { image, text, imageSide = true } = props
 
   return (
-    <Container className={cx(classes.root, className)}>
+    <Container className={cx(classes.root)}>
       <Grid
         container
         alignItemsDesktop="center"
-        className={cx({ [classes.rowReverse]: rowReverse })}
+        className={cx({ [classes.rowReverse]: !imageSide })}
       >
         <Grid item mobile={8} desktop={bleedLeft || bleedRight ? 4 : 3.5}>
-          <ScrollReveal>{children}</ScrollReveal>
+          <ScrollReveal>
+            {text && documentToReactComponents(text.json)}
+          </ScrollReveal>
         </Grid>
         <Grid item mobile={10} desktop={bleedLeft || bleedRight ? 5 : 6}>
           <ScrollReveal>
@@ -84,7 +95,7 @@ const ImageAndText: React.FunctionComponent<Props> = ({
                 [classes.bleedRight]: bleedRight,
               })}
             >
-              <img src={imageUrl} alt="" className={classes.image} />
+              <img src={image.file.url} alt="" className={classes.image} />
             </ColorTrails>
           </ScrollReveal>
         </Grid>

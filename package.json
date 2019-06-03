@@ -5,6 +5,8 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@contentful/rich-text-react-renderer": "^13.2.0",
+    "@contentful/rich-text-types": "^13.1.0",
     "@graphql-codegen/typescript-operations": "^1.2.0",
     "@material-ui/styles": "^4.0.1",
     "@types/classnames": "^2.2.7",

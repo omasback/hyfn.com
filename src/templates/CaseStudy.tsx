@@ -8,11 +8,16 @@ import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
-import ImageAndText from 'components/display/ImageAndText'
-import ImagesAndText from 'components/display/ImagesAndText'
+import ImageAndText, {
+  ImageAndTextProps,
+} from 'components/display/ImageAndText'
+import ImagesAndText, {
+  ImagesAndTextProps,
+} from 'components/display/ImagesAndText'
 import constants from 'styles/constants'
 import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
+import contentfulContentTypeComponentMap from '../contentfulContentTypeComponentMap'
 
 const useStyles = makeStyles(
   {
@@ -129,7 +134,15 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
         </Grid>
       </Container>
 
-      <ImageAndText imageUrl={'http://via.placeholder.com/676x440'}>
+      {contentfulCaseStudy.pageSections &&
+        contentfulCaseStudy.pageSections.map(ps =>
+          React.createElement(
+            contentfulContentTypeComponentMap[ps.internal.type],
+            { ...ps, key: ps.id }
+          )
+        )}
+
+      {/* <ImageAndText imageUrl={'http://via.placeholder.com/676x440'}>
         <>
           <h3>We Said</h3>
           <p>
@@ -200,7 +213,7 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
             like this make ads off-putting rather than engagin
           </p>
         </>
-      </ImageAndText>
+      </ImageAndText> */}
 
       <Container>
         <Grid container>
@@ -235,6 +248,7 @@ interface CaseStudyPage {
           url: string
         }
       }
+      pageSections: Array<ImageAndTextProps | ImagesAndTextProps>
     }
   }
 }
@@ -250,6 +264,42 @@ export const pageQuery = graphql`
       linkImage {
         file {
           url
+        }
+      }
+      pageSections {
+        ... on ContentfulPageSectionImageAndText {
+          id
+          internal {
+            type
+          }
+          imageSide
+          text {
+            json
+          }
+          image {
+            file {
+              url
+            }
+          }
+        }
+        ... on ContentfulPageSectionImagesAndText {
+          id
+          internal {
+            type
+          }
+          leftImage {
+            file {
+              url
+            }
+          }
+          rightImage {
+            file {
+              url
+            }
+          }
+          text {
+            json
+          }
         }
       }
     }

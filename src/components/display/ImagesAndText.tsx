@@ -9,6 +9,7 @@ import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
 import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const useStyles = makeStyles(
   {
@@ -59,39 +60,53 @@ const useStyles = makeStyles(
   { name: 'ImagesAndText' }
 )
 
-interface Props {
-  imageUrl1?: string
-  imageUrl2?: string
-  className?: string
-  rowReverse?: boolean
+export interface ImagesAndTextProps {
+  internal: {
+    type: 'ContentfulPageSectionImagesAndText'
+  }
+  rightImage: {
+    file: {
+      url: string
+    }
+  }
+  leftImage: {
+    file: {
+      url: string
+    }
+  }
+  text: {
+    json: any
+  }
 }
 
-const ImagesAndText: React.FunctionComponent<Props> = ({
-  imageUrl1 = 'http://via.placeholder.com/676x450',
-  imageUrl2 = 'http://via.placeholder.com/676x450',
-  className,
-  rowReverse = false,
-  children,
-}) => {
+const ImagesAndText: React.FunctionComponent<ImagesAndTextProps> = props => {
   const classes = useStyles()
 
+  const { text, leftImage, rightImage } = props
+
   return (
-    <Container className={cx(classes.root, className)}>
+    <Container className={cx(classes.root)}>
       <Grid
         container
         alignItemsDesktop="center"
-        className={cx({ [classes.rowReverse]: rowReverse })}
+        className={cx({ [classes.rowReverse]: false })}
       >
         <Grid container item mobile={10}>
           <Grid item mobile={8} desktop={4}>
-            <ScrollReveal>{children}</ScrollReveal>
+            <ScrollReveal>
+              {text && documentToReactComponents(text.json)}
+            </ScrollReveal>
           </Grid>
         </Grid>
         <Grid container item mobile={10} className={classes.images}>
           <Grid item mobile={5} className={classes.image1Wrapper}>
             <ScrollReveal>
               <ColorTrails>
-                <img src={imageUrl1} alt="" className={classes.image} />
+                <img
+                  src={leftImage.file.url}
+                  alt=""
+                  className={classes.image}
+                />
               </ColorTrails>
             </ScrollReveal>
           </Grid>
@@ -103,7 +118,11 @@ const ImagesAndText: React.FunctionComponent<Props> = ({
           >
             <ScrollReveal>
               <ColorTrails>
-                <img src={imageUrl2} alt="" className={classes.image} />
+                <img
+                  src={rightImage.file.url}
+                  alt=""
+                  className={classes.image}
+                />
               </ColorTrails>
             </ScrollReveal>
           </Grid>
