@@ -9,6 +9,7 @@ import CaseStudyLink from 'components/pages/case-studies/CaseStudyLink'
 import { responsiveLengths, largeParagraph } from 'styles/mixins'
 import Grid from 'components/display/Grid'
 import ThemeSetter from 'components/display/ThemeSetter'
+import { graphql } from 'gatsby'
 
 const useStyles = makeStyles(
   {
@@ -35,64 +36,35 @@ const useStyles = makeStyles(
   { name: 'CaseStudiesIndex' }
 )
 
-const works = [
-  {
-    title: 'New Balance',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '/work/new-balance',
-    image: 'http://via.placeholder.com/488x629',
-    color: '#ffffff',
-    backgroundColor: '#1bac99',
-  },
-  {
-    title: 'Skyzone',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '/work/skyzone',
-    image: 'http://via.placeholder.com/488x629',
-    color: '#ffffff',
-    backgroundColor: '#ef5b2f',
-  },
-  {
-    title: 'Vita Coco',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '/work/vita-coco',
-    image: 'http://via.placeholder.com/488x629',
-    color: '#ffffff',
-    backgroundColor: '#1a428a',
-  },
-]
-
-const CaseStudiesIndex: React.FunctionComponent<{}> = ({ children }) => {
+const CaseStudiesIndex: React.FunctionComponent<CaseStudiesProps> = props => {
   const classes = useStyles()
+
+  const { contentfulWorksPage } = props.data
 
   return (
     <Container className={classes.root}>
       <Grid container className={classes.top}>
         <ThemeSetter parent="CaseStudiesIndex" />
         <Grid item mobile={8} desktop={6} className={classes.introText}>
-          <ScrollReveal>
-            Here’s an assortment of things we have done in the past. Since it’s
-            the Internet, we can always find place for one more, so why don’t
-            you let us know what it will be?
-          </ScrollReveal>
+          <ScrollReveal>{contentfulWorksPage.description}</ScrollReveal>
         </Grid>
 
         <Grid item mobile={10}>
-          <OffsetHeadline line1="WORKS" className={classes.headline} />
+          <OffsetHeadline
+            line1={contentfulWorksPage.title}
+            className={classes.headline}
+          />
         </Grid>
       </Grid>
-      {works.map((work, i) => (
+      {contentfulWorksPage.caseStudyLinks.map((work, i) => (
         <CaseStudyLink
-          key={work.url}
-          title={work.title}
-          image={work.image}
-          description={work.description}
-          url={work.url}
-          color={work.color}
-          backgroundColor={work.backgroundColor}
+          key={work.slug}
+          title={work.linkTitle}
+          image={work.linkImage.file.url}
+          description={work.linkSummary}
+          url={work.slug}
+          color={work.linkTextColor}
+          backgroundColor={work.linkBackgroundColor}
           number={i}
           rowReverse={!!(i % 2)}
         />
@@ -102,3 +74,47 @@ const CaseStudiesIndex: React.FunctionComponent<{}> = ({ children }) => {
 }
 
 export default CaseStudiesIndex
+
+interface CaseStudiesProps {
+  data: {
+    contentfulWorksPage: {
+      id: string
+      title: string
+      description: string
+      caseStudyLinks: Array<{
+        slug: string
+        linkTitle: string
+        linkTextColor: string
+        linkSummary: string
+        linkBackgroundColor: string
+        linkImage: {
+          file: {
+            url: string
+          }
+        }
+      }>
+    }
+  }
+}
+
+export const pageQuery = graphql`
+  query CaseStudiesQuery {
+    contentfulWorksPage(slug: { eq: "work" }) {
+      id
+      title
+      description
+      caseStudyLinks {
+        slug
+        linkTitle
+        linkTextColor
+        linkSummary
+        linkBackgroundColor
+        linkImage {
+          file {
+            url
+          }
+        }
+      }
+    }
+  }
+`
