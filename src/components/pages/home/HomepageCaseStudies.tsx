@@ -6,7 +6,9 @@ import ArrowLink from 'components/display/ArrowLink'
 import Container from 'components/display/Container'
 import ScrollReveal from 'components/display/ScrollReveal'
 import OffsetHeadline from 'components/display/OffsetHeadline'
-import CaseStudyLink from 'components/pages/case-studies/CaseStudyLink'
+import CaseStudyLink, {
+  ICaseStudyLink,
+} from 'components/pages/case-studies/CaseStudyLink'
 import { responsiveLengths } from 'styles/mixins'
 
 const useStyles = makeStyles(
@@ -28,35 +30,15 @@ const useStyles = makeStyles(
       marginBottom: '4vw',
     },
   },
-  { name: 'HompageProjects' }
+  { name: 'HomepageCaseStudies' }
 )
 
-const works = [
-  {
-    title: 'New Balance',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '/work/new-balance',
-    image: 'http://via.placeholder.com/488x629',
-  },
-  {
-    title: 'Skyzone',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '/work/skyzone',
-    image: 'http://via.placeholder.com/488x629',
-  },
-  {
-    title: 'Vita Coco',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    url: '/work/vita-coco',
-    image: 'http://via.placeholder.com/488x629',
-  },
-]
-
-const HompageProjects: React.FunctionComponent<{}> = ({ children }) => {
+const HomepageCaseStudies: React.FunctionComponent<
+  HomepageCaseStudiesProps
+> = props => {
   const classes = useStyles()
+
+  const { caseStudyLinks } = props
 
   return (
     <Container className={classes.root}>
@@ -74,13 +56,15 @@ const HompageProjects: React.FunctionComponent<{}> = ({ children }) => {
           />
         </ScrollReveal>
       </div>
-      {works.map((work, i) => (
+      {caseStudyLinks.map((work, i) => (
         <CaseStudyLink
-          key={work.url}
-          title={work.title}
-          image={work.image}
-          description={work.description}
-          url={work.url}
+          key={work.slug}
+          title={work.linkTitle}
+          image={work.linkImage.file.url}
+          description={work.linkSummary}
+          url={`work/${work.slug}`}
+          color={work.linkTextColor}
+          backgroundColor={work.linkBackgroundColor}
           number={i}
           rowReverse={!!(i % 2)}
         />
@@ -89,4 +73,8 @@ const HompageProjects: React.FunctionComponent<{}> = ({ children }) => {
   )
 }
 
-export default HompageProjects
+export default HomepageCaseStudies
+
+interface HomepageCaseStudiesProps {
+  caseStudyLinks: ICaseStudyLink[]
+}
