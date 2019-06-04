@@ -10,6 +10,8 @@ import CaseStudyLink, {
   ICaseStudyLink,
 } from 'components/pages/case-studies/CaseStudyLink'
 import { responsiveLengths } from 'styles/mixins'
+import constants from 'styles/constants'
+import ThemeSetter from 'components/display/ThemeSetter'
 
 const useStyles = makeStyles(
   {
@@ -43,6 +45,11 @@ const HomepageCaseStudies: React.FunctionComponent<
   return (
     <Container className={classes.root}>
       <div className={classes.headlineAndLink}>
+        <ThemeSetter
+          color={constants.colors.darkGray}
+          backgroundColor={constants.colors.lightGray}
+          parent={'HomepageVideo'}
+        />
         <OffsetHeadline
           line1="LOOK"
           line2="PROOF!"
