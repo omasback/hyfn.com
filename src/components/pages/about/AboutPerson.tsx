@@ -9,13 +9,7 @@ import {
 } from 'react-transition-group'
 
 import constants from 'styles/constants'
-import {
-  responsiveLengths,
-  objectFitContain,
-  absoluteFill,
-} from 'styles/mixins'
-import { ContentfulPerson } from 'graphqlTypes'
-import { oc } from 'ts-optchain'
+import { responsiveLengths, absoluteFill } from 'styles/mixins'
 
 const timeout = 800
 
@@ -121,8 +115,26 @@ const useStyles = makeStyles(
   { name: 'AboutPerson' }
 )
 
+export interface Person {
+  node: {
+    id: string
+    jobTitle: string
+    name: string
+    image: {
+      file: {
+        url: string
+      }
+    }
+    hoverImage: {
+      file: {
+        url: string
+      }
+    }
+  }
+}
+
 interface Props {
-  person: ContentfulPerson
+  person: Person
   index: number
   onClick: () => void
 }
@@ -167,7 +179,7 @@ const AboutPerson: React.FunctionComponent<Props> = ({
       <div className={classes.imageContainer}>
         <TransitionGroup component={null}>
           <CSSTransition
-            key={person.name}
+            key={person.node.name}
             timeout={timeout}
             classNames={{
               enter: index % 2 ? classes.enterImgOdd : classes.enterImgEven,
@@ -178,12 +190,23 @@ const AboutPerson: React.FunctionComponent<Props> = ({
                   : classes.exitActiveImgEven,
             }}
           >
-            <div
-              style={{
-                backgroundImage: `url(${oc(person).image.file.url() || ''})`,
-              }}
-              className={classes.image}
-            />
+            <>
+              {person.node.hoverImage && (
+                <div
+                  style={{
+                    backgroundImage: `url(${person.node.hoverImage.file.url ||
+                      ''})`,
+                  }}
+                  className={classes.image}
+                />
+              )}
+              <div
+                style={{
+                  backgroundImage: `url(${person.node.image.file.url || ''})`,
+                }}
+                className={classes.image}
+              />
+            </>
           </CSSTransition>
         </TransitionGroup>
       </div>
@@ -194,7 +217,7 @@ const AboutPerson: React.FunctionComponent<Props> = ({
           })}
         />
         <TransitionGroup component={null}>
-          <Transition key={person.name} timeout={timeout / 2}>
+          <Transition key={person.node.name} timeout={timeout / 2}>
             {state => (
               <div className={classes.texts}>
                 <div className={classes.textContainer}>
@@ -204,7 +227,7 @@ const AboutPerson: React.FunctionComponent<Props> = ({
                       [classes.textEntered]: state === 'entered' && hover,
                     })}
                   >
-                    {person.name}
+                    {person.node.name}
                   </div>
                 </div>
                 <div className={classes.textContainer}>
@@ -214,7 +237,7 @@ const AboutPerson: React.FunctionComponent<Props> = ({
                       [classes.textEntered]: state === 'entered' && hover,
                     })}
                   >
-                    {person.jobTitle}
+                    {person.node.jobTitle}
                   </div>
                 </div>
               </div>

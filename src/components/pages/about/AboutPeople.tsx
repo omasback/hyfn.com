@@ -8,14 +8,7 @@ import Container from 'components/display/Container'
 import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
-import AboutPerson from './AboutPerson'
-import { ContentfulPerson, ContentfulPersonEdge } from 'graphqlTypes'
-
-export interface Person {
-  name: string
-  jobTitle: string
-  image: string
-}
+import AboutPerson, { Person } from './AboutPerson'
 
 const timeout = 1000
 
@@ -42,11 +35,9 @@ const useStyles = makeStyles(
   { name: 'AboutPeople' }
 )
 
-interface Props {
-  people: ContentfulPersonEdge[]
-}
-
-const AboutPeople: React.FunctionComponent<Props> = ({ people, children }) => {
+const AboutPeople: React.FunctionComponent<{ people: Person[] }> = ({
+  people,
+}) => {
   const classes = useStyles()
   const [index, setIndex] = React.useState(0)
   const nextIndex = (index + 4) % people.length
@@ -66,7 +57,7 @@ const AboutPeople: React.FunctionComponent<Props> = ({ people, children }) => {
           {fourPeople.map((person, i) => (
             <AboutPerson
               key={i}
-              person={person.node}
+              person={person}
               index={i}
               onClick={() => setIndex(nextIndex)}
             />
