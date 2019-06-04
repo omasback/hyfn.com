@@ -286,9 +286,6 @@ export const pageQuery = graphql`
       pageSections {
         ... on ContentfulPageSectionImageAndText {
           id
-          internal {
-            type
-          }
           imageSide
           text {
             json
@@ -297,6 +294,9 @@ export const pageQuery = graphql`
             file {
               url
             }
+          }
+          internal {
+            type
           }
         }
         ... on ContentfulPageSectionImagesAndText {
@@ -316,6 +316,19 @@ export const pageQuery = graphql`
           }
           text {
             json
+          }
+        }
+        ... on ContentfulPageSectionMedia {
+          id
+          fullBleed
+          internal {
+            type
+          }
+          asset {
+            file {
+              url
+              contentType
+            }
           }
         }
       }
