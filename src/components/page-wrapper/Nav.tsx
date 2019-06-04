@@ -160,26 +160,26 @@ const mainLinks = [
     text: 'About',
     path: '/about',
   },
-  {
-    text: 'Services',
-    path: '/services',
-  },
+  // {
+  //   text: 'Services',
+  //   path: '/services',
+  // },
   {
     text: 'Work',
     path: '/work',
   },
-  {
-    text: 'Thoughts',
-    path: '/thoughts',
-  },
-  {
-    text: 'Careers',
-    path: '/careers',
-  },
-  {
-    text: 'Play',
-    path: '/play',
-  },
+  // {
+  //   text: 'Thoughts',
+  //   path: '/thoughts',
+  // },
+  // {
+  //   text: 'Careers',
+  //   path: '/careers',
+  // },
+  // {
+  //   text: 'Play',
+  //   path: '/play',
+  // },
   {
     text: 'Contact us',
     path: '/contact',
@@ -199,7 +199,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
               <HyfnLogo className={classes.desktopLogo} />
             </Link>
             <div className={classes.desktopLeftLinks}>
-              {mainLinks.slice(0, 4).map(link => (
+              {mainLinks.slice(0, 2).map(link => (
                 <Link
                   key={link.path}
                   to={link.path}
@@ -211,11 +211,11 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
               ))}
             </div>
             <div className={classes.desktopRightLinks}>
-              <Link to={mainLinks[5].path}>
+              <Link to={'/play'}>
                 <PlayLogo className={classes.playLogo} />
               </Link>
-              <Link to={mainLinks[6].path} className={classes.contactLink}>
-                {mainLinks[6].text}
+              <Link to={'/contact'} className={classes.contactLink}>
+                {'Contact Us'}
               </Link>
             </div>
           </div>
