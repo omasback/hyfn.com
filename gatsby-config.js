@@ -17,7 +17,7 @@ const usePreview =
 contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
   accessToken: usePreview ? previewToken : deliveryToken,
-  host: usePreview ? 'preview.contentful.com' : null,
+  host: usePreview ? 'preview.contentful.com' : undefined,
 }
 
 const { spaceId, accessToken } = contentfulConfig
