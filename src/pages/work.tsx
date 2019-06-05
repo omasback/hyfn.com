@@ -26,7 +26,7 @@ const useStyles = makeStyles(
       minHeight: '60vh',
     },
     introText: {
-      extend: largeParagraph,
+      extend: largeParagraph(),
     },
     headline: {
       extend: responsiveLengths('marginBottom', 34, 46),

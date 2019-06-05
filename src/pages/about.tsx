@@ -26,9 +26,9 @@ const useStyles = makeStyles(
     },
     introP: {
       extend: merge(
-        largeParagraph,
         responsiveLengths('marginTop', 63, 108),
-        responsiveLengths('marginBottom', 50, 0)
+        responsiveLengths('marginBottom', 50, 0),
+        largeParagraph()
       ),
       marginBottom: 0,
     },

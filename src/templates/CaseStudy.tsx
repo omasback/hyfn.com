@@ -58,7 +58,7 @@ const useStyles = makeStyles(
       width: '100%',
     },
     largerCopy: {
-      extend: largeParagraph,
+      extend: largeParagraph(),
     },
     cta: {
       marginBottom: '4vw',
