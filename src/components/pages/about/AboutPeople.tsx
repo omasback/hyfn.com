@@ -9,12 +9,14 @@ import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import AboutPerson, { Person } from './AboutPerson'
+import ThemeSetter from 'components/display/ThemeSetter'
 
 const timeout = 1000
 
 const useStyles = makeStyles(
   {
     root: {
+      position: 'relative',
       extend: merge(
         responsiveLengths('marginTop', 71, 140),
         responsiveLengths('marginBottom', 116, 150)
@@ -52,6 +54,11 @@ const AboutPeople: React.FunctionComponent<{ people: Person[] }> = ({
   return (
     <>
       <Container className={classes.root}>
+        <ThemeSetter
+          color={constants.colors.darkGray}
+          backgroundColor={constants.colors.lightGray}
+          parent={'AboutPeople'}
+        />
         <OffsetHeadline line1="OUR" line2="CREW" />
         <div className={classes.people}>
           {fourPeople.map((person, i) => (
