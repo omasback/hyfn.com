@@ -36,7 +36,7 @@ class App extends Component {
       window.setTimeout(() => {
         this.color = color
         this.backgroundColor = backgroundColor
-      }, 500)
+      }, 100)
     }
   }
 
