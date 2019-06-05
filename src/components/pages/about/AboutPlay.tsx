@@ -18,8 +18,6 @@ const useStyles = makeStyles(
 const AboutPlay: React.FunctionComponent<IPlayProps> = props => {
   const classes = useStyles()
 
-  console.log(props)
-
   return (
     <div className={classes.root}>
       <ThemeSetter
