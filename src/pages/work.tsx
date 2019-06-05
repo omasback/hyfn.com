@@ -5,7 +5,9 @@ import merge from 'lodash/merge'
 import Container from 'components/display/Container'
 import ScrollReveal from 'components/display/ScrollReveal'
 import OffsetHeadline from 'components/display/OffsetHeadline'
-import CaseStudyLink from 'components/pages/case-studies/CaseStudyLink'
+import CaseStudyLink, {
+  ICaseStudyLink,
+} from 'components/pages/case-studies/CaseStudyLink'
 import { responsiveLengths, largeParagraph } from 'styles/mixins'
 import Grid from 'components/display/Grid'
 import ThemeSetter from 'components/display/ThemeSetter'
@@ -24,7 +26,7 @@ const useStyles = makeStyles(
       minHeight: '60vh',
     },
     introText: {
-      extend: largeParagraph,
+      extend: largeParagraph(),
     },
     headline: {
       extend: responsiveLengths('marginBottom', 34, 46),
@@ -81,18 +83,7 @@ interface CaseStudiesProps {
       id: string
       title: string
       description: string
-      caseStudyLinks: Array<{
-        slug: string
-        linkTitle: string
-        linkTextColor: string
-        linkSummary: string
-        linkBackgroundColor: string
-        linkImage: {
-          file: {
-            url: string
-          }
-        }
-      }>
+      caseStudyLinks: ICaseStudyLink[]
     }
   }
 }

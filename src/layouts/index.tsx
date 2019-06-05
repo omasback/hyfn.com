@@ -32,11 +32,12 @@ class App extends Component {
     color: string = constants.colors.darkGray,
     backgroundColor: string = constants.colors.lightGray
   ) => {
-    window.setTimeout &&
+    if (typeof window !== 'undefined') {
       window.setTimeout(() => {
         this.color = color
         this.backgroundColor = backgroundColor
       }, 500)
+    }
   }
 
   render() {

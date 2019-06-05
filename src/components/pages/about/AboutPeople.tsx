@@ -8,20 +8,15 @@ import Container from 'components/display/Container'
 import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
-import AboutPerson from './AboutPerson'
-import { ContentfulPerson, ContentfulPersonEdge } from 'graphqlTypes'
-
-export interface Person {
-  name: string
-  jobTitle: string
-  image: string
-}
+import AboutPerson, { Person } from './AboutPerson'
+import ThemeSetter from 'components/display/ThemeSetter'
 
 const timeout = 1000
 
 const useStyles = makeStyles(
   {
     root: {
+      position: 'relative',
       extend: merge(
         responsiveLengths('marginTop', 71, 140),
         responsiveLengths('marginBottom', 116, 150)
@@ -42,11 +37,9 @@ const useStyles = makeStyles(
   { name: 'AboutPeople' }
 )
 
-interface Props {
-  people: ContentfulPersonEdge[]
-}
-
-const AboutPeople: React.FunctionComponent<Props> = ({ people, children }) => {
+const AboutPeople: React.FunctionComponent<{ people: Person[] }> = ({
+  people,
+}) => {
   const classes = useStyles()
   const [index, setIndex] = React.useState(0)
   const nextIndex = (index + 4) % people.length
@@ -61,12 +54,17 @@ const AboutPeople: React.FunctionComponent<Props> = ({ people, children }) => {
   return (
     <>
       <Container className={classes.root}>
+        <ThemeSetter
+          color={constants.colors.darkGray}
+          backgroundColor={constants.colors.lightGray}
+          parent={'AboutPeople'}
+        />
         <OffsetHeadline line1="OUR" line2="CREW" />
         <div className={classes.people}>
           {fourPeople.map((person, i) => (
             <AboutPerson
               key={i}
-              person={person.node}
+              person={person}
               index={i}
               onClick={() => setIndex(nextIndex)}
             />

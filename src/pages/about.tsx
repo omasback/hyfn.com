@@ -2,10 +2,8 @@ import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
-import { oc } from 'ts-optchain'
 import { graphql } from 'gatsby'
 
-import { AboutQuery } from 'graphqlTypes'
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
@@ -13,6 +11,10 @@ import ScrollReveal from 'components/display/ScrollReveal'
 import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import AboutPeople from 'components/pages/about/AboutPeople'
+import AboutTestimonials, {
+  Testimonial,
+} from 'components/pages/about/AboutTestimonials'
+import { Person } from 'components/pages/about/AboutPerson'
 
 const useStyles = makeStyles(
   {
@@ -27,9 +29,9 @@ const useStyles = makeStyles(
     },
     introP: {
       extend: merge(
-        largeParagraph,
         responsiveLengths('marginTop', 63, 108),
-        responsiveLengths('marginBottom', 50, 0)
+        responsiveLengths('marginBottom', 50, 0),
+        largeParagraph()
       ),
       marginBottom: 0,
     },
@@ -55,14 +57,8 @@ const useStyles = makeStyles(
   { name: 'About' }
 )
 
-interface Props {
-  data: AboutQuery
-}
-
-const About: React.FunctionComponent<Props> = props => {
+const About: React.FunctionComponent<AboutPeopleProps> = props => {
   const classes = useStyles()
-
-  const people = oc(props).data.allContentfulPerson.edges() || []
 
   return (
     <>
@@ -112,12 +108,26 @@ const About: React.FunctionComponent<Props> = props => {
           </Grid>
         </Grid>
       </Container>
-      <AboutPeople people={people} />
+      <AboutPeople people={props.data.allContentfulPerson.edges} />
+      <AboutTestimonials
+        testimonials={props.data.allContentfulTestimonial.edges}
+      />
     </>
   )
 }
 
 export default About
+
+interface AboutPeopleProps {
+  data: {
+    allContentfulPerson: {
+      edges: Person[]
+    }
+    allContentfulTestimonial: {
+      edges: Testimonial[]
+    }
+  }
+}
 
 export const pageQuery = graphql`
   query About {
@@ -132,6 +142,28 @@ export const pageQuery = graphql`
               url
             }
           }
+          hoverImage {
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+    allContentfulTestimonial {
+      edges {
+        node {
+          backgroundColor
+          companyLogo {
+            file {
+              url
+            }
+          }
+          personName
+          personTitle
+          quote
+          textColor
+          id
         }
       }
     }

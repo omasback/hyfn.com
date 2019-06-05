@@ -132,3 +132,16 @@ const CaseStudyLink: React.FunctionComponent<{
 }
 
 export default CaseStudyLink
+
+export interface ICaseStudyLink {
+  slug: string
+  linkTitle: string
+  linkTextColor: string
+  linkSummary: string
+  linkBackgroundColor: string
+  linkImage: {
+    file: {
+      url: string
+    }
+  }
+}
