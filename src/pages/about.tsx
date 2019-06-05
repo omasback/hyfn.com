@@ -14,6 +14,10 @@ import AboutPeople from 'components/pages/about/AboutPeople'
 import AboutTestimonials, {
   Testimonial,
 } from 'components/pages/about/AboutTestimonials'
+import AboutPlay, {
+  IAboutPlay,
+  IPlayProps,
+} from 'components/pages/about/AboutPlay'
 import { Person } from 'components/pages/about/AboutPerson'
 
 const useStyles = makeStyles(
@@ -112,6 +116,7 @@ const About: React.FunctionComponent<AboutPeopleProps> = props => {
       <AboutTestimonials
         testimonials={props.data.allContentfulTestimonial.edges}
       />
+      <AboutPlay data={props.data.contentfulPlay} />
     </>
   )
 }
@@ -126,6 +131,7 @@ interface AboutPeopleProps {
     allContentfulTestimonial: {
       edges: Testimonial[]
     }
+    contentfulPlay: IPlayProps
   }
 }
 
@@ -166,6 +172,17 @@ export const pageQuery = graphql`
           id
         }
       }
+    }
+    contentfulPlay(slug: { eq: "play" }) {
+      media {
+        id
+        file {
+          url
+          contentType
+        }
+      }
+      title
+      description
     }
   }
 `
