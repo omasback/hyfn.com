@@ -11,6 +11,9 @@ import ScrollReveal from 'components/display/ScrollReveal'
 import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import AboutPeople from 'components/pages/about/AboutPeople'
+import AboutTestimonials, {
+  Testimonial,
+} from 'components/pages/about/AboutTestimonials'
 import { Person } from 'components/pages/about/AboutPerson'
 
 const useStyles = makeStyles(
@@ -106,6 +109,9 @@ const About: React.FunctionComponent<AboutPeopleProps> = props => {
         </Grid>
       </Container>
       <AboutPeople people={props.data.allContentfulPerson.edges} />
+      <AboutTestimonials
+        testimonials={props.data.allContentfulTestimonial.edges}
+      />
     </>
   )
 }
@@ -116,6 +122,9 @@ interface AboutPeopleProps {
   data: {
     allContentfulPerson: {
       edges: Person[]
+    }
+    allContentfulTestimonial: {
+      edges: Testimonial[]
     }
   }
 }
@@ -138,6 +147,23 @@ export const pageQuery = graphql`
               url
             }
           }
+        }
+      }
+    }
+    allContentfulTestimonial {
+      edges {
+        node {
+          backgroundColor
+          companyLogo {
+            file {
+              url
+            }
+          }
+          personName
+          personTitle
+          quote
+          textColor
+          id
         }
       }
     }
