@@ -222,10 +222,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
         ) : (
           <>
             <Link to="/">
-              <HyfnLogo
-                color={constants.colors.black}
-                className={classes.mobileLogo}
-              />
+              <HyfnLogo className={classes.mobileLogo} />
             </Link>
             <Menu
               right
