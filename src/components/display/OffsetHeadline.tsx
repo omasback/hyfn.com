@@ -23,10 +23,14 @@ const useStyles = makeStyles(
 
 const OffsetHeadline: React.FunctionComponent<{
   className?: string
-  line1?: string
-  line2?: string
-}> = ({ className, line1, line2 }) => {
+  text: string
+}> = ({ className, text }) => {
   const classes = useStyles()
+
+  const line1 = text.split('\\n')[0]
+  const line2 = text.split('\\n')[1]
+
+  // console.log(text, line1, line2)
 
   return (
     <h1 className={cx(classes.root, className)}>

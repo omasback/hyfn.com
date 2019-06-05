@@ -78,7 +78,7 @@ const About: React.FunctionComponent<AboutPeopleProps> = props => {
           </Grid>
           <Grid container item mobile={10} desktop={5}>
             <Grid item className={classes.headline} mobile={10}>
-              <OffsetHeadline line1="CULTURE" />
+              <OffsetHeadline text="CULTURE" />
             </Grid>
             <Grid item mobile={8} desktop={6}>
               <ScrollReveal className={classes.subheadline}>

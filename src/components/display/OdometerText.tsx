@@ -51,7 +51,7 @@ const OdometerText: React.FunctionComponent<{
             })}
             style={{ transitionDelay: `${0.05 * i}s` }}
           >
-            {character}
+            {character === ' ' ? '\u00a0' : character}
           </span>
         </span>
       ))}

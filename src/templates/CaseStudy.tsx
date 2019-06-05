@@ -108,7 +108,7 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
           </Grid>
           <Grid container item mobile={10} desktop={5}>
             <Grid item className={classes.headline} mobile={10}>
-              <OffsetHeadline line1="OMD" line2="BUZZED" />
+              <OffsetHeadline text="OMD\nBUZZED" />
             </Grid>
             <Grid item mobile={8} desktop={6}>
               <ScrollReveal className={classes.subheadline}>
