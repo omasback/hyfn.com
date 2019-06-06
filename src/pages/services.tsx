@@ -126,9 +126,7 @@ const Services: React.FunctionComponent<IServices> = props => {
           >
             <div className={classes.initial}>{service.title.slice(0, 1)}</div>
             <h3 className={classes.title}>{service.title}</h3>
-            {service.textBlocks.map(block =>
-              documentToReactComponents(block.richText.json)
-            )}
+            {documentToReactComponents(service.bulletPoints.json)}
             {service.caseStudies.map(cs => (
               <div className="caseStudy" key={cs.slug}>
                 <img src={cs.linkImage.file.url} alt="" />
@@ -158,11 +156,9 @@ interface IServices {
       imageAndTextModules: ImageAndTextProps[]
       services: {
         title: string
-        textBlocks: {
-          richText: {
-            json: any
-          }
-        }[]
+        bulletPoints: {
+          json: any
+        }
         caseStudies: {
           slug: string
           linkImage: {
@@ -202,10 +198,8 @@ export const pageQuery = graphql`
       }
       services {
         title
-        textBlocks {
-          richText {
-            json
-          }
+        bulletPoints {
+          json
         }
         caseStudies {
           slug
