@@ -9,6 +9,7 @@ import { responsiveLengths, largeParagraph } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import ThemeSetter from 'components/display/ThemeSetter'
 import Grid from 'components/display/Grid'
+import CircleArrow from 'components/display/CircleArrow'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 const timeout = 1000
@@ -159,24 +160,20 @@ const AboutTestimonials: React.FunctionComponent<{
           </div>
         </Grid>
         <div className={classes.buttons}>
-          <div
-            className={cx(classes.button, {
-              [classes.buttonDisabled]: index === 0,
-            })}
+          <CircleArrow
+            direction={'left'}
+            className={classes.button}
+            disabled={index === 0}
             onClick={() => setIndex(Math.max(index - 1, 0))}
-          >
-            {'<-'}
-          </div>
-          <div
-            className={cx(classes.button, {
-              [classes.buttonDisabled]: index === testimonials.length - 1,
-            })}
+          />
+          <CircleArrow
+            direction={'right'}
+            className={classes.button}
+            disabled={index === testimonials.length - 1}
             onClick={() =>
               setIndex(Math.min(index + 1, testimonials.length - 1))
             }
-          >
-            {'->'}
-          </div>
+          />
         </div>
       </Grid>
       <div className={classes.logos}>
