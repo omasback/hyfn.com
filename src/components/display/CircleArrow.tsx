@@ -9,13 +9,13 @@ import { responsiveLengths } from 'styles/mixins'
 const useStyles = makeStyles(
   {
     root: {
-      extend: merge(
-        responsiveLengths('width', 56, 56),
-        responsiveLengths('height', 56, 56),
-        responsiveLengths('paddingLeft', 7, 7),
-        responsiveLengths('paddingBottom', 1, 1),
-        responsiveLengths('fontSize', 24, 24)
-      ),
+      extend: responsiveLengths([
+        ['width', 56, 56],
+        ['height', 56, 56],
+        ['paddingLeft', 7, 7],
+        ['paddingBottom', 1, 1],
+        ['fontSize', 24, 24],
+      ]),
       lineHeight: 0,
       borderRadius: '50%',
       backgroundColor: '#fff',

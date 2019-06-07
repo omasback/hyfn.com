@@ -76,23 +76,7 @@ const useStyles = makeStyles(
       },
     },
     button: {
-      extend: merge(
-        responsiveLengths('width', 56, 56),
-        responsiveLengths('height', 56, 56),
-        responsiveLengths('marginLeft', 5, 5)
-      ),
-      borderRadius: '50%',
-      backgroundColor: '#fff',
-      color: constants.colors.darkGray,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      fontSize: 24,
-      fontWeight: 'bold',
-      transition: 'opacity 0.3s',
-    },
-    buttonDisabled: {
-      opacity: 0.5,
+      extend: merge(responsiveLengths('marginLeft', 5, 5)),
     },
     logos: {
       extend: merge(responsiveLengths('marginTop', 70, 70)),
