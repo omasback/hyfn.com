@@ -19,6 +19,7 @@ import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import ThemeSetter from 'components/display/ThemeSetter'
 import contentfulContentTypeComponentMap from '../contentfulContentTypeComponentMap'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const useStyles = makeStyles(
   {
@@ -93,11 +94,6 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
   return (
     <>
       <Container className={classes.root}>
-        <ThemeSetter
-          color={contentfulCaseStudy.linkTextColor}
-          backgroundColor={contentfulCaseStudy.linkBackgroundColor}
-          parent={contentfulCaseStudy.linkTitle}
-        />
         <Grid container className={classes.row1}>
           <Grid container item mobile={10}>
             <Grid item mobile={8} desktop={5}>
@@ -108,19 +104,13 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
           </Grid>
           <Grid container item mobile={10} desktop={5}>
             <Grid item className={classes.headline} mobile={10}>
-              <OffsetHeadline line1="OMD" line2="BUZZED" />
+              <OffsetHeadline text={contentfulCaseStudy.pageTitle} />
             </Grid>
             <Grid item mobile={8} desktop={6}>
               <ScrollReveal className={classes.subheadline}>
-                They Said
-              </ScrollReveal>
-              <ScrollReveal>
-                <p>
-                  Everyone knows drunk driving is bad, but a lot of people still
-                  think it’s okay to drive buzzed. We want to create a memorable
-                  campaign that starts a conversation around preventing buzzed
-                  driving.
-                </p>
+                {documentToReactComponents(
+                  contentfulCaseStudy.pageIntroText.json
+                )}
               </ScrollReveal>
             </Grid>
           </Grid>
@@ -192,6 +182,10 @@ interface CaseStudyPage {
           url: string
         }
       }
+      pageTitle: string
+      pageIntroText: {
+        json: any
+      }
       pageSections: Array<ImageAndTextProps | ImagesAndTextProps | null>
     }
   }
@@ -209,6 +203,10 @@ export const pageQuery = graphql`
         file {
           url
         }
+      }
+      pageTitle
+      pageIntroText {
+        json
       }
       pageSections {
         ... on ContentfulPageSectionImageAndText {

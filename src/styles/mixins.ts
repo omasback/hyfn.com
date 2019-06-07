@@ -2,22 +2,58 @@ import constants from 'styles/constants'
 import merge from 'lodash/merge'
 import { CSSProperties } from '@material-ui/styles'
 
-const responsiveLengths = (
+interface IRules {
+  [x: string]: {
+    [x: string]: string
+  }
+}
+
+const responsiveLengthsRules = (
   property: keyof CSSProperties,
   mobilePixels: number,
-  desktopPixels: number
-) => ({
-  [property]: ((mobilePixels / 375) * 100).toFixed(2) + 'vw',
-  '@media (width: 375px)': {
-    [property]: mobilePixels,
-  },
-  [constants.mq.desktop]: {
-    [property]: ((desktopPixels / 1440) * 100).toFixed(2) + 'vw',
-  },
-  '@media (min-width: 1440px)': {
-    [property]: desktopPixels,
-  },
-})
+  desktopPixels?: number
+) => {
+  const rules = {
+    '@media (min-width: 0px)': {
+      [property]: ((mobilePixels / 375) * 100).toFixed(2) + 'vw',
+    },
+    '@media (width: 375px)': {
+      [property]: mobilePixels,
+    },
+  }
+
+  if (typeof desktopPixels !== 'undefined') {
+    rules[constants.mq.desktop] = {
+      [property]: ((desktopPixels / 1440) * 100).toFixed(2) + 'vw',
+    }
+    rules['@media (min-width: 1440px)'] = {
+      [property]: desktopPixels,
+    }
+  }
+
+  return rules
+}
+
+type Args = [keyof CSSProperties, number, number]
+
+const responsiveLengths = (
+  property: keyof CSSProperties | Args[],
+  mobilePixels?: number,
+  desktopPixels?: number
+) => {
+  if (Array.isArray(property)) {
+    const rulesets = property.map(args =>
+      responsiveLengthsRules.apply(null, args)
+    )
+    return merge(rulesets)
+  } else if (typeof mobilePixels === 'undefined') {
+    console.warn(
+      'responsiveLengths must be provided an array as first argument or mobilePixels as second argument'
+    )
+  } else {
+    return responsiveLengthsRules(property, mobilePixels, desktopPixels)
+  }
+}
 
 const bleedLeft = responsiveLengths('marginLeft', 0, -150)
 

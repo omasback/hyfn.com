@@ -50,11 +50,7 @@ const HomepageCaseStudies: React.FunctionComponent<
           backgroundColor={constants.colors.lightGray}
           parent={'HomepageVideo'}
         />
-        <OffsetHeadline
-          line1="LOOK"
-          line2="PROOF!"
-          className={classes.headline}
-        />
+        <OffsetHeadline text="LOOK\nPROOF!" className={classes.headline} />
         <ScrollReveal>
           <ArrowLink
             to="/works"

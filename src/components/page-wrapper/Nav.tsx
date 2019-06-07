@@ -160,10 +160,10 @@ const mainLinks = [
     text: 'About',
     path: '/about',
   },
-  // {
-  //   text: 'Services',
-  //   path: '/services',
-  // },
+  {
+    text: 'Services',
+    path: '/services',
+  },
   {
     text: 'Work',
     path: '/work',
@@ -199,7 +199,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
               <HyfnLogo className={classes.desktopLogo} />
             </Link>
             <div className={classes.desktopLeftLinks}>
-              {mainLinks.slice(0, 2).map(link => (
+              {mainLinks.slice(0, 3).map(link => (
                 <Link
                   key={link.path}
                   to={link.path}

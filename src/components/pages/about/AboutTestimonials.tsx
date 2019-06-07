@@ -9,6 +9,7 @@ import { responsiveLengths, largeParagraph } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import ThemeSetter from 'components/display/ThemeSetter'
 import Grid from 'components/display/Grid'
+import CircleArrow from 'components/display/CircleArrow'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 const timeout = 1000
@@ -75,23 +76,7 @@ const useStyles = makeStyles(
       },
     },
     button: {
-      extend: merge(
-        responsiveLengths('width', 56, 56),
-        responsiveLengths('height', 56, 56),
-        responsiveLengths('marginLeft', 5, 5)
-      ),
-      borderRadius: '50%',
-      backgroundColor: '#fff',
-      color: constants.colors.darkGray,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      fontSize: 24,
-      fontWeight: 'bold',
-      transition: 'opacity 0.3s',
-    },
-    buttonDisabled: {
-      opacity: 0.5,
+      extend: merge(responsiveLengths('marginLeft', 5, 5)),
     },
     logos: {
       extend: merge(responsiveLengths('marginTop', 70, 70)),
@@ -129,11 +114,7 @@ const AboutTestimonials: React.FunctionComponent<{
         backgroundColor={testimonial.backgroundColor}
         parent={'AboutTestimonials'}
       />
-      <OffsetHeadline
-        line1="TESTI-"
-        line2="MONIAL"
-        className={classes.headline}
-      />
+      <OffsetHeadline text="TESTI-\nMONIAL" className={classes.headline} />
       <Grid container className={classes.relative}>
         <Grid item mobile={8} desktop={3} offsetDesktop={1}>
           <h3 className={classes.subheadline}>We’re Always in Good Company</h3>
@@ -163,24 +144,20 @@ const AboutTestimonials: React.FunctionComponent<{
           </div>
         </Grid>
         <div className={classes.buttons}>
-          <div
-            className={cx(classes.button, {
-              [classes.buttonDisabled]: index === 0,
-            })}
+          <CircleArrow
+            direction={'left'}
+            className={classes.button}
+            disabled={index === 0}
             onClick={() => setIndex(Math.max(index - 1, 0))}
-          >
-            {'<-'}
-          </div>
-          <div
-            className={cx(classes.button, {
-              [classes.buttonDisabled]: index === testimonials.length - 1,
-            })}
+          />
+          <CircleArrow
+            direction={'right'}
+            className={classes.button}
+            disabled={index === testimonials.length - 1}
             onClick={() =>
               setIndex(Math.min(index + 1, testimonials.length - 1))
             }
-          >
-            {'->'}
-          </div>
+          />
         </div>
       </Grid>
       <div className={classes.logos}>

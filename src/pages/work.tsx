@@ -53,7 +53,7 @@ const CaseStudiesIndex: React.FunctionComponent<CaseStudiesProps> = props => {
 
         <Grid item mobile={10}>
           <OffsetHeadline
-            line1={contentfulWorksPage.title}
+            text={contentfulWorksPage.title}
             className={classes.headline}
           />
         </Grid>

@@ -48,7 +48,8 @@ const PageSectionMedia: React.FunctionComponent<
 
   const mediaElement =
     asset.file.contentType.indexOf('video') === 0 ? (
-      <video loop autoPlay playsInline className={classes.media}>
+      // TODO: autoplay video on scroll enter
+      <video loop playsInline controls className={classes.media}>
         <source src={asset.file.url} type={asset.file.contentType} />
       </video>
     ) : (

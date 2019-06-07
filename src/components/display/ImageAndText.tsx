@@ -58,7 +58,7 @@ export interface ImageAndTextProps {
   internal: {
     type: 'ContentfulPageSectionImageAndText'
   }
-  imageSide: boolean
+  imageSide: boolean // true = left, false = right
   image: {
     file: {
       url: string
@@ -69,6 +69,8 @@ export interface ImageAndTextProps {
   }
 }
 
+// text prop should be either a string of html or a contentful rich text json object
+
 const ImageAndText: React.FunctionComponent<ImageAndTextProps> = props => {
   const classes = useStyles()
   const bleedLeft = false
@@ -76,17 +78,27 @@ const ImageAndText: React.FunctionComponent<ImageAndTextProps> = props => {
 
   const { image, text, imageSide = true } = props
 
+  let textElement
+
+  if (text) {
+    if (typeof text === 'string') {
+      textElement = <div dangerouslySetInnerHTML={{ __html: text }} />
+    } else {
+      textElement = documentToReactComponents(text.json)
+    }
+  } else {
+    textElement = ''
+  }
+
   return (
     <Container className={cx(classes.root)}>
       <Grid
         container
         alignItemsDesktop="center"
-        className={cx({ [classes.rowReverse]: !imageSide })}
+        className={cx({ [classes.rowReverse]: imageSide })}
       >
         <Grid item mobile={8} desktop={bleedLeft || bleedRight ? 4 : 3.5}>
-          <ScrollReveal>
-            {text && documentToReactComponents(text.json)}
-          </ScrollReveal>
+          <ScrollReveal>{textElement}</ScrollReveal>
         </Grid>
         <Grid item mobile={10} desktop={bleedLeft || bleedRight ? 5 : 6}>
           <ScrollReveal>

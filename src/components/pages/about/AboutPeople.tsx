@@ -59,7 +59,7 @@ const AboutPeople: React.FunctionComponent<{ people: Person[] }> = ({
           backgroundColor={constants.colors.lightGray}
           parent={'AboutPeople'}
         />
-        <OffsetHeadline line1="OUR" line2="CREW" />
+        <OffsetHeadline text="OUR\nCREW" />
         <div className={classes.people}>
           {fourPeople.map((person, i) => (
             <AboutPerson

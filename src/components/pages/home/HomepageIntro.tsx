@@ -73,7 +73,7 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
       <Grid container className={classes.row1}>
         <Grid container item mobile={10} desktop={5}>
           <Grid item className={classes.headline} mobile={10}>
-            <OffsetHeadline line1="STILL" line2="HERE?" />
+            <OffsetHeadline text="STILL\nHERE?" />
           </Grid>
           <Grid item mobile={8} desktop={6} offsetDesktop={2}>
             <ScrollReveal className={classes.subheadline}>
