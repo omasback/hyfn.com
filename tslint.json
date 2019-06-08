@@ -17,6 +17,7 @@
     "variable-name": {
       "options": ["allow-pascal-case"]
     },
-    "no-empty-interface": false
+    "no-empty-interface": false,
+    "prefer-conditional-expression": false
   }
 }

@@ -27,7 +27,7 @@ const useStyles = makeStyles(
       transition: 'opacity 0.3s',
     },
     rootDisabled: {
-      opacity: 0.5,
+      opacity: 0,
     },
     up: {
       transform: 'rotateZ(-90deg)',

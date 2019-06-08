@@ -1,3 +1,5 @@
+const desktop = 1024
+
 const constants = {
   colors: {
     black: '#1a1b23',
@@ -7,8 +9,11 @@ const constants = {
     lightGray: '#e8e8e8',
     darkGray: '#3c3c40',
   },
+  breakPoint: {
+    desktop,
+  },
   mq: {
-    desktop: '@media (min-width: 1024px)',
+    desktop: `@media (min-width: ${desktop}px)`,
   },
   triggerOnce: true,
   themeTransitionDuration: '0.5s',

@@ -56,8 +56,11 @@ const ArrowLink: React.FunctionComponent<{
   to: string
   text: string
   className?: string
-}> = ({ to, text, className }) => {
+  color?: string
+}> = props => {
   const classes = useStyles()
+
+  const { to, text, className, color } = props
 
   return (
     <Link to={to} className={cx(classes.root, className)}>
