@@ -34,7 +34,7 @@ const responsiveLengthsRules = (
   return rules
 }
 
-type Args = [keyof CSSProperties, number, number]
+type Args = [keyof CSSProperties, number, number?]
 
 const responsiveLengths = (
   property: keyof CSSProperties | Args[],
@@ -47,7 +47,7 @@ const responsiveLengths = (
     )
     return merge(rulesets)
   } else if (typeof mobilePixels === 'undefined') {
-    console.warn(
+    throw new Error(
       'responsiveLengths must be provided an array as first argument or mobilePixels as second argument'
     )
   } else {

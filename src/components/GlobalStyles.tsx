@@ -5,6 +5,8 @@ import ModeratBoldWoff from 'fonts/Moderat-Bold.woff'
 import ModeratLightWoff from 'fonts/Moderat-Light.woff'
 import { responsiveLengths } from 'styles/mixins'
 
+import 'slick-carousel/slick/slick.css'
+
 // Using theme so toggle global color and background-color
 // on the body was glitchy for some reason.
 // Keep theme changes in PageWrapper
