@@ -62,14 +62,14 @@ const bleedRight = responsiveLengths('marginRight', 0, -150)
 const largeParagraph = () =>
   merge({ lineHeight: 1.6 }, responsiveLengths('fontSize', 17, 28))
 
-const objectFitContain: CSSProperties = {
+const objectFitContain: () => CSSProperties = () => ({
   position: 'absolute',
   top: '50%',
   left: '50%',
   minWidth: '1000%',
   minHeight: '1000%',
   transform: 'translate(-50%, -50%) scale(0.1)',
-}
+})
 
 const absoluteFill: CSSProperties = {
   position: 'absolute',
