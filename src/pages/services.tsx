@@ -23,13 +23,14 @@ import ArrowLink from 'components/display/ArrowLink'
 import XIcon from 'components/svg/XIcon'
 import CircleArrow from 'components/display/CircleArrow'
 import useMedia from 'use-media'
+import { Portal } from '@material-ui/core'
 
 const useStyles = makeStyles(
   {
     root: {
       extend: merge(
         responsiveLengths('marginTop', 71, 140),
-        responsiveLengths('marginBottom', 116, 150)
+        responsiveLengths('marginBottom', 116, -70)
       ),
     },
     intro: {
@@ -63,33 +64,45 @@ const useStyles = makeStyles(
         ['width', 20],
       ]),
     },
-    initial: {
-      extend: responsiveLengths([['fontSize', 250]]),
-      fontWeight: 'bold',
-      lineHeight: 1,
+    mobileTabs: {
+      pointerEvents: 'none',
     },
-    title: {
-      extend: responsiveLengths([['fontSize', 21], ['marginTop', 46]]),
-      fontWeight: 'bold',
+    mobileTab: {
+      pointerEvents: 'all',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      height: '100vh',
+      zIndex: 2,
+      transition: 'transform 1s',
+      transitionTimingFunction: easings.easeOutQuint,
+      overflowY: 'hidden',
+      overflowX: 'hidden',
     },
-    bulletPoints: {
-      '& ul': {
-        extend: responsiveLengths([['fontSize', 14]]),
-        listStyleType: 'none',
-        paddingLeft: 0,
-      },
-      '& > ul': {
-        extend: responsiveLengths([['marginTop', 30]]),
-      },
-      '& p': {
-        marginBottom: 0,
-      },
-      '& > ul > li > p': {
-        fontWeight: 'bold',
-      },
+    mobileTab0: {
+      transform: 'translate(0, 83%)',
     },
-    drawer: {
-      width: '100%',
+    mobileTab1: {
+      transform: 'translate(15%, 77%)',
+    },
+    mobileTab2: {
+      transform: 'translate(30%, 79%)',
+    },
+    mobileTabOpen: {
+      transform: 'translate(0, 0)',
+      overflowY: 'auto',
+    },
+    mobileTabHidden: {
+      '&$mobileTab0': {
+        transform: 'translate(0%, 93%)',
+      },
+      '&$mobileTab1': {
+        transform: 'translate(20%, 105%)',
+      },
+      '&$mobileTab2': {
+        transform: 'translate(40%, 110%)',
+      },
     },
     desktopTabs: {
       extend: responsiveLengths([
@@ -130,13 +143,26 @@ const useStyles = makeStyles(
   { name: 'Services' }
 )
 
+const modalRoot = document.getElementById('modal-root')
+
 const Services: React.FunctionComponent<IServices> = props => {
   const classes = useStyles(props)
 
   const cms = props.data.contentfulServicesPage
 
-  const [currentTab, setCurrentTab] = React.useState(-1)
-  const isWide = useMedia({ minWidth: constants.breakPoint.desktop }, true)
+  const isWide = useMedia({ minWidth: constants.breakPoint.desktop }, false)
+  const [currentTab, setCurrentTab] = React.useState(isWide ? 0 : -1)
+  React.useEffect(() => {
+    if (window) {
+      window.document.body.style.overflow =
+        isWide || currentTab === -1 ? null : 'hidden'
+    }
+    return () => {
+      if (window) {
+        window.document.body.style.overflow = null
+      }
+    }
+  })
 
   return (
     <div className={classes.root}>
@@ -200,28 +226,39 @@ const Services: React.FunctionComponent<IServices> = props => {
           ))}
         </Container>
       ) : (
-        <>
-          {cms.services.map((service, i) => (
-            <SwipeableDrawer
-              key={i}
-              anchor="right"
-              open={currentTab === i}
-              onClose={() => setCurrentTab(-1)}
-              onOpen={() => null}
-              disableSwipeToOpen={true}
-              classes={{
-                paper: classes.drawer,
-              }}
-            >
-              <XIcon
-                color="#ffffff"
-                className={classes.xIcon}
-                onClick={() => setCurrentTab(-1)}
-              />
-              <ServiceTab i={i} open={currentTab === i} {...service} />
-            </SwipeableDrawer>
-          ))}
-        </>
+        <Portal>
+          {/* <Modal
+          aria-labelledby="Services tabs"
+          aria-describedby="Detailed info on services we provide"
+          open={true}
+          hideBackdrop
+          keepMounted
+          className={classes.mobileTabs}
+        > */}
+          <>
+            {cms.services.map((service, i) => (
+              <div
+                key={i}
+                className={cx(classes.mobileTab, classes[`mobileTab${i}`], {
+                  [classes.mobileTabOpen]: currentTab === i,
+                  [classes.mobileTabHidden]: currentTab > -1 && currentTab < i,
+                })}
+                onClick={() => setCurrentTab(i)}
+              >
+                <XIcon
+                  color="#ffffff"
+                  className={classes.xIcon}
+                  onClick={evt => {
+                    evt.stopPropagation()
+                    setCurrentTab(-1)
+                  }}
+                />
+                <ServiceTab i={i} open={currentTab === i} {...service} />
+              </div>
+            ))}
+          </>
+          {/* </Modal> */}
+        </Portal>
       )}
     </div>
   )

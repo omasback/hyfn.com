@@ -12,7 +12,7 @@ const Homepage: React.FunctionComponent<HomepageProps> = props => {
   return (
     <div>
       <HomepageHero />
-      <HomepageIntro />
+      <HomepageIntro cms={contentfulHomePage} />
       <HomepageVideo />
       <HompageCaseStudies caseStudyLinks={contentfulHomePage.caseStudyLinks} />
     </div>
@@ -21,11 +21,16 @@ const Homepage: React.FunctionComponent<HomepageProps> = props => {
 
 export default Homepage
 
+export interface IHomepageData {
+  caseStudyLinks: ICaseStudyLink[]
+  slideshow1: { file: { url: string } }[]
+  slideshow2: { file: { url: string } }[]
+  slideshow3: { file: { url: string } }[]
+}
+
 interface HomepageProps {
   data: {
-    contentfulHomePage: {
-      caseStudyLinks: ICaseStudyLink[]
-    }
+    contentfulHomePage: IHomepageData
   }
 }
 
@@ -42,6 +47,21 @@ export const pageQuery = graphql`
           file {
             url
           }
+        }
+      }
+      slideshow1 {
+        file {
+          url
+        }
+      }
+      slideshow2 {
+        file {
+          url
+        }
+      }
+      slideshow3 {
+        file {
+          url
         }
       }
     }

@@ -11,6 +11,8 @@ import ScrollReveal from 'components/display/ScrollReveal'
 import constants from 'styles/constants'
 import { responsiveLengths, largeParagraph } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
+import Slideshow from 'components/display/Slideshow'
+import { IHomepageData } from 'pages'
 
 const useStyles = makeStyles(
   {
@@ -65,7 +67,11 @@ const useStyles = makeStyles(
   { name: 'HompageIntro' }
 )
 
-const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
+interface IProps {
+  cms: IHomepageData
+}
+
+const HompageIntro: React.FunctionComponent<IProps> = ({ cms }) => {
   const classes = useStyles()
 
   return (
@@ -91,11 +97,7 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
         <Grid item mobile={8} desktop={4.5}>
           <ScrollReveal>
             <ColorTrails>
-              <img
-                src="http://via.placeholder.com/510x660"
-                alt=""
-                className={cx(classes.image)}
-              />
+              <Slideshow slides={cms.slideshow1} aspectRatio={0.75} />
             </ColorTrails>
           </ScrollReveal>
         </Grid>
@@ -119,11 +121,7 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
         <Grid item mobile={10} desktop={6}>
           <ScrollReveal>
             <ColorTrails>
-              <img
-                src="http://via.placeholder.com/600x400"
-                alt=""
-                className={classes.image}
-              />
+              <Slideshow slides={cms.slideshow2} aspectRatio={1.5} />
             </ColorTrails>
           </ScrollReveal>
         </Grid>
@@ -148,11 +146,7 @@ const HompageIntro: React.FunctionComponent<{}> = ({ children }) => {
         <Grid item mobile={8} desktop={4.5}>
           <ScrollReveal>
             <ColorTrails>
-              <img
-                src="http://via.placeholder.com/510x660"
-                alt=""
-                className={classes.image}
-              />
+              <Slideshow slides={cms.slideshow3} aspectRatio={0.75} />
             </ColorTrails>
           </ScrollReveal>
         </Grid>
