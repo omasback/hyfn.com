@@ -29,7 +29,7 @@ const useStyles = makeStyles(
 )
 
 interface IProps {
-  slides: { file: { url: string } }[]
+  slides: Array<{ file: { url: string } }>
   aspectRatio: number
 }
 
