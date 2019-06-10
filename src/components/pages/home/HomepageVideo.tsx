@@ -11,15 +11,18 @@ const useStyles = makeStyles(
   { name: 'HomepageVideo' }
 )
 
-const HomepageVideo: React.FunctionComponent<{}> = () => {
+interface IProps {
+  cms: { file: { url: string } }
+}
+
+const HomepageVideo: React.FunctionComponent<IProps> = props => {
   const classes = useStyles()
+
+  console.log(props)
 
   return (
     <video loop autoPlay muted playsInline className={classes.root}>
-      <source
-        src="https://www.coloradorafting.net/wp-content/uploads/2017/09/AVA_Overview_802x298_mw002.mp4"
-        type="video/mp4"
-      />
+      <source src={props.cms.file.url} type="video/mp4" />
     </video>
   )
 }
