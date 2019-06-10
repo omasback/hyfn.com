@@ -143,8 +143,6 @@ const useStyles = makeStyles(
   { name: 'Services' }
 )
 
-const modalRoot = document.getElementById('modal-root')
-
 const Services: React.FunctionComponent<IServices> = props => {
   const classes = useStyles(props)
 
