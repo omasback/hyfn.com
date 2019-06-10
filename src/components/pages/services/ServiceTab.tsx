@@ -17,10 +17,12 @@ const useStyles = makeStyles(
   {
     root: {
       color: '#fff',
-      overflowX: 'hidden',
+      overflow: 'hidden',
+      paddingBottom: '15%',
       [constants.mq.desktop]: {
         overflow: 'unset',
         position: 'relative',
+        paddingBottom: 0,
       },
     },
     rootClosed: {
@@ -246,7 +248,6 @@ const slickSettings = {
         dots: false,
         infinite: false,
         arrows: true,
-        swipe: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         prevArrow: <Arrow direction="left" />,
