@@ -29,7 +29,7 @@ const useStyles = makeStyles(
 )
 
 interface IProps {
-  slides: { file: { url: string } }[]
+  slides: Array<{ file: { url: string } }>
   aspectRatio: number
 }
 
@@ -42,12 +42,12 @@ const Slideshow: React.FunctionComponent<IProps> = ({
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setIndex(prevIndex => (prevIndex + 1) % slides.length)
+      if (slides.length > 1) {
+        setIndex(prevIndex => (prevIndex + 1) % slides.length)
+      }
     }, 5000)
     return () => clearInterval(interval)
   }, [])
-
-  console.log(index)
 
   return (
     <div className={classes.root}>
