@@ -18,8 +18,6 @@ interface IProps {
 const HomepageVideo: React.FunctionComponent<IProps> = props => {
   const classes = useStyles()
 
-  console.log(props)
-
   return (
     <video loop autoPlay muted playsInline className={classes.root}>
       <source src={props.cms.file.url} type="video/mp4" />
