@@ -140,10 +140,10 @@ const useStyles = makeStyles(
       },
     },
   },
-  { name: 'Services' }
+  { name: 'Solutions' }
 )
 
-const Services: React.FunctionComponent<IServices> = props => {
+const Solutions: React.FunctionComponent<ISolutions> = props => {
   const classes = useStyles(props)
 
   const cms = props.data.contentfulServicesPage
@@ -262,9 +262,9 @@ const Services: React.FunctionComponent<IServices> = props => {
   )
 }
 
-export default Services
+export default Solutions
 
-interface IServices {
+interface ISolutions {
   data: {
     contentfulServicesPage: {
       slug: string

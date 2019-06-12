@@ -190,25 +190,25 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
           <Grid item mobile={10} desktop={2} className={classes.links}>
             {[
               {
-                text: 'About',
-                url: '/about',
+                text: 'Culture',
+                url: '/culture',
               },
               {
-                text: 'Services',
-                url: '/services',
+                text: 'Solutions',
+                url: '/solutions',
               },
               {
                 text: 'Work',
                 url: '/work',
               },
-              {
-                text: 'Thoughts',
-                url: 'thoughts',
-              },
-              {
-                text: 'Careers',
-                url: '/careers',
-              },
+              // {
+              //   text: 'Thoughts',
+              //   url: 'thoughts',
+              // },
+              // {
+              //   text: 'Careers',
+              //   url: '/careers',
+              // },
             ].map(link => (
               <Link className={classes.link} key={link.url} to={link.url}>
                 {link.text}
