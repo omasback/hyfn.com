@@ -13,6 +13,10 @@ const responsiveLengthsRules = (
   mobilePixels: number,
   desktopPixels?: number
 ) => {
+  if (typeof desktopPixels === 'undefined') {
+    desktopPixels = mobilePixels
+  }
+
   const rules = {
     '@media (min-width: 0px)': {
       [property]: ((mobilePixels / 375) * 100).toFixed(2) + 'vw',
@@ -20,15 +24,12 @@ const responsiveLengthsRules = (
     '@media (width: 375px)': {
       [property]: mobilePixels,
     },
-  }
-
-  if (typeof desktopPixels !== 'undefined') {
-    rules[constants.mq.desktop] = {
+    [constants.mq.desktop]: {
       [property]: ((desktopPixels / 1440) * 100).toFixed(2) + 'vw',
-    }
-    rules['@media (min-width: 1440px)'] = {
+    },
+    '@media (min-width: 1440px)': {
       [property]: desktopPixels,
-    }
+    },
   }
 
   return rules
@@ -55,9 +56,9 @@ const responsiveLengths = (
   }
 }
 
-const bleedLeft = responsiveLengths('marginLeft', 0, -150)
+const bleedLeft = () => responsiveLengths('marginLeft', 0, -150)
 
-const bleedRight = responsiveLengths('marginRight', 0, -150)
+const bleedRight = () => responsiveLengths('marginRight', 0, -150)
 
 const largeParagraph = () =>
   merge({ lineHeight: 1.6 }, responsiveLengths('fontSize', 17, 28))

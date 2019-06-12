@@ -37,10 +37,10 @@ const useStyles = makeStyles(
       },
     },
     bleedLeft: {
-      extend: bleedLeftCSS,
+      extend: bleedLeftCSS(),
     },
     bleedRight: {
-      extend: bleedRightCSS,
+      extend: bleedRightCSS(),
     },
     image: {
       display: 'block',
