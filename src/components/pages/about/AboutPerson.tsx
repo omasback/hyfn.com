@@ -62,7 +62,7 @@ const useStyles = makeStyles(
       opacity: 0,
       transition: 'opacity 0.3s',
       '&:hover': {
-        opacity: 0,
+        opacity: 1,
       },
     },
     image: {
@@ -205,6 +205,12 @@ const AboutPerson: React.FunctionComponent<Props> = ({
             }}
           >
             <div className={classes.imageContainer}>
+              <div
+                style={{
+                  backgroundImage: `url(${person.node.image.file.url || ''})`,
+                }}
+                className={classes.image}
+              />
               {person.node.hoverImage && (
                 <div
                   style={{
@@ -213,12 +219,6 @@ const AboutPerson: React.FunctionComponent<Props> = ({
                   className={classes.hoverImage}
                 />
               )}
-              <div
-                style={{
-                  backgroundImage: `url(${person.node.image.file.url || ''})`,
-                }}
-                className={classes.image}
-              />
             </div>
           </CSSTransition>
         </TransitionGroup>
