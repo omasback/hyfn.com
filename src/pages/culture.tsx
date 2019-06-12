@@ -116,7 +116,7 @@ const Culture: React.FunctionComponent<AboutPeopleProps> = props => {
       <AboutTestimonials
         testimonials={props.data.allContentfulTestimonial.edges}
       />
-      <AboutPlay data={props.data.contentfulPlay} />
+      {/* <AboutPlay data={props.data.contentfulPlay} /> */}
     </>
   )
 }
