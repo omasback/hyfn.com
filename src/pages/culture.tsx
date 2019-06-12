@@ -19,6 +19,9 @@ import AboutPlay, {
   IPlayProps,
 } from 'components/pages/about/AboutPlay'
 import { Person } from 'components/pages/about/AboutPerson'
+import ImageAndText, {
+  ImageAndTextProps,
+} from 'components/display/ImageAndText'
 
 const useStyles = makeStyles(
   {
@@ -51,7 +54,7 @@ const useStyles = makeStyles(
       marginBottom: '0.8em',
     },
     bleedRight: {
-      extend: bleedRight,
+      extend: bleedRight(),
     },
     image: {
       display: 'block',
@@ -61,70 +64,38 @@ const useStyles = makeStyles(
   { name: 'Culture' }
 )
 
-const Culture: React.FunctionComponent<AboutPeopleProps> = props => {
+const Culture: React.FunctionComponent<ICulturePageProps> = props => {
   const classes = useStyles({})
 
   return (
     <>
       <Container className={classes.root}>
         <Grid container className={classes.row1}>
-          <Grid container item mobile={10}>
-            <Grid item mobile={8} desktop={5}>
-              <p className={classes.introP}>
-                If finding the perfect agency was like a game of Where’s Waldo,
-                we’d be the ones in the red and white stripes.
-              </p>
-            </Grid>
-          </Grid>
-          <Grid container item mobile={10} desktop={5}>
-            <Grid item className={classes.headline} mobile={10}>
-              <OffsetHeadline text="CULTURE" />
-            </Grid>
-            <Grid item mobile={8} desktop={6}>
-              <ScrollReveal className={classes.subheadline}>
-                It’s more than just a buzz word to us.
-              </ScrollReveal>
-              <ScrollReveal>
-                <p>
-                  It’s more than letting dogs roam the office or pulling out a
-                  beer cart on Fridays. (Although we do both of those things.)
-                  Culture at HYFN means coming to work ready to work. It means
-                  staying late, not because you were told to but because the
-                  outcomes would be better if you did. We’re fueled by a diverse
-                  group of genuine, hungry individuals who support and inspire
-                  and challenge. Not to be biased, but we’re a rare breed.
-                </p>
-              </ScrollReveal>
-            </Grid>
-          </Grid>
-          <Grid item mobile={8} desktop={4.5}>
-            <div className={classes.bleedRight}>
-              <ScrollReveal>
-                <ColorTrails>
-                  <img
-                    src="http://via.placeholder.com/663x877"
-                    alt=""
-                    className={cx(classes.image)}
-                  />
-                </ColorTrails>
-              </ScrollReveal>
-            </div>
+          <Grid item className={classes.headline} mobile={10}>
+            <OffsetHeadline text={props.data.contentfulCulturePage.headline} />
           </Grid>
         </Grid>
       </Container>
+      <ImageAndText {...props.data.contentfulCulturePage.topImageAndText} />
       <AboutPeople people={props.data.allContentfulPerson.edges} />
+      <ImageAndText {...props.data.contentfulCulturePage.nexstarImageAndText} />
       <AboutTestimonials
         testimonials={props.data.allContentfulTestimonial.edges}
       />
-      <AboutPlay data={props.data.contentfulPlay} />
+      {/* <AboutPlay data={props.data.contentfulPlay} /> */}
     </>
   )
 }
 
 export default Culture
 
-interface AboutPeopleProps {
+interface ICulturePageProps {
   data: {
+    contentfulCulturePage: {
+      headline
+      nexstarImageAndText: ImageAndTextProps
+      topImageAndText: ImageAndTextProps
+    }
     allContentfulPerson: {
       edges: Person[]
     }
@@ -137,6 +108,31 @@ interface AboutPeopleProps {
 
 export const pageQuery = graphql`
   query About {
+    contentfulCulturePage(slug: { eq: "culture" }) {
+      headline
+      nexstarImageAndText {
+        imageSide
+        image {
+          file {
+            url
+          }
+        }
+        text {
+          json
+        }
+      }
+      topImageAndText {
+        image {
+          file {
+            url
+          }
+        }
+        text {
+          json
+        }
+        imageSide
+      }
+    }
     allContentfulPerson {
       edges {
         node {
