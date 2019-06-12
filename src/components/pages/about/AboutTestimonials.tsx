@@ -12,7 +12,7 @@ import Grid from 'components/display/Grid'
 import CircleArrow from 'components/display/CircleArrow'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-const timeout = 1000
+const timeout = 500
 
 const useStyles = makeStyles(
   {
@@ -35,29 +35,29 @@ const useStyles = makeStyles(
     subheadline: {
       marginBottom: '1.5em',
     },
-    testimonials: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-between',
+    testimonialTransitionContainer: {
       position: 'relative',
-      zIndex: 1,
-      extend: merge(
-        responsiveLengths('marginLeft', 0, -50),
-        responsiveLengths('marginRight', 0, -50)
-      ),
+      extend: responsiveLengths('height', 270, 320),
+    },
+    testimonialTransition: {
+      border: '1px solid #0f0',
     },
     testimonial: {
       opacity: 1,
-      transition: 'opacity 0.3s',
-    },
-    enter: { opacity: 0 },
-    enterActive: { opacity: 1 },
-    exitActive: {
-      opacity: 0,
+      transition: `opacity ${timeout}ms`,
       position: 'absolute',
       top: 0,
       left: 0,
       right: 0,
+    },
+    enter: {
+      opacity: 0,
+    },
+    enterActive: {
+      opacity: 1,
+    },
+    exitActive: {
+      opacity: 0,
     },
     quote: {
       extend: largeParagraph(),
@@ -88,20 +88,36 @@ const useStyles = makeStyles(
       },
     },
     logo: {
+      cursor: 'pointer',
+      opacity: 0.5,
+      transition: 'opacity 0.3s',
       extend: merge(
         responsiveLengths('maxHeight', 70, 70),
         responsiveLengths('marginLeft', 40, 40),
         responsiveLengths('marginRight', 40, 40)
       ),
     },
+    logoActive: {
+      opacity: 1,
+    },
   },
-  { name: 'AboutPeople' }
+  { name: 'Mui-AboutTestimonials' }
+  // Mui prefix is required for deterministic classnames.
+  // Because the theme changes when changing testimonials,
+  // non-deterministic classnames will change with the new theme
+  // the classnames need to stay the same because the exiting testimonial
+  // will retain the original classname,
+  // probably because CSSTransitionGroup does not update exiting elements.
 )
 
 const AboutTestimonials: React.FunctionComponent<{
   testimonials: Testimonial[]
-}> = ({ testimonials }) => {
+}> = props => {
   const classes = useStyles()
+
+  // const classes = {}
+
+  const { testimonials } = props
 
   const [index, setIndex] = React.useState(0)
 
@@ -120,28 +136,26 @@ const AboutTestimonials: React.FunctionComponent<{
           <h3 className={classes.subheadline}>We’re Always in Good Company</h3>
         </Grid>
         <Grid item mobile={8} desktop={5}>
-          <div className={classes.relative}>
-            <TransitionGroup component={null}>
-              <CSSTransition
-                key={testimonial.id}
-                timeout={500}
-                classNames={{
-                  enter: classes.enter,
-                  enterActive: classes.enterActive,
-                  exitActive: classes.exitActive,
-                }}
-              >
-                <div className={classes.testimonial} key={testimonial.id}>
-                  <p className={classes.quote}>{testimonial.quote}</p>
-                  <p className={classes.person}>
-                    <b>{testimonial.personName}</b>
-                    <br />
-                    {testimonial.personTitle}
-                  </p>
-                </div>
-              </CSSTransition>
-            </TransitionGroup>
-          </div>
+          <TransitionGroup className={classes.testimonialTransitionContainer}>
+            <CSSTransition
+              key={testimonial.id}
+              timeout={timeout}
+              classNames={{
+                enter: classes.enter,
+                enterActive: classes.enterActive,
+                exitActive: classes.exitActive,
+              }}
+            >
+              <div className={classes.testimonial}>
+                <p className={classes.quote}>{testimonial.quote}</p>
+                <p className={classes.person}>
+                  <b>{testimonial.personName}</b>
+                  <br />
+                  {testimonial.personTitle}
+                </p>
+              </div>
+            </CSSTransition>
+          </TransitionGroup>
         </Grid>
         <div className={classes.buttons}>
           <CircleArrow
@@ -166,7 +180,7 @@ const AboutTestimonials: React.FunctionComponent<{
             src={t.node.companyLogo.file.url}
             alt=""
             key={t.node.id}
-            className={classes.logo}
+            className={cx(classes.logo, { [classes.logoActive]: index === i })}
             onClick={() => setIndex(i)}
           />
         ))}

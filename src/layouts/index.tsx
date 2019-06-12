@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { create } from 'jss'
 import extend from 'jss-plugin-extend'
-import { StylesProvider, jssPreset, ThemeProvider } from '@material-ui/styles'
+import {
+  StylesProvider,
+  jssPreset,
+  ThemeProvider,
+  createGenerateClassName,
+} from '@material-ui/styles'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 
@@ -17,6 +22,12 @@ export interface Theme {
 
 const jss = create({
   plugins: [extend(), ...jssPreset().plugins],
+})
+
+const generateClassName = createGenerateClassName({
+  disableGlobal: false,
+  productionPrefix: 'Hyfn',
+  seed: 'Hyfn',
 })
 
 @observer
@@ -49,7 +60,7 @@ class App extends Component {
           setTheme: this.setTheme,
         }}
       >
-        <StylesProvider jss={jss}>
+        <StylesProvider jss={jss} generateClassName={generateClassName}>
           <GlobalStyles />
           <PageWrapper>{this.props.children}</PageWrapper>
         </StylesProvider>
