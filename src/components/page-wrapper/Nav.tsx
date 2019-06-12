@@ -157,12 +157,12 @@ const useStyles = makeStyles<Theme>(
 
 const mainLinks = [
   {
-    text: 'About',
-    path: '/about',
+    text: 'Culture',
+    path: '/culture',
   },
   {
-    text: 'Services',
-    path: '/services',
+    text: 'Solutions',
+    path: '/solutions',
   },
   {
     text: 'Work',

@@ -58,11 +58,11 @@ const useStyles = makeStyles(
       width: '100%',
     },
   },
-  { name: 'About' }
+  { name: 'Culture' }
 )
 
-const About: React.FunctionComponent<AboutPeopleProps> = props => {
-  const classes = useStyles()
+const Culture: React.FunctionComponent<AboutPeopleProps> = props => {
+  const classes = useStyles({})
 
   return (
     <>
@@ -121,7 +121,7 @@ const About: React.FunctionComponent<AboutPeopleProps> = props => {
   )
 }
 
-export default About
+export default Culture
 
 interface AboutPeopleProps {
   data: {
