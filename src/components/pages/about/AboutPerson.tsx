@@ -37,25 +37,39 @@ const useStyles = makeStyles(
         extend: merge(responsiveLengths('top', 66, -60)),
       },
     },
-    imageContainer: {
+    imageTransitionContainer: {
       extend: merge(responsiveLengths('height', 175, 350)),
       width: '100%',
       position: 'relative',
       overflow: 'hidden',
+      cursor: 'ns-resize',
       [constants.mq.desktop]: {
         zIndex: 1,
+      },
+    },
+    imageContainer: {
+      extend: absoluteFill,
+      transition: `transform ${timeout}ms`,
+    },
+    enterImgOdd: { transform: 'translateY(-100%)' },
+    enterImgEven: { transform: 'translateY(100%)' },
+    enterActiveImg: { transform: 'translateY(0)', pointerEvents: 'none' },
+    exitActiveImgOdd: { transform: 'translateY(100%)' },
+    exitActiveImgEven: { transform: 'translateY(-100%)' },
+    hoverImage: {
+      extend: absoluteFill,
+      backgroundSize: 'cover',
+      opacity: 0,
+      transition: 'opacity 0.3s',
+      '&:hover': {
+        opacity: 0,
       },
     },
     image: {
       extend: absoluteFill,
       backgroundSize: 'cover',
-      transition: `transform ${timeout}ms`,
+      pointerEvents: 'none',
     },
-    enterImgOdd: { transform: 'translateY(-100%)' },
-    enterImgEven: { transform: 'translateY(100%)' },
-    enterActiveImg: { transform: 'translateY(0)' },
-    exitActiveImgOdd: { transform: 'translateY(100%)' },
-    exitActiveImgEven: { transform: 'translateY(-100%)' },
     infoBg: {
       background: '#fff',
       position: 'absolute',
@@ -176,7 +190,7 @@ const AboutPerson: React.FunctionComponent<Props> = ({
       onTouchStart={() => setHover(true)}
       // onTouchEnd={() => setHover(false)} // see above
     >
-      <div className={classes.imageContainer}>
+      <div className={classes.imageTransitionContainer}>
         <TransitionGroup component={null}>
           <CSSTransition
             key={person.node.name}
@@ -190,14 +204,13 @@ const AboutPerson: React.FunctionComponent<Props> = ({
                   : classes.exitActiveImgEven,
             }}
           >
-            <>
+            <div className={classes.imageContainer}>
               {person.node.hoverImage && (
                 <div
                   style={{
-                    backgroundImage: `url(${person.node.hoverImage.file.url ||
-                      ''})`,
+                    backgroundImage: `url(${person.node.hoverImage.file.url})`,
                   }}
-                  className={classes.image}
+                  className={classes.hoverImage}
                 />
               )}
               <div
@@ -206,7 +219,7 @@ const AboutPerson: React.FunctionComponent<Props> = ({
                 }}
                 className={classes.image}
               />
-            </>
+            </div>
           </CSSTransition>
         </TransitionGroup>
       </div>
