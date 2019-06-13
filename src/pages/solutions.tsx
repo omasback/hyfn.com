@@ -7,6 +7,8 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Slider from 'react-slick'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import easings from 'easings-css'
+import { useMediaLayout } from 'use-media'
+import { Portal } from '@material-ui/core'
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
@@ -22,8 +24,6 @@ import constants from 'styles/constants'
 import ArrowLink from 'components/display/ArrowLink'
 import XIcon from 'components/svg/XIcon'
 import CircleArrow from 'components/display/CircleArrow'
-import useMedia from 'use-media'
-import { Portal } from '@material-ui/core'
 
 const useStyles = makeStyles(
   {
@@ -139,8 +139,21 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
 
   const cms = props.data.contentfulServicesPage
 
-  const isWide = useMedia({ minWidth: constants.breakPoint.desktop }, false)
-  const [currentTab, setCurrentTab] = React.useState(isWide ? 0 : -1)
+  const isWide = useMediaLayout(
+    { minWidth: constants.breakPoint.desktop },
+    false
+  )
+  const [currentTab, setCurrentTab] = React.useState(() => {
+    // TODO: find a better way to do this without using window
+    if (
+      typeof window !== 'undefined' &&
+      window.innerWidth >= constants.breakPoint.desktop
+    ) {
+      return 0
+    }
+    return -1
+  })
+
   React.useEffect(() => {
     if (window) {
       window.document.body.style.overflow =
