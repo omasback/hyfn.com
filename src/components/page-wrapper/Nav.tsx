@@ -106,13 +106,16 @@ const useStyles = makeStyles<Theme>(
     },
     desktopRow: {
       display: 'flex',
+      alignItems: 'center',
       paddingTop: 52,
     },
     desktopLogo: {
       width: '100px',
       display: 'block',
-      height: '26px',
+      height: '38px',
       marginRight: '52px',
+      position: 'relative',
+      top: 4,
     },
     desktopLeftLinks: {
       display: 'flex',

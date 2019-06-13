@@ -9,6 +9,7 @@ import Grid from 'components/display/Grid'
 import constants from 'styles/constants'
 import HyfnLogo from 'components/svg/HyfnLogo'
 import { responsiveLengths } from 'styles/mixins'
+import footerLogo from 'images/hyfn_logo_footer.svg'
 
 const useStyles = makeStyles(
   {
@@ -24,7 +25,7 @@ const useStyles = makeStyles(
       ),
     },
     logo: {
-      extend: responsiveLengths('width', 77, 100),
+      extend: responsiveLengths('width', 140, 200),
     },
     shareIcons: {
       textAlign: 'right',
@@ -131,7 +132,7 @@ const useStyles = makeStyles(
       },
     },
   },
-  { name: 'Footer' }
+  { name: 'Mui-Footer' }
 )
 
 const Footer: React.FunctionComponent<{}> = ({ children }) => {
@@ -143,7 +144,7 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
         <Grid container>
           <Grid item mobile={5}>
             <Link to="/">
-              <HyfnLogo color={'#ffffff'} className={classes.logo} />
+              <img src={footerLogo} alt="" className={classes.logo} />
             </Link>
           </Grid>
           <Grid item mobile={5} className={classes.shareIcons}>
