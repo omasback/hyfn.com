@@ -61,8 +61,6 @@ const ImageAndText: React.FunctionComponent<ImageAndTextProps> = props => {
 
   const { image, text, imageSide = true } = props
 
-  const imageOnLeft = imageSide
-
   let textElement
 
   if (text) {
@@ -78,8 +76,26 @@ const ImageAndText: React.FunctionComponent<ImageAndTextProps> = props => {
   const landscapeImage =
     image.file.details.image.width > image.file.details.image.height
 
+  const imageOnLeft = imageSide
+
+  let layout
+  if (landscapeImage) {
+    layout = imageOnLeft
+      ? layouts.landscapeImageLeft
+      : layouts.landscapeImageRight
+  } else {
+    layout = imageOnLeft
+      ? layouts.portraitImageLeft
+      : layouts.portraitImageRight
+  }
+
   const textBox = (
-    <Grid item mobile={8} desktop={landscapeImage ? 3 : 3} offsetDesktop={1}>
+    <Grid
+      item
+      mobile={8}
+      desktop={layout.textWidth}
+      offsetDesktop={layout.textOffset}
+    >
       <ScrollReveal>{textElement}</ScrollReveal>
     </Grid>
   )
@@ -88,8 +104,8 @@ const ImageAndText: React.FunctionComponent<ImageAndTextProps> = props => {
     <Grid
       item
       mobile={10}
-      desktop={landscapeImage ? 6 : 4.5}
-      offsetDesktop={landscapeImage ? 0 : 1}
+      desktop={layout.imageWidth}
+      offsetDesktop={layout.imageOffset}
     >
       <ScrollReveal>
         <ColorTrails>
@@ -166,7 +182,27 @@ export const query = graphql`
 
 const layouts = {
   landscapeImageLeft: {
+    imageOffset: 0,
     imageWidth: 6,
     textOffset: 1,
+    textWidth: 3,
+  },
+  landscapeImageRight: {
+    imageOffset: 1,
+    imageWidth: 6,
+    textOffset: 0,
+    textWidth: 3,
+  },
+  portraitImageLeft: {
+    imageOffset: 0,
+    imageWidth: 4.5,
+    textOffset: 1.5,
+    textWidth: 3,
+  },
+  portraitImageRight: {
+    imageOffset: 1.5,
+    imageWidth: 4.5,
+    textOffset: 1,
+    textWidth: 3,
   },
 }
