@@ -111,26 +111,10 @@ export const pageQuery = graphql`
     contentfulCulturePage(slug: { eq: "culture" }) {
       headline
       nexstarImageAndText {
-        imageSide
-        image {
-          file {
-            url
-          }
-        }
-        text {
-          json
-        }
+        ...ImageAndTextFragment
       }
       topImageAndText {
-        image {
-          file {
-            url
-          }
-        }
-        text {
-          json
-        }
-        imageSide
+        ...ImageAndTextFragment
       }
     }
     allContentfulPerson {

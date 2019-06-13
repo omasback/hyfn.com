@@ -147,19 +147,7 @@ export const pageQuery = graphql`
       pageTitle
       pageSections {
         ... on ContentfulPageSectionImageAndText {
-          id
-          imageSide
-          text {
-            json
-          }
-          image {
-            file {
-              url
-            }
-          }
-          internal {
-            type
-          }
+          ...ImageAndTextFragment
         }
         ... on ContentfulPageSectionImagesAndText {
           id
@@ -179,6 +167,9 @@ export const pageQuery = graphql`
           text {
             json
           }
+        }
+        ... on ContentfulPageSectionTextAndText {
+          ...TextAndTextFragment
         }
         ... on ContentfulPageSectionMedia {
           id
