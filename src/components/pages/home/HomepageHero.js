@@ -6,6 +6,7 @@ import { withStyles, createStyles } from '@material-ui/styles'
 import decomp from 'poly-decomp'
 
 import HomepageHeroCard from './HomepageHeroCard.js'
+import { responsiveLengths } from 'styles/mixins'
 
 const Matter = require('matter-js')
 
@@ -18,6 +19,7 @@ const styles = createStyles({
     position: 'relative',
     height: '100vh',
     overflow: 'hidden',
+    extend: responsiveLengths([['marginTop', -120, -250]]),
   },
   title: {
     position: 'absolute',
