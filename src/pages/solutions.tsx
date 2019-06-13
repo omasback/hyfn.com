@@ -293,16 +293,7 @@ export const pageQuery = graphql`
         }
       }
       imageAndTextModules {
-        image {
-          file {
-            url
-          }
-        }
-        imageSide
-        text {
-          json
-        }
-        id
+        ...ImageAndTextFragment
       }
       services {
         title

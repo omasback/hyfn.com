@@ -22,6 +22,13 @@ interface Props {
     | 'flex-end'
     | 'stretch'
     | 'baseline'
+  justifyContentDesktop?:
+    | 'center'
+    | 'flex-start'
+    | 'flex-end'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
   className?: string // for adding/overriding styles
 }
 
@@ -35,9 +42,7 @@ const useStyles = makeStyles(
       flexWrap: 'wrap',
       width: `calc(100% + ${mobileGutter}px)`,
       margin: -mobileGutter / 2,
-      justifyContent: 'center',
       [constants.mq.desktop]: {
-        justifyContent: 'space-between',
         width: `calc(100% + ${desktopGutter}px)`,
         margin: -desktopGutter / 2,
       },
@@ -82,6 +87,14 @@ const useStyles = makeStyles(
           : 'flex-start',
       },
     }),
+    justifyContent: (props: Props) => ({
+      justifyContent: 'center',
+      [constants.mq.desktop]: {
+        justifyContent: props.justifyContentDesktop
+          ? props.justifyContentDesktop
+          : 'space-between',
+      },
+    }),
   },
   { name: 'Grid' }
 )
@@ -99,6 +112,7 @@ const Grid: React.FunctionComponent<
     offsetDesktop,
     alignItemsMobile,
     alignItemsDesktop,
+    justifyContentDesktop,
     children,
     ...divprops
   } = props
@@ -112,6 +126,7 @@ const Grid: React.FunctionComponent<
           [classes.width]: mobile || desktop,
           [classes.offset]: offsetMobile || offsetDesktop,
           [classes.alignItems]: alignItemsMobile || alignItemsDesktop,
+          [classes.justifyContent]: true,
         },
         className
       )}
