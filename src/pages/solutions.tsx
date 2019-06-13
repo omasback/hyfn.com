@@ -51,6 +51,7 @@ const useStyles = makeStyles(
       ),
     },
     serviceSummaries: {
+      extend: responsiveLengths('marginTop', 60, 120),
       '& p:first-child': {
         marginBottom: 0,
       },
@@ -225,14 +226,6 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
         </Container>
       ) : (
         <Portal>
-          {/* <Modal
-          aria-labelledby="Services tabs"
-          aria-describedby="Detailed info on services we provide"
-          open={true}
-          hideBackdrop
-          keepMounted
-          className={classes.mobileTabs}
-        > */}
           <>
             {cms.services.map((service, i) => (
               <div
@@ -255,7 +248,6 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
               </div>
             ))}
           </>
-          {/* </Modal> */}
         </Portal>
       )}
     </div>
