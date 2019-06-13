@@ -28,27 +28,17 @@ import { Portal } from '@material-ui/core'
 const useStyles = makeStyles(
   {
     root: {
-      extend: merge(
-        responsiveLengths('marginTop', 71, 140),
-        responsiveLengths('marginBottom', 116, -70)
-      ),
+      extend: responsiveLengths('marginBottom', 116, -280),
     },
     intro: {
-      extend: merge(
-        responsiveLengths('marginTop', 63, 108),
-        responsiveLengths('marginBottom', 50, 0),
-        largeParagraph()
-      ),
+      extend: merge(responsiveLengths('marginBottom', 30, 0), largeParagraph()),
       marginBottom: 0,
       '& a': {
         fontWeight: 'bold',
       },
     },
     headline: {
-      extend: merge(
-        responsiveLengths('marginTop', 0, 40),
-        responsiveLengths('marginBottom', 50, 0)
-      ),
+      extend: merge(responsiveLengths('marginTop', 0, 40)),
     },
     serviceSummaries: {
       extend: responsiveLengths('marginTop', 60, 120),

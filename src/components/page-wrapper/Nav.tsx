@@ -133,7 +133,7 @@ const useStyles = makeStyles<Theme>(
       '&:after': {
         content: "''",
         position: 'absolute',
-        bottom: 0,
+        bottom: -10,
         left: 0,
         width: '100%',
         height: 3,
@@ -191,6 +191,7 @@ const mainLinks = [
 
 const Nav: React.FunctionComponent<{}> = ({ children }) => {
   const classes = useStyles()
+  const [isOpen, setOpen] = React.useState(false)
   const isWide = useMedia({ minWidth: 820 }, true)
 
   return (
@@ -214,9 +215,9 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
               ))}
             </div>
             <div className={classes.desktopRightLinks}>
-              <Link to={'/play'}>
+              {/* <Link to={'/play'}>
                 <PlayLogo className={classes.playLogo} />
-              </Link>
+              </Link> */}
               <Link to={'/contact'} className={classes.contactLink}>
                 {'Contact Us'}
               </Link>
@@ -228,6 +229,8 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
               <HyfnLogo className={classes.mobileLogo} />
             </Link>
             <Menu
+              isOpen={isOpen}
+              onStateChange={state => setOpen(state.isOpen)}
               right
               pageWrapId={'page-wrap'}
               width="100%"
@@ -260,6 +263,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
                     to={link.path}
                     className={classes.mobileMainLink}
                     activeClassName={classes.mobileMainLinkaActive}
+                    onClick={() => setOpen(false)}
                   >
                     {link.text}
                   </Link>

@@ -31,7 +31,7 @@ const TextAndText: React.FunctionComponent<ITextAndTextProps> = props => {
     <Container className={cx(classes.root)}>
       <Grid
         container
-        alignItemsDesktop="center"
+        alignItemsDesktop="flex-start"
         justifyContentDesktop="flex-start"
       >
         <Grid item mobile={8} desktop={4} offsetDesktop={1}>

@@ -18,10 +18,7 @@ const useStyles = makeStyles(
   {
     root: {
       position: 'relative',
-      extend: merge(
-        responsiveLengths('marginTop', 71, 140),
-        responsiveLengths('marginBottom', 116, 150)
-      ),
+      extend: merge(responsiveLengths('marginTop', 71, 140)),
     },
     headline: {
       marginBottom: '0.3em',

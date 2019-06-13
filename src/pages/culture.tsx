@@ -25,28 +25,8 @@ import ImageAndText, {
 
 const useStyles = makeStyles(
   {
-    root: {
-      extend: merge(
-        responsiveLengths('marginTop', 71, 140),
-        responsiveLengths('marginBottom', 116, 150)
-      ),
-    },
-    row1: {
-      alignItems: '',
-    },
-    introP: {
-      extend: merge(
-        responsiveLengths('marginTop', 63, 108),
-        responsiveLengths('marginBottom', 50, 0),
-        largeParagraph()
-      ),
-      marginBottom: 0,
-    },
     headline: {
-      extend: merge(
-        responsiveLengths('marginTop', 0, 40),
-        responsiveLengths('marginBottom', 50, 0)
-      ),
+      extend: responsiveLengths('marginTop', 0, 40),
     },
     subheadline: {
       extend: responsiveLengths('fontSize', 21, 38),
@@ -69,8 +49,8 @@ const Culture: React.FunctionComponent<ICulturePageProps> = props => {
 
   return (
     <>
-      <Container className={classes.root}>
-        <Grid container className={classes.row1}>
+      <Container>
+        <Grid container>
           <Grid item className={classes.headline} mobile={10}>
             <OffsetHeadline text={props.data.contentfulCulturePage.headline} />
           </Grid>

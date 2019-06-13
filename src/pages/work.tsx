@@ -15,22 +15,14 @@ import { graphql } from 'gatsby'
 
 const useStyles = makeStyles(
   {
-    root: {
-      extend: merge(
-        responsiveLengths('paddingTop', 80, 140),
-        responsiveLengths('paddingBottom', 116, 140)
-      ),
-    },
+    root: {},
     top: {
       position: 'relative',
-      minHeight: '60vh',
     },
     introText: {
       extend: largeParagraph(),
     },
-    headline: {
-      extend: responsiveLengths('marginBottom', 34, 46),
-    },
+    headline: {},
     cta: {
       marginBottom: '4vw',
     },
@@ -47,9 +39,9 @@ const CaseStudiesIndex: React.FunctionComponent<CaseStudiesProps> = props => {
     <Container className={classes.root}>
       <Grid container className={classes.top}>
         <ThemeSetter parent="CaseStudiesIndex" />
-        <Grid item mobile={8} desktop={6} className={classes.introText}>
+        {/* <Grid item mobile={8} desktop={6} className={classes.introText}>
           <ScrollReveal>{contentfulWorksPage.description}</ScrollReveal>
-        </Grid>
+        </Grid> */}
 
         <Grid item mobile={10}>
           <OffsetHeadline
