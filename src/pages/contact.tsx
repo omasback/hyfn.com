@@ -16,7 +16,6 @@ import ThemeSetter from 'components/display/ThemeSetter'
 const useStyles = makeStyles(
   {
     root: {
-      extend: responsiveLengths('paddingTop', 135, 150),
       overflow: 'hidden',
     },
     formDescription: {
@@ -126,10 +125,7 @@ const useStyles = makeStyles(
       },
     },
     address: {
-      extend: responsiveLengths([
-        ['marginTop', 60, 270],
-        ['marginBottom', 90, 0],
-      ]),
+      extend: responsiveLengths([['marginTop', 60, 270]]),
       position: 'relative',
     },
     address0: {

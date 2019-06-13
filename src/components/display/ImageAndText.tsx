@@ -20,8 +20,8 @@ const useStyles = makeStyles(
   {
     root: {
       extend: merge(
-        responsiveLengths('marginTop', 60, 180),
-        responsiveLengths('marginBottom', 60, 180)
+        responsiveLengths('marginTop', 60, 150),
+        responsiveLengths('marginBottom', 60, 150)
       ),
     },
     rowReverse: {

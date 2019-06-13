@@ -17,10 +17,7 @@ import contentfulContentTypeComponentMap from '../contentfulContentTypeComponent
 const useStyles = makeStyles(
   {
     root: {
-      extend: merge(
-        responsiveLengths('marginTop', 120, 140),
-        responsiveLengths('marginBottom', 120, 150)
-      ),
+      extend: responsiveLengths('marginBottom', 120, 150),
     },
     headerText: {
       alignContent: 'flex-start',

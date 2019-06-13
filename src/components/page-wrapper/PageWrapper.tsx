@@ -5,6 +5,7 @@ import Nav from './Nav'
 import Footer from './Footer'
 import { Theme } from 'layouts'
 import constants from 'styles/constants'
+import { responsiveLengths } from 'styles/mixins'
 
 const useStyles = makeStyles<Theme>(
   theme => ({
@@ -19,6 +20,10 @@ const useStyles = makeStyles<Theme>(
       color: theme.color,
     },
     content: {
+      extend: responsiveLengths([
+        ['paddingTop', 120, 250],
+        ['paddingBottom', 120, 150],
+      ]),
       position: 'relative',
       zIndex: 1,
     },
