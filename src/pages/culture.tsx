@@ -92,7 +92,7 @@ export default Culture
 interface ICulturePageProps {
   data: {
     contentfulCulturePage: {
-      headline
+      headline: string
       nexstarImageAndText: ImageAndTextProps
       topImageAndText: ImageAndTextProps
     }
