@@ -7,8 +7,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Slider from 'react-slick'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import easings from 'easings-css'
-import { useMediaLayout } from 'use-media'
-import { Portal } from '@material-ui/core'
+import { Portal, useMediaQuery } from '@material-ui/core'
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
@@ -139,15 +138,13 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
 
   const cms = props.data.contentfulServicesPage
 
-  const isWide = useMediaLayout(
-    { minWidth: constants.breakPoint.desktop },
-    false
-  )
+  const isWide = useMediaQuery(constants.mq.desktop)
+
   const [currentTab, setCurrentTab] = React.useState(() => {
     // TODO: find a better way to do this without using window
     if (
       typeof window !== 'undefined' &&
-      window.innerWidth >= constants.breakPoint.desktop
+      window.matchMedia(constants.mq.desktop.replace('@media ', ''))
     ) {
       return 0
     }

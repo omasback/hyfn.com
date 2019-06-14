@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { slide as Menu } from 'react-burger-menu'
-import { useMedia } from 'use-media'
 import { Link } from 'gatsby'
+import { useMediaQuery } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import { FaFacebookSquare, FaInstagram } from 'react-icons/fa'
 
@@ -192,7 +192,7 @@ const mainLinks = [
 const Nav: React.FunctionComponent<{}> = ({ children }) => {
   const classes = useStyles()
   const [isOpen, setOpen] = React.useState(false)
-  const isWide = useMedia({ minWidth: 820 }, true)
+  const isWide = useMediaQuery('(min-width: 820px)')
 
   return (
     <div className={classes.root}>
