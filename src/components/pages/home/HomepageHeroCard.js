@@ -6,14 +6,14 @@ import { Link } from 'gatsby'
 const Matter = require('matter-js')
 
 function inOutQuad(n) {
-  n *= 2;
-  if(n < 1) return 0.5 * n * n;
-  return - 0.5 * (--n * (n - 2) -1);
+  n *= 2
+  if (n < 1) return 0.5 * n * n
+  return -0.5 * (--n * (n - 2) - 1)
 }
 
 const styles = createStyles({
   card: {
-    position: 'absolute', 
+    position: 'absolute',
     width: '40vw',
     padding: 40,
     paddingBottom: 140,
@@ -55,78 +55,85 @@ const styles = createStyles({
     display: 'block',
     color: '#FFFFFF',
     textDecoration: 'underline',
-  }
+  },
 })
 
 class HomepageHeroCard extends React.Component {
   componentDidMount() {
     // add a hidden box behind the card within
     // the matter engine
-    const height = window.innerHeight;
-    const style = window.getComputedStyle(this.el);
-    const x = this.el.offsetLeft + (this.el.offsetWidth / 2);
-    const y = height + this.el.offsetTop + (this.el.offsetHeight / 2);
-    const body = Matter.Bodies.rectangle(x, y, this.el.offsetWidth, this.el.offsetHeight, {
-      isStatic: true,
-      render: {
-        fillStyle: style.backgroundColor
+    const height = window.innerHeight
+    const style = window.getComputedStyle(this.el)
+    const x = this.el.offsetLeft + this.el.offsetWidth / 2
+    const y = height + this.el.offsetTop + this.el.offsetHeight / 2
+    const body = Matter.Bodies.rectangle(
+      x,
+      y,
+      this.el.offsetWidth,
+      this.el.offsetHeight,
+      {
+        isStatic: true,
+        render: {
+          fillStyle: style.backgroundColor,
+        },
       }
-    });
-    this.body = body;
-    Matter.World.add(this.props.engine.world, body);
+    )
+    this.body = body
+    Matter.World.add(this.props.engine.world, body)
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.is_open !== prevProps.is_open) {
-      if(this.props.is_open) {
-        this.open();
+    if (this.props.is_open !== prevProps.is_open) {
+      if (this.props.is_open) {
+        this.open()
       } else {
-        this.close();
+        this.close()
       }
     }
   }
 
   open() {
-    const el_target = - this.el.offsetHeight;
-    const body_target = window.innerHeight - (this.el.offsetHeight / 2);
-    this.animate(el_target, body_target, 500);
+    const el_target = -this.el.offsetHeight
+    const body_target = window.innerHeight - this.el.offsetHeight / 2
+    this.animate(el_target, body_target, 500)
   }
 
   close = () => {
-    const el_target = this.props.top;
-    const body_target = window.innerHeight + this.props.top + (this.el.offsetHeight / 2);
-    this.animate(el_target, body_target, 500);
+    const el_target = this.props.top
+    const body_target =
+      window.innerHeight + this.props.top + this.el.offsetHeight / 2
+    this.animate(el_target, body_target, 500)
   }
 
   animate = (el_target, body_target, duration) => {
-    const { el, body } = this;
-    const el_start = el.offsetTop;
-    const body_start = body.position.y;
-    let stop = false;
-    let start = null;
+    const { el, body } = this
+    const el_start = el.offsetTop
+    const body_start = body.position.y
+    let stop = false
+    let start = null
 
     function startAnimation(timestamp) {
-      start = timestamp;
-      draw(timestamp);
+      start = timestamp
+      draw(timestamp)
     }
 
     function draw(now) {
-      if(stop) return;
-      if(now - start >= duration) stop = true;
-      let increment = inOutQuad((now - start) / duration);
-      let el_top = el_start + (el_target - el_start) * increment;
-      let body_y = body_start + (body_target - body_start) * increment;
+      if (stop) return
+      if (now - start >= duration) stop = true
+      let increment = inOutQuad((now - start) / duration)
+      let el_top = el_start + (el_target - el_start) * increment
+      let body_y = body_start + (body_target - body_start) * increment
 
-      el.style['top'] = `${el_top}px`;
+      el.style['top'] = `${el_top}px`
       Matter.Body.setPosition(body, {
         x: body.position.x,
-        y: body_y
-      });
+        y: body_y,
+      })
 
-      window.requestAnimationFrame(draw);
+      window.requestAnimationFrame(draw)
     }
 
-    window.requestAnimationFrame(startAnimation);
+    window.requestAnimationFrame(startAnimation)
   }
 
   handleLinkClick = ev => {
@@ -139,14 +146,17 @@ class HomepageHeroCard extends React.Component {
     const style = {
       top: this.props.top,
       left: this.props.left,
-      backgroundColor: this.props.color
+      backgroundColor: this.props.color,
     }
     const content_class = classNames({
       [classes.content]: true,
-      [classes.content_visible]: this.props.is_open
-    });
+      [classes.content_visible]: this.props.is_open,
+    })
     return (
-      <div ref={el => {this.el = el}}
+      <div
+        ref={el => {
+          this.el = el
+        }}
         className={classes.card}
         style={style}
         onClick={this.props.onClick}
