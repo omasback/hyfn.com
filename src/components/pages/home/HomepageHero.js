@@ -1,6 +1,5 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import constants from 'styles/constants'
 import { withStyles, createStyles } from '@material-ui/styles'
 
 import decomp from 'poly-decomp'
@@ -77,8 +76,6 @@ const styles = createStyles({
 })
 
 let logo
-
-const secret = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
 
 class HomepageHero extends React.Component {
   current_card = 0
@@ -258,9 +255,6 @@ class HomepageHero extends React.Component {
     Matter.Engine.run(this.engine)
     Matter.Render.run(render)
 
-    // listen for awesomeness
-    document.addEventListener('keydown', this.onKeyDown)
-
     // start timing for animation
     this.timer = setTimeout(this.startAnimation, 1e3)
   }
@@ -325,52 +319,6 @@ class HomepageHero extends React.Component {
 
   handleCardLeave = ev => {
     this.continueAnimation()
-  }
-
-  onKeyDown = ev => {
-    if (this.state.is_maybe_awesome) {
-      this.detectAwesomeness(ev.keyCode)
-    } else {
-      if (ev.keyCode === secret[0]) {
-        this.setState({ is_maybe_awesome: true }, () => {
-          this.detectAwesomeness(ev.keyCode)
-        })
-      }
-    }
-  }
-
-  detectAwesomeness(keyCode) {
-    if (this.state.is_maybe_awesome) {
-      if (secret[this.state.awesomeness] === keyCode) {
-        this.setState({ awesomeness: this.state.awesomeness + 1 }, () => {
-          this.isMaybeAwesome()
-        })
-      } else {
-        this.isNotAwesome()
-      }
-    } else {
-      this.isNotAwesome()
-    }
-  }
-
-  isNotAwesome() {
-    this.setState({
-      is_maybe_awesome: false,
-      awesomeness: 0,
-    })
-  }
-
-  isMaybeAwesome() {
-    if (this.state.awesomeness === secret.length) {
-      this.isAwesome()
-    }
-  }
-
-  isAwesome() {
-    // should really do something neat here
-    console.log('awesome')
-    //reset
-    this.isNotAwesome()
   }
 
   render() {
