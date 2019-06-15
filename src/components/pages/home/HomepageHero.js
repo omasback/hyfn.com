@@ -5,6 +5,7 @@ import { withStyles, createStyles } from '@material-ui/styles'
 
 import decomp from 'poly-decomp'
 
+import cardConfigs from './cardConfigs'
 import HomepageHeroCard from './HomepageHeroCard.js'
 import { responsiveLengths } from 'styles/mixins'
 
@@ -391,110 +392,25 @@ class HomepageHero extends React.Component {
           </span>
         </h1>
         <div className={classes.cards}>
-          <HomepageHeroCard
-            title="01 Optimization"
-            headline="Wanting more content for less budget?"
-            copy="We optimize like it's our job.<br />Because it is."
-            links={[
-              {
-                url: '#',
-                text: 'View solution',
-              },
-              {
-                url: '#',
-                text: 'View work',
-              },
-            ]}
-            top={-100}
-            left="0"
-            color={constants.colors.blue}
-            canvas={this.canvas}
-            engine={this.engine}
-            is_open={this.state.cards[0].is_open}
-            onClick={ev => {
-              this.handleCardClick(0)
-            }}
-            onMouseEnter={this.handleCardEnter}
-            onMouseLeave={this.handleCardLeave}
-          />
-          <HomepageHeroCard
-            title="02 Campaign"
-            headline="Local Campaigns need a little love?"
-            copy="We built a tool for that.<br />And it's awesome."
-            links={[
-              {
-                url: '#',
-                text: 'View solution',
-              },
-              {
-                url: '#',
-                text: 'View work',
-              },
-            ]}
-            top={-140}
-            left="14vw"
-            color={constants.colors.black}
-            canvas={this.canvas}
-            engine={this.engine}
-            is_open={this.state.cards[1].is_open}
-            onClick={ev => {
-              this.handleCardClick(1)
-            }}
-            onMouseEnter={this.handleCardEnter}
-            onMouseLeave={this.handleCardLeave}
-          />
-          <HomepageHeroCard
-            title="03 Amazon?"
-            headline="Losing to Amazon?"
-            copy="It's tough, they're a beast<br />But you can coexist."
-            links={[
-              {
-                url: '#',
-                text: 'View solution',
-              },
-              {
-                url: '#',
-                text: 'View work',
-              },
-            ]}
-            top={-120}
-            left="35vw"
-            color={constants.colors.red}
-            canvas={this.canvas}
-            engine={this.engine}
-            is_open={this.state.cards[2].is_open}
-            onClick={ev => {
-              this.handleCardClick(2)
-            }}
-            onMouseEnter={this.handleCardEnter}
-            onMouseLeave={this.handleCardLeave}
-          />
-          <HomepageHeroCard
-            title="04 Platform"
-            headline="Tired of being boxed into solutions?"
-            copy="We do things the platforms can't.<br />(Even you, Facebook)"
-            links={[
-              {
-                url: '#',
-                text: 'View solution',
-              },
-              {
-                url: '#',
-                text: 'View work',
-              },
-            ]}
-            top={-100}
-            left="60vw"
-            color={constants.colors.yellow}
-            canvas={this.canvas}
-            engine={this.engine}
-            is_open={this.state.cards[3].is_open}
-            onClick={ev => {
-              this.handleCardClick(3)
-            }}
-            onMouseEnter={this.handleCardEnter}
-            onMouseLeave={this.handleCardLeave}
-          />
+          {cardConfigs.map((c, i) => (
+            <HomepageHeroCard
+              title={c.title}
+              headline={c.headline}
+              copy={c.copy}
+              links={c.links}
+              top={c.top}
+              left={c.left}
+              color={c.color}
+              canvas={this.canvas}
+              engine={this.engine}
+              is_open={this.state.cards[i].is_open}
+              onClick={ev => {
+                this.handleCardClick(i)
+              }}
+              onMouseEnter={this.handleCardEnter}
+              onMouseLeave={this.handleCardLeave}
+            />
+          ))}
         </div>
         <canvas ref={el => (this.canvas = el)} className={classes.canvas} />
       </div>
