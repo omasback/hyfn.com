@@ -394,6 +394,7 @@ class HomepageHero extends React.Component {
         <div className={classes.cards}>
           {cardConfigs.map((c, i) => (
             <HomepageHeroCard
+              key={c.title}
               title={c.title}
               headline={c.headline}
               copy={c.copy}

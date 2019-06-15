@@ -1,6 +1,7 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import { withStyles, createStyles } from '@material-ui/styles'
+import { Link } from 'gatsby'
 
 const Matter = require('matter-js')
 
@@ -128,30 +129,9 @@ class HomepageHeroCard extends React.Component {
     window.requestAnimationFrame(startAnimation);
   }
 
-  handleLinkClick = (ev) => {
-    console.log('link was clicked');
-    ev.stopPropagation();
-  }
-
-  hasLinks() {
-    return this.props.links.length > 0;
-  }
-
-  renderLinks() {
-    if(!this.hasLinks()) return;
-    const { classes } = this.props;
-    return (
-      <div className={classes.links}>
-        {this.props.links.map((link, i) => this.renderLink(link, i))}
-      </div>
-    );
-  }
-  
-  renderLink(link, key) {
-    const { classes } = this.props;
-    return (
-      <a key={key} href={link.href} className={classes.link} onClick={this.handleLinkClick}>{link.text}</a>
-    );
+  handleLinkClick = ev => {
+    console.log('link was clicked')
+    ev.stopPropagation()
   }
 
   render() {
@@ -175,9 +155,26 @@ class HomepageHeroCard extends React.Component {
       >
         <h2 className={classes.title}>{this.props.title}</h2>
         <div className={content_class}>
-          <h3 className={classes.headline} dangerouslySetInnerHTML={{ __html: this.props.headline }} />
-          <p className={classes.copy} dangerouslySetInnerHTML={{ __html: this.props.copy }} />
-          {this.renderLinks()}
+          <h3
+            className={classes.headline}
+            dangerouslySetInnerHTML={{ __html: this.props.headline }}
+          />
+          <p
+            className={classes.copy}
+            dangerouslySetInnerHTML={{ __html: this.props.copy }}
+          />
+          <div className={classes.links}>
+            {this.props.links.map((link, i) => (
+              <Link
+                key={i}
+                to={link.url}
+                className={classes.link}
+                onClick={this.handleLinkClick}
+              >
+                {link.text}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     )
