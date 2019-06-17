@@ -24,6 +24,7 @@ const useStyles = makeStyles<Theme>(
         ['paddingTop', 120, 250],
         ['paddingBottom', 120, 150],
       ]),
+      overflow: 'hidden',
       position: 'relative',
       zIndex: 1,
     },
