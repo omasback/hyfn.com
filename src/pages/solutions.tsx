@@ -144,7 +144,7 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
     // TODO: find a better way to do this without using window
     if (
       typeof window !== 'undefined' &&
-      window.matchMedia(constants.mq.desktop.replace('@media ', ''))
+      window.matchMedia(constants.mq.desktop.replace('@media ', '')).matches
     ) {
       return 0
     }
