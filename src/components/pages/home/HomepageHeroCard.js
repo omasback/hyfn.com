@@ -5,10 +5,8 @@ import { Link } from 'gatsby'
 
 const Matter = require('matter-js')
 
-function inOutQuad(n) {
-  n *= 2
-  if (n < 1) return 0.5 * n * n
-  return -0.5 * (--n * (n - 2) - 1)
+function easeOutQuint(t) {
+  return 1 + --t * t * t * t * t
 }
 
 const styles = createStyles({
@@ -120,7 +118,7 @@ class HomepageHeroCard extends React.Component {
     function draw(now) {
       if (stop) return
       if (now - start >= duration) stop = true
-      let increment = inOutQuad((now - start) / duration)
+      let increment = easeOutQuint((now - start) / duration)
       let el_top = el_start + (el_target - el_start) * increment
       let body_y = body_start + (body_target - body_start) * increment
 
