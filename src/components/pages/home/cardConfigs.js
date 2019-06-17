@@ -2,7 +2,7 @@ import constants from 'styles/constants'
 
 const cardConfigs = [
   {
-    title: '01 Optimization',
+    title: 'Content',
     headline: 'Wanting more content for less budget?',
     copy: "We optimize like it's our job.<br />Because it is.",
     links: [
@@ -20,7 +20,7 @@ const cardConfigs = [
     color: constants.colors.blue,
   },
   {
-    title: '02 Campaign',
+    title: 'Localization',
     headline: 'Local Campaigns need a little love?',
     copy: "We built a tool for that.<br />And it's awesome.",
     links: [
@@ -38,7 +38,7 @@ const cardConfigs = [
     color: constants.colors.black,
   },
   {
-    title: '03 Amazon?',
+    title: 'E-Commerce',
     headline: 'Losing to Amazon?',
     copy: "It's tough, they're a beast<br />But you can coexist.",
     links: [
@@ -56,7 +56,7 @@ const cardConfigs = [
     color: constants.colors.red,
   },
   {
-    title: '04 Platform',
+    title: 'Customization',
     headline: 'Tired of being boxed into solutions?',
     copy: "We do things the platforms can't.<br />(Even you, Facebook)",
     links: [
