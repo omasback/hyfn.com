@@ -4107,11 +4107,6 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-easing@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/easing/-/easing-1.2.1.tgz#f68a1146853b57a9eda7cfdde32cd7d8a5adc813"
-  integrity sha512-1cM4eo9+zROni70hK7veHvLiywog86oS5xISNuS8Pyrn5PZQxdWutbElvfNjugN/FZoiiZAJFjyVOeUfrWnryg==
-
 easings-css@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/easings-css/-/easings-css-1.0.0.tgz#dde569003bb7a4a0c0b77878f5db3e0be5679c81"
