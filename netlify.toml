@@ -97,6 +97,11 @@
   status = 301
   
 [[redirects]]
+  from = "https://hyfn.com/work/godaddy/"
+  to = "https://2015.hyfn.com/work/godaddy/"
+  status = 301
+
+[[redirects]]
   from = "/services/social-amplification/"
   to = "https://hyfn.com/solutions/"
   status = 301
