@@ -169,17 +169,7 @@ export const pageQuery = graphql`
           ...TextAndTextFragment
         }
         ... on ContentfulPageSectionMedia {
-          id
-          fullBleed
-          internal {
-            type
-          }
-          asset {
-            file {
-              url
-              contentType
-            }
-          }
+          ...MediaFragment
         }
       }
     }
