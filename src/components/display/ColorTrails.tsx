@@ -21,7 +21,10 @@ const setDelta = () => {
   previousY = window.scrollY
 }
 
-if (typeof window !== `undefined`) {
+if (
+  typeof window !== `undefined` &&
+  window.matchMedia(constants.mq.hoverDevice.replace('@media ', '')).matches
+) {
   previousY = window.scrollY
 
   window.addEventListener('scroll', () => {

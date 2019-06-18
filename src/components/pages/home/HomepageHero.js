@@ -1,12 +1,14 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import constants from 'styles/constants'
 import { withStyles, createStyles } from '@material-ui/styles'
+import * as cx from 'classnames'
 
 import decomp from 'poly-decomp'
 
+import cardConfigs from './cardConfigs'
 import HomepageHeroCard from './HomepageHeroCard.js'
 import { responsiveLengths } from 'styles/mixins'
+import constants from 'styles/constants'
 
 const Matter = require('matter-js')
 
@@ -20,17 +22,26 @@ const styles = createStyles({
     height: '100vh',
     overflow: 'hidden',
     extend: responsiveLengths([['marginTop', -120, -250]]),
+    opacity: 0,
+    transition: 'opacity 0.2s',
+  },
+  rootMounted: {
+    opacity: 1,
   },
   title: {
-    position: 'absolute',
-    top: '48.5%',
-    left: '0',
-    transform: 'translateY(-50%)',
-    height: 465,
-    width: '100vw',
-    margin: 0,
-    fontWeight: 400,
-    transition: 'opacity 1s',
+    display: 'none',
+    [constants.mq.hoverDevice]: {
+      display: 'block',
+      position: 'absolute',
+      top: '48.5%',
+      left: '0',
+      transform: 'translateY(-50%)',
+      height: 465,
+      width: '100vw',
+      margin: 0,
+      fontWeight: 400,
+      transition: 'opacity 1s',
+    },
   },
   title_hidden: {
     opacity: 0,
@@ -59,25 +70,31 @@ const styles = createStyles({
     paddingLeft: 50,
     display: 'block',
     fontSize: 40,
+    lineHeight: 1.2,
   },
   canvas: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
+    display: 'none',
+    [constants.mq.hoverDevice]: {
+      display: 'block',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+    },
   },
-  cards: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100vw',
-    zIndex: 1001,
-  },
+  cards: {},
 })
 
 let logo
 
-const secret = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
+// const el = document.createElement('div')
+// el.style.width = '100vw'
+// el.style.height = '100vh'
+// el.style.position = 'fixed'
+// el.style.pointerEvents = 'none'
+// el.style.zIndex = '-1'
+// document.body.append(el)
 
 class HomepageHero extends React.Component {
   current_card = 0
@@ -90,9 +107,10 @@ class HomepageHero extends React.Component {
     this.state = {
       is_animation_started: false,
       is_playing: false,
-      is_maybe_awesome: false,
-      awesomeness: 0,
       cards: [],
+      width: 0,
+      height: 0,
+      mounted: false,
     }
 
     for (var i = 0; i < 4; i++) {
@@ -178,11 +196,16 @@ class HomepageHero extends React.Component {
       )
       Matter.Body.scale(logo[letter], 2, 2)
     }
+
+    this.state.width = window.innerWidth
+    this.state.height = window.innerHeight
+
+    window.addEventListener('resize', this.onResize)
   }
 
   componentDidMount() {
-    const width = this.canvas.offsetWidth
-    const height = this.canvas.offsetHeight
+    const width = this.state.width
+    const height = this.state.height
 
     const render = Matter.Render.create({
       canvas: this.canvas,
@@ -257,16 +280,23 @@ class HomepageHero extends React.Component {
     Matter.Engine.run(this.engine)
     Matter.Render.run(render)
 
-    // listen for awesomeness
-    document.addEventListener('keydown', this.onKeyDown)
-
     // start timing for animation
     this.timer = setTimeout(this.startAnimation, 1e3)
+
+    this.setState({
+      mounted: true,
+    })
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.onKeyDown)
     this.stopAnimation()
+  }
+
+  onResize = () => {
+    this.setState({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
   }
 
   startAnimation = () => {
@@ -326,52 +356,6 @@ class HomepageHero extends React.Component {
     this.continueAnimation()
   }
 
-  onKeyDown = ev => {
-    if (this.state.is_maybe_awesome) {
-      this.detectAwesomeness(ev.keyCode)
-    } else {
-      if (ev.keyCode === secret[0]) {
-        this.setState({ is_maybe_awesome: true }, () => {
-          this.detectAwesomeness(ev.keyCode)
-        })
-      }
-    }
-  }
-
-  detectAwesomeness(keyCode) {
-    if (this.state.is_maybe_awesome) {
-      if (secret[this.state.awesomeness] === keyCode) {
-        this.setState({ awesomeness: this.state.awesomeness + 1 }, () => {
-          this.isMaybeAwesome()
-        })
-      } else {
-        this.isNotAwesome()
-      }
-    } else {
-      this.isNotAwesome()
-    }
-  }
-
-  isNotAwesome() {
-    this.setState({
-      is_maybe_awesome: false,
-      awesomeness: 0,
-    })
-  }
-
-  isMaybeAwesome() {
-    if (this.state.awesomeness === secret.length) {
-      this.isAwesome()
-    }
-  }
-
-  isAwesome() {
-    // should really do something neat here
-    console.log('awesome')
-    //reset
-    this.isNotAwesome()
-  }
-
   render() {
     const { classes } = this.props
 
@@ -381,7 +365,11 @@ class HomepageHero extends React.Component {
     })
 
     return (
-      <div className={classes.root}>
+      <div
+        className={cx(classes.root, {
+          [classes.rootMounted]: this.state.mounted,
+        })}
+      >
         <h1 className={title_class}>
           <span className={classes.title_super}>Welcome to</span>
           <span className={classes.title_text}>HYFN</span>
@@ -391,112 +379,28 @@ class HomepageHero extends React.Component {
           </span>
         </h1>
         <div className={classes.cards}>
-          <HomepageHeroCard
-            title="01 Optimization"
-            headline="Wanting more content for less budget?"
-            copy="We optimize like it's our job.<br />Because it is."
-            links={[
-              {
-                url: '#',
-                text: 'View solution',
-              },
-              {
-                url: '#',
-                text: 'View work',
-              },
-            ]}
-            top={-100}
-            left="0"
-            color={constants.colors.blue}
-            canvas={this.canvas}
-            engine={this.engine}
-            is_open={this.state.cards[0].is_open}
-            onClick={ev => {
-              this.handleCardClick(0)
-            }}
-            onMouseEnter={this.handleCardEnter}
-            onMouseLeave={this.handleCardLeave}
-          />
-          <HomepageHeroCard
-            title="02 Campaign"
-            headline="Local Campaigns need a little love?"
-            copy="We built a tool for that.<br />And it's awesome."
-            links={[
-              {
-                url: '#',
-                text: 'View solution',
-              },
-              {
-                url: '#',
-                text: 'View work',
-              },
-            ]}
-            top={-140}
-            left="14vw"
-            color={constants.colors.black}
-            canvas={this.canvas}
-            engine={this.engine}
-            is_open={this.state.cards[1].is_open}
-            onClick={ev => {
-              this.handleCardClick(1)
-            }}
-            onMouseEnter={this.handleCardEnter}
-            onMouseLeave={this.handleCardLeave}
-          />
-          <HomepageHeroCard
-            title="03 Amazon?"
-            headline="Losing to Amazon?"
-            copy="It's tough, they're a beast<br />But you can coexist."
-            links={[
-              {
-                url: '#',
-                text: 'View solution',
-              },
-              {
-                url: '#',
-                text: 'View work',
-              },
-            ]}
-            top={-120}
-            left="35vw"
-            color={constants.colors.red}
-            canvas={this.canvas}
-            engine={this.engine}
-            is_open={this.state.cards[2].is_open}
-            onClick={ev => {
-              this.handleCardClick(2)
-            }}
-            onMouseEnter={this.handleCardEnter}
-            onMouseLeave={this.handleCardLeave}
-          />
-          <HomepageHeroCard
-            title="04 Platform"
-            headline="Tired of being boxed into solutions?"
-            copy="We do things the platforms can't.<br />(Even you, Facebook)"
-            links={[
-              {
-                url: '#',
-                text: 'View solution',
-              },
-              {
-                url: '#',
-                text: 'View work',
-              },
-            ]}
-            top={-100}
-            left="60vw"
-            color={constants.colors.yellow}
-            canvas={this.canvas}
-            engine={this.engine}
-            is_open={this.state.cards[3].is_open}
-            onClick={ev => {
-              this.handleCardClick(3)
-            }}
-            onMouseEnter={this.handleCardEnter}
-            onMouseLeave={this.handleCardLeave}
-          />
+          {cardConfigs.map((c, i) => (
+            <HomepageHeroCard
+              key={c.title}
+              {...c}
+              canvas={this.canvas}
+              engine={this.engine}
+              is_open={this.state.cards[i].is_open}
+              onClick={ev => {
+                this.handleCardClick(i)
+              }}
+              onMouseEnter={this.handleCardEnter}
+              onMouseLeave={this.handleCardLeave}
+              canvasWidth={this.state.width}
+              canvasHeight={this.state.height}
+            />
+          ))}
         </div>
-        <canvas ref={el => (this.canvas = el)} className={classes.canvas} />
+        <canvas
+          ref={el => (this.canvas = el)}
+          className={classes.canvas}
+          // style={{ width: this.state.width, height: this.state.height }}
+        />
       </div>
     )
   }

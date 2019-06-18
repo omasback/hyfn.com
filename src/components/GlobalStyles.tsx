@@ -2,6 +2,7 @@ import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 
 import ModeratBoldWoff from 'fonts/Moderat-Bold.woff'
+import ModeratMediumWoff from 'fonts/Moderat-Medium.woff'
 import ModeratLightWoff from 'fonts/Moderat-Light.woff'
 import { responsiveLengths } from 'styles/mixins'
 
@@ -16,6 +17,11 @@ const useStyles = makeStyles({
       fontFamily: 'Moderat',
       src: `url(${ModeratLightWoff})`,
       fontWeight: 'normal',
+    },
+    {
+      fontFamily: 'Moderat',
+      src: `url(${ModeratMediumWoff})`,
+      fontWeight: '600',
     },
     {
       fontFamily: 'Moderat',

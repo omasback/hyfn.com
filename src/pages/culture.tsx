@@ -45,7 +45,7 @@ const useStyles = makeStyles(
 )
 
 const Culture: React.FunctionComponent<ICulturePageProps> = props => {
-  const classes = useStyles({})
+  const classes = useStyles(props)
 
   return (
     <>
