@@ -7,106 +7,106 @@
   CONTENTFUL_USE_PREVIEW = "true"
 
 [[redirects]]
-  from = /work/id-mens/ 
-  to = https://2015.hyfn.com/work/id-mens/
+  from = "/work/id-mens/"
+  to = "https://2015.hyfn.com/work/id-mens/"
   status = 301
   
 [[redirects]]
-  from = /work/doritos-mix-arcade/ 
-  to = https://2015.hyfn.com/work/doritos-mix-arcade/
+  from = "/work/doritos-mix-arcade/"
+  to = "https://2015.hyfn.com/work/doritos-mix-arcade/"
   status = 301
   
 [[redirects]]
-  from = /work/eggerator/ 
-  to = https://2015.hyfn.com/work/eggerator/
+  from = "/work/eggerator/"
+  to = "https://2015.hyfn.com/work/eggerator/"
   status = 301
   
 [[redirects]]
-  from = /work/pup-star/ 
-  to = https://hyfn.com/work/pup-star/
+  from = "/work/pup-star/"
+  to = "https://hyfn.com/work/pup-star/"
   status = 301
   
 [[redirects]]
-  from = /work/line-play-web-series/ 
-  to = https://2015.hyfn.com/work/line-play-web-series/ 
+  from = "/work/line-play-web-series/"
+  to = "https://2015.hyfn.com/work/line-play-web-series/"
   status = 301
   
 [[redirects]]
-  from = /work/nba-asv/ 
-  to = https://2015-hyfn.com/work/nba-asv/ 
+  from = "/work/nba-asv/"
+  to = "https://2015-hyfn.com/work/nba-asv/ "
   status = 301
   
 [[redirects]]
-  from = /work/sirca/ 
-  to = https://2015-hyfn.com/work/sirca/  
+  from = "/work/sirca/"
+  to = "https://2015-hyfn.com/work/sirca/  "
   status = 301
   
 [[redirects]]
-  from = /work/new-balance/ 
-  to = https://2015.hyfn.com/work/new-balance/
+  from = "/work/new-balance/"
+  to = "https://2015.hyfn.com/work/new-balance/"
   status = 301
   
 [[redirects]]
-  from = /work/ufc-gym/ 
-  to = https://2015.hyfn.com/work/ufc-gym/
+  from = "/work/ufc-gym/"
+  to = "https://2015.hyfn.com/work/ufc-gym/"
   status = 301
   
 [[redirects]]
-  from = /work/visit-california-ad  
-  to = /	https://2015.hyfn.com/work/visit-california-ads/
+  from = "/work/visit-california-ad "
+  to = "/	https://2015.hyfn.com/work/visit-california-ads/"
   status = 301
   
 [[redirects]]
-  from = /work/heal-ads/  
-  to = https://2015.hyfn.com/work/heal-ads/
+  from = "/work/heal-ads/ "
+  to = "https://2015.hyfn.com/work/heal-ads/"
   status = 301
   
 [[redirects]]
-  from = /work/get-schooled/  
-  to = https://2015.hyfn.com/work/get-schooled/
+  from = "/work/get-schooled/ "
+  to = "https://2015.hyfn.com/work/get-schooled/"
   status = 301
   
 [[redirects]]
-  from = /work/alberta-rye/ 
-  to = https://2015.hyfn.com/work/alberta-rye/
+  from = "/work/alberta-rye/"
+  to = "https://2015.hyfn.com/work/alberta-rye/"
   status = 301
   
 [[redirects]]
-  from = /work/screaming-queens/  
-  to = https://2015.hyfn.com/work/screaming-queens/
+  from = "/work/screaming-queens/ "
+  to = "https://2015.hyfn.com/work/screaming-queens/"
   status = 301
   
 [[redirects]]
-  from = /work/hp-zbook/ 
-  to = https://2015.hyfn.com/work/hp-zbook/
+  from = "/work/hp-zbook/"
+  to = "https://2015.hyfn.com/work/hp-zbook/"
   status = 301
   
 [[redirects]]
-  from = /work/mgm/ 
-  to = https://2015.hyfn.com/work/mgm/
+  from = "/work/mgm/"
+  to = "https://2015.hyfn.com/work/mgm/"
   status = 301
   
 [[redirects]]
-  from = /work/sirca/ 
-  to = https://2015.hyfn.com/work/sirca/
+  from = "/work/sirca/"
+  to = "https://2015.hyfn.com/work/sirca/"
   status = 301
   
 [[redirects]]
-  from = /work/pro-rugby/ 
-  to = https://2015.hyfn.com/work/pro-rugby/
+  from = "/work/pro-rugby/"
+  to = "https://2015.hyfn.com/work/pro-rugby/"
   status = 301
   
 [[redirects]]
-  from = /services/social-amplification/ 
-  to = https://hyfn.com/solutions
+  from = "/services/social-amplification/"
+  to = "https://hyfn.com/solutions"
   status = 301
   
 [[redirects]]
-  from = /services/content-creation/ 
-  to = https://hyfn.com/solutions
+  from = "/services/content-creation/"
+  to = "https://hyfn.com/solutions"
   status = 301
   
 [[redirects]]
-  from = /services/creative-technology/ 
-  to = https://hyfn.com/solutions
+  from = "/services/creative-technology/"
+  to = "https://hyfn.com/solutions"
   status = 301
