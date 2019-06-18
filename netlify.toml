@@ -110,3 +110,28 @@
   from = "/services/creative-technology/"
   to = "https://hyfn.com/solutions/"
   status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/ads/"
+  to = "https://hyfn.com/solutions/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/design/"
+  to = "https://hyfn.com/solutions/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/development/"
+  to = "https://hyfn.com/solutions/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/strategy/"
+  to = "https://hyfn.com/solutions/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/ux/"
+  to = "https://hyfn.com/solutions/"
+  status = 301
