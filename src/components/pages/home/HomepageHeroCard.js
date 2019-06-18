@@ -53,7 +53,7 @@ const styles = createStyles({
       ['marginTop', 35, 54],
       ['marginBottom', 8, 33],
     ]),
-    fontWeight: 'bold',
+    fontWeight: '600',
     lineHeight: 1.2,
   },
   copy: {
@@ -67,6 +67,7 @@ const styles = createStyles({
       ['marginTop', 15, 50],
       ['marginBottom', 20, 20],
     ]),
+    fontWeight: 'bold',
     lineHeight: 1.8,
   },
   link: {
