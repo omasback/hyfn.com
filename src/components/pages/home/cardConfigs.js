@@ -86,7 +86,7 @@ const cardConfigs = [
     color: constants.colors.red,
   },
   {
-    title: 'Social Advertising',
+    title: '04 Social Advertising',
     headline: 'Tired of being boxed into solutions?',
     copy: "We do things the platforms can't.<br />(Even you, Facebook)",
     links: [
