@@ -238,7 +238,7 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
             </form>
           </Grid>
           <Grid item mobile={10} desktop={7} className={classes.legalLinks}>
-            <span>©2018 HYFN</span>
+            <span>©2019 HYFN</span>
             <Link to="/services-privacy-policy/">Services Privacy Policy</Link>
             <Link to="/corporate-privacy-policy/">
               Corporate Privacy Policy
