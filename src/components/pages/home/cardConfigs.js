@@ -15,8 +15,18 @@ const cardConfigs = [
         text: 'View work',
       },
     ],
-    top: -100,
-    left: '0',
+    mobile: {
+      top: -0.42,
+      left: 0.1,
+      width: 0.9,
+      height: 1.1,
+    },
+    desktop: {
+      top: -0.069,
+      left: 0,
+      width: 0.4,
+      height: 0.39,
+    },
     color: constants.colors.blue,
   },
   {
@@ -33,8 +43,18 @@ const cardConfigs = [
         text: 'View work',
       },
     ],
-    top: -140,
-    left: '14vw',
+    mobile: {
+      top: -0.32,
+      left: 0,
+      width: 0.74,
+      height: 1,
+    },
+    desktop: {
+      top: -0.097,
+      left: 0.14,
+      width: 0.4,
+      height: 0.39,
+    },
     color: constants.colors.black,
   },
   {
@@ -51,8 +71,18 @@ const cardConfigs = [
         text: 'View work',
       },
     ],
-    top: -120,
-    left: '35vw',
+    mobile: {
+      top: -0.21,
+      left: 0.21,
+      width: 0.79,
+      height: 1,
+    },
+    desktop: {
+      top: -0.083,
+      left: 0.35,
+      width: 0.4,
+      height: 0.39,
+    },
     color: constants.colors.red,
   },
   {
@@ -69,8 +99,18 @@ const cardConfigs = [
         text: 'View work',
       },
     ],
-    top: -100,
-    left: '60vw',
+    mobile: {
+      top: -0.11,
+      left: 0.0,
+      width: 0.9,
+      height: 1,
+    },
+    desktop: {
+      top: -0.069,
+      left: 0.6,
+      width: 0.4,
+      height: 0.39,
+    },
     color: constants.colors.yellow,
   },
 ]

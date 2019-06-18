@@ -7,6 +7,7 @@ import decomp from 'poly-decomp'
 import cardConfigs from './cardConfigs'
 import HomepageHeroCard from './HomepageHeroCard.js'
 import { responsiveLengths } from 'styles/mixins'
+import constants from 'styles/constants'
 
 const Matter = require('matter-js')
 
@@ -22,15 +23,19 @@ const styles = createStyles({
     extend: responsiveLengths([['marginTop', -120, -250]]),
   },
   title: {
-    position: 'absolute',
-    top: '48.5%',
-    left: '0',
-    transform: 'translateY(-50%)',
-    height: 465,
-    width: '100vw',
-    margin: 0,
-    fontWeight: 400,
-    transition: 'opacity 1s',
+    display: 'none',
+    [constants.mq.hoverDevice]: {
+      display: 'block',
+      position: 'absolute',
+      top: '48.5%',
+      left: '0',
+      transform: 'translateY(-50%)',
+      height: 465,
+      width: '100vw',
+      margin: 0,
+      fontWeight: 400,
+      transition: 'opacity 1s',
+    },
   },
   title_hidden: {
     opacity: 0,
@@ -59,23 +64,31 @@ const styles = createStyles({
     paddingLeft: 50,
     display: 'block',
     fontSize: 40,
+    lineHeight: 1.2,
   },
   canvas: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
+    display: 'none',
+    [constants.mq.hoverDevice]: {
+      display: 'block',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+    },
   },
-  cards: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100vw',
-    zIndex: 1001,
-  },
+  cards: {},
 })
 
 let logo
+
+// const el = document.createElement('div')
+// el.style.width = '100vw'
+// el.style.height = '100vh'
+// el.style.position = 'fixed'
+// el.style.pointerEvents = 'none'
+// el.style.zIndex = '-1'
+// document.body.append(el)
 
 class HomepageHero extends React.Component {
   current_card = 0
@@ -91,6 +104,8 @@ class HomepageHero extends React.Component {
       is_maybe_awesome: false,
       awesomeness: 0,
       cards: [],
+      width: 0,
+      height: 0,
     }
 
     for (var i = 0; i < 4; i++) {
@@ -176,11 +191,16 @@ class HomepageHero extends React.Component {
       )
       Matter.Body.scale(logo[letter], 2, 2)
     }
+
+    this.state.width = window.innerWidth
+    this.state.height = window.innerHeight
+
+    window.addEventListener('resize', this.onResize)
   }
 
   componentDidMount() {
-    const width = this.canvas.offsetWidth
-    const height = this.canvas.offsetHeight
+    const width = this.state.width
+    const height = this.state.height
 
     const render = Matter.Render.create({
       canvas: this.canvas,
@@ -260,8 +280,14 @@ class HomepageHero extends React.Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.onKeyDown)
     this.stopAnimation()
+  }
+
+  onResize = () => {
+    this.setState({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
   }
 
   startAnimation = () => {
@@ -343,13 +369,7 @@ class HomepageHero extends React.Component {
           {cardConfigs.map((c, i) => (
             <HomepageHeroCard
               key={c.title}
-              title={c.title}
-              headline={c.headline}
-              copy={c.copy}
-              links={c.links}
-              top={c.top}
-              left={c.left}
-              color={c.color}
+              {...c}
               canvas={this.canvas}
               engine={this.engine}
               is_open={this.state.cards[i].is_open}
@@ -358,10 +378,16 @@ class HomepageHero extends React.Component {
               }}
               onMouseEnter={this.handleCardEnter}
               onMouseLeave={this.handleCardLeave}
+              canvasWidth={this.state.width}
+              canvasHeight={this.state.height}
             />
           ))}
         </div>
-        <canvas ref={el => (this.canvas = el)} className={classes.canvas} />
+        <canvas
+          ref={el => (this.canvas = el)}
+          className={classes.canvas}
+          style={{ width: this.state.width, height: this.state.height }}
+        />
       </div>
     )
   }
