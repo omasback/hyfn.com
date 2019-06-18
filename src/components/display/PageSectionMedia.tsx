@@ -55,20 +55,24 @@ const PageSectionMedia: React.FunctionComponent<
   const videoUrl = embedUrl ? embedUrl : asset.file.url
 
   React.useEffect(() => {
-    if (embedUrl && embedUrl.indexOf('vimeo') > -1) {
+    if (
+      window &&
+      embedUrl &&
+      embedUrl.indexOf('vimeo') > -1 &&
+      aspectRatio === 0
+    ) {
       // here we fetch some json data about the video
       // which contains the dimension so that we may set the
       // aspect ratio of the iframe
       axios
         .get(`https://vimeo.com/api/oembed.json?url=${embedUrl}`)
         .then(resp => {
-          console.log(resp)
           if (resp.data && resp.data.width && resp.data.height) {
             setAspectRatio(resp.data.width / resp.data.height)
           }
         })
     }
-  })
+  }, [embedUrl])
 
   const mediaElement =
     asset.file.contentType.indexOf('video') === 0 ? (
