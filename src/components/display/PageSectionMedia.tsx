@@ -23,7 +23,7 @@ const useStyles = makeStyles(
     media: {
       display: 'block',
       width: '100%',
-      '& video': {
+      '& video:focus': {
         outline: 'none',
       },
     },
@@ -52,7 +52,7 @@ const PageSectionMedia: React.FunctionComponent<
   const { asset, fullBleed } = props
 
   const [ref, inView] = useInView({
-    threshold: 1,
+    threshold: 0.1,
   })
 
   const mediaElement =
