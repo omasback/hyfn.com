@@ -14,6 +14,7 @@ const constants = {
   },
   mq: {
     desktop: `@media (min-width: ${desktop}px)`,
+    hoverDevice: '@media (hover: hover) and (pointer: fine)',
   },
   triggerOnce: true,
   themeTransitionDuration: '0.5s',

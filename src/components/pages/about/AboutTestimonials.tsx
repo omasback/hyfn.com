@@ -127,7 +127,7 @@ const AboutTestimonials: React.FunctionComponent<{
         backgroundColor={testimonial.backgroundColor}
         parent={'AboutTestimonials'}
       />
-      <OffsetHeadline text="TESTI-\nMONIAL" className={classes.headline} />
+      <OffsetHeadline text="NICE\nWORDS" className={classes.headline} />
       <Grid container className={classes.relative}>
         <Grid item mobile={8} desktop={3} offsetDesktop={1}>
           <h3 className={classes.subheadline}>We’re Always in Good Company</h3>
