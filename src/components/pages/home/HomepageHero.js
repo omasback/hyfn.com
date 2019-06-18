@@ -1,6 +1,7 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import { withStyles, createStyles } from '@material-ui/styles'
+import * as cx from 'classnames'
 
 import decomp from 'poly-decomp'
 
@@ -21,6 +22,11 @@ const styles = createStyles({
     height: '100vh',
     overflow: 'hidden',
     extend: responsiveLengths([['marginTop', -120, -250]]),
+    opacity: 0,
+    transition: 'opacity 0.2s',
+  },
+  rootMounted: {
+    opacity: 1,
   },
   title: {
     display: 'none',
@@ -101,11 +107,10 @@ class HomepageHero extends React.Component {
     this.state = {
       is_animation_started: false,
       is_playing: false,
-      is_maybe_awesome: false,
-      awesomeness: 0,
       cards: [],
       width: 0,
       height: 0,
+      mounted: false,
     }
 
     for (var i = 0; i < 4; i++) {
@@ -277,6 +282,10 @@ class HomepageHero extends React.Component {
 
     // start timing for animation
     this.timer = setTimeout(this.startAnimation, 1e3)
+
+    this.setState({
+      mounted: true,
+    })
   }
 
   componentWillUnmount() {
@@ -356,7 +365,11 @@ class HomepageHero extends React.Component {
     })
 
     return (
-      <div className={classes.root}>
+      <div
+        className={cx(classes.root, {
+          [classes.rootMounted]: this.state.mounted,
+        })}
+      >
         <h1 className={title_class}>
           <span className={classes.title_super}>Welcome to</span>
           <span className={classes.title_text}>HYFN</span>
@@ -386,7 +399,7 @@ class HomepageHero extends React.Component {
         <canvas
           ref={el => (this.canvas = el)}
           className={classes.canvas}
-          style={{ width: this.state.width, height: this.state.height }}
+          // style={{ width: this.state.width, height: this.state.height }}
         />
       </div>
     )

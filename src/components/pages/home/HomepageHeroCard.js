@@ -44,7 +44,7 @@ const styles = createStyles({
   titleClosed: {
     transform: 'translate(-15%, -225%)',
     [constants.mq.desktop]: {
-      transform: 'none',
+      transform: 'translate(0%, -90%)',
     },
   },
   headline: {
@@ -80,21 +80,33 @@ class HomepageHeroCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      x: this.getConfig().left * props.canvasWidth,
-      y: props.canvasHeight + this.getConfig().top * props.canvasWidth,
-      width: this.getConfig().width * props.canvasWidth,
-      height: this.getConfig().height * props.canvasWidth,
+      x: 0,
+      y: 0,
+      width: 0,
+      height: 0,
     }
   }
 
   componentDidMount() {
+    const x = this.getConfig().left * this.props.canvasWidth,
+      y =
+        this.props.canvasHeight + this.getConfig().top * this.props.canvasWidth,
+      width = this.getConfig().width * this.props.canvasWidth,
+      height = this.getConfig().height * this.props.canvasWidth
+
+    this.setState({
+      x,
+      y,
+      width,
+      height,
+    })
     // add a hidden box behind the card within
     // the matter engine
     const body = Matter.Bodies.rectangle(
-      this.state.x + this.state.width / 2,
-      this.state.y + this.state.height / 2,
-      this.state.width,
-      this.state.height,
+      x + width / 2,
+      y + height / 2,
+      width,
+      height,
       {
         isStatic: true,
         render: {
@@ -118,6 +130,7 @@ class HomepageHeroCard extends React.Component {
 
   getConfig = () => {
     if (
+      typeof window !== 'undefined' &&
       window.matchMedia(constants.mq.desktop.replace('@media ', '')).matches
     ) {
       return this.props.desktop
