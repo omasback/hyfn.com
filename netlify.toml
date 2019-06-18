@@ -52,8 +52,8 @@
   status = 301
   
 [[redirects]]
-  from = "/work/visit-california-ad "
-  to = "/	https://2015.hyfn.com/work/visit-california-ads/"
+  from = "/work/visit-california-ad/"
+  to = "https://2015.hyfn.com/work/visit-california-ads/"
   status = 301
   
 [[redirects]]
@@ -98,15 +98,15 @@
   
 [[redirects]]
   from = "/services/social-amplification/"
-  to = "https://hyfn.com/solutions"
+  to = "https://hyfn.com/solutions/"
   status = 301
   
 [[redirects]]
   from = "/services/content-creation/"
-  to = "https://hyfn.com/solutions"
+  to = "https://hyfn.com/solutions/"
   status = 301
   
 [[redirects]]
   from = "/services/creative-technology/"
-  to = "https://hyfn.com/solutions"
+  to = "https://hyfn.com/solutions/"
   status = 301
