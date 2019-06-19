@@ -140,3 +140,8 @@
   from = "https://hyfn.com/services/ux/"
   to = "https://hyfn.com/solutions/"
   status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/careers/*"
+  to = "https://2015.hyfn.com/careers/:splat"
+  status = 301
