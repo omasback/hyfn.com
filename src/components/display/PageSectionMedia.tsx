@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
 import ReactPlayer from 'react-player'
+import axios from 'axios'
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
@@ -11,6 +12,7 @@ import ScrollReveal from 'components/display/ScrollReveal'
 import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
 import { useInView } from 'react-intersection-observer'
+import { graphql } from 'gatsby'
 
 const useStyles = makeStyles(
   {
@@ -27,48 +29,73 @@ const useStyles = makeStyles(
         outline: 'none',
       },
     },
+    embedContainer: {
+      display: 'flex',
+    },
+    spacer: {
+      width: 0,
+    },
   },
   { name: 'PageSectionMedia' }
 )
-
-export interface PageSectionMediaProps {
-  internal: {
-    type: 'ContentfulPageSectionMedia'
-  }
-  fullBleed: boolean
-  asset: {
-    file: {
-      url: string
-      contentType: string
-    }
-  }
-}
 
 const PageSectionMedia: React.FunctionComponent<
   PageSectionMediaProps
 > = props => {
   const classes = useStyles(props)
 
-  const { asset, fullBleed } = props
+  const { asset, embedUrl, fullBleed } = props
 
   const [ref, inView] = useInView({
     threshold: 0.1,
   })
 
+  const [aspectRatio, setAspectRatio] = React.useState(0)
+
+  const videoUrl = embedUrl ? embedUrl : asset.file.url
+
+  React.useEffect(() => {
+    if (
+      window &&
+      embedUrl &&
+      embedUrl.indexOf('vimeo') > -1 &&
+      aspectRatio === 0
+    ) {
+      // here we fetch some json data about the video
+      // which contains the dimension so that we may set the
+      // aspect ratio of the iframe
+      axios
+        .get(`https://vimeo.com/api/oembed.json?url=${embedUrl}`)
+        .then(resp => {
+          if (resp.data && resp.data.width && resp.data.height) {
+            setAspectRatio(resp.data.width / resp.data.height)
+          }
+        })
+    }
+  }, [embedUrl])
+
   const mediaElement =
     asset.file.contentType.indexOf('video') === 0 ? (
       // TODO: autoplay video on scroll enter
-      <ReactPlayer
-        url={asset.file.url}
-        controls={false}
-        muted
-        playsinline
-        loop
-        playing={inView}
-        className={classes.media}
-        width={'100%'}
-        height="auto"
-      />
+      <div className={classes.embedContainer}>
+        {aspectRatio > 0 && (
+          <div
+            className={classes.spacer}
+            style={{ paddingTop: (1 / aspectRatio) * 100 + '%' }}
+          />
+        )}
+        <ReactPlayer
+          url={videoUrl}
+          controls={false}
+          muted
+          playsinline
+          loop
+          playing={inView}
+          className={classes.media}
+          width={'100%'}
+          height="auto"
+        />
+      </div>
     ) : (
       // <video loop playsInline controls >
       <img src={asset.file.url} alt="" className={classes.media} />
@@ -86,3 +113,34 @@ const PageSectionMedia: React.FunctionComponent<
 }
 
 export default PageSectionMedia
+
+export interface PageSectionMediaProps {
+  internal: {
+    type: 'ContentfulPageSectionMedia'
+  }
+  embedUrl: string
+  fullBleed: boolean
+  asset: {
+    file: {
+      url: string
+      contentType: string
+    }
+  }
+}
+
+export const query = graphql`
+  fragment MediaFragment on ContentfulPageSectionMedia {
+    id
+    embedUrl
+    fullBleed
+    internal {
+      type
+    }
+    asset {
+      file {
+        url
+        contentType
+      }
+    }
+  }
+`

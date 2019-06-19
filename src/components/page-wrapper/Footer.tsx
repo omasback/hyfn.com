@@ -239,11 +239,27 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
           </Grid>
           <Grid item mobile={10} desktop={7} className={classes.legalLinks}>
             <span>©2019 HYFN</span>
-            <Link to="/services-privacy-policy/">Services Privacy Policy</Link>
-            <Link to="/corporate-privacy-policy/">
+            <a
+              href="https://2015.hyfn.com/services-privacy-policy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Services Privacy Policy
+            </a>
+            <a
+              href="https://2015.hyfn.com/corporate-privacy-policy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Corporate Privacy Policy
-            </Link>
-            <Link to="/terms-of-use/">Terms of Use</Link>
+            </a>
+            <a
+              href="https://2015.hyfn.com/terms-of-use/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Terms of Use
+            </a>
           </Grid>
         </Grid>
       </Container>
