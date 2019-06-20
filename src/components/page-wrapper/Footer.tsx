@@ -50,6 +50,7 @@ const useStyles = makeStyles(
       extend: merge(responsiveLengths('marginBottom', 55, 55)),
     },
     underline: {
+      textDecoration: 'none',
       borderBottom: '3px solid #fff',
       [constants.mq.desktop]: {
         borderBottomWidth: 4,
@@ -148,8 +149,20 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
             </Link>
           </Grid>
           <Grid item mobile={5} className={classes.shareIcons}>
-            <FaFacebookSquare color="#fff" className={classes.shareIcon} />
-            <FaInstagram color="#fff" className={classes.shareIcon} />
+            <a
+              href="https://www.facebook.com/WeAreHYFN/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebookSquare color="#fff" className={classes.shareIcon} />
+            </a>
+            <a
+              href="https://www.instagram.com/hyfn/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram color="#fff" className={classes.shareIcon} />
+            </a>
           </Grid>
         </Grid>
 
@@ -160,7 +173,9 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
               <br />
               is always
               <br />
-              <span className={classes.underline}>open.</span>
+              <Link to="/contact" className={classes.underline}>
+                open.
+              </Link>
             </h2>
           </Grid>
           <Grid item mobile={10} desktop={3} className={classes.offices}>
