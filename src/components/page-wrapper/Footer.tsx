@@ -157,7 +157,7 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
               <FaFacebookSquare color="#fff" className={classes.shareIcon} />
             </a>
             <a
-              href="https://www.instagram.com/hyfn/"
+              href="https://www.instagram.com/wearehyfn/"
               target="_blank"
               rel="noopener noreferrer"
             >
