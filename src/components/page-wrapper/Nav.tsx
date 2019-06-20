@@ -123,7 +123,7 @@ const useStyles = makeStyles<Theme>(
     },
     desktopLeftLink: {
       display: 'flex',
-      marginRight: 50,
+      marginRight: '4.5%',
       fontSize: 17,
       textDecoration: 'none',
       whiteSpace: 'nowrap',
@@ -151,7 +151,7 @@ const useStyles = makeStyles<Theme>(
     contactLink: {
       fontSize: 17,
       textDecoration: 'none',
-      marginLeft: 32,
+      marginLeft: 0,
       whiteSpace: 'nowrap',
     },
   }),
@@ -170,6 +170,18 @@ const mainLinks = [
   {
     text: 'Work',
     path: '/work',
+  },
+  {
+    text: 'Amplification',
+    path: '/solutions/#Amplification',
+  },
+  {
+    text: 'Creative',
+    path: '/solutions/#Creative',
+  },
+  {
+    text: 'Technology',
+    path: '/solutions/#Technology',
   },
   // {
   //   text: 'Thoughts',
@@ -192,7 +204,7 @@ const mainLinks = [
 const Nav: React.FunctionComponent<{}> = ({ children }) => {
   const classes = useStyles()
   const [isOpen, setOpen] = React.useState(false)
-  const isWide = useMediaQuery('(min-width: 820px)')
+  const isWide = useMediaQuery(constants.mq.desktop.replace('@media ', ''))
 
   return (
     <div className={classes.root}>
@@ -203,7 +215,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
               <HyfnLogo className={classes.desktopLogo} />
             </Link>
             <div className={classes.desktopLeftLinks}>
-              {mainLinks.slice(0, 3).map(link => (
+              {mainLinks.slice(0, 6).map(link => (
                 <Link
                   key={link.path}
                   to={link.path}
