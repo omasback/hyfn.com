@@ -129,6 +129,7 @@ export default (props: IServiceTab) => {
 
   return (
     <div
+      id={title}
       className={cx(classes.root, {
         [classes.rootClosed]: !open,
       })}

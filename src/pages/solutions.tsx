@@ -2,30 +2,28 @@ import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
-import { graphql } from 'gatsby'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import Slider from 'react-slick'
+import { graphql, Link } from 'gatsby'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import easings from 'easings-css'
 import { Portal, useMediaQuery } from '@material-ui/core'
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
-import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
-import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
+import { largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import ImageAndText, {
   ImageAndTextProps,
 } from 'components/display/ImageAndText'
 import ServiceTab, { IServiceTab } from 'components/pages/services/ServiceTab'
 import constants from 'styles/constants'
-import ArrowLink from 'components/display/ArrowLink'
 import XIcon from 'components/svg/XIcon'
-import CircleArrow from 'components/display/CircleArrow'
 
 const useStyles = makeStyles(
   {
+    '@global html': {
+      scrollBehavior: 'smooth',
+    },
     root: {
       extend: responsiveLengths('marginBottom', 116, -280),
     },
@@ -137,19 +135,29 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
   const classes = useStyles(props)
 
   const cms = props.data.contentfulServicesPage
+  const serviceTitles = cms.services.map(s => s.title)
 
   const isWide = useMediaQuery(constants.mq.desktop)
 
-  const [currentTab, setCurrentTab] = React.useState(() => {
-    // TODO: find a better way to do this without using window
-    if (
-      typeof window !== 'undefined' &&
-      window.matchMedia(constants.mq.desktop.replace('@media ', '')).matches
-    ) {
-      return 0
+  const [currentTab, setCurrentTab] = React.useState(0)
+
+  React.useEffect(() => {
+    const hash = props.location.hash.slice(1)
+    const index = serviceTitles.indexOf(hash)
+    if (index >= 0) {
+      setCurrentTab(index)
+    } else {
+      // TODO: find a better way to do this without using window
+      if (
+        typeof window !== 'undefined' &&
+        window.matchMedia(constants.mq.desktop.replace('@media ', '')).matches
+      ) {
+        setCurrentTab(0)
+      } else {
+        setCurrentTab(-1)
+      }
     }
-    return -1
-  })
+  }, [props.location.hash])
 
   React.useEffect(() => {
     if (window) {
@@ -171,18 +179,9 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
             <ScrollReveal>
               <p className={classes.intro}>
                 We help clients win through the use of{' '}
-                <a href="#amplification" onClick={() => setCurrentTab(0)}>
-                  Amplification
-                </a>
-                ,{' '}
-                <a href="#creative" onClick={() => setCurrentTab(1)}>
-                  Creative
-                </a>
-                , and{' '}
-                <a href="#technology" onClick={() => setCurrentTab(2)}>
-                  Technology
-                </a>
-                .
+                <Link to="/solutions/#Amplification">Amplification</Link>,{' '}
+                <Link to="/solutions/#Creative">Creative</Link>, and{' '}
+                <Link to="/solutions/#Technology">Technology</Link>.
               </p>
             </ScrollReveal>
           </Grid>
@@ -257,6 +256,8 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
 export default Solutions
 
 interface ISolutions {
+  navigate: () => void
+  location: Location
   data: {
     contentfulServicesPage: {
       slug: string
