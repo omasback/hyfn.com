@@ -137,7 +137,7 @@ const HompageIntro: React.FunctionComponent<IProps> = ({ cms }) => {
           </ScrollReveal>
           <ScrollReveal>
             <ArrowLink
-              to="/contact"
+              to="/contact/"
               text={'Might as well get in touch'}
               className={classes.cta}
             />

@@ -53,7 +53,7 @@ const HomepageCaseStudies: React.FunctionComponent<
         <OffsetHeadline text="LOOK\nPROOF!" className={classes.headline} />
         <ScrollReveal>
           <ArrowLink
-            to="/work"
+            to="/work/"
             text={'We Do Work That Works'}
             className={classes.cta}
           />

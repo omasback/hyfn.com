@@ -208,7 +208,7 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
               <br />
               is always
               <br />
-              <Link to="/contact" className={classes.underline}>
+              <Link to="/contact/" className={classes.underline}>
                 open.
               </Link>
             </h2>

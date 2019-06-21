@@ -11,7 +11,7 @@ const cardConfigs = [
         text: 'View solution',
       },
       {
-        url: '/work',
+        url: '/work/',
         text: 'View work',
       },
     ],
@@ -39,7 +39,7 @@ const cardConfigs = [
         text: 'View solution',
       },
       {
-        url: '/work',
+        url: '/work/',
         text: 'View work',
       },
     ],
@@ -67,7 +67,7 @@ const cardConfigs = [
         text: 'View solution',
       },
       {
-        url: '/work',
+        url: '/work/',
         text: 'View work',
       },
     ],
@@ -95,7 +95,7 @@ const cardConfigs = [
         text: 'View solution',
       },
       {
-        url: '/work',
+        url: '/work/',
         text: 'View work',
       },
     ],
