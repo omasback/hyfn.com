@@ -43,7 +43,7 @@
   
 [[redirects]]
   from = "/work/new-balance/"
-  to = "https://classic.hyfn.com/work/new-balance/"
+  to = "https://hyfn.com/work/newbalance"
   status = 301
   
 [[redirects]]
@@ -52,7 +52,7 @@
   status = 301
   
 [[redirects]]
-  from = "/work/visit-california-ad/"
+  from = "/work/visit-california-ads/"
   to = "https://classic.hyfn.com/work/visit-california-ads/"
   status = 301
   
@@ -99,6 +99,21 @@
 [[redirects]]
   from = "https://hyfn.com/work/godaddy/"
   to = "https://classic.hyfn.com/work/godaddy/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/work/vita-coco/"
+  to = "https://classic.hyfn.com/work/vita-coco/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/work/theory-of-everything/"
+  to = "https://classic.hyfn.com/work/theory-of-everything/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/work/sky-zone/"
+  to = "https://hyfn.com/work/sky-zone/"
   status = 301
 
 [[redirects]]
