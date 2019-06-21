@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/styles'
 import { FaFacebookSquare, FaInstagram } from 'react-icons/fa'
 import { Link } from 'gatsby'
 import merge from 'lodash/merge'
+import HubspotForm from 'react-hubspot-form'
+import easings from 'easings-css'
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
@@ -86,50 +88,83 @@ const useStyles = makeStyles(
       flexDirection: 'row-reverse',
       extend: merge(responsiveLengths('paddingTop', 0, 50)),
     },
+    formGrid: {
+      extend: responsiveLengths('height', 111, 81),
+      '& .submitted-message': {
+        lineHeight: 4.5,
+        extend: responsiveLengths('fontSize', 14, 17),
+      },
+    },
     form: {
-      extend: merge(responsiveLengths('marginTop', 3, 0)),
+      extend: responsiveLengths('marginTop', 30, 0),
       borderBottom: '2px solid #fff',
       display: 'flex',
-    },
-    input: {
-      extend: merge(
-        responsiveLengths('fontSize', 17, 17),
-        responsiveLengths('height', 50, 40)
-      ),
-      width: '100%',
-      background: 'transparent',
-      border: 'none',
-      color: '#fff',
-      outline: 'none',
+      alignItems: 'flex-end',
+      position: 'relative',
+      '& .hs-form-field': {
+        flexGrow: 1,
+        '& label': {
+          display: 'block',
+        },
+      },
+      '& .hs-form-required': {
+        display: 'none',
+      },
+      '& input[type=email]': {
+        extend: responsiveLengths([['fontSize', 17, 17], ['height', 50, 40]]),
+        width: '100%',
+        background: 'transparent',
+        border: 'none',
+        color: '#fff',
+        outline: 'none',
+      },
+      '& .legal-consent-container': {
+        display: 'none',
+      },
     },
     button: {
       color: '#fff',
       whiteSpace: 'nowrap',
       textAlign: 'right',
-      paddingRight: '0',
+      paddingRight: 0,
       fontWeight: 'bold',
       appearance: 'none',
       background: 'transparent',
       border: 'none',
       outline: 'none',
       extend: merge(
+        responsiveLengths('height', 50, 40),
         responsiveLengths('fontSize', 16, 20),
-        responsiveLengths('paddingLeft', 10, 10),
-        responsiveLengths('marginRight', -5, -5)
+        responsiveLengths('paddingLeft', 10, 10)
       ),
+    },
+    errors: {
+      position: 'absolute',
+      top: '100%',
+      left: 0,
+      listStyleType: 'none',
+      padding: 0,
+      margin: '2% 0',
     },
     legalLinks: {
       extend: merge(
         responsiveLengths('marginTop', 34, 13),
         responsiveLengths('fontSize', 14, 17)
       ),
+      [constants.mq.desktop]: {
+        display: 'flex',
+        alignItems: 'flex-end',
+      },
       '& > *': {
         color: '#fff',
         textDecoration: 'none',
         display: 'inline-block',
         marginRight: '1em',
         marginBottom: '1em',
-        [constants.mq.desktop]: { marginRight: '3em' },
+        [constants.mq.desktop]: {
+          marginRight: '3em',
+          marginBottom: '0.7em',
+        },
       },
     },
   },
@@ -185,12 +220,14 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
                 street: '12777 W Jefferson Blvd',
                 suite: 'Bldg B-100',
                 city: 'Los Angeles, CA 90066',
+                phone: '310.971.9300',
               },
               {
                 name: 'New York',
                 street: '79 Madison Avenue',
                 suite: '16th Floor',
                 city: 'New York, NY 10016',
+                phone: '212.741.6400',
               },
             ].map(office => (
               <div className={classes.office} key={office.name}>
@@ -200,6 +237,7 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
                 <div>{office.street}</div>
                 <div>{office.suite}</div>
                 <div>{office.city}</div>
+                <a href={`tel:${office.phone}`}>{office.phone}</a>
               </div>
             ))}
           </Grid>
@@ -234,23 +272,18 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
         </Grid>
 
         <Grid container className={classes.row3}>
-          <Grid item mobile={10} desktop={3}>
-            <form
-              action="https://hyfn-api.herokuapp.com/contacts"
-              method="post"
-              className={classes.form}
-            >
-              <input
-                name="email"
-                type="email"
-                placeholder="Sign Up For Our Newsletter"
-                tabIndex={1}
-                className={classes.input}
-              />
-              <button type="submit" className={classes.button} tabIndex={1}>
-                ->
-              </button>
-            </form>
+          <Grid item mobile={10} desktop={3} className={classes.formGrid}>
+            <HubspotForm
+              portalId="3312902"
+              formId="dbf80f4b-4875-4686-8ae0-ad3a3260c9cc"
+              loading={<div>Loading...</div>}
+              css={''}
+              cssRequired={''} // this is what actually removes the hubspot css
+              cssClass={classes.form}
+              submitButtonClass={classes.button}
+              errorMessageClass={classes.errors}
+              inlineMessage={'Thank you!'}
+            />
           </Grid>
           <Grid item mobile={10} desktop={7} className={classes.legalLinks}>
             <span>©2019 HYFN</span>
