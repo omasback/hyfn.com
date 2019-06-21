@@ -220,12 +220,14 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
                 street: '12777 W Jefferson Blvd',
                 suite: 'Bldg B-100',
                 city: 'Los Angeles, CA 90066',
+                phone: '310.971.9300',
               },
               {
                 name: 'New York',
                 street: '79 Madison Avenue',
                 suite: '16th Floor',
                 city: 'New York, NY 10016',
+                phone: '212.741.6400',
               },
             ].map(office => (
               <div className={classes.office} key={office.name}>
@@ -235,6 +237,7 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
                 <div>{office.street}</div>
                 <div>{office.suite}</div>
                 <div>{office.city}</div>
+                <a href={`tel:${office.phone}`}>{office.phone}</a>
               </div>
             ))}
           </Grid>
