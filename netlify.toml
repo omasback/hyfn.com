@@ -103,45 +103,75 @@
 
 [[redirects]]
   from = "/services/social-amplification/"
-  to = "https://hyfn.com/solutions/"
+  to = "https://hyfn.com/solutions/#Amplification"
   status = 301
   
 [[redirects]]
   from = "/services/content-creation/"
-  to = "https://hyfn.com/solutions/"
+  to = "https://hyfn.com/solutions/#Creative"
   status = 301
   
 [[redirects]]
   from = "/services/creative-technology/"
-  to = "https://hyfn.com/solutions/"
+  to = "https://hyfn.com/solutions/#Technology"
   status = 301
 
 [[redirects]]
   from = "https://hyfn.com/services/ads/"
-  to = "https://hyfn.com/solutions/"
+  to = "https://hyfn.com/solutions/#Amplification"
   status = 301
 
 [[redirects]]
   from = "https://hyfn.com/services/design/"
-  to = "https://hyfn.com/solutions/"
+  to = "https://hyfn.com/solutions/#Creative"
   status = 301
 
 [[redirects]]
   from = "https://hyfn.com/services/development/"
-  to = "https://hyfn.com/solutions/"
+  to = "https://hyfn.com/solutions/#Technology"
   status = 301
 
 [[redirects]]
   from = "https://hyfn.com/services/strategy/"
-  to = "https://hyfn.com/solutions/"
+  to = "https://hyfn.com/solutions/#Amplification"
   status = 301
 
 [[redirects]]
   from = "https://hyfn.com/services/ux/"
-  to = "https://hyfn.com/solutions/"
+  to = "https://hyfn.com/solutions/#Creative"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/social-ad-tech/"
+  to = "https://hyfn.com/solutions/#Amplification"
   status = 301
 
 [[redirects]]
   from = "https://hyfn.com/careers/*"
   to = "https://classic.hyfn.com/careers/:splat"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/about/"
+  to = "https://hyfn.com/culture/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/corporate-privacy-policy/"
+  to = "https://classic.hyfn.com/corporate-privacy-policy/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services-privacy-policy/"
+  to = "https://classic.hyfn.com/corporate-privacy-policy/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/terms-of-use/"
+  to = "https://classic.hyfn.com/terms-of-use/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/hyfn8/"
+  to = "https://classic.hyfn.com/hyfn8/"
   status = 301
