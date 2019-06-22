@@ -43,7 +43,7 @@
   
 [[redirects]]
   from = "/work/new-balance/"
-  to = "https://hyfn.com/work/newbalance"
+  to = "https://hyfn.com/work/newbalance/"
   status = 301
   
 [[redirects]]
@@ -113,7 +113,7 @@
 
 [[redirects]]
   from = "https://hyfn.com/work/sky-zone/"
-  to = "https://hyfn.com/work/sky-zone/"
+  to = "https://classic.hyfn.com/work/sky-zone/"
   status = 301
 
 [[redirects]]
@@ -188,5 +188,5 @@
 
 [[redirects]]
   from = "https://hyfn.com/hyfn8/"
-  to = "https://classic.hyfn.com/hyfn8/"
+  to = "https://classic.hyfn.com/services/social-amplification/"
   status = 301
