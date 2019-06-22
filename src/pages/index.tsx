@@ -5,17 +5,25 @@ import HomepageVideo from 'components/pages/home/HomepageVideo'
 import HompageCaseStudies from 'components/pages/home/HomepageCaseStudies'
 import { graphql } from 'gatsby'
 import { ICaseStudyLink } from 'components/pages/case-studies/CaseStudyLink'
+import { Helmet } from "react-helmet"
 
 const Homepage: React.FunctionComponent<HomepageProps> = props => {
   const { contentfulHomePage } = props.data
 
   return (
-    <div>
-      <HomepageHero />
-      <HomepageIntro cms={contentfulHomePage} />
-      <HomepageVideo cms={contentfulHomePage.video} />
-      <HompageCaseStudies caseStudyLinks={contentfulHomePage.caseStudyLinks} />
-    </div>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>HYFN</title>
+        <link rel="canonical" href="https://hyfn.com/" />
+      </Helmet>
+      <div>
+        <HomepageHero />
+        <HomepageIntro cms={contentfulHomePage} />
+        <HomepageVideo cms={contentfulHomePage.video} />
+        <HompageCaseStudies caseStudyLinks={contentfulHomePage.caseStudyLinks} />
+      </div>
+    </>
   )
 }
 

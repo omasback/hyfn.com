@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
 import { graphql } from 'gatsby'
+import { Helmet } from "react-helmet"
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
@@ -51,6 +52,11 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{contentfulCaseStudy.linkTitle} | HYFN</title>
+        <link rel="canonical" href={`https://hyfn.com/work/${props.pageContext.slug}`} />
+      </Helmet>
       <Container className={classes.root}>
         <Grid container>
           <Grid

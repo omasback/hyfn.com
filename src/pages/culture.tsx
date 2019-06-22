@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
 import { graphql } from 'gatsby'
+import { Helmet } from "react-helmet"
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
@@ -49,6 +50,11 @@ const Culture: React.FunctionComponent<ICulturePageProps> = props => {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Culture | HYFN</title>
+        <link rel="canonical" href="https://hyfn.com/culture/" />
+      </Helmet>
       <Container>
         <Grid container>
           <Grid item className={classes.headline} mobile={10}>

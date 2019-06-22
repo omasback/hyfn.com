@@ -4,6 +4,7 @@ import merge from 'lodash/merge'
 import HubspotForm from 'react-hubspot-form'
 import { graphql } from 'gatsby'
 import * as cx from 'classnames'
+import { Helmet } from "react-helmet"
 
 import Container from 'components/display/Container'
 import ScrollReveal from 'components/display/ScrollReveal'
@@ -192,75 +193,82 @@ const Contact: React.FunctionComponent<IContactProps> = props => {
   const cms = props.data.contentfulContactPage
 
   return (
-    <Container className={classes.root}>
-      <Grid container className={classes.formSection}>
-        <ThemeSetter
-          color={'#fff'}
-          backgroundColor={constants.colors.blue}
-          parent="Contact"
-        />
-        <Grid item mobile={8} desktop={10} className={classes.formDescription}>
-          <ScrollReveal>
-            <h1>{cms.headline}</h1>
-          </ScrollReveal>
-        </Grid>
-
-        <Grid item mobile={10} desktop={10}>
-          <div className={classes.formWrapper}>
-            <HubspotForm
-              portalId="3312902"
-              formId="212510d7-8e98-43a5-9c36-72267ef0ea95"
-              loading={<div>Loading...</div>}
-              css={''}
-              cssRequired={''} // this is what actually removes the hubspot css
-              cssClass={classes.form}
-            />
-          </div>
-        </Grid>
-      </Grid>
-      {cms.officeAddresses.map((a, i) => (
-        <Grid
-          item
-          mobile={10}
-          desktop={10}
-          key={a.officeName}
-          className={cx(classes.address, classes['address' + i])}
-        >
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Contact Us | HYFN</title>
+        <link rel="canonical" href="https://hyfn.com/contact/" />
+      </Helmet>
+      <Container className={classes.root}>
+        <Grid container className={classes.formSection}>
           <ThemeSetter
-            color={a.textColor}
-            backgroundColor={a.backgroundColor}
-            parent={a.officeName}
+            color={'#fff'}
+            backgroundColor={constants.colors.blue}
+            parent="Contact"
           />
-          <img
-            src={a.image.file.url}
-            alt=""
-            className={cx(classes.addressImg, classes['addressImg' + i])}
-          />
-          <OffsetHeadline
-            text={a.officeName}
-            className={cx(
-              classes.addressHeadline,
-              classes['addressHeadline' + i]
-            )}
-          />
-          <div
-            className={cx(
-              classes.addressDetails,
-              classes['addressDetails' + i]
-            )}
-          >
-            {a.addressLine1}
-            <br />
-            {a.addressLine2}
-            <br />
-            {a.cityStateZip}
-            <br />
-            <a href={`tel:${a.phoneNumber}`}>{a.phoneNumber}</a>
-            <br />
-          </div>
+          <Grid item mobile={8} desktop={10} className={classes.formDescription}>
+            <ScrollReveal>
+              <h1>{cms.headline}</h1>
+            </ScrollReveal>
+          </Grid>
+
+          <Grid item mobile={10} desktop={10}>
+            <div className={classes.formWrapper}>
+              <HubspotForm
+                portalId="3312902"
+                formId="212510d7-8e98-43a5-9c36-72267ef0ea95"
+                loading={<div>Loading...</div>}
+                css={''}
+                cssRequired={''} // this is what actually removes the hubspot css
+                cssClass={classes.form}
+              />
+            </div>
+          </Grid>
         </Grid>
-      ))}
-    </Container>
+        {cms.officeAddresses.map((a, i) => (
+          <Grid
+            item
+            mobile={10}
+            desktop={10}
+            key={a.officeName}
+            className={cx(classes.address, classes['address' + i])}
+          >
+            <ThemeSetter
+              color={a.textColor}
+              backgroundColor={a.backgroundColor}
+              parent={a.officeName}
+            />
+            <img
+              src={a.image.file.url}
+              alt=""
+              className={cx(classes.addressImg, classes['addressImg' + i])}
+            />
+            <OffsetHeadline
+              text={a.officeName}
+              className={cx(
+                classes.addressHeadline,
+                classes['addressHeadline' + i]
+              )}
+            />
+            <div
+              className={cx(
+                classes.addressDetails,
+                classes['addressDetails' + i]
+              )}
+            >
+              {a.addressLine1}
+              <br />
+              {a.addressLine2}
+              <br />
+              {a.cityStateZip}
+              <br />
+              <a href={`tel:${a.phoneNumber}`}>{a.phoneNumber}</a>
+              <br />
+            </div>
+          </Grid>
+        ))}
+      </Container>
+    </>
   )
 }
 

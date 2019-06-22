@@ -6,6 +6,7 @@ import { graphql, Link } from 'gatsby'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import easings from 'easings-css'
 import { Portal, useMediaQuery } from '@material-ui/core'
+import { Helmet } from "react-helmet"
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
@@ -173,6 +174,11 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
 
   return (
     <div className={classes.root}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Solutions | HYFN</title>
+        <link rel="canonical" href="https://hyfn.com/solutions/" />
+      </Helmet>
       <Container>
         <Grid container>
           <Grid item mobile={8} desktop={4}>
