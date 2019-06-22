@@ -55,7 +55,7 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>{contentfulCaseStudy.linkTitle} | HYFN</title>
-        <link rel="canonical" href={`https://hyfn.com/work/${props.pageContext.slug}`} />
+        <link rel="canonical" href={`https://hyfn.com/work/${props.pageContext.slug}/`} />
       </Helmet>
       <Container className={classes.root}>
         <Grid container>
