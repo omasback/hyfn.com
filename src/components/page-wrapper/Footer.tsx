@@ -245,15 +245,15 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
             {[
               {
                 text: 'Culture',
-                url: '/culture',
+                url: '/culture/',
               },
               {
                 text: 'Solutions',
-                url: '/solutions',
+                url: '/solutions/',
               },
               {
                 text: 'Work',
-                url: '/work',
+                url: '/work/',
               },
               // {
               //   text: 'Thoughts',

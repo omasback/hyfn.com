@@ -65,7 +65,7 @@ const HomepageCaseStudies: React.FunctionComponent<
           title={work.linkTitle}
           image={work.linkImage.file.url}
           description={work.linkSummary}
-          url={`work/${work.slug}`}
+          url={`work/${work.slug}/`}
           color={work.linkTextColor}
           backgroundColor={work.linkBackgroundColor}
           number={i}
