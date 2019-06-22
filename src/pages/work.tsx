@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import merge from 'lodash/merge'
-import { Helmet } from "react-helmet"
+import { Helmet } from 'react-helmet'
 
 import Container from 'components/display/Container'
 import ScrollReveal from 'components/display/ScrollReveal'
@@ -35,6 +35,7 @@ const CaseStudiesIndex: React.FunctionComponent<CaseStudiesProps> = props => {
   const classes = useStyles()
 
   const { contentfulWorksPage } = props.data
+  const cms = contentfulWorksPage
 
   return (
     <>
@@ -42,6 +43,8 @@ const CaseStudiesIndex: React.FunctionComponent<CaseStudiesProps> = props => {
         <meta charSet="utf-8" />
         <title>Work | HYFN</title>
         <link rel="canonical" href="https://hyfn.com/work/" />
+        <meta name="description" content={cms.metaDescription} />
+        
       </Helmet>
       <Container className={classes.root}>
         <Grid container className={classes.top}>
@@ -83,6 +86,7 @@ interface CaseStudiesProps {
       id: string
       title: string
       description: string
+      metaDescription: string
       caseStudyLinks: ICaseStudyLink[]
     }
   }
@@ -94,6 +98,7 @@ export const pageQuery = graphql`
       id
       title
       description
+      metaDescription
       caseStudyLinks {
         slug
         linkTitle

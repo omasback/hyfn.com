@@ -4,7 +4,7 @@ import merge from 'lodash/merge'
 import HubspotForm from 'react-hubspot-form'
 import { graphql } from 'gatsby'
 import * as cx from 'classnames'
-import { Helmet } from "react-helmet"
+import { Helmet } from 'react-helmet'
 
 import Container from 'components/display/Container'
 import ScrollReveal from 'components/display/ScrollReveal'
@@ -198,6 +198,7 @@ const Contact: React.FunctionComponent<IContactProps> = props => {
         <meta charSet="utf-8" />
         <title>Contact Us | HYFN</title>
         <link rel="canonical" href="https://hyfn.com/contact/" />
+        <meta name="description" content={cms.metaDescription} />
       </Helmet>
       <Container className={classes.root}>
         <Grid container className={classes.formSection}>
@@ -279,6 +280,7 @@ interface IContactProps {
     contentfulContactPage: {
       headline: string
       description: string
+      metaDescription: string
       officeAddresses: Array<{
         addressLine1: string
         addressLine2: string
@@ -300,6 +302,7 @@ interface IContactProps {
 export const pageQuery = graphql`
   query ContactPage {
     contentfulContactPage(slug: { eq: "contact" }) {
+      metaDescription
       headline
       description
       officeAddresses {

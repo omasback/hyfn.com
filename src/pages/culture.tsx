@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
 import { graphql } from 'gatsby'
-import { Helmet } from "react-helmet"
+import { Helmet } from 'react-helmet'
 
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
@@ -54,6 +54,7 @@ const Culture: React.FunctionComponent<ICulturePageProps> = props => {
         <meta charSet="utf-8" />
         <title>Culture | HYFN</title>
         <link rel="canonical" href="https://hyfn.com/culture/" />
+        <meta name="description" content={props.data.contentfulCulturePage.metaDescription} />
       </Helmet>
       <Container>
         <Grid container>
@@ -81,6 +82,7 @@ interface ICulturePageProps {
       headline: string
       nexstarImageAndText: ImageAndTextProps
       topImageAndText: ImageAndTextProps
+      metaDescription: string
     }
     allContentfulPerson: {
       edges: Person[]
@@ -102,6 +104,7 @@ export const pageQuery = graphql`
       topImageAndText {
         ...ImageAndTextFragment
       }
+      metaDescription
     }
     allContentfulPerson {
       edges {
