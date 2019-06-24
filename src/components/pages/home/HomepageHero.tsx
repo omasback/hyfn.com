@@ -10,6 +10,7 @@ import { responsiveLengths } from 'styles/mixins'
 import constants from 'styles/constants'
 import cardConfigs from './cardConfigs'
 import HomepageHeroCard from './HomepageHeroCard'
+import CircleArrow from 'components/svg/CircleArrow'
 
 const useStyles = makeStyles(
   {
@@ -76,6 +77,17 @@ const useStyles = makeStyles(
     },
     tabMoved: {
       transform: 'translate(-95%, 0)',
+    },
+    arrow: {
+      position: 'absolute',
+      zIndex: 5,
+      cursor: 'pointer',
+      extend: responsiveLengths([
+        ['width', 60, 80],
+        ['height', 60, 80],
+        ['top', 340, 440],
+        ['right', 30, 100],
+      ]),
     },
   },
   { name: 'HomepageHero' }
@@ -159,6 +171,15 @@ const HomepageHero: React.FunctionComponent<{}> = props => {
             />
           </div>
         ))}
+        <CircleArrow
+          className={classes.arrow}
+          circleColor="rgba(0, 0, 0, 0.3)"
+          arrowColor="#fff"
+          onClick={() => {
+            setPaused(true)
+            setCurrentTab(prevTab => (prevTab + 1) % cardConfigs.length)
+          }}
+        />
       </div>
     </Container>
   )
