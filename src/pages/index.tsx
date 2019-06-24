@@ -1,5 +1,5 @@
 import * as React from 'react'
-import HomepageHero from 'components/pages/home/HomepageHero.js'
+import HomepageHero from 'components/pages/home/HomepageHero'
 import HomepageIntro from 'components/pages/home/HomepageIntro'
 import HomepageVideo from 'components/pages/home/HomepageVideo'
 import HompageCaseStudies from 'components/pages/home/HomepageCaseStudies'
