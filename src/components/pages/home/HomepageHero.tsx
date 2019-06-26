@@ -12,7 +12,7 @@ import cardConfigs from './cardConfigs'
 import HomepageHeroCard from './HomepageHeroCard'
 
 const mobileCardTransform = 'translate3d(3.33vw, 3.37vw, -100px)'
-const animationDuration = 600
+const animationDuration = 450
 
 const generateAnimations = (breakpoint: string, transform: string) => ({
   ['@keyframes tabPosition0' + breakpoint]: {
@@ -144,7 +144,7 @@ const useStyles = makeStyles(
         transform: 'none',
       },
       '50%': {
-        transform: 'translate(0, 100%)',
+        transform: 'translate(0, 110%)',
       },
       '100%': {
         transform: 'none',
