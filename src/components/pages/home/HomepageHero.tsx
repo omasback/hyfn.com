@@ -85,7 +85,7 @@ const useStyles = makeStyles(
       lineHeight: 1.5,
       marginBottom: 0,
       '& a': {
-        fontWeight: 'bold',
+        fontWeight: 600,
         textDecoration: 'none',
       },
     },
@@ -203,7 +203,7 @@ const HomepageHero: React.FunctionComponent<{}> = props => {
             >
               Technology
             </Link>{' '}
-            solutions for our clients’ most pressing problems..
+            solutions for our clients’ most pressing problems.
           </p>
         </ScrollReveal>
       </div>
