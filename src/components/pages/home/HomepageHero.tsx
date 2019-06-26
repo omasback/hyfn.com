@@ -60,11 +60,23 @@ const useStyles = makeStyles(
   {
     ...generateAnimations('Mobile', 'translate3d(3.33vw, 3.37vw, -100px)'),
     ...generateAnimations('Desktop', 'translate3d(2vh, 2vh, -100px)'),
+    '@keyframes fadeIn': {
+      '0%': {
+        opacity: 0,
+      },
+      '100%': {
+        opacity: 1,
+      },
+    },
     root: {
       extend: responsiveLengths([['marginBottom', 100, 100]]),
       height: 'calc(100vh - 120px)',
       display: 'flex',
       flexDirection: 'column',
+      animationName: '$fadeIn',
+      animationDuration: animationDuration / 2 + 'ms',
+      animationDelay: animationDuration / 2 + 'ms',
+      animationFillMode: 'both',
       [constants.mq.desktop]: {
         flexDirection: 'row-reverse',
         height: 'calc(100vh - 250px)',
