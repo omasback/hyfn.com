@@ -36,6 +36,7 @@ module.exports = {
   siteMetadata: {
     name: 'hyfn.com',
     tagline: 'hyfn.com',
+    siteUrl: 'https://hyfn.com/',
   },
   plugins: [
     'gatsby-plugin-typescript',
@@ -80,5 +81,11 @@ module.exports = {
       },
     },
     'gatsby-plugin-react-helmet',
+    { 
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ["/work/fpo", "/Styleguide"],
+      }
+    },
   ],
 }
