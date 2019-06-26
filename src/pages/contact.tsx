@@ -207,7 +207,12 @@ const Contact: React.FunctionComponent<IContactProps> = props => {
             backgroundColor={constants.colors.blue}
             parent="Contact"
           />
-          <Grid item mobile={8} desktop={10} className={classes.formDescription}>
+          <Grid
+            item
+            mobile={8}
+            desktop={10}
+            className={classes.formDescription}
+          >
             <ScrollReveal>
               <h1>{cms.headline}</h1>
             </ScrollReveal>

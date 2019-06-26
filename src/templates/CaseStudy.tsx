@@ -55,8 +55,14 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>{contentfulCaseStudy.linkTitle} | HYFN</title>
-        <link rel="canonical" href={`https://hyfn.com/work/${props.pageContext.slug}/`} />
-        <meta name="description" content={contentfulCaseStudy.metaDescription} />
+        <link
+          rel="canonical"
+          href={`https://hyfn.com/work/${props.pageContext.slug}/`}
+        />
+        <meta
+          name="description"
+          content={contentfulCaseStudy.metaDescription}
+        />
       </Helmet>
       <Container className={classes.root}>
         <Grid container>

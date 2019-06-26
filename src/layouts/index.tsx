@@ -5,7 +5,6 @@ import { StylesProvider, jssPreset, ThemeProvider } from '@material-ui/styles'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 
-
 import GlobalStyles from 'components/GlobalStyles'
 import PageWrapper from 'components/page-wrapper/PageWrapper'
 import constants from 'styles/constants'

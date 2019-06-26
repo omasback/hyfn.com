@@ -54,7 +54,10 @@ const Culture: React.FunctionComponent<ICulturePageProps> = props => {
         <meta charSet="utf-8" />
         <title>Culture | HYFN</title>
         <link rel="canonical" href="https://hyfn.com/culture/" />
-        <meta name="description" content={props.data.contentfulCulturePage.metaDescription} />
+        <meta
+          name="description"
+          content={props.data.contentfulCulturePage.metaDescription}
+        />
       </Helmet>
       <Container>
         <Grid container>

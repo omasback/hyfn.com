@@ -22,7 +22,9 @@ const Homepage: React.FunctionComponent<HomepageProps> = props => {
         <HomepageHero />
         <HomepageIntro cms={contentfulHomePage} />
         <HomepageVideo cms={contentfulHomePage.video} />
-        <HompageCaseStudies caseStudyLinks={contentfulHomePage.caseStudyLinks} />
+        <HompageCaseStudies
+          caseStudyLinks={contentfulHomePage.caseStudyLinks}
+        />
       </div>
     </>
   )

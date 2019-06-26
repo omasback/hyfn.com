@@ -12,10 +12,7 @@ const useStyles = makeStyles<Theme>(
     root: {
       padding: 0,
       paddingTop: 1,
-      transition: `background-color ${
-        constants.themeTransitionDuration
-      }, color ${constants.themeTransitionDuration}
-      `,
+      transition: `all ${constants.themeTransitionDuration}`,
       backgroundColor: theme.backgroundColor,
       color: theme.color,
     },

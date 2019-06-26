@@ -44,7 +44,6 @@ const CaseStudiesIndex: React.FunctionComponent<CaseStudiesProps> = props => {
         <title>Work | HYFN</title>
         <link rel="canonical" href="https://hyfn.com/work/" />
         <meta name="description" content={cms.metaDescription} />
-        
       </Helmet>
       <Container className={classes.root}>
         <Grid container className={classes.top}>
