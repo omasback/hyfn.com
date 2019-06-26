@@ -215,9 +215,7 @@ const HomepageHero: React.FunctionComponent<{}> = props => {
               classes.tab,
               classes[
                 'tabPosition' +
-                  (i >= currentTab
-                    ? i - currentTab
-                    : cardConfigs.length + (i - currentTab))
+                  ((cardConfigs.length + i - currentTab) % cardConfigs.length)
               ]
             )}
             onMouseEnter={() => setPaused(true)}
@@ -229,9 +227,7 @@ const HomepageHero: React.FunctionComponent<{}> = props => {
                 classes.tabDownUp,
                 classes[
                   'tabDownUp' +
-                    (i >= currentTab
-                      ? i - currentTab
-                      : cardConfigs.length + (i - currentTab))
+                    ((cardConfigs.length + i - currentTab) % cardConfigs.length)
                 ]
               )}
             >
