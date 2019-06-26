@@ -25,6 +25,7 @@ const useStyles = makeStyles(
         responsiveLengths('paddingTop', 50, 100),
         responsiveLengths('paddingBottom', 50, 42)
       ),
+      minHeight: '100vh',
     },
     logo: {
       extend: responsiveLengths('width', 140, 200),
