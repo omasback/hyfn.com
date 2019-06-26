@@ -7,11 +7,11 @@ const cardConfigs = [
     copy: "We optimize like it's our job.<br />Because it is.",
     links: [
       {
-        url: '/solutions',
+        url: '/solutions/',
         text: 'View solution',
       },
       {
-        url: '/work',
+        url: '/work/',
         text: 'View work',
       },
     ],
@@ -35,11 +35,11 @@ const cardConfigs = [
     copy: "We built a tool for that.<br />And it's awesome.",
     links: [
       {
-        url: '/solutions',
+        url: '/solutions/',
         text: 'View solution',
       },
       {
-        url: '/work',
+        url: '/work/',
         text: 'View work',
       },
     ],
@@ -63,11 +63,11 @@ const cardConfigs = [
     copy: "It's tough, they're a beast<br />But you can coexist.",
     links: [
       {
-        url: '/solutions',
+        url: '/solutions/',
         text: 'View solution',
       },
       {
-        url: '/work',
+        url: '/work/',
         text: 'View work',
       },
     ],
@@ -91,11 +91,11 @@ const cardConfigs = [
     copy: "We do things the platforms can't.<br />(Even you, Facebook)",
     links: [
       {
-        url: '/solutions',
+        url: '/solutions/',
         text: 'View solution',
       },
       {
-        url: '/work',
+        url: '/work/',
         text: 'View work',
       },
     ],

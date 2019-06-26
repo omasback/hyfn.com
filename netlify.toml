@@ -8,105 +8,185 @@
 
 [[redirects]]
   from = "/work/id-mens/"
-  to = "https://2015.hyfn.com/work/id-mens/"
+  to = "https://classic.hyfn.com/work/id-mens/"
   status = 301
   
 [[redirects]]
   from = "/work/doritos-mix-arcade/"
-  to = "https://2015.hyfn.com/work/doritos-mix-arcade/"
+  to = "https://classic.hyfn.com/work/doritos-mix-arcade/"
   status = 301
   
 [[redirects]]
   from = "/work/eggerator/"
-  to = "https://2015.hyfn.com/work/eggerator/"
+  to = "https://classic.hyfn.com/work/eggerator/"
   status = 301
   
 [[redirects]]
   from = "/work/pup-star/"
-  to = "https://hyfn.com/work/pup-star/"
+  to = "https://classic.hyfn.com/work/pup-star/"
   status = 301
   
 [[redirects]]
   from = "/work/line-play-web-series/"
-  to = "https://2015.hyfn.com/work/line-play-web-series/"
+  to = "https://classic.hyfn.com/work/line-play-web-series/"
   status = 301
   
 [[redirects]]
   from = "/work/nba-asv/"
-  to = "https://2015.hyfn.com/work/nba-asv/"
+  to = "https://classic.hyfn.com/work/nba-asv/"
   status = 301
   
 [[redirects]]
   from = "/work/sirca/"
-  to = "https://2015.hyfn.com/work/sirca/"
+  to = "https://classic.hyfn.com/work/sirca/"
   status = 301
   
 [[redirects]]
   from = "/work/new-balance/"
-  to = "https://2015.hyfn.com/work/new-balance/"
+  to = "https://hyfn.com/work/newbalance/"
   status = 301
   
 [[redirects]]
   from = "/work/ufc-gym/"
-  to = "https://2015.hyfn.com/work/ufc-gym/"
+  to = "https://classic.hyfn.com/work/ufc-gym/"
   status = 301
   
 [[redirects]]
-  from = "/work/visit-california-ad "
-  to = "/	https://2015.hyfn.com/work/visit-california-ads/"
+  from = "/work/visit-california-ads/"
+  to = "https://classic.hyfn.com/work/visit-california-ads/"
   status = 301
   
 [[redirects]]
   from = "/work/heal-ads/"
-  to = "https://2015.hyfn.com/work/heal-ads/"
+  to = "https://classic.hyfn.com/work/heal-ads/"
   status = 301
   
 [[redirects]]
   from = "/work/get-schooled/"
-  to = "https://2015.hyfn.com/work/get-schooled/"
+  to = "https://classic.hyfn.com/work/get-schooled/"
   status = 301
   
 [[redirects]]
   from = "/work/alberta-rye/"
-  to = "https://2015.hyfn.com/work/alberta-rye/"
+  to = "https://classic.hyfn.com/work/alberta-rye/"
   status = 301
   
 [[redirects]]
   from = "/work/screaming-queens/"
-  to = "https://2015.hyfn.com/work/screaming-queens/"
+  to = "https://classic.hyfn.com/work/screaming-queens/"
   status = 301
   
 [[redirects]]
   from = "/work/hp-zbook/"
-  to = "https://2015.hyfn.com/work/hp-zbook/"
+  to = "https://classic.hyfn.com/work/hp-zbook/"
   status = 301
   
 [[redirects]]
   from = "/work/mgm/"
-  to = "https://2015.hyfn.com/work/mgm/"
+  to = "https://classic.hyfn.com/work/mgm/"
   status = 301
   
 [[redirects]]
   from = "/work/sirca/"
-  to = "https://2015.hyfn.com/work/sirca/"
+  to = "https://classic.hyfn.com/work/sirca/"
   status = 301
   
 [[redirects]]
   from = "/work/pro-rugby/"
-  to = "https://2015.hyfn.com/work/pro-rugby/"
+  to = "https://classic.hyfn.com/work/pro-rugby/"
   status = 301
   
 [[redirects]]
+  from = "https://hyfn.com/work/godaddy/"
+  to = "https://classic.hyfn.com/work/godaddy/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/work/vita-coco/"
+  to = "https://classic.hyfn.com/work/vita-coco/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/work/theory-of-everything/"
+  to = "https://classic.hyfn.com/work/theory-of-everything/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/work/sky-zone/"
+  to = "https://classic.hyfn.com/work/sky-zone/"
+  status = 301
+
+[[redirects]]
   from = "/services/social-amplification/"
-  to = "https://hyfn.com/solutions"
+  to = "https://hyfn.com/solutions/#Amplification"
   status = 301
   
 [[redirects]]
   from = "/services/content-creation/"
-  to = "https://hyfn.com/solutions"
+  to = "https://hyfn.com/solutions/#Creative"
   status = 301
   
 [[redirects]]
   from = "/services/creative-technology/"
-  to = "https://hyfn.com/solutions"
+  to = "https://hyfn.com/solutions/#Technology"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/ads/"
+  to = "https://hyfn.com/solutions/#Amplification"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/design/"
+  to = "https://hyfn.com/solutions/#Creative"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/development/"
+  to = "https://hyfn.com/solutions/#Technology"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/strategy/"
+  to = "https://hyfn.com/solutions/#Amplification"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/ux/"
+  to = "https://hyfn.com/solutions/#Creative"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services/social-ad-tech/"
+  to = "https://hyfn.com/solutions/#Amplification"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/careers/*"
+  to = "https://classic.hyfn.com/careers/:splat"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/about/"
+  to = "https://hyfn.com/culture/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/corporate-privacy-policy/"
+  to = "https://classic.hyfn.com/corporate-privacy-policy/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/services-privacy-policy/"
+  to = "https://classic.hyfn.com/corporate-privacy-policy/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/terms-of-use/"
+  to = "https://classic.hyfn.com/terms-of-use/"
+  status = 301
+
+[[redirects]]
+  from = "https://hyfn.com/hyfn8/"
+  to = "https://classic.hyfn.com/services/social-amplification/"
   status = 301

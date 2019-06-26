@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import merge from 'lodash/merge'
+import { Helmet } from 'react-helmet'
 
 import Container from 'components/display/Container'
 import ScrollReveal from 'components/display/ScrollReveal'
@@ -34,36 +35,46 @@ const CaseStudiesIndex: React.FunctionComponent<CaseStudiesProps> = props => {
   const classes = useStyles()
 
   const { contentfulWorksPage } = props.data
+  const cms = contentfulWorksPage
 
   return (
-    <Container className={classes.root}>
-      <Grid container className={classes.top}>
-        <ThemeSetter parent="CaseStudiesIndex" />
-        {/* <Grid item mobile={8} desktop={6} className={classes.introText}>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Work | HYFN</title>
+        <link rel="canonical" href="https://hyfn.com/work/" />
+        <meta name="description" content={cms.metaDescription} />
+        
+      </Helmet>
+      <Container className={classes.root}>
+        <Grid container className={classes.top}>
+          <ThemeSetter parent="CaseStudiesIndex" />
+          {/* <Grid item mobile={8} desktop={6} className={classes.introText}>
           <ScrollReveal>{contentfulWorksPage.description}</ScrollReveal>
         </Grid> */}
 
-        <Grid item mobile={10}>
-          <OffsetHeadline
-            text={contentfulWorksPage.title}
-            className={classes.headline}
-          />
+          <Grid item mobile={10}>
+            <OffsetHeadline
+              text={contentfulWorksPage.title}
+              className={classes.headline}
+            />
+          </Grid>
         </Grid>
-      </Grid>
-      {contentfulWorksPage.caseStudyLinks.map((work, i) => (
-        <CaseStudyLink
-          key={work.slug}
-          title={work.linkTitle}
-          image={work.linkImage.file.url}
-          description={work.linkSummary}
-          url={`work/${work.slug}`}
-          color={work.linkTextColor}
-          backgroundColor={work.linkBackgroundColor}
-          number={i}
-          rowReverse={!!(i % 2)}
-        />
-      ))}
-    </Container>
+        {contentfulWorksPage.caseStudyLinks.map((work, i) => (
+          <CaseStudyLink
+            key={work.slug}
+            title={work.linkTitle}
+            image={work.linkImage.file.url}
+            description={work.linkSummary}
+            url={`work/${work.slug}/`}
+            color={work.linkTextColor}
+            backgroundColor={work.linkBackgroundColor}
+            number={i}
+            rowReverse={!!(i % 2)}
+          />
+        ))}
+      </Container>
+    </>
   )
 }
 
@@ -75,6 +86,7 @@ interface CaseStudiesProps {
       id: string
       title: string
       description: string
+      metaDescription: string
       caseStudyLinks: ICaseStudyLink[]
     }
   }
@@ -86,6 +98,7 @@ export const pageQuery = graphql`
       id
       title
       description
+      metaDescription
       caseStudyLinks {
         slug
         linkTitle

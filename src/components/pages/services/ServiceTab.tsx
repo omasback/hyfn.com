@@ -182,7 +182,7 @@ export default (props: IServiceTab) => {
                     alt=""
                   />
                   <ArrowLink
-                    to={`/work/${cs.slug}`}
+                    to={`/work/${cs.slug}/`}
                     text={cs.linkTitle}
                     className={classes.csLink}
                     color="#fff"

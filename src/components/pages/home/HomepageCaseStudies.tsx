@@ -53,7 +53,7 @@ const HomepageCaseStudies: React.FunctionComponent<
         <OffsetHeadline text="LOOK\nPROOF!" className={classes.headline} />
         <ScrollReveal>
           <ArrowLink
-            to="/work"
+            to="/work/"
             text={'We Do Work That Works'}
             className={classes.cta}
           />
@@ -65,7 +65,7 @@ const HomepageCaseStudies: React.FunctionComponent<
           title={work.linkTitle}
           image={work.linkImage.file.url}
           description={work.linkSummary}
-          url={`work/${work.slug}`}
+          url={`work/${work.slug}/`}
           color={work.linkTextColor}
           backgroundColor={work.linkBackgroundColor}
           number={i}

@@ -34,8 +34,8 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    name: 'Hello Typescript World!',
-    tagline: 'Gatsby + Typescript = 💪',
+    name: 'hyfn.com',
+    tagline: 'hyfn.com',
   },
   plugins: [
     'gatsby-plugin-typescript',
@@ -79,5 +79,6 @@ module.exports = {
         // dataLayerName: "YOUR_DATA_LAYER_NAME",
       },
     },
+    'gatsby-plugin-react-helmet',
   ],
 }

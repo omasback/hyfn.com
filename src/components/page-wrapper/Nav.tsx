@@ -161,15 +161,15 @@ const useStyles = makeStyles<Theme>(
 const mainLinks = [
   {
     text: 'Culture',
-    path: '/culture',
+    path: '/culture/',
   },
   {
     text: 'Solutions',
-    path: '/solutions',
+    path: '/solutions/',
   },
   {
     text: 'Work',
-    path: '/work',
+    path: '/work/',
   },
   {
     text: 'Amplification',
@@ -197,7 +197,7 @@ const mainLinks = [
   // },
   {
     text: 'Contact us',
-    path: '/contact',
+    path: '/contact/',
   },
 ]
 
@@ -230,7 +230,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
               {/* <Link to={'/play'}>
                 <PlayLogo className={classes.playLogo} />
               </Link> */}
-              <Link to={'/contact'} className={classes.contactLink}>
+              <Link to={'/contact/'} className={classes.contactLink}>
                 {'Contact Us'}
               </Link>
             </div>
