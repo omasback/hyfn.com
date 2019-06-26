@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import easings from 'easings-css'
 import { responsiveLengths } from 'styles/mixins'
 import CircleArrow from 'components/svg/CircleArrow'
+import constants from 'styles/constants'
 
 const useStyles = makeStyles(
   {
@@ -53,11 +54,14 @@ const useStyles = makeStyles(
     },
     arrow: {
       position: 'absolute',
-      bottom: '5vh',
+      bottom: 'calc(5vh + 75px)', // 75px to account for mobile browser chrome
       right: '5vh',
       zIndex: 5,
       cursor: 'pointer',
       extend: responsiveLengths([['width', 60, 80], ['height', 60, 80]]),
+      [constants.mq.desktop]: {
+        bottom: '5vh',
+      },
     },
   },
   { name: 'HomepageHeroCard' }

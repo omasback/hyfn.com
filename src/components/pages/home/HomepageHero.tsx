@@ -68,7 +68,7 @@ const useStyles = makeStyles(
       [constants.mq.desktop]: {
         flexDirection: 'row-reverse',
         height: 'calc(100vh - 250px)',
-        paddingTop: 'calc(23% - 250px)',
+        paddingTop: 'calc(34vh - 250px)',
       },
     },
     text: {
