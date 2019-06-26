@@ -48,7 +48,7 @@ const useStyles = makeStyles(
       },
     },
     imageContainer: {
-      extend: absoluteFill,
+      extend: absoluteFill(),
       transition: `transform ${timeout}ms`,
     },
     enterImgOdd: { transform: 'translateY(-100%)' },
@@ -57,7 +57,7 @@ const useStyles = makeStyles(
     exitActiveImgOdd: { transform: 'translateY(100%)' },
     exitActiveImgEven: { transform: 'translateY(-100%)' },
     hoverImage: {
-      extend: absoluteFill,
+      extend: absoluteFill(),
       backgroundSize: 'cover',
       opacity: 0,
       transition: 'opacity 0.3s',
@@ -66,7 +66,7 @@ const useStyles = makeStyles(
       },
     },
     image: {
-      extend: absoluteFill,
+      extend: absoluteFill(),
       backgroundSize: 'cover',
       pointerEvents: 'none',
     },

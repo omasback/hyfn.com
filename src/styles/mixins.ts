@@ -72,13 +72,13 @@ const objectFitContain: () => CSSProperties = () => ({
   transform: 'translate(-50%, -50%) scale(0.1)',
 })
 
-const absoluteFill: CSSProperties = {
+const absoluteFill: () => CSSProperties = () => ({
   position: 'absolute',
   top: 0,
   left: 0,
   bottom: 0,
   right: 0,
-}
+})
 
 export {
   responsiveLengths,

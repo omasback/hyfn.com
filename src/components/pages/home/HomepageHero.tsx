@@ -6,14 +6,60 @@ import easings from 'easings-css'
 
 import Container from 'components/display/Container'
 import ScrollReveal from 'components/display/ScrollReveal'
-import { responsiveLengths } from 'styles/mixins'
+import { responsiveLengths, absoluteFill } from 'styles/mixins'
 import constants from 'styles/constants'
 import cardConfigs from './cardConfigs'
 import HomepageHeroCard from './HomepageHeroCard'
-import CircleArrow from 'components/svg/CircleArrow'
+
+const mobileCardTransform = 'translate3d(3.33vw, 3.37vw, -100px)'
+const animationDuration = 600
+
+const generateAnimations = (breakpoint: string, transform: string) => ({
+  ['@keyframes tabPosition0' + breakpoint]: {
+    '0%': {
+      transform: transform,
+    },
+    '100%': {
+      transform: 'translate3d(0, 0, 0)',
+    },
+  },
+  ['@keyframes tabPosition1' + breakpoint]: {
+    '0%': {
+      transform: transform + transform,
+    },
+    '100%': {
+      transform: transform,
+    },
+  },
+  ['@keyframes tabPosition2' + breakpoint]: {
+    '0%': {
+      transform: transform + transform + transform,
+    },
+    '100%': {
+      transform: transform + transform,
+    },
+  },
+  ['@keyframes tabPosition3' + breakpoint]: {
+    '0%': {
+      transform: 'translate3d(0, 0, 0)',
+    },
+    '50%': {
+      transform: 'translate3d(0, 0, 0)',
+    },
+    '50.1%': {
+      transform:
+        transform + transform + transform + 'translate3d(0, 0, -100px)',
+    },
+    '100%': {
+      transform: transform + transform + transform,
+    },
+  },
+})
 
 const useStyles = makeStyles(
   {
+    ...generateAnimations('Mobile', 'translate3d(3.33vw, 3.37vw, -100px)'),
+    ...generateAnimations('Desktop', 'translate3d(2vh, 2vh, -100px)'),
     root: {
       extend: responsiveLengths([['marginBottom', 100, 100]]),
       height: 'calc(100vh - 120px)',
@@ -46,48 +92,67 @@ const useStyles = makeStyles(
     tabs: {
       position: 'relative',
       flexBasis: '80%',
+      transformStyle: 'preserve-3d',
+      extend: responsiveLengths('marginLeft', -38, 0),
+      width: '90vw',
       [constants.mq.desktop]: {
         flexBasis: '50%',
       },
     },
     tab: {
-      extend: responsiveLengths([['width', 338, 540]]),
-      transition: 'transform 1s',
-      transitionTimingFunction: easings.easeOutQuart,
+      width: '100%',
       position: 'absolute',
       top: 0,
       left: 0,
       height: '100%',
-      '&:nth-child(1)': {
-        extend: responsiveLengths([['left', -38, -30], ['top', 0, 0]]),
-        zIndex: 4,
-      },
-      '&:nth-child(2)': {
-        extend: responsiveLengths([['left', -25, -10], ['top', 18, 30]]),
-        zIndex: 3,
-      },
-      '&:nth-child(3)': {
-        extend: responsiveLengths([['left', -13, 10], ['top', 36, 60]]),
-        zIndex: 2,
-      },
-      '&:nth-child(4)': {
-        extend: responsiveLengths([['left', 0, 30], ['top', 54, 90]]),
-        zIndex: 1,
+      overflow: 'hidden',
+      animationDuration: animationDuration + 'ms',
+      animationFillMode: 'both',
+    },
+    tabPosition0: {
+      animationName: '$tabPosition0Mobile',
+      animationDelay: animationDuration * 0.3 + 'ms',
+      [constants.mq.desktop]: {
+        animationName: '$tabPosition0Desktop',
       },
     },
-    tabMoved: {
-      transform: 'translate(-95%, 0)',
+    tabPosition1: {
+      animationName: '$tabPosition1Mobile',
+      animationDelay: animationDuration * 0.4 + 'ms',
+      [constants.mq.desktop]: {
+        animationName: '$tabPosition1Desktop',
+      },
     },
-    arrow: {
-      position: 'absolute',
-      zIndex: 5,
-      cursor: 'pointer',
-      extend: responsiveLengths([
-        ['width', 60, 80],
-        ['height', 60, 80],
-        ['top', 340, 440],
-        ['right', 30, 100],
-      ]),
+    tabPosition2: {
+      animationName: '$tabPosition2Mobile',
+      animationDelay: animationDuration * 0.5 + 'ms',
+      [constants.mq.desktop]: {
+        animationName: '$tabPosition2Desktop',
+      },
+    },
+    tabPosition3: {
+      animationName: '$tabPosition3Mobile',
+      [constants.mq.desktop]: {
+        animationName: '$tabPosition3Desktop',
+      },
+    },
+    tabDownUp: {
+      extend: absoluteFill(),
+    },
+    '@keyframes downUp': {
+      '0%': {
+        transform: 'none',
+      },
+      '50%': {
+        transform: 'translate(0, 100%)',
+      },
+      '100%': {
+        transform: 'none',
+      },
+    },
+    tabDownUp3: {
+      animationName: '$downUp',
+      animationDuration: animationDuration + 'ms',
     },
   },
   { name: 'HomepageHero' }
@@ -146,40 +211,43 @@ const HomepageHero: React.FunctionComponent<{}> = props => {
         {cardConfigs.map((c, i) => (
           <div
             key={i}
-            className={cx(classes.tab, {
-              [classes.tabMoved]: currentTab > i,
-            })}
-            onClick={() => setCurrentTab(i)}
-            onMouseEnter={() => {
-              setPaused(true)
-              setCurrentTab(i)
-            }}
+            className={cx(
+              classes.tab,
+              classes[
+                'tabPosition' +
+                  (i >= currentTab
+                    ? i - currentTab
+                    : cardConfigs.length + (i - currentTab))
+              ]
+            )}
+            onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
-            onTouchStart={() => {
-              setPaused(true)
-              setCurrentTab(i)
-            }}
-            onTouchEnd={() => {
-              setPaused(false)
-            }}
+            onTouchEnd={() => setPaused(false)}
           >
-            <HomepageHeroCard
-              key={c.title}
-              i={i}
-              open={currentTab === i}
-              {...c}
-            />
+            <div
+              className={cx(
+                classes.tabDownUp,
+                classes[
+                  'tabDownUp' +
+                    (i >= currentTab
+                      ? i - currentTab
+                      : cardConfigs.length + (i - currentTab))
+                ]
+              )}
+            >
+              <HomepageHeroCard
+                key={c.title}
+                i={i}
+                open={currentTab === i}
+                onArrowClick={() => {
+                  setPaused(true)
+                  setCurrentTab(prevTab => (prevTab + 1) % cardConfigs.length)
+                }}
+                {...c}
+              />
+            </div>
           </div>
         ))}
-        <CircleArrow
-          className={classes.arrow}
-          circleColor="rgba(0, 0, 0, 0.3)"
-          arrowColor="#fff"
-          onClick={() => {
-            setPaused(true)
-            setCurrentTab(prevTab => (prevTab + 1) % cardConfigs.length)
-          }}
-        />
       </div>
     </Container>
   )

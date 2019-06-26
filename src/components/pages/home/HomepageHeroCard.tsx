@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import * as cx from 'classnames'
 import { Link } from 'gatsby'
 import easings from 'easings-css'
 import { responsiveLengths } from 'styles/mixins'
-import constants from 'styles/constants'
+import CircleArrow from 'components/svg/CircleArrow'
 
 const useStyles = makeStyles(
   {
@@ -52,6 +51,14 @@ const useStyles = makeStyles(
       color: '#FFFFFF',
       textDecoration: 'underline',
     },
+    arrow: {
+      position: 'absolute',
+      bottom: '5vh',
+      right: '5vh',
+      zIndex: 5,
+      cursor: 'pointer',
+      extend: responsiveLengths([['width', 60, 80], ['height', 60, 80]]),
+    },
   },
   { name: 'HomepageHeroCard' }
 )
@@ -59,7 +66,7 @@ const useStyles = makeStyles(
 const HomepageHeroCard: React.FunctionComponent<IHomepageHeroCard> = props => {
   const classes = useStyles({})
 
-  const { i, open, title, headline, copy, links, color } = props
+  const { i, open, title, headline, copy, links, color, onArrowClick } = props
   return (
     <div className={classes.card} style={{ backgroundColor: color }}>
       <h2 className={classes.title}>{title}</h2>
@@ -80,6 +87,12 @@ const HomepageHeroCard: React.FunctionComponent<IHomepageHeroCard> = props => {
           ))}
         </div>
       </div>
+      <CircleArrow
+        className={classes.arrow}
+        circleColor="rgba(0, 0, 0, 0.3)"
+        arrowColor="#fff"
+        onClick={onArrowClick}
+      />
     </div>
   )
 }
@@ -97,4 +110,5 @@ interface IHomepageHeroCard {
     url: string
     text: string
   }>
+  onArrowClick: () => void
 }
