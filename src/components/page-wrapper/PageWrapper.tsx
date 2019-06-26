@@ -20,15 +20,12 @@ const useStyles = makeStyles<Theme>(
       color: theme.color,
     },
     content: {
-      paddingTop: 120,
-      extend: responsiveLengths([
-        // ['paddingTop', 120, 250],
-        ['paddingBottom', 120, 150],
-      ]),
+      extend: responsiveLengths([['paddingBottom', 120, 150]]),
       overflow: 'hidden',
       position: 'relative',
       zIndex: 1,
-      [constants.breakPoint.desktop]: {
+      paddingTop: 120,
+      [constants.mq.desktop]: {
         paddingTop: 250,
       },
     },
