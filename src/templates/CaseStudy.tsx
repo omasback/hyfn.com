@@ -63,6 +63,9 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
           name="description"
           content={contentfulCaseStudy.metaDescription}
         />
+        {contentfulCaseStudy.noindex && (
+          <meta name="robots" content="noindex" />
+        )}
       </Helmet>
       <Container className={classes.root}>
         <Grid container>
@@ -137,6 +140,7 @@ interface CaseStudyPage {
       }
       pageTitle: string
       pageSections: Array<ImageAndTextProps | ImagesAndTextProps | null>
+      noindex: boolean
     }
   }
 }
@@ -156,6 +160,7 @@ export const pageQuery = graphql`
       }
       pageTitle
       metaDescription
+      noindex
       pageSections {
         ... on ContentfulPageSectionImageAndText {
           ...ImageAndTextFragment
