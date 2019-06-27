@@ -47,3 +47,11 @@ exports.createPages = ({ graphql, actions }) => {
     )
   })
 }
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage } = actions
+  if (page.path.match(/unsupported-browser/)) {
+    page.context.layout = 'noNav'
+    createPage(page)
+  }
+}

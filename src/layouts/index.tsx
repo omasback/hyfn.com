@@ -7,6 +7,7 @@ import { observer } from 'mobx-react'
 
 import GlobalStyles from 'components/GlobalStyles'
 import PageWrapper from 'components/page-wrapper/PageWrapper'
+import UnsupportedBrowser from '../pages/unsupported-browser'
 import constants from 'styles/constants'
 
 export interface Theme {
@@ -20,7 +21,7 @@ const jss = create({
 })
 
 @observer
-class App extends Component {
+class App extends Component<{ pageContext: any }> {
   @observable
   color = constants.colors.darkGray
 
@@ -51,7 +52,11 @@ class App extends Component {
       >
         <StylesProvider jss={jss}>
           <GlobalStyles />
-          <PageWrapper>{this.props.children}</PageWrapper>
+          {this.props.pageContext.layout === 'noNav' ? (
+            this.props.children
+          ) : (
+            <PageWrapper>{this.props.children}</PageWrapper>
+          )}
         </StylesProvider>
       </ThemeProvider>
     )

@@ -7,6 +7,7 @@ import ModeratLightWoff from 'fonts/Moderat-Light.woff'
 import { responsiveLengths } from 'styles/mixins'
 
 import 'slick-carousel/slick/slick.css'
+import constants from 'styles/constants'
 
 // Using theme so toggle global color and background-color
 // on the body was glitchy for some reason.
@@ -53,6 +54,8 @@ const useStyles = makeStyles({
       '-webkit-overflow-scrolling': 'touch',
       overscrollBehaviorX: 'none',
       fontFamily: 'Moderat, sans-serif',
+      backgroundColor: constants.colors.lightGray,
+      color: constants.colors.darkGray,
     },
     '#root': {
       width: '100%',
