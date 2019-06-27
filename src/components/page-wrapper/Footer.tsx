@@ -1,6 +1,11 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { FaFacebookSquare, FaInstagram } from 'react-icons/fa'
+import {
+  FaFacebookSquare,
+  FaInstagram,
+  FaTwitter,
+  FaLinkedin,
+} from 'react-icons/fa'
 import { Link } from 'gatsby'
 import merge from 'lodash/merge'
 import HubspotForm from 'react-hubspot-form'
@@ -185,20 +190,33 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
             </Link>
           </Grid>
           <Grid item mobile={5} className={classes.shareIcons}>
-            <a
-              href="https://www.facebook.com/WeAreHYFN/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebookSquare color="#fff" className={classes.shareIcon} />
-            </a>
-            <a
-              href="https://www.instagram.com/wearehyfn/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram color="#fff" className={classes.shareIcon} />
-            </a>
+            {[
+              {
+                href: 'https://www.facebook.com/WeAreHYFN/',
+                Icon: FaFacebookSquare,
+              },
+              {
+                href: 'https://www.instagram.com/wearehyfn/',
+                Icon: FaInstagram,
+              },
+              {
+                href: 'https://twitter.com/hyfn?lang=en',
+                Icon: FaTwitter,
+              },
+              {
+                href: 'https://www.linkedin.com/company/hyfn/',
+                Icon: FaLinkedin,
+              },
+            ].map(link => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <link.Icon color="#fff" className={classes.shareIcon} />
+              </a>
+            ))}
           </Grid>
         </Grid>
 
