@@ -73,7 +73,6 @@ const useStyles = makeStyles(
       height: 'calc(100vh - 120px)',
       display: 'flex',
       flexDirection: 'column',
-      textRendering: 'geometricPrecision',
       animationName: '$fadeIn',
       animationDuration: animationDuration / 2 + 'ms',
       animationDelay: animationDuration / 2 + 'ms',
@@ -82,6 +81,7 @@ const useStyles = makeStyles(
         flexDirection: 'row-reverse',
         height: 'calc(100vh - 250px)',
         paddingTop: 'calc(34vh - 250px)',
+        textRendering: 'geometricPrecision',
       },
     },
     text: {
