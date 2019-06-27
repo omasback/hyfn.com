@@ -197,10 +197,7 @@ const HomepageHero: React.FunctionComponent<{}> = props => {
         <ScrollReveal>
           <p className={classes.intro}>
             We provide{' '}
-            <Link
-              to="/solutions/#Amplification"
-              style={{ color: constants.colors.yellow }}
-            >
+            <Link to="/solutions/#Amplification" style={{ color: '#e5a624' }}>
               Amplification
             </Link>
             ,{' '}
