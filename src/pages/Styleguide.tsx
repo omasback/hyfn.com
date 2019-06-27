@@ -35,7 +35,7 @@ const Styleguide: React.FunctionComponent<{}> = ({ children }) => {
         <title>HYFN</title>
         <link rel="canonical" href="https://hyfn.com/" />
         <meta name="description" content="A HYFN Styleguide" />
-        <meta name="robots" content="noindex" /> 
+        <meta name="robots" content="noindex" />
       </Helmet>
       <div className={classes.root}>
         <table>
@@ -62,8 +62,8 @@ const Styleguide: React.FunctionComponent<{}> = ({ children }) => {
                 content: (
                   <p style={{ fontSize: 28, maxWidth: 580 }}>
                     So lay it on us. Come with questions. Come confused. Come
-                    expecting guidance. And don’t come with socks, because they’ll
-                    definitely get blown off. .
+                    expecting guidance. And don’t come with socks, because
+                    they’ll definitely get blown off. .
                   </p>
                 ),
               },
