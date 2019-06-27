@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
+import { Helmet } from 'react-helmet'
 
 import constants from 'styles/constants'
 
