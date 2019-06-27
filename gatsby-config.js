@@ -84,7 +84,7 @@ module.exports = {
     { 
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ["/work/fpo", "/Styleguide"],
+        exclude: ["/work/fpo", "/Styleguide", "/unsupported-browser"],
       }
     },
   ],
