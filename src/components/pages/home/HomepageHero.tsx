@@ -103,9 +103,6 @@ const useStyles = makeStyles(
         textDecoration: 'none',
       },
     },
-    yellowLink: {
-      color: '#e5a624',
-    },
     tabs: {
       position: 'relative',
       flexBasis: '80%',
@@ -200,7 +197,10 @@ const HomepageHero: React.FunctionComponent<{}> = props => {
         <ScrollReveal>
           <p className={classes.intro}>
             <span>We provide </span>
-            <Link to="/solutions/#Amplification" className={classes.yellowLink}>
+            <Link
+              to="/solutions/#Amplification"
+              style={{ color: constants.colors.yellow }}
+            >
               Amplification
             </Link>
             <span>, </span>
