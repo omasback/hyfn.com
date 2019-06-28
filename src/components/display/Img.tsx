@@ -35,7 +35,9 @@ const Img: React.FunctionComponent<IImgProps> = props => {
   const [visibility, setVisibility] = React.useState(false)
 
   React.useLayoutEffect(() => {
-    if (width === 0) return
+    if (width === 0) {
+      return
+    }
 
     const img = imgRef.current
     if (img) {

@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
-import merge from 'lodash/merge'
-import { responsiveLengths, objectFitContain } from 'styles/mixins'
+import { absoluteFill } from 'styles/mixins'
 import Img from './Img'
 
 const useStyles = makeStyles(
@@ -16,7 +15,8 @@ const useStyles = makeStyles(
       position: 'relative',
     },
     slide: {
-      extend: objectFitContain(),
+      extend: absoluteFill(),
+      objectFit: 'cover',
       zIndex: 0,
     },
     currentSlide: {
