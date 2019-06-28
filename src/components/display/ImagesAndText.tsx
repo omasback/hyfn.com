@@ -10,6 +10,7 @@ import ScrollReveal from 'components/display/ScrollReveal'
 import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import Img from './Img'
 
 const useStyles = makeStyles(
   {
@@ -103,7 +104,7 @@ const ImagesAndText: React.FunctionComponent<ImagesAndTextProps> = props => {
           <Grid item mobile={5} className={classes.image1Wrapper}>
             <ScrollReveal>
               <ColorTrails>
-                <img
+                <Img
                   src={leftImage.file.url}
                   alt=""
                   className={classes.image}
@@ -119,7 +120,7 @@ const ImagesAndText: React.FunctionComponent<ImagesAndTextProps> = props => {
           >
             <ScrollReveal>
               <ColorTrails>
-                <img
+                <Img
                   src={rightImage.file.url}
                   alt=""
                   className={classes.image}

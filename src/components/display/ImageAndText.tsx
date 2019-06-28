@@ -8,6 +8,7 @@ import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
+import Img from 'components/display/Img'
 import constants from 'styles/constants'
 import {
   responsiveLengths,
@@ -109,7 +110,7 @@ const ImageAndText: React.FunctionComponent<ImageAndTextProps> = props => {
     >
       <ScrollReveal>
         <ColorTrails>
-          <img src={image.file.url} alt="" className={classes.image} />
+          <Img src={image.file.url} alt="" className={classes.image} />
         </ColorTrails>
       </ScrollReveal>
     </Grid>

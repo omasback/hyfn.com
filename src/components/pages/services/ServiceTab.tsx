@@ -12,6 +12,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import constants from 'styles/constants'
 import ArrowLink from 'components/display/ArrowLink'
 import CircleArrow from 'components/display/CircleArrow'
+import Img from 'components/display/Img'
 
 const useStyles = makeStyles(
   {
@@ -176,7 +177,7 @@ export default (props: IServiceTab) => {
             <Slider {...slickSettings}>
               {caseStudies.map(cs => (
                 <div className={classes.cs} key={cs.slug}>
-                  <img
+                  <Img
                     className={classes.csImage}
                     src={cs.linkImage.file.url}
                     alt=""

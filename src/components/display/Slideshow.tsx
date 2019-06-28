@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
 import merge from 'lodash/merge'
 import { responsiveLengths, objectFitContain } from 'styles/mixins'
+import Img from './Img'
 
 const useStyles = makeStyles(
   {
@@ -53,7 +54,7 @@ const Slideshow: React.FunctionComponent<IProps> = ({
     <div className={classes.root}>
       <div style={{ paddingTop: (1 / aspectRatio) * 100 + '%' }}>
         {slides.map((slide, i) => (
-          <img
+          <Img
             key={i}
             src={slide.file.url}
             className={cx(classes.slide, {

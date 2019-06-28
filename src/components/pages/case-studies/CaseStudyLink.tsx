@@ -9,6 +9,7 @@ import ScrollReveal from 'components/display/ScrollReveal'
 import ThemeSetter from 'components/display/ThemeSetter'
 import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
+import Img from 'components/display/Img'
 
 const useStyles = makeStyles(
   {
@@ -106,7 +107,7 @@ const CaseStudyLink: React.FunctionComponent<{
           >
             {((number + 1) / 100).toFixed(2).slice(2)}
           </div>
-          <img src={image} alt="" className={classes.image} />
+          <Img src={image} alt="" className={classes.image} />
         </ScrollReveal>
       </Grid>
       <Grid

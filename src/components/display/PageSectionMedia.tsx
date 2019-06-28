@@ -13,6 +13,7 @@ import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
 import { useInView } from 'react-intersection-observer'
 import { graphql } from 'gatsby'
+import Img from './Img'
 
 const useStyles = makeStyles(
   {
@@ -98,7 +99,7 @@ const PageSectionMedia: React.FunctionComponent<
       </div>
     ) : (
       // <video loop playsInline controls >
-      <img src={asset.file.url} alt="" className={classes.media} />
+      <Img src={asset.file.url} alt="" className={classes.media} />
     )
 
   return (

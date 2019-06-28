@@ -14,6 +14,7 @@ import { ImagesAndTextProps } from 'components/display/ImagesAndText'
 import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import contentfulContentTypeComponentMap from '../contentfulContentTypeComponentMap'
+import Img from 'components/display/Img'
 
 const useStyles = makeStyles(
   {
@@ -89,7 +90,7 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
             <div className={classes.bleedRight}>
               <ScrollReveal>
                 <ColorTrails>
-                  <img
+                  <Img
                     src={contentfulCaseStudy.linkImage.file.url}
                     alt=""
                     className={cx(classes.image)}

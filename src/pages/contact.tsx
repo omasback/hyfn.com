@@ -13,6 +13,7 @@ import { responsiveLengths, bleedRight } from 'styles/mixins'
 import constants from 'styles/constants'
 import Grid from 'components/display/Grid'
 import ThemeSetter from 'components/display/ThemeSetter'
+import Img from 'components/display/Img'
 
 const useStyles = makeStyles(
   {
@@ -244,7 +245,7 @@ const Contact: React.FunctionComponent<IContactProps> = props => {
               backgroundColor={a.backgroundColor}
               parent={a.officeName}
             />
-            <img
+            <Img
               src={a.image.file.url}
               alt=""
               className={cx(classes.addressImg, classes['addressImg' + i])}
