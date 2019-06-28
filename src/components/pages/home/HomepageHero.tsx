@@ -196,28 +196,28 @@ const HomepageHero: React.FunctionComponent<{}> = props => {
       <div className={classes.text}>
         <ScrollReveal>
           <p className={classes.intro}>
-            We provide{' '}
+            <span>We provide </span>
             <Link
               to="/solutions/#Amplification"
               style={{ color: constants.colors.yellow }}
             >
               Amplification
             </Link>
-            ,{' '}
+            <span>, </span>
             <Link
               to="/solutions/#Creative"
               style={{ color: constants.colors.blue }}
             >
               Creative
             </Link>
-            , and{' '}
+            <span>, and </span>
             <Link
               to="/solutions/#Technology"
               style={{ color: constants.colors.red }}
             >
               Technology
-            </Link>{' '}
-            solutions for our clients’ most pressing problems.
+            </Link>
+            <span> solutions for our clients’ most pressing problems.</span>
           </p>
         </ScrollReveal>
       </div>
