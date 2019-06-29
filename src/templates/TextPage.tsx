@@ -14,14 +14,13 @@ const useStyles = makeStyles(
     headline: {
       extend: responsiveLengths([
         ['fontSize', 40, 100],
-        ['marginTop', 0, 40],
-        ['marginBottom', 30, 20],
+        ['marginBottom', 30, 70],
       ]),
     },
     subheadline: {
       extend: merge(
         largeParagraph(),
-        responsiveLengths('marginBottom', 30, 20)
+        responsiveLengths('marginBottom', 30, 70)
       ),
     },
     bodyText: {
