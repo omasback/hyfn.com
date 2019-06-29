@@ -1,13 +1,12 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import * as cx from 'classnames'
 import merge from 'lodash/merge'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Container from 'components/display/Container'
-import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
+import { largeParagraph, responsiveLengths } from 'styles/mixins'
 
 const useStyles = makeStyles(
   {
