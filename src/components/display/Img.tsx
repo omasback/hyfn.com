@@ -24,7 +24,7 @@ const Img: React.FunctionComponent<IImgProps> = props => {
   const isGif = src.indexOf('.gif') > -1
 
   const [{ modifiedSrc, isFinalSize }, setModifiedSrc] = React.useState({
-    modifiedSrc: src + '?w=10',
+    modifiedSrc: '',
     isFinalSize: false,
   })
 
