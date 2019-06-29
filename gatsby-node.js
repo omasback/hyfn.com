@@ -6,12 +6,18 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   return new Promise((resolve, reject) => {
-    const caseStudyTemplate = path.resolve(`src/templates/CaseStudy.tsx`)
     resolve(
       graphql(
         `
           {
             allContentfulCaseStudy {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
+            allContentfulTextPage {
               edges {
                 node {
                   slug
@@ -29,7 +35,18 @@ exports.createPages = ({ graphql, actions }) => {
           const slug = node.slug
           createPage({
             path: `work/${slug}/`,
-            component: caseStudyTemplate,
+            component: path.resolve(`src/templates/CaseStudy.tsx`),
+            context: {
+              slug,
+            },
+          })
+        })
+
+        result.data.allContentfulTextPage.edges.forEach(({ node }) => {
+          const slug = node.slug
+          createPage({
+            path: `/${slug}/`,
+            component: path.resolve(`src/templates/TextPage.tsx`),
             context: {
               slug,
             },
