@@ -46,11 +46,15 @@ const TextPage: React.FunctionComponent<ITextPageProps> = props => {
         <meta name="robots" content="noindex" />
       </Helmet>
       <Container className={classes.root}>
-        <h1 className={classes.headline}>{cms.headline}</h1>
-        <p className={classes.subheadline}>{cms.subheadline}</p>
-        <div className={classes.bodyText}>
-          {cms.bodyText && documentToReactComponents(cms.bodyText.json)}
-        </div>
+        {cms.headline && <h1 className={classes.headline}>{cms.headline}</h1>}
+        {cms.subheadline && (
+          <p className={classes.subheadline}>{cms.subheadline}</p>
+        )}
+        {cms.bodyText && (
+          <div className={classes.bodyText}>
+            {documentToReactComponents(cms.bodyText.json)}
+          </div>
+        )}
       </Container>
     </>
   )
