@@ -86,6 +86,10 @@ const ImagesAndText: React.FunctionComponent<ImagesAndTextProps> = props => {
 
   const { text, leftImage, rightImage } = props
 
+  if (!leftImage.file || !rightImage.file) {
+    return null
+  }
+
   return (
     <Container className={cx(classes.root)}>
       <Grid

@@ -62,6 +62,10 @@ const ImageAndText: React.FunctionComponent<ImageAndTextProps> = props => {
 
   const { image, text, imageSide = true } = props
 
+  if (!image.file) {
+    return null
+  }
+
   let textElement
 
   if (text) {
