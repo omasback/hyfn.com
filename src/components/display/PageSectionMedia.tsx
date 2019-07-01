@@ -76,7 +76,7 @@ const PageSectionMedia: React.FunctionComponent<
   }, [embedUrl])
 
   const mediaElement =
-    asset.file.contentType.indexOf('video') === 0 ? (
+    embedUrl || asset.file.contentType.indexOf('video') === 0 ? (
       // TODO: autoplay video on scroll enter
       <div className={classes.embedContainer}>
         {aspectRatio > 0 && (
