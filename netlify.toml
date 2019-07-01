@@ -172,21 +172,6 @@
   status = 301
 
 [[redirects]]
-  from = "https://hyfn.com/corporate-privacy-policy/"
-  to = "https://classic.hyfn.com/corporate-privacy-policy/"
-  status = 301
-
-[[redirects]]
-  from = "https://hyfn.com/services-privacy-policy/"
-  to = "https://classic.hyfn.com/corporate-privacy-policy/"
-  status = 301
-
-[[redirects]]
-  from = "https://hyfn.com/terms-of-use/"
-  to = "https://classic.hyfn.com/terms-of-use/"
-  status = 301
-
-[[redirects]]
   from = "https://hyfn.com/hyfn8/"
   to = "https://classic.hyfn.com/services/social-amplification/"
   status = 301
