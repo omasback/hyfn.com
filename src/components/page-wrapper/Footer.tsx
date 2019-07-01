@@ -306,24 +306,11 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
           </Grid>
           <Grid item mobile={10} desktop={7} className={classes.legalLinks}>
             <span>©2019 HYFN</span>
-            <a
-              href="/services-privacy-policy/"
-              rel="noopener noreferrer"
-            >
-              Services Privacy Policy
-            </a>
-            <a
-              href="/corporate-privacy-policy/"
-              rel="noopener noreferrer"
-            >
+            <Link to="/services-privacy-policy/">Services Privacy Policy</Link>
+            <Link to="/corporate-privacy-policy/">
               Corporate Privacy Policy
-            </a>
-            <a
-              href="/terms-of-use/"
-              rel="noopener noreferrer"
-            >
-              Terms of Use
-            </a>
+            </Link>
+            <Link to="/terms-of-use/">Terms of Use</Link>
           </Grid>
         </Grid>
       </Container>
