@@ -65,7 +65,7 @@ const useStyles = makeStyles(
 const CaseStudyLink: React.FunctionComponent<{
   title: string
   description: string
-  url: string
+  slug: string
   image: string
   color?: string
   backgroundColor?: string
@@ -74,7 +74,7 @@ const CaseStudyLink: React.FunctionComponent<{
 }> = ({
   title,
   description,
-  url,
+  slug,
   image,
   color,
   backgroundColor,
@@ -125,7 +125,7 @@ const CaseStudyLink: React.FunctionComponent<{
           <p className={classes.description}>{description}</p>
         </ScrollReveal>
         <ScrollReveal>
-          <ArrowLink to={url} text="View Project" />
+          <ArrowLink to={`/work/${slug}/`} text="View Project" />
         </ScrollReveal>
       </Grid>
     </Grid>

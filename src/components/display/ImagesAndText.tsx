@@ -11,6 +11,7 @@ import constants from 'styles/constants'
 import { responsiveLengths } from 'styles/mixins'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Img from './Img'
+import { graphql } from 'gatsby'
 
 const useStyles = makeStyles(
   {
@@ -139,3 +140,25 @@ const ImagesAndText: React.FunctionComponent<ImagesAndTextProps> = props => {
 }
 
 export default ImagesAndText
+
+export const query = graphql`
+  fragment ImagesAndTextFragment on ContentfulPageSectionImagesAndText {
+    id
+    internal {
+      type
+    }
+    leftImage {
+      file {
+        url
+      }
+    }
+    rightImage {
+      file {
+        url
+      }
+    }
+    text {
+      json
+    }
+  }
+`

@@ -62,10 +62,10 @@ const HomepageCaseStudies: React.FunctionComponent<
       {caseStudyLinks.map((work, i) => (
         <CaseStudyLink
           key={work.slug}
+          slug={work.slug}
           title={work.linkTitle}
           image={work.linkImage.file.url}
           description={work.linkSummary}
-          url={`work/${work.slug}/`}
           color={work.linkTextColor}
           backgroundColor={work.linkBackgroundColor}
           number={i}

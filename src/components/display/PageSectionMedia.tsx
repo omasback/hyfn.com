@@ -41,7 +41,7 @@ const useStyles = makeStyles(
 )
 
 const PageSectionMedia: React.FunctionComponent<
-  PageSectionMediaProps
+  IPageSectionMediaProps
 > = props => {
   const classes = useStyles(props)
 
@@ -115,7 +115,8 @@ const PageSectionMedia: React.FunctionComponent<
 
 export default PageSectionMedia
 
-export interface PageSectionMediaProps {
+export interface IPageSectionMediaProps {
+  id: string
   internal: {
     type: 'ContentfulPageSectionMedia'
   }

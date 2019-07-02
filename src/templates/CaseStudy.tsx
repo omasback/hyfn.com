@@ -15,6 +15,8 @@ import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import contentfulContentTypeComponentMap from '../contentfulContentTypeComponentMap'
 import Img from 'components/display/Img'
+import { ITextAndTextProps } from 'components/display/TextAndText'
+import { IPageSectionMediaProps } from 'components/display/PageSectionMedia'
 
 const useStyles = makeStyles(
   {
@@ -140,7 +142,13 @@ interface CaseStudyPage {
         }
       }
       pageTitle: string
-      pageSections: Array<ImageAndTextProps | ImagesAndTextProps | null>
+      pageSections: Array<
+        | ImageAndTextProps
+        | ImagesAndTextProps
+        | ITextAndTextProps
+        | IPageSectionMediaProps
+        | null
+      >
       noindex: boolean
     }
   }
@@ -167,23 +175,7 @@ export const pageQuery = graphql`
           ...ImageAndTextFragment
         }
         ... on ContentfulPageSectionImagesAndText {
-          id
-          internal {
-            type
-          }
-          leftImage {
-            file {
-              url
-            }
-          }
-          rightImage {
-            file {
-              url
-            }
-          }
-          text {
-            json
-          }
+          ...ImagesAndTextFragment
         }
         ... on ContentfulPageSectionTextAndText {
           ...TextAndTextFragment
