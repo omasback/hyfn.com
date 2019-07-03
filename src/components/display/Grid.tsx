@@ -95,6 +95,17 @@ const useStyles = makeStyles(
           : 'space-between',
       },
     }),
+    hideMobile: {
+      display: 'none',
+      [constants.mq.desktop]: {
+        display: 'flex',
+      },
+    },
+    hideDesktop: {
+      [constants.mq.desktop]: {
+        display: 'none',
+      },
+    },
   },
   { name: 'Grid' }
 )
@@ -127,6 +138,8 @@ const Grid: React.FunctionComponent<
           [classes.offset]: offsetMobile || offsetDesktop,
           [classes.alignItems]: alignItemsMobile || alignItemsDesktop,
           [classes.justifyContent]: true,
+          [classes.hideMobile]: mobile === 0,
+          [classes.hideDesktop]: desktop === 0,
         },
         className
       )}
