@@ -311,6 +311,7 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
               Corporate Privacy Policy
             </Link>
             <Link to="/terms-of-use/">Terms of Use</Link>
+            <Link to="/io-terms-and-conditions/">IO Terms and Conditions</Link>
           </Grid>
         </Grid>
       </Container>
