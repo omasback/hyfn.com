@@ -6,7 +6,7 @@ const constants = {
     red: '#ee3424',
     blue: '#3d3e99',
     yellow: '#e5a624',
-    lightGray: '#e8e8e8',
+    lightGray: '#f0f2f5',
     darkGray: '#3c3c40',
   },
   breakPoint: {
