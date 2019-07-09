@@ -57,6 +57,14 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
+    {
+      resolve: 'gatsby-plugin-sentry',
+      options: {
+        dsn: 'https://3aab4ae20ca34ea4bf2d530046200367@sentry.io/1500763',
+        environment: process.env.NODE_ENV,
+        enabled: (() => ['production'].indexOf(process.env.NODE_ENV) !== -1)(),
+      },
+    },
     'gatsby-plugin-layout',
     {
       resolve: `gatsby-plugin-material-ui`,
@@ -81,11 +89,11 @@ module.exports = {
       },
     },
     'gatsby-plugin-react-helmet',
-    { 
+    {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ["/work/fpo", "/Styleguide", "/unsupported-browser"],
-      }
+        exclude: ['/work/fpo', '/Styleguide', '/unsupported-browser'],
+      },
     },
   ],
 }

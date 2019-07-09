@@ -7,7 +7,7 @@ import { observer } from 'mobx-react'
 
 import GlobalStyles from 'components/GlobalStyles'
 import PageWrapper from 'components/page-wrapper/PageWrapper'
-import UnsupportedBrowser from '../pages/unsupported-browser'
+import ErrorBoundary from 'components/ErrorBoundary'
 import constants from 'styles/constants'
 
 export interface Theme {
@@ -43,22 +43,24 @@ class App extends Component<{ pageContext: any }> {
 
   render() {
     return (
-      <ThemeProvider
-        theme={{
-          color: this.color,
-          backgroundColor: this.backgroundColor,
-          setTheme: this.setTheme,
-        }}
-      >
-        <StylesProvider jss={jss}>
-          <GlobalStyles />
-          {this.props.pageContext.layout === 'noNav' ? (
-            this.props.children
-          ) : (
-            <PageWrapper>{this.props.children}</PageWrapper>
-          )}
-        </StylesProvider>
-      </ThemeProvider>
+      <ErrorBoundary>
+        <ThemeProvider
+          theme={{
+            color: this.color,
+            backgroundColor: this.backgroundColor,
+            setTheme: this.setTheme,
+          }}
+        >
+          <StylesProvider jss={jss}>
+            <GlobalStyles />
+            {this.props.pageContext.layout === 'noNav' ? (
+              this.props.children
+            ) : (
+              <PageWrapper>{this.props.children}</PageWrapper>
+            )}
+          </StylesProvider>
+        </ThemeProvider>
+      </ErrorBoundary>
     )
   }
 }
