@@ -228,6 +228,7 @@ const Contact: React.FunctionComponent<IContactProps> = props => {
                 css={''}
                 cssRequired={''} // this is what actually removes the hubspot css
                 cssClass={classes.form}
+                redirectUrl="https://hyfn.com/thank-you/"
               />
             </div>
           </Grid>
