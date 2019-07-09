@@ -11,6 +11,10 @@ import merge from 'lodash/merge'
 import HubspotForm from 'react-hubspot-form'
 import easings from 'easings-css'
 
+import iconFB from 'images/logo_fb.svg'
+import iconIG from 'images/logo_ig.svg'
+import iconTW from 'images/logo_tw.svg'
+import iconLI from 'images/logo_li.svg'
 import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import constants from 'styles/constants'
@@ -193,19 +197,19 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
             {[
               {
                 href: 'https://www.facebook.com/WeAreHYFN/',
-                Icon: FaFacebookSquare,
+                Icon: iconFB,
               },
               {
                 href: 'https://www.instagram.com/wearehyfn/',
-                Icon: FaInstagram,
+                Icon: iconIG,
               },
               {
                 href: 'https://twitter.com/hyfn?lang=en',
-                Icon: FaTwitter,
+                Icon: iconTW,
               },
               {
                 href: 'https://www.linkedin.com/company/hyfn/',
-                Icon: FaLinkedin,
+                Icon: iconLI,
               },
             ].map(link => (
               <a
@@ -214,7 +218,11 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <link.Icon color="#fff" className={classes.shareIcon} />
+                <img
+                  src={link.Icon}
+                  color="#fff"
+                  className={classes.shareIcon}
+                />
               </a>
             ))}
           </Grid>
