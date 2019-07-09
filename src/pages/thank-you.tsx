@@ -31,7 +31,7 @@ const useStyles = makeStyles(
       textDecoration: 'none',
       borderBottom: `2px solid ${constants.colors.darkGray}`,
       paddingBottom: 3,
-      marginRight: '2em',
+      marginRight: '1em',
     },
     arrow: {
       transform: 'translateX(16%) rotate(-45deg)',
@@ -69,6 +69,10 @@ const ThankYouPage: React.FunctionComponent<{}> = props => {
                 {
                   href: 'https://www.instagram.com/wearehyfn/',
                   text: 'Instagram',
+                },
+                {
+                  href: 'https://www.linkedin.com/company/hyfn/',
+                  text: 'LinkedIn',
                 },
               ].map(link => (
                 <a
