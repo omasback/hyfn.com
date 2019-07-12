@@ -1,15 +1,8 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import {
-  FaFacebookSquare,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedin,
-} from 'react-icons/fa'
 import { Link } from 'gatsby'
 import merge from 'lodash/merge'
 import HubspotForm from 'react-hubspot-form'
-import easings from 'easings-css'
 
 import iconFB from 'images/logo_fb.svg'
 import iconIG from 'images/logo_ig.svg'
@@ -21,6 +14,7 @@ import constants from 'styles/constants'
 import HyfnLogo from 'components/svg/HyfnLogo'
 import { responsiveLengths } from 'styles/mixins'
 import footerLogo from 'images/hyfn_logo_footer.svg'
+import SocialLinks from './SocialLinks'
 
 const useStyles = makeStyles(
   {
@@ -41,13 +35,14 @@ const useStyles = makeStyles(
     },
     shareIcons: {
       textAlign: 'right',
-    },
-    shareIcon: {
-      extend: merge(
-        responsiveLengths('width', 23, 28),
-        responsiveLengths('height', 23, 28),
-        responsiveLengths('marginLeft', 13, 22)
-      ),
+      '& > *': {
+        display: 'inline-block',
+        extend: merge(
+          responsiveLengths('width', 23, 28),
+          responsiveLengths('height', 23, 28),
+          responsiveLengths('marginLeft', 13, 22)
+        ),
+      },
     },
     row2: {
       extend: merge(
@@ -194,37 +189,7 @@ const Footer: React.FunctionComponent<{}> = ({ children }) => {
             </Link>
           </Grid>
           <Grid item mobile={5} className={classes.shareIcons}>
-            {[
-              {
-                href: 'https://www.facebook.com/WeAreHYFN/',
-                Icon: iconFB,
-              },
-              {
-                href: 'https://www.instagram.com/wearehyfn/',
-                Icon: iconIG,
-              },
-              {
-                href: 'https://twitter.com/hyfn?lang=en',
-                Icon: iconTW,
-              },
-              {
-                href: 'https://www.linkedin.com/company/hyfn/',
-                Icon: iconLI,
-              },
-            ].map(link => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src={link.Icon}
-                  color="#fff"
-                  className={classes.shareIcon}
-                />
-              </a>
-            ))}
+            <SocialLinks />
           </Grid>
         </Grid>
 
