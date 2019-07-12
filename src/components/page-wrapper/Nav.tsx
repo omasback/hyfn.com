@@ -1,17 +1,19 @@
 import * as React from 'react'
-import { slide as Menu } from 'react-burger-menu'
+import * as cx from 'classnames'
+import HamburgerMenu from 'react-hamburger-menu'
 import { Link } from 'gatsby'
 import { useMediaQuery } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import { FaFacebookSquare, FaInstagram } from 'react-icons/fa'
+import easings from 'easings-css/easings.json'
 
+import { responsiveLengths, absoluteFill } from 'styles/mixins'
 import Container from 'components/display/Container'
-import hamburger from 'images/hamburger.svg'
 import constants from 'styles/constants'
-import XIcon from 'components/svg/XIcon'
 import HyfnLogo from 'components/svg/HyfnLogo'
-import PlayLogo from 'components/svg/PlayLogo'
 import { Theme } from 'layouts'
+import SocialLinks from './SocialLinks'
+
+const transitionDuration = 500
 
 const useStyles = makeStyles<Theme>(
   theme => ({
@@ -35,47 +37,68 @@ const useStyles = makeStyles<Theme>(
       position: 'absolute',
       top: 50,
       right: 40,
+      zIndex: 2,
     },
-    burgerIcon: {
-      display: 'block',
-      position: 'absolute',
-      width: '100%',
-      height: '100%',
-    },
-    menuContainer: {
-      top: 0,
-      color: '#fff',
-    },
-    overlayClassName: {
+    drawer: {
+      position: 'fixed',
       top: 0,
       left: 0,
+      zIndex: 10,
+      height: '100vh',
+      width: '100vw',
+      transform: 'translateX(-100%)',
+      transition: 'transform 0.5s',
+      transitionDuration: transitionDuration + 'ms',
+      transitionTimingFunction: easings.easeOutQuint,
+      backgroundColor: constants.colors.darkGray,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      overflowY: 'hidden',
+      paddingBottom: '65px',
+      '@media (min-width: 600px)': {
+        paddingBottom: 0,
+      },
     },
-    menuClassName: {
-      background: constants.colors.black,
-      padding: 40,
+    drawerOpen: {
+      transform: 'none',
+      boxShadow: '4px 0 5px rgba(0, 0, 0, 0.1)',
     },
-    crossButtonClassName: {
-      maxWidth: 18,
-      maxHeight: 18,
-      transform: 'translate(-38px, 38px)',
+    drawerInner: {
+      extend: absoluteFill(),
+      width: '100vw',
+      paddingTop: 40,
+      willChange: 'transform',
+      transform: 'translateX(100%)',
+      transition: 'transform',
+      transitionDuration: transitionDuration + 'ms',
+      transitionTimingFunction: easings.easeOutQuint,
+      pointerEvents: 'none',
+      overflowY: 'auto',
     },
-    xIcon: {},
+    drawerInnerOpen: {
+      transform: 'translateX(0)',
+      pointerEvents: 'all',
+    },
     itemListClassName: {
       display: 'flex',
       flexDirection: 'column',
     },
     mobileMenuLogo: {
       width: 111,
-      marginBottom: 70,
+      marginBottom: 83,
       outline: 'none',
     },
-    mainLinks: {
+    mobileMainLinks: {
       flexGrow: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
     },
     mobileMainLink: {
+      extend: responsiveLengths('fontSize', 34, 34),
+      lineHeight: 1.6,
       display: 'block',
-      fontSize: 21,
-      lineHeight: '32px',
       fontWeight: 'bold',
       color: 'white',
       textDecoration: 'none',
@@ -95,9 +118,18 @@ const useStyles = makeStyles<Theme>(
     },
     socialLinks: {
       display: 'flex',
-    },
-    socialLink: {
-      marginRight: 20,
+      extend: responsiveLengths([
+        ['marginTop', 55, 22],
+        ['marginBottom', 55, 22],
+      ]),
+      '& > *': {
+        display: 'inline-block',
+        extend: responsiveLengths([
+          ['width', 26, 0],
+          ['height', 26, 0],
+          ['marginRight', 36, 0],
+        ]),
+      },
     },
     socialIcon: {
       width: 25,
@@ -240,68 +272,61 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
             <Link to="/">
               <HyfnLogo className={classes.mobileLogo} />
             </Link>
-            <Menu
-              isOpen={isOpen}
-              onStateChange={state => setOpen(state.isOpen)}
-              right
-              pageWrapId={'page-wrap'}
-              width="100%"
-              customBurgerIcon={
-                // need span wrapper because the lib overwrites the classname
-                // https://github.com/negomi/react-burger-menu/issues/95
-                <span>
-                  <img
-                    src={hamburger}
-                    className={classes.burgerIcon}
-                    alt="menu"
-                  />
-                </span>
-              }
-              customCrossIcon={
-                <XIcon color="#ffffff" className={classes.xIcon} />
-              }
-              className={classes.menuContainer}
-              burgerButtonClassName={classes.hamburger}
-              menuClassName={classes.menuClassName}
-              crossButtonClassName={classes.crossButtonClassName}
-              itemListClassName={classes.itemListClassName}
-              overlayClassName={classes.overlayClassName}
+            <div className={classes.hamburger}>
+              <HamburgerMenu
+                isOpen={isOpen}
+                menuClicked={() => setOpen(!isOpen)}
+                width={32}
+                height={12}
+                strokeWidth={2}
+                rotate={0}
+                color={constants.colors.darkGray}
+                borderRadius={0}
+                animationDuration={0.5}
+              />
+            </div>
+            <div
+              className={cx(classes.drawer, {
+                [classes.drawerOpen]: isOpen,
+              })}
             >
-              <HyfnLogo color="#ffffff" className={classes.mobileMenuLogo} />
-              <div className={classes.mainLinks}>
-                {mainLinks.map(link => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={classes.mobileMainLink}
-                    activeClassName={classes.mobileMainLinkaActive}
-                    onClick={() => setOpen(false)}
-                  >
-                    {link.text}
-                  </Link>
-                ))}
-              </div>
-              <div className={classes.socialLinks}>
-                {[
-                  {
-                    href: 'https://www.facebook.com/WeAreHYFN/',
-                    icon: FaFacebookSquare,
-                  },
-                  {
-                    href: 'https://www.instagram.com/wearehyfn',
-                    icon: FaInstagram,
-                  },
-                ].map(link => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className={classes.socialLink}
-                  >
-                    <link.icon className={classes.socialIcon} />
-                  </a>
-                ))}
-              </div>
-            </Menu>
+              <Container
+                className={cx(classes.drawerInner, {
+                  [classes.drawerInnerOpen]: isOpen,
+                })}
+              >
+                <div className={classes.hamburger}>
+                  <HamburgerMenu
+                    isOpen={isOpen}
+                    menuClicked={() => setOpen(!isOpen)}
+                    width={32}
+                    height={12}
+                    strokeWidth={2}
+                    rotate={0}
+                    color={constants.colors.lightGray}
+                    borderRadius={0}
+                    animationDuration={0.5}
+                  />
+                </div>
+                <HyfnLogo color="#ffffff" className={classes.mobileMenuLogo} />
+                <div className={classes.mobileMainLinks}>
+                  {mainLinks.map(link => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      className={classes.mobileMainLink}
+                      activeClassName={classes.mobileMainLinkaActive}
+                      onClick={() => setOpen(false)}
+                    >
+                      {link.text}
+                    </Link>
+                  ))}
+                </div>
+                <div className={classes.socialLinks}>
+                  <SocialLinks />
+                </div>
+              </Container>
+            </div>
           </>
         )}
       </Container>
