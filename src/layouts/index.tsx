@@ -9,8 +9,11 @@ import GlobalStyles from 'components/GlobalStyles'
 import PageWrapper from 'components/page-wrapper/PageWrapper'
 import ErrorBoundary from 'components/ErrorBoundary'
 import constants from 'styles/constants'
+import { createMuiTheme } from '@material-ui/core'
+import merge from 'lodash/merge'
+import { Theme as MuiTheme } from '@material-ui/core/styles/createMuiTheme'
 
-export interface Theme {
+export interface Theme extends MuiTheme {
   color: string
   backgroundColor: string
   setTheme: (color?: string, backgroundColor?: string) => void
@@ -19,6 +22,8 @@ export interface Theme {
 const jss = create({
   plugins: [extend(), ...jssPreset().plugins],
 })
+
+const defaultTheme = createMuiTheme()
 
 @observer
 class App extends Component<{ pageContext: any }> {
@@ -45,11 +50,11 @@ class App extends Component<{ pageContext: any }> {
     return (
       <ErrorBoundary>
         <ThemeProvider
-          theme={{
+          theme={merge(defaultTheme, {
             color: this.color,
             backgroundColor: this.backgroundColor,
             setTheme: this.setTheme,
-          }}
+          })}
         >
           <StylesProvider jss={jss}>
             <GlobalStyles />
