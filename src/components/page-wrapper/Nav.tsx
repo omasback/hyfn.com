@@ -321,9 +321,10 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
               />
             </div>
             {[classes.drawerRed, classes.drawerYellow, classes.drawerBlue].map(
-              colorCLass => (
+              colorClass => (
                 <div
-                  className={cx(classes.drawer, colorCLass, {
+                  key={colorClass}
+                  className={cx(classes.drawer, colorClass, {
                     [classes.drawerOpen]: isOpen,
                   })}
                 />
@@ -355,9 +356,11 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
                 <HyfnLogo color="#ffffff" className={classes.mobileMenuLogo} />
                 <div className={classes.mobileMainLinks}>
                   {mainLinks.map(link => (
-                    <div className={classes.mobileMainLinkContainer}>
+                    <div
+                      key={link.path}
+                      className={classes.mobileMainLinkContainer}
+                    >
                       <Link
-                        key={link.path}
                         to={link.path}
                         className={cx(classes.mobileMainLink, {
                           [classes.mobileMainLinkOpen]: isOpen,
