@@ -34,11 +34,9 @@ const PageWrapper: React.FunctionComponent<{}> = ({ children }) => {
   const classes = useStyles()
 
   return (
-    <div className={classes.root} id="outer-container">
+    <div className={classes.root}>
       <Nav />
-      <main id="page-wrap" className={classes.content}>
-        {children}
-      </main>
+      <main className={classes.content}>{children}</main>
       <Footer />
     </div>
   )

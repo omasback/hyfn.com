@@ -81,6 +81,15 @@ const absoluteFill: () => CSSProperties = () => ({
   height: '100%',
 })
 
+const fullScreen: () => CSSProperties = () => ({
+  width: '100vw',
+  height: '100vh',
+  marginTop: -120,
+  [constants.mq.desktop]: {
+    marginTop: -250,
+  },
+})
+
 export {
   responsiveLengths,
   bleedLeft,
@@ -88,4 +97,5 @@ export {
   largeParagraph,
   // objectFitContain,
   absoluteFill,
+  fullScreen,
 }

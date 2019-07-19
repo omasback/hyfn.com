@@ -64,6 +64,22 @@ const useStyles = makeStyles<Theme>(
       transform: 'none',
       boxShadow: '4px 0 5px rgba(0, 0, 0, 0.1)',
     },
+    drawerRed: {
+      backgroundColor: constants.colors.red,
+      transitionDelay: '0ms',
+    },
+    drawerYellow: {
+      backgroundColor: constants.colors.yellow,
+      transitionDelay: '100ms',
+    },
+    drawerBlue: {
+      backgroundColor: constants.colors.blue,
+      transitionDelay: '150ms',
+    },
+    drawerBlack: {
+      backgroundColor: constants.colors.darkGray,
+      transitionDelay: '200ms',
+    },
     drawerInner: {
       extend: absoluteFill(),
       width: '100vw',
@@ -73,8 +89,11 @@ const useStyles = makeStyles<Theme>(
       transition: 'transform',
       transitionDuration: transitionDuration + 'ms',
       transitionTimingFunction: easings.easeOutQuint,
+      transitionDelay: '200ms',
       pointerEvents: 'none',
       overflowY: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
     },
     drawerInnerOpen: {
       transform: 'translateX(0)',
@@ -95,6 +114,9 @@ const useStyles = makeStyles<Theme>(
       flexDirection: 'column',
       alignItems: 'flex-start',
     },
+    mobileMainLinkContainer: {
+      overflow: 'hidden',
+    },
     mobileMainLink: {
       extend: responsiveLengths('fontSize', 34, 34),
       lineHeight: 1.6,
@@ -104,6 +126,14 @@ const useStyles = makeStyles<Theme>(
       textDecoration: 'none',
       outline: 'none',
       position: 'relative',
+      transform: 'translateY(100%)',
+      transition: 'transform',
+      transitionDuration: transitionDuration * 3 + 'ms',
+      transitionDelay: transitionDuration * 0.5 + 'ms',
+      transitionTimingFunction: easings.easeOutQuint,
+    },
+    mobileMainLinkOpen: {
+      transform: 'translateY(0)',
     },
     mobileMainLinkaActive: {
       '&:after': {
@@ -118,10 +148,12 @@ const useStyles = makeStyles<Theme>(
     },
     socialLinks: {
       display: 'flex',
-      extend: responsiveLengths([
-        ['marginTop', 55, 22],
-        ['marginBottom', 55, 22],
-      ]),
+      marginBottom: 60,
+      transform: 'translateY(150px)',
+      transition: 'transform',
+      transitionDuration: transitionDuration * 3 + 'ms',
+      transitionDelay: transitionDuration * 0.5 + 'ms',
+      transitionTimingFunction: easings.easeOutQuint,
       '& > *': {
         display: 'inline-block',
         extend: responsiveLengths([
@@ -130,6 +162,9 @@ const useStyles = makeStyles<Theme>(
           ['marginRight', 36, 0],
         ]),
       },
+    },
+    socialLinksOpen: {
+      transform: 'translateY(0px)',
     },
     socialIcon: {
       width: 25,
@@ -203,18 +238,18 @@ const mainLinks = [
     text: 'Work',
     path: '/work/',
   },
-  {
-    text: 'Amplification',
-    path: '/solutions/#Amplification',
-  },
-  {
-    text: 'Creative',
-    path: '/solutions/#Creative',
-  },
-  {
-    text: 'Technology',
-    path: '/solutions/#Technology',
-  },
+  // {
+  //   text: 'Amplification',
+  //   path: '/solutions/#Amplification',
+  // },
+  // {
+  //   text: 'Creative',
+  //   path: '/solutions/#Creative',
+  // },
+  // {
+  //   text: 'Technology',
+  //   path: '/solutions/#Technology',
+  // },
   // {
   //   text: 'Thoughts',
   //   path: '/thoughts',
@@ -247,7 +282,7 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
               <HyfnLogo className={classes.desktopLogo} />
             </Link>
             <div className={classes.desktopLeftLinks}>
-              {mainLinks.slice(0, 6).map(link => (
+              {mainLinks.slice(0, 3).map(link => (
                 <Link
                   key={link.path}
                   to={link.path}
@@ -285,8 +320,17 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
                 animationDuration={0.5}
               />
             </div>
+            {[classes.drawerRed, classes.drawerYellow, classes.drawerBlue].map(
+              colorCLass => (
+                <div
+                  className={cx(classes.drawer, colorCLass, {
+                    [classes.drawerOpen]: isOpen,
+                  })}
+                />
+              )
+            )}
             <div
-              className={cx(classes.drawer, {
+              className={cx(classes.drawer, classes.drawerBlack, {
                 [classes.drawerOpen]: isOpen,
               })}
             >
@@ -311,18 +355,26 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
                 <HyfnLogo color="#ffffff" className={classes.mobileMenuLogo} />
                 <div className={classes.mobileMainLinks}>
                   {mainLinks.map(link => (
-                    <Link
-                      key={link.path}
-                      to={link.path}
-                      className={classes.mobileMainLink}
-                      activeClassName={classes.mobileMainLinkaActive}
-                      onClick={() => setOpen(false)}
-                    >
-                      {link.text}
-                    </Link>
+                    <div className={classes.mobileMainLinkContainer}>
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        className={cx(classes.mobileMainLink, {
+                          [classes.mobileMainLinkOpen]: isOpen,
+                        })}
+                        activeClassName={classes.mobileMainLinkaActive}
+                        onClick={() => setOpen(false)}
+                      >
+                        {link.text}
+                      </Link>
+                    </div>
                   ))}
                 </div>
-                <div className={classes.socialLinks}>
+                <div
+                  className={cx(classes.socialLinks, {
+                    [classes.socialLinksOpen]: isOpen,
+                  })}
+                >
                   <SocialLinks />
                 </div>
               </Container>
