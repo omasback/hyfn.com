@@ -5,6 +5,7 @@ import { Link } from 'gatsby'
 import { useMediaQuery } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import easings from 'easings-css/easings.json'
+import { useLockBodyScroll } from 'react-use'
 
 import { responsiveLengths, absoluteFill } from 'styles/mixins'
 import Container from 'components/display/Container'
@@ -272,6 +273,8 @@ const Nav: React.FunctionComponent<{}> = ({ children }) => {
   const classes = useStyles()
   const [isOpen, setOpen] = React.useState(false)
   const isWide = useMediaQuery(constants.mq.desktop.replace('@media ', ''))
+
+  useLockBodyScroll(isOpen)
 
   return (
     <div className={classes.root}>
