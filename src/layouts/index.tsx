@@ -47,7 +47,6 @@ class App extends Component<{ pageContext: any }> {
   }
 
   render() {
-    console.log('layout', this.backgroundColor)
     return (
       <ErrorBoundary>
         <ThemeProvider
