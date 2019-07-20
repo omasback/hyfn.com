@@ -5,8 +5,6 @@ import merge from 'lodash/merge'
 import { StylesProvider, jssPreset, ThemeProvider } from '@material-ui/styles'
 import { createMuiTheme } from '@material-ui/core'
 import { Theme as MuiTheme } from '@material-ui/core/styles/createMuiTheme'
-import { observable, runInAction } from 'mobx'
-import { observer } from 'mobx-react'
 
 import GlobalStyles from 'components/GlobalStyles'
 import PageWrapper from 'components/page-wrapper/PageWrapper'
@@ -16,7 +14,7 @@ import constants from 'styles/constants'
 export interface Theme extends MuiTheme {
   color: string
   backgroundColor: string
-  setTheme: (color?: string, backgroundColor?: string) => void
+  setTheme: (theme: { color?: string; backgroundColor?: string }) => void
 }
 
 const jss = create({
@@ -25,54 +23,36 @@ const jss = create({
 
 const defaultTheme = createMuiTheme()
 
-@observer
-class App extends Component<{ pageContext: any }> {
-  @observable
-  color = constants.colors.darkGray
-
-  @observable
-  backgroundColor = constants.colors.lightGray
-
-  setTheme = (
-    color: string = constants.colors.darkGray,
-    backgroundColor: string = constants.colors.lightGray
-  ) => {
-    if (typeof window !== 'undefined') {
-      window.setTimeout(() => {
-        runInAction(() => {
-          console.log('setTheme')
-          this.color = color
-          this.backgroundColor = backgroundColor
-        })
-      }, 100)
-    }
-  }
-
-  render() {
-    return (
-      <ErrorBoundary>
-        <ThemeProvider
-          theme={merge({}, defaultTheme, {
-            color: this.color,
-            backgroundColor: this.backgroundColor,
-            setTheme: this.setTheme,
-          })}
-        >
-          <StylesProvider jss={jss}>
-            <GlobalStyles />
-            {this.props.pageContext.layout === 'noNav' ? (
-              this.props.children
-            ) : (
-              <PageWrapper>{this.props.children}</PageWrapper>
-            )}
-          </StylesProvider>
-        </ThemeProvider>
-      </ErrorBoundary>
-    )
-  }
+interface ILayoutprops {
+  pageContext: any
 }
 
-export default App
+const Layout: React.FunctionComponent<ILayoutprops> = ({
+  pageContext,
+  children,
+}) => {
+  const [theme, setTheme] = React.useState({
+    color: constants.colors.darkGray,
+    backgroundColor: constants.colors.lightGray,
+  })
+
+  return (
+    <ErrorBoundary>
+      <ThemeProvider theme={merge({ setTheme }, defaultTheme, theme)}>
+        <StylesProvider jss={jss}>
+          <GlobalStyles />
+          {pageContext.layout === 'noNav' ? (
+            children
+          ) : (
+            <PageWrapper>{children}</PageWrapper>
+          )}
+        </StylesProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
+  )
+}
+
+export default Layout
 
 // CRA App code
 // import React, { Component } from 'react'

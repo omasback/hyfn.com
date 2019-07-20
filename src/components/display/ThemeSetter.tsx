@@ -53,9 +53,9 @@ const ThemeSetter: React.FunctionComponent<{
   React.useEffect(() => {
     // console.log(parent, inView)
     if (inView) {
-      setTheme(color, backgroundColor)
+      setTheme({ color, backgroundColor })
     }
-  }, [inView, color, backgroundColor, setTheme])
+  }, [inView, color, backgroundColor])
 
   React.useEffect(() => {
     return () => {
@@ -63,7 +63,7 @@ const ThemeSetter: React.FunctionComponent<{
       // if you put the cleanup function in an effect with dependencies,
       // it will run every time dependencies change,
       // prematurely clearing the theme (bad)
-      setTheme()
+      setTheme({})
     }
   }, [setTheme])
 
