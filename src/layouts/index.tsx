@@ -5,7 +5,7 @@ import merge from 'lodash/merge'
 import { StylesProvider, jssPreset, ThemeProvider } from '@material-ui/styles'
 import { createMuiTheme } from '@material-ui/core'
 import { Theme as MuiTheme } from '@material-ui/core/styles/createMuiTheme'
-import { observable, action } from 'mobx'
+import { observable, runInAction } from 'mobx'
 import { observer } from 'mobx-react'
 
 import GlobalStyles from 'components/GlobalStyles'
@@ -33,15 +33,17 @@ class App extends Component<{ pageContext: any }> {
   @observable
   backgroundColor = constants.colors.lightGray
 
-  @action
   setTheme = (
     color: string = constants.colors.darkGray,
     backgroundColor: string = constants.colors.lightGray
   ) => {
     if (typeof window !== 'undefined') {
       window.setTimeout(() => {
-        this.color = color
-        this.backgroundColor = backgroundColor
+        runInAction(() => {
+          console.log('setTheme')
+          this.color = color
+          this.backgroundColor = backgroundColor
+        })
       }, 100)
     }
   }
