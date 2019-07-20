@@ -10,6 +10,7 @@ import GlobalStyles from 'components/GlobalStyles'
 import PageWrapper from 'components/page-wrapper/PageWrapper'
 import ErrorBoundary from 'components/ErrorBoundary'
 import constants from 'styles/constants'
+import { ScrollProvider } from 'components/page-wrapper/ScrollContext'
 
 export interface Theme extends MuiTheme {
   color: string
@@ -40,12 +41,14 @@ const Layout: React.FunctionComponent<ILayoutprops> = ({
     <ErrorBoundary>
       <ThemeProvider theme={merge({ setTheme }, defaultTheme, theme)}>
         <StylesProvider jss={jss}>
-          <GlobalStyles />
-          {pageContext.layout === 'noNav' ? (
-            children
-          ) : (
-            <PageWrapper>{children}</PageWrapper>
-          )}
+          <ScrollProvider>
+            <GlobalStyles />
+            {pageContext.layout === 'noNav' ? (
+              children
+            ) : (
+              <PageWrapper>{children}</PageWrapper>
+            )}
+          </ScrollProvider>
         </StylesProvider>
       </ThemeProvider>
     </ErrorBoundary>
