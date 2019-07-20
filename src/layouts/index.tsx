@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { create } from 'jss'
 import extend from 'jss-plugin-extend'
+import merge from 'lodash/merge'
 import { StylesProvider, jssPreset, ThemeProvider } from '@material-ui/styles'
+import { createMuiTheme } from '@material-ui/core'
+import { Theme as MuiTheme } from '@material-ui/core/styles/createMuiTheme'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 
@@ -9,9 +12,6 @@ import GlobalStyles from 'components/GlobalStyles'
 import PageWrapper from 'components/page-wrapper/PageWrapper'
 import ErrorBoundary from 'components/ErrorBoundary'
 import constants from 'styles/constants'
-import { createMuiTheme } from '@material-ui/core'
-import merge from 'lodash/merge'
-import { Theme as MuiTheme } from '@material-ui/core/styles/createMuiTheme'
 
 export interface Theme extends MuiTheme {
   color: string
@@ -47,10 +47,11 @@ class App extends Component<{ pageContext: any }> {
   }
 
   render() {
+    console.log('layout', this.backgroundColor)
     return (
       <ErrorBoundary>
         <ThemeProvider
-          theme={merge(defaultTheme, {
+          theme={merge({}, defaultTheme, {
             color: this.color,
             backgroundColor: this.backgroundColor,
             setTheme: this.setTheme,
