@@ -31,7 +31,7 @@ const useStyles = makeStyles(
     //   backgroundColor: 'rgba(0, 0, 0, 0.1)',
     // },
   },
-  { name: 'ThemeSetter' }
+  { name: 'Mui-ThemeSetter' }
 )
 
 const ThemeSetter: React.FunctionComponent<{

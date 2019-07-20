@@ -27,7 +27,7 @@ const useStyles = makeStyles(
       maxWidth: 800,
     },
   },
-  { name: 'TextPage' }
+  { name: 'Mui-TextPage' }
 )
 
 const TextPage: React.FunctionComponent<ITextPageProps> = props => {

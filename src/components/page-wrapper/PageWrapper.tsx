@@ -27,7 +27,7 @@ const useStyles = makeStyles<Theme>(
       },
     },
   }),
-  { name: 'PageWrapper' }
+  { name: 'Mui-PageWrapper' }
 )
 
 const PageWrapper: React.FunctionComponent<{}> = ({ children }) => {

@@ -15,7 +15,7 @@ const useStyles = makeStyles<Theme>(
       backgroundColor: theme.backgroundColor,
     },
   }),
-  { name: 'ThemeTransition' }
+  { name: 'Mui-ThemeTransition' }
 )
 
 const ThemeTransition: React.FunctionComponent<{

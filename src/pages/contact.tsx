@@ -185,7 +185,7 @@ const useStyles = makeStyles(
       ]),
     },
   },
-  { name: 'Contact' }
+  { name: 'Mui-Contact' }
 )
 
 const Contact: React.FunctionComponent<IContactProps> = props => {

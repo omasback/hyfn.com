@@ -10,7 +10,7 @@ const useStyles = makeStyles<Theme>(
       fill: theme.color,
     },
   }),
-  { name: 'PlayLogo' }
+  { name: 'Mui-PlayLogo' }
 )
 
 interface Props extends React.SVGAttributes<{}> {

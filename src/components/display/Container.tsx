@@ -17,7 +17,7 @@ const useStyles = makeStyles(
       maxWidth: 1440,
     },
   },
-  { name: 'Container' }
+  { name: 'Mui-Container' }
 )
 
 const Container: React.FunctionComponent<{ className?: string }> = ({

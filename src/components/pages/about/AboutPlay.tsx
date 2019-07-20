@@ -12,7 +12,7 @@ const useStyles = makeStyles(
       position: 'relative',
     },
   },
-  { name: 'AboutPlay' }
+  { name: 'Mui-AboutPlay' }
 )
 
 const AboutPlay: React.FunctionComponent<IPlayProps> = props => {

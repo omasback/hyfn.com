@@ -42,7 +42,7 @@ const useStyles = makeStyles(
       transform: 'rotateZ(180deg)',
     },
   },
-  { name: 'CircleArrow' }
+  { name: 'Mui-CircleArrow' }
 )
 
 interface ICircleArrow {

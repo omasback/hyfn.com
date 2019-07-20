@@ -64,7 +64,7 @@ const useStyles = makeStyles(
       },
     },
   },
-  { name: 'HomepageHeroCard' }
+  { name: 'Mui-HomepageHeroCard' }
 )
 
 const HomepageHeroCard: React.FunctionComponent<IHomepageHeroCard> = props => {

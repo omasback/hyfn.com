@@ -49,7 +49,7 @@ const useStyles = makeStyles<Theme>(
     },
     arrow: {},
   }),
-  { name: 'ArrowLink' }
+  { name: 'Mui-ArrowLink' }
 )
 
 const ArrowLink: React.FunctionComponent<{

@@ -21,7 +21,7 @@ const useStyles = makeStyles(
       opacity: 1,
     },
   },
-  { name: 'ScrollReveal' }
+  { name: 'Mui-ScrollReveal' }
 )
 
 const ScrollReveal: React.FunctionComponent<{

@@ -120,7 +120,7 @@ const useStyles = makeStyles(
       right: '-5%',
     },
   },
-  { name: 'ServiceTab' }
+  { name: 'Mui-ServiceTab' }
 )
 
 export default (props: IServiceTab) => {

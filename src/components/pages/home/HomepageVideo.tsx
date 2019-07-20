@@ -8,7 +8,7 @@ const useStyles = makeStyles(
       width: '100%',
     },
   },
-  { name: 'HomepageVideo' }
+  { name: 'Mui-HomepageVideo' }
 )
 
 interface IProps {

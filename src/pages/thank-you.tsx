@@ -38,7 +38,7 @@ const useStyles = makeStyles(
       display: 'inline-block',
     },
   },
-  { name: 'ThankYouPage' }
+  { name: 'Mui-ThankYouPage' }
 )
 
 const ThankYouPage: React.FunctionComponent<{}> = props => {

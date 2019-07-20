@@ -34,7 +34,7 @@ const useStyles = makeStyles(
       ),
     },
   },
-  { name: 'AboutPeople' }
+  { name: 'Mui-AboutPeople' }
 )
 
 const AboutPeople: React.FunctionComponent<{ people: Person[] }> = ({

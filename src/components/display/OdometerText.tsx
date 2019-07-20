@@ -26,7 +26,7 @@ const useStyles = makeStyles(
       transitionTimingFunction: easings.easeOutQuint,
     },
   },
-  { name: 'OdometerText' }
+  { name: 'Mui-OdometerText' }
 )
 
 const OdometerText: React.FunctionComponent<{

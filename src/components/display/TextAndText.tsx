@@ -19,7 +19,7 @@ const useStyles = makeStyles(
       ),
     },
   },
-  { name: 'TextAndText' }
+  { name: 'Mui-TextAndText' }
 )
 
 const TextAndText: React.FunctionComponent<ITextAndTextProps> = props => {

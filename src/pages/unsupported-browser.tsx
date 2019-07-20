@@ -31,7 +31,7 @@ const useStyles = makeStyles(
       },
     },
   },
-  { name: 'UnsupportedBrowser' }
+  { name: 'Mui-UnsupportedBrowser' }
 )
 
 interface Props {}

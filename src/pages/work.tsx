@@ -28,7 +28,7 @@ const useStyles = makeStyles(
       marginBottom: '4vw',
     },
   },
-  { name: 'CaseStudiesIndex' }
+  { name: 'Mui-CaseStudiesIndex' }
 )
 
 const CaseStudiesIndex: React.FunctionComponent<CaseStudiesProps> = props => {

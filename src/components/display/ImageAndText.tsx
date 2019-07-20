@@ -52,7 +52,7 @@ const useStyles = makeStyles(
       marginBottom: '4vw',
     },
   },
-  { name: 'ImageAndText' }
+  { name: 'Mui-ImageAndText' }
 )
 
 const ImageAndText: React.FunctionComponent<ImageAndTextProps> = props => {

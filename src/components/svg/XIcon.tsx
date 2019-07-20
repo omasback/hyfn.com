@@ -7,7 +7,7 @@ const useStyles = makeStyles(
       transition: 'color 0.3s',
     },
   },
-  { name: 'HyfnLogo' }
+  { name: 'Mui-HyfnLogo' }
 )
 
 interface Props extends React.SVGAttributes<{}> {

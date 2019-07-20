@@ -59,7 +59,7 @@ const useStyles = makeStyles(
       marginBottom: '4vw',
     },
   },
-  { name: 'ImagesAndText' }
+  { name: 'Mui-ImagesAndText' }
 )
 
 export interface ImagesAndTextProps {

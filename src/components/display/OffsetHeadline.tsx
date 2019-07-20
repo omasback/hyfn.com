@@ -18,7 +18,7 @@ const useStyles = makeStyles(
     },
     headlineLine2: {},
   },
-  { name: 'OffsetHeadline' }
+  { name: 'Mui-OffsetHeadline' }
 )
 
 const OffsetHeadline: React.FunctionComponent<{

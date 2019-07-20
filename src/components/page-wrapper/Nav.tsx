@@ -222,7 +222,7 @@ const useStyles = makeStyles<Theme>(
       whiteSpace: 'nowrap',
     },
   }),
-  { name: 'Nav' }
+  { name: 'Mui-Nav' }
 )
 
 const mainLinks = [

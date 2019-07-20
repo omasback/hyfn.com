@@ -71,7 +71,7 @@ const styles = makeStyles(
       backgroundColor: constants.colors.yellow,
     },
   },
-  { name: 'ColorTrails' }
+  { name: 'Mui-ColorTrails' }
 )
 
 const ColorTrails: React.FunctionComponent<{ className?: string }> = ({

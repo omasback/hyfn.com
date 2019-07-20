@@ -129,7 +129,7 @@ const useStyles = makeStyles(
       },
     },
   },
-  { name: 'Solutions' }
+  { name: 'Mui-Solutions' }
 )
 
 const Solutions: React.FunctionComponent<ISolutions> = props => {

@@ -107,7 +107,7 @@ const useStyles = makeStyles(
       },
     },
   },
-  { name: 'Grid' }
+  { name: 'Mui-Grid' }
 )
 
 const Grid: React.FunctionComponent<

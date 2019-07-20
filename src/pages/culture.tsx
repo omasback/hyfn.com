@@ -42,7 +42,7 @@ const useStyles = makeStyles(
       width: '100%',
     },
   },
-  { name: 'Culture' }
+  { name: 'Mui-Culture' }
 )
 
 const Culture: React.FunctionComponent<ICulturePageProps> = props => {

@@ -64,7 +64,7 @@ const useStyles = makeStyles(
       marginBottom: '4vw',
     },
   },
-  { name: 'HompageIntro' }
+  { name: 'Mui-HompageIntro' }
 )
 
 interface IProps {

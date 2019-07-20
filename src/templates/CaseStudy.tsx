@@ -46,7 +46,7 @@ const useStyles = makeStyles(
       width: '100%',
     },
   },
-  { name: 'CaseStudy' }
+  { name: 'Mui-CaseStudy' }
 )
 
 const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {

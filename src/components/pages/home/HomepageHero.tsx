@@ -169,7 +169,7 @@ const useStyles = makeStyles(
       animationDuration: animationDuration + 'ms',
     },
   },
-  { name: 'HomepageHero' }
+  { name: 'Mui-HomepageHero' }
 )
 
 const HomepageHero: React.FunctionComponent<{}> = props => {

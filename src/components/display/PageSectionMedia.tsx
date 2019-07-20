@@ -37,7 +37,7 @@ const useStyles = makeStyles(
       width: 0,
     },
   },
-  { name: 'PageSectionMedia' }
+  { name: 'Mui-PageSectionMedia' }
 )
 
 const PageSectionMedia: React.FunctionComponent<

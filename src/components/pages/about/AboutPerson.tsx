@@ -126,7 +126,7 @@ const useStyles = makeStyles(
       position: 'relative',
     },
   },
-  { name: 'AboutPerson' }
+  { name: 'Mui-AboutPerson' }
 )
 
 export interface Person {

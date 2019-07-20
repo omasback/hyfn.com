@@ -32,7 +32,7 @@ const useStyles = makeStyles(
       marginBottom: '4vw',
     },
   },
-  { name: 'HomepageCaseStudies' }
+  { name: 'Mui-HomepageCaseStudies' }
 )
 
 const HomepageCaseStudies: React.FunctionComponent<

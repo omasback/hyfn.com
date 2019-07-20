@@ -10,7 +10,7 @@ const useStyles = makeStyles<Theme>(
       fill: theme.color,
     },
   }),
-  { name: 'HyfnLogo' }
+  { name: 'Mui-HyfnLogo' }
 )
 
 interface Props extends React.SVGAttributes<{}> {

@@ -59,7 +59,7 @@ const useStyles = makeStyles(
       },
     },
   },
-  { name: 'CaseStudyLink' }
+  { name: 'Mui-CaseStudyLink' }
 )
 
 const CaseStudyLink: React.FunctionComponent<{

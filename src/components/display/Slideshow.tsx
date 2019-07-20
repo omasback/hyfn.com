@@ -26,7 +26,7 @@ const useStyles = makeStyles(
       animationFillMode: 'both',
     },
   },
-  { name: 'Slideshow' }
+  { name: 'Mui-Slideshow' }
 )
 
 interface IProps {
