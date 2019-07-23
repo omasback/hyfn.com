@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as cx from 'classnames'
-import merge from 'lodash/merge'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
@@ -9,7 +8,7 @@ import Container from 'components/display/Container'
 import Grid from 'components/display/Grid'
 import ColorTrails from 'components/display/ColorTrails'
 import ScrollReveal from 'components/display/ScrollReveal'
-import { bleedRight, largeParagraph, responsiveLengths } from 'styles/mixins'
+import { bleedRight, responsiveLengths } from 'styles/mixins'
 import OffsetHeadline from 'components/display/OffsetHeadline'
 import AboutPeople from 'components/pages/about/AboutPeople'
 import AboutTestimonials, {
@@ -23,6 +22,8 @@ import { Person } from 'components/pages/about/AboutPerson'
 import ImageAndText, {
   ImageAndTextProps,
 } from 'components/display/ImageAndText'
+import ThemeSetter from 'components/display/ThemeSetter'
+import constants from 'styles/constants'
 
 const useStyles = makeStyles(
   {
@@ -60,6 +61,11 @@ const Culture: React.FunctionComponent<ICulturePageProps> = props => {
         />
       </Helmet>
       <Container>
+        <ThemeSetter
+          color={constants.colors.darkGray}
+          backgroundColor={constants.colors.lightGray}
+          parent={'Culture'}
+        />
         <Grid container>
           <Grid item className={classes.headline} mobile={10}>
             <OffsetHeadline text={props.data.contentfulCulturePage.headline} />

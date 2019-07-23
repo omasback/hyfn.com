@@ -13,6 +13,7 @@ import { responsiveLengths, largeParagraph } from 'styles/mixins'
 import Grid from 'components/display/Grid'
 import ThemeSetter from 'components/display/ThemeSetter'
 import { graphql } from 'gatsby'
+import constants from 'styles/constants'
 
 const useStyles = makeStyles(
   {
@@ -47,7 +48,11 @@ const CaseStudiesIndex: React.FunctionComponent<CaseStudiesProps> = props => {
       </Helmet>
       <Container className={classes.root}>
         <Grid container className={classes.top}>
-          <ThemeSetter parent="CaseStudiesIndex" />
+          <ThemeSetter
+            color={constants.colors.darkGray}
+            backgroundColor={constants.colors.lightGray}
+            parent={'CaseStudiesIndex'}
+          />
           {/* <Grid item mobile={8} desktop={6} className={classes.introText}>
           <ScrollReveal>{contentfulWorksPage.description}</ScrollReveal>
         </Grid> */}

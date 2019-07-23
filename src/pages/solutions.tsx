@@ -19,6 +19,7 @@ import ImageAndText, {
 import ServiceTab, { IServiceTab } from 'components/pages/services/ServiceTab'
 import constants from 'styles/constants'
 import XIcon from 'components/svg/XIcon'
+import ThemeSetter from 'components/display/ThemeSetter'
 
 const useStyles = makeStyles(
   {
@@ -180,6 +181,11 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
         <link rel="canonical" href="https://hyfn.com/solutions/" />
         <meta name="description" content={cms.metaDescription} />
       </Helmet>
+      <ThemeSetter
+        color={constants.colors.darkGray}
+        backgroundColor={constants.colors.lightGray}
+        parent={'Solutions'}
+      />
       <Container>
         <Grid container>
           <Grid item mobile={8} desktop={4}>

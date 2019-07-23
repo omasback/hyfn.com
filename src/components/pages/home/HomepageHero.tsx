@@ -10,6 +10,7 @@ import { responsiveLengths, absoluteFill } from 'styles/mixins'
 import constants from 'styles/constants'
 import cardConfigs from './cardConfigs'
 import HomepageHeroCard from './HomepageHeroCard'
+import ThemeSetter from 'components/display/ThemeSetter'
 
 const mobileCardTransform = 'translate3d(3.33vw, 3.37vw, -100px)'
 const animationDuration = 450
@@ -193,6 +194,11 @@ const HomepageHero: React.FunctionComponent<{}> = props => {
 
   return (
     <Container className={classes.root}>
+      <ThemeSetter
+        color={constants.colors.darkGray}
+        backgroundColor={constants.colors.lightGray}
+        parent={'HomepageHero'}
+      />
       <div className={classes.text}>
         <ScrollReveal>
           <p className={classes.intro}>
