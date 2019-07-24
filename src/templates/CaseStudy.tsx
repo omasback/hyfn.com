@@ -91,13 +91,11 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
           <Grid item mobile={8} desktop={4.5}>
             <div className={classes.bleedRight}>
               <ScrollReveal>
-                <ColorTrails>
-                  <Img
-                    src={contentfulCaseStudy.linkImage.file.url}
-                    alt=""
-                    className={cx(classes.image)}
-                  />
-                </ColorTrails>
+                <Img
+                  src={contentfulCaseStudy.linkImage.file.url}
+                  alt=""
+                  className={cx(classes.image)}
+                />
               </ScrollReveal>
             </div>
           </Grid>
@@ -119,6 +117,7 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
             {
               ...ps,
               key: ps.id,
+              colorTrails: false,
             }
           )
         })}

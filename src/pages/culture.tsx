@@ -72,9 +72,15 @@ const Culture: React.FunctionComponent<ICulturePageProps> = props => {
           </Grid>
         </Grid>
       </Container>
-      <ImageAndText {...props.data.contentfulCulturePage.topImageAndText} />
+      <ImageAndText
+        {...props.data.contentfulCulturePage.topImageAndText}
+        colorTrails={true}
+      />
       <AboutPeople people={props.data.allContentfulPerson.edges} />
-      <ImageAndText {...props.data.contentfulCulturePage.nexstarImageAndText} />
+      <ImageAndText
+        {...props.data.contentfulCulturePage.nexstarImageAndText}
+        colorTrails={true}
+      />
       <AboutTestimonials
         testimonials={props.data.allContentfulTestimonial.edges}
       />

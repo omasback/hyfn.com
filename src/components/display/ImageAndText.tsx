@@ -113,9 +113,13 @@ const ImageAndText: React.FunctionComponent<ImageAndTextProps> = props => {
       offsetDesktop={layout.imageOffset}
     >
       <ScrollReveal>
-        <ColorTrails>
+        {props.colorTrails ? (
+          <ColorTrails>
+            <Img src={image.file.url} alt="" className={classes.image} />
+          </ColorTrails>
+        ) : (
           <Img src={image.file.url} alt="" className={classes.image} />
-        </ColorTrails>
+        )}
       </ScrollReveal>
     </Grid>
   )
@@ -157,6 +161,7 @@ export interface ImageAndTextProps {
   text: {
     json: any
   }
+  colorTrails: boolean
 }
 
 // text prop should be either a string of html or a contentful rich text json object

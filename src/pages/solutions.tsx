@@ -204,7 +204,11 @@ const Solutions: React.FunctionComponent<ISolutions> = props => {
         </Grid>
       </Container>
       {cms.imageAndTextModules.map(moduleProps => (
-        <ImageAndText {...moduleProps} key={moduleProps.id} />
+        <ImageAndText
+          {...moduleProps}
+          key={moduleProps.id}
+          colorTrails={true}
+        />
       ))}
       <Container>
         <OffsetHeadline text={cms.secondTitle} />
