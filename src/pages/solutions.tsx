@@ -97,7 +97,7 @@ const useStyles = makeStyles(
     desktopTabs: {
       extend: responsiveLengths([
         ['marginTop', 0, 200],
-        ['marginLeft', 0, -50],
+        // ['marginLeft', 0, -50],
       ]),
       display: 'none',
       [constants.mq.desktop]: {
@@ -109,15 +109,23 @@ const useStyles = makeStyles(
       transition: 'transform 1s',
       transitionTimingFunction: easings.easeOutQuint,
       '&:nth-child(1)': {
-        marginTop: 40,
+        extend: responsiveLengths([
+          ['marginTop', 0, 40],
+          ['marginLeft', 0, -50],
+        ]),
       },
       '&:nth-child(2)': {
+        extend: responsiveLengths([
+          ['marginTop', 0, 0],
+          ['marginLeft', 0, 100],
+        ]),
         transform: 'translateX(0%)',
-        marginLeft: 100,
       },
       '&:nth-child(3)': {
-        marginTop: 90,
-        marginLeft: 90,
+        extend: responsiveLengths([
+          ['marginTop', 0, 90],
+          ['marginLeft', 0, 100],
+        ]),
         transform: 'translateX(-100%)',
       },
     },
