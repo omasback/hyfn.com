@@ -2,7 +2,6 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import HamburgerMenu from 'react-hamburger-menu'
 import { Link } from 'gatsby'
-import { useMediaQuery } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import easings from 'easings-css/easings.json'
 import { useLockBodyScroll } from 'react-use'
@@ -25,6 +24,12 @@ const useStyles = makeStyles<Theme>(
       left: '0',
       right: '0',
       zIndex: 2,
+    },
+    mobileNav: {
+      display: 'block',
+      [constants.mq.desktop]: {
+        display: 'none',
+      },
     },
     mobileLogo: {
       width: 111,
@@ -172,10 +177,13 @@ const useStyles = makeStyles<Theme>(
       height: 25,
       fill: '#fff',
     },
-    desktopRow: {
-      display: 'flex',
+    desktopNav: {
+      display: 'none',
       alignItems: 'center',
       paddingTop: 52,
+      [constants.mq.desktop]: {
+        display: 'flex',
+      },
     },
     desktopLogo: {
       width: '100px',
@@ -272,121 +280,119 @@ const mainLinks = [
 const Nav: React.FunctionComponent<{}> = ({ children }) => {
   const classes = useStyles()
   const [isOpen, setOpen] = React.useState(false)
-  const isWide = useMediaQuery(constants.mq.desktop.replace('@media ', ''))
 
   useLockBodyScroll(isOpen)
 
   return (
     <div className={classes.root}>
       <Container>
-        {isWide ? (
-          <div className={classes.desktopRow}>
-            <Link to="/">
-              <HyfnLogo className={classes.desktopLogo} />
-            </Link>
-            <div className={classes.desktopLeftLinks}>
-              {mainLinks.slice(0, 3).map(link => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={classes.desktopLeftLink}
-                  activeClassName={classes.desktopMainLinkActive}
-                >
-                  {link.text}
-                </Link>
-              ))}
-            </div>
-            <div className={classes.desktopRightLinks}>
-              {/* <Link to={'/play'}>
+        <div className={classes.desktopNav}>
+          <Link to="/">
+            <HyfnLogo className={classes.desktopLogo} />
+          </Link>
+          <div className={classes.desktopLeftLinks}>
+            {mainLinks.slice(0, 3).map(link => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={classes.desktopLeftLink}
+                activeClassName={classes.desktopMainLinkActive}
+              >
+                {link.text}
+              </Link>
+            ))}
+          </div>
+          <div className={classes.desktopRightLinks}>
+            {/* <Link to={'/play'}>
                 <PlayLogo className={classes.playLogo} />
               </Link> */}
-              <Link to={'/contact/'} className={classes.contactLink}>
-                {'Contact Us'}
-              </Link>
-            </div>
-          </div>
-        ) : (
-          <>
-            <Link to="/">
-              <HyfnLogo className={classes.mobileLogo} />
+            <Link to={'/contact/'} className={classes.contactLink}>
+              {'Contact Us'}
             </Link>
-            <div className={classes.hamburger}>
-              <HamburgerMenu
-                isOpen={isOpen}
-                menuClicked={() => setOpen(!isOpen)}
-                width={32}
-                height={12}
-                strokeWidth={2}
-                rotate={0}
-                color={constants.colors.darkGray}
-                borderRadius={0}
-                animationDuration={0.5}
+          </div>
+        </div>
+        <div className={classes.mobileNav}>
+          <Link to="/">
+            <HyfnLogo className={classes.mobileLogo} />
+          </Link>
+          <div className={classes.hamburger}>
+            <HamburgerMenu
+              isOpen={isOpen}
+              menuClicked={() => setOpen(!isOpen)}
+              width={32}
+              height={12}
+              strokeWidth={2}
+              rotate={0}
+              color={constants.colors.darkGray}
+              borderRadius={0}
+              animationDuration={0.5}
+            />
+          </div>
+          {[classes.drawerRed, classes.drawerYellow, classes.drawerBlue].map(
+            colorClass => (
+              <div
+                key={colorClass}
+                className={cx(classes.drawer, colorClass, {
+                  [classes.drawerOpen]: isOpen,
+                })}
               />
-            </div>
-            {[classes.drawerRed, classes.drawerYellow, classes.drawerBlue].map(
-              colorClass => (
-                <div
-                  key={colorClass}
-                  className={cx(classes.drawer, colorClass, {
-                    [classes.drawerOpen]: isOpen,
-                  })}
-                />
-              )
-            )}
-            <div
-              className={cx(classes.drawer, classes.drawerBlack, {
-                [classes.drawerOpen]: isOpen,
+            )
+          )}
+          <div
+            className={cx(classes.drawer, classes.drawerBlack, {
+              [classes.drawerOpen]: isOpen,
+            })}
+          >
+            <Container
+              className={cx(classes.drawerInner, {
+                [classes.drawerInnerOpen]: isOpen,
               })}
             >
-              <Container
-                className={cx(classes.drawerInner, {
-                  [classes.drawerInnerOpen]: isOpen,
+              <div className={classes.hamburger}>
+                <HamburgerMenu
+                  isOpen={isOpen}
+                  menuClicked={() => setOpen(!isOpen)}
+                  width={32}
+                  height={12}
+                  strokeWidth={2}
+                  rotate={0}
+                  color={constants.colors.lightGray}
+                  borderRadius={0}
+                  animationDuration={0.5}
+                />
+              </div>
+              <Link to="/" onClick={() => setOpen(false)}>
+                <HyfnLogo color="#ffffff" className={classes.mobileMenuLogo} />
+              </Link>
+              <div className={classes.mobileMainLinks}>
+                {mainLinks.map(link => (
+                  <div
+                    key={link.path}
+                    className={classes.mobileMainLinkContainer}
+                  >
+                    <Link
+                      to={link.path}
+                      className={cx(classes.mobileMainLink, {
+                        [classes.mobileMainLinkOpen]: isOpen,
+                      })}
+                      activeClassName={classes.mobileMainLinkaActive}
+                      onClick={() => setOpen(false)}
+                    >
+                      {link.text}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+              <div
+                className={cx(classes.socialLinks, {
+                  [classes.socialLinksOpen]: isOpen,
                 })}
               >
-                <div className={classes.hamburger}>
-                  <HamburgerMenu
-                    isOpen={isOpen}
-                    menuClicked={() => setOpen(!isOpen)}
-                    width={32}
-                    height={12}
-                    strokeWidth={2}
-                    rotate={0}
-                    color={constants.colors.lightGray}
-                    borderRadius={0}
-                    animationDuration={0.5}
-                  />
-                </div>
-                <HyfnLogo color="#ffffff" className={classes.mobileMenuLogo} />
-                <div className={classes.mobileMainLinks}>
-                  {mainLinks.map(link => (
-                    <div
-                      key={link.path}
-                      className={classes.mobileMainLinkContainer}
-                    >
-                      <Link
-                        to={link.path}
-                        className={cx(classes.mobileMainLink, {
-                          [classes.mobileMainLinkOpen]: isOpen,
-                        })}
-                        activeClassName={classes.mobileMainLinkaActive}
-                        onClick={() => setOpen(false)}
-                      >
-                        {link.text}
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-                <div
-                  className={cx(classes.socialLinks, {
-                    [classes.socialLinksOpen]: isOpen,
-                  })}
-                >
-                  <SocialLinks />
-                </div>
-              </Container>
-            </div>
-          </>
-        )}
+                <SocialLinks />
+              </div>
+            </Container>
+          </div>
+        </div>
       </Container>
     </div>
   )
