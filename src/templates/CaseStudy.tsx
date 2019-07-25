@@ -17,6 +17,8 @@ import contentfulContentTypeComponentMap from '../contentfulContentTypeComponent
 import Img from 'components/display/Img'
 import { ITextAndTextProps } from 'components/display/TextAndText'
 import { IPageSectionMediaProps } from 'components/display/PageSectionMedia'
+import ThemeSetter from 'components/display/ThemeSetter'
+import constants from 'styles/constants'
 
 const useStyles = makeStyles(
   {
@@ -71,6 +73,11 @@ const CaseStudy: React.FunctionComponent<CaseStudyPage> = props => {
         )}
       </Helmet>
       <Container className={classes.root}>
+        <ThemeSetter
+          color={constants.colors.darkGray}
+          backgroundColor={constants.colors.lightGray}
+          parent={'Culture'}
+        />
         <Grid container>
           <Grid
             container
